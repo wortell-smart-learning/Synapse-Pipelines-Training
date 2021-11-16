@@ -65,16 +65,67 @@
             "description":"Specifies the name of the Azure Data Factory."
          }
       },
+       "linkedDataFactoryName":{
+         "type":"string",
+         "defaultValue":"[concat('adf-linked-',uniqueString('adf-linked', resourceGroup().id))]",
+         "metadata":{
+            "description":"Specifies the name of the Linked Azure Data Factory."
+         }
+      },
       "keyVaultName":{
          "type":"string",
          "defaultValue":"[concat('kv-',uniqueString('kv', resourceGroup().id))]",
          "metadata":{
             "description":"Specifies the name of the key vault."
          }
-      }
+      },
+      "virtualMachineName": {
+            "type": "string",
+            "defaultValue":"[concat('vm-',uniqueString('vm', resourceGroup().id))]",
+            "metadata":{
+                "description":"The name of the Virtual Machine."
+            }
+        },
+        "networkInterfaceName": {
+            "type": "string",
+            "defaultValue":"[concat('nic-',uniqueString('nic', resourceGroup().id))]",
+            "metadata":{
+                "description":"The name of the Network Interface Card."
+            }
+        },
+        "virtualNetworkName": {
+            "type": "string",
+            "defaultValue":"[concat('vnet-',uniqueString('vnet', resourceGroup().id))]",
+            "metadata":{
+                "description":"The name of the Virtual Network."
+            }
+        },
+        "networkSecurityGroupName": {
+            "type": "string",
+            "defaultValue":"[concat('nsg-',uniqueString('nsg', resourceGroup().id))]",
+            "metadata":{
+                "description":"The name of the Network Security Group."
+            }
+        },
+        "subnetName": {
+            "type": "string",
+            "defaultValue":"[concat('sn-',uniqueString('sn', resourceGroup().id))]",
+            "metadata":{
+                "description":"The name of the Subnet."
+            }
+        },
+        "publicIpAddressName": {
+            "type": "string",
+            "defaultValue":"[concat('pip-',uniqueString('pip', resourceGroup().id))]",
+            "metadata":{
+                "description":"The name of the Public IP Address."
+            }
+        }
    },
    "variables":{
-
+        "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
+        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
    },
    "resources":[
       {
@@ -108,6 +159,7 @@
                "apiVersion":"2020-08-01-preview",
                "name":"[parameters('targetDBName')]",
                "location":"[parameters('location')]",
+               "properties":{},
                "sku":{
                   "name":"Standard",
                   "tier":"Standard"
@@ -156,6 +208,17 @@
          "apiVersion":"2018-06-01",
          "name":"[parameters('dataFactoryName')]",
          "location":"[parameters('location')]",
+         "properties":{},
+         "identity":{
+            "type":"SystemAssigned"
+         }
+      },
+      {
+         "type":"Microsoft.DataFactory/factories",
+         "apiVersion":"2018-06-01",
+         "name":"[parameters('linkedDataFactoryName')]",
+         "location":"[parameters('location')]",
+         "properties":{},
          "identity":{
             "type":"SystemAssigned"
          }
@@ -166,14 +229,25 @@
          "name":"[parameters('keyVaultName')]",
          "location":"[parameters('location')]",
          "dependsOn":[
-            "[resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName'))]"
+            "[resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName'))]",
+            "[resourceId('Microsoft.DataFactory/factories', parameters('linkedDataFactoryName'))]"
          ],
          "properties":{
             "tenantId":"[subscription().tenantId]",
-            "enableSoftDelete": "false",           
+            "enableSoftDelete": false,           
             "accessPolicies":[
                {
                   "objectId":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName')),'2018-06-01', 'full').identity.principalId]",
+                  "tenantId":"[subscription().tenantId]",
+                  "permissions":{
+                     "secrets":[
+                        "list",
+                        "get"
+                     ]
+                  }
+               },
+               {
+                  "objectId":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('linkedDataFactoryName')),'2018-06-01', 'full').identity.principalId]",
                   "tenantId":"[subscription().tenantId]",
                   "permissions":{
                      "secrets":[
@@ -203,6 +277,180 @@
          "dependsOn":[
             "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
          ]
-      }
+      },
+      {
+            "type": "Microsoft.Network/networkInterfaces",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('networkInterfaceName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": []
+                },
+                "enableAcceleratedNetworking": true,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[variables('nsgId')]"
+                }
+            },
+            "dependsOn":[
+            "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+         ]
+        },
+        {
+            "name": "[parameters('networkSecurityGroupName')]",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "apiVersion": "2019-02-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "securityRules": [
+                {
+                            "name": "RDP",
+                            "properties": {
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 300,
+                            "direction": "Inbound",
+                            "sourcePortRanges": [],
+                            "destinationPortRanges": [],
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "[parameters('virtualNetworkName')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.0.0.0/16"
+                    ]
+                },
+                 "subnets": [
+                    {
+                        "name": "[parameters('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "10.0.0.0/24",
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false
+            }
+        },
+        {
+            "name": "[parameters('publicIpAddressName')]",
+            "type": "Microsoft.Network/publicIpAddresses",
+            "apiVersion": "2019-02-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "publicIpAllocationMethod": "Static"
+            },
+            "sku": {
+                "name": "Basic"
+            }
+        },
+        {
+            "name": "[parameters('virtualMachineName')]",
+            "type": "Microsoft.Compute/virtualMachines",
+            "apiVersion": "2021-03-01",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_D2s_v3"
+                },
+                "storageProfile": {
+                    "osDisk": {
+                        "createOption": "fromImage",
+                        "managedDisk": {
+                            "storageAccountType": "Premium_LRS"
+                        }
+                    },
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsDesktop",
+                        "offer": "Windows-10",
+                        "sku": "20h2-pro-g2",
+                        "version": "latest"
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "os-vm",
+                    "adminUsername": "[parameters('administratorLogin')]",
+                    "adminPassword": "[parameters('administratorLoginPassword')]",
+                    "windowsConfiguration": {
+                        "enableAutomaticUpdates": true,
+                        "provisionVmAgent": true
+                    }
+                },
+                "licenseType": "Windows_Client",
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true
+                    }
+                }
+            },
+            "identity": {
+                "type": "systemAssigned"
+            }
+            
+        },
+        {
+            "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
+            "type": "Microsoft.DevTestLab/schedules",
+            "apiVersion": "2018-09-15",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
+            ],
+            "properties": {
+                "status": "Enabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1800"
+                },
+                "timeZoneId": "W. Europe Standard Time",
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"
+            }
+        }
    ]
 }
