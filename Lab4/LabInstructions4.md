@@ -44,7 +44,7 @@ Nu de Linked Services aangemaakt zijn kunnen wij bij specifieke data zoals een t
 
 5. Bij **Linked Services** kies het **storage account**.
 
-6. De optie om een pad op te geven zal verschijnen. Klik op het **blauwe mapje**(Browse). Kies vervolgens de map **data** en het bestand genaamd **ProductCategoryDiscount**.
+6. De optie om een pad op te geven zal verschijnen. Klik op het **blauwe mapje**(Browse). Kies vervolgens de map **data** en het bestand genaamd **ProductCategoryDiscount.csv**.
 
 7. Klik op **OK** en vervolgens nog een keer op **OK** om de Dataset te voltooien.
 
