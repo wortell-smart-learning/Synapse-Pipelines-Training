@@ -18,6 +18,14 @@ CREATE TABLE [Stg].[Dates](
 )ON [PRIMARY]
 GO
 
+CREATE TABLE [Stg].[ProductCategoryDiscount](
+[Name] [nvarchar](30) NOT NULL,
+[Discount] DECIMAL(4,2) NULL,
+[rowguid] [uniqueidentifier] NOT NULL,
+[ModifiedDate] [datetime] NOT NULL
+) ON [PRIMARY]
+GO
+
 CREATE TABLE [Stg].[SalesPersonal](
 	[SalesPerson] [nvarchar](256) NULL,
 	[Title] [nvarchar](8) NULL,
@@ -284,6 +292,80 @@ BEGIN
 			[Comment],
 			[rowguid],
 			[ModifiedDate]
+	);  
+END;
+GO
+
+
+CREATE PROCEDURE [stg].[USP_DL_Dates]
+    @StartDate  date,
+	@CutoffDate date
+AS                            
+BEGIN
+WITH seq(n) AS 
+(
+  SELECT 0 UNION ALL SELECT n + 1 FROM seq
+  WHERE n < DATEDIFF(DAY, @StartDate, @CutoffDate)
+),
+d(d) AS 
+(
+  SELECT DATEADD(DAY, n, @StartDate) FROM seq
+),
+src AS
+(
+  SELECT
+    Date         = CONVERT(date, d),
+    Day          = DATEPART(DAY,       d),
+    DayName      = DATENAME(WEEKDAY,   d),
+    Week         = DATEPART(WEEK,      d),
+    ISOWeek      = DATEPART(ISO_WEEK,  d),
+    DayOfWeek    = DATEPART(WEEKDAY,   d),
+    Month        = DATEPART(MONTH,     d),
+    MonthName    = DATENAME(MONTH,     d),
+    Quarter      = DATEPART(Quarter,   d),
+    Year         = DATEPART(YEAR,      d),
+    FirstOfMonth = DATEFROMPARTS(YEAR(d), MONTH(d), 1),
+    LastOfYear   = DATEFROMPARTS(YEAR(d), 12, 31),
+    DayOfYear    = DATEPART(DAYOFYEAR, d)
+  FROM d
+)
+MERGE INTO [Stg].[Dates] WITH (TABLOCK) AS t 
+	USING 
+		(SELECT 
+			 * FROM src
+  			   ORDER BY Date
+		) AS s 
+	ON (  s.[Date] = t.[Date]  ) 
+	WHEN NOT MATCHED BY TARGET 
+	THEN INSERT ( 
+			[Date],        
+    		[Day],         
+    		[DayName],     
+    		[Week],         
+    		[ISOWeek],     
+    		[DayOfWeek],    
+    		[Month],       
+    		[MonthName],    
+    		[Quarter],       
+    		[Year],          
+    		[FirstOfMonth],
+    		[LastOfYear], 
+    		[DayOfYear]  
+	) 
+	VALUES ( 
+			[Date],        
+    		[Day],         
+    		[DayName],     
+    		[Week],         
+    		[ISOWeek],     
+    		[DayOfWeek],    
+    		[Month],       
+    		[MonthName],    
+    		[Quarter],       
+    		[Year],          
+    		[FirstOfMonth],
+    		[LastOfYear], 
+    		[DayOfYear]
 	);  
 END;
 GO
