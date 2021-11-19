@@ -26,9 +26,11 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 5. Kies bij **Azure Key vault Name** de key vault uit jouw resourcegroup.
 
-6. Klik vervolgens op **Create**.
+6. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
 
-7. De Linked Service naar de Azure Key Vault is nu aangemaakt, maar deze is nog niet gepubliseerd. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen jouw aanpassingen **Live** te staan, en kan het gebruikt worden.
+7. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+
+8. De Linked Service naar de Azure Key Vault is nu aangemaakt, maar deze is nog niet gepubliseerd. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen jouw aanpassingen **Live** te staan, en kan het gebruikt worden.
 
 
 ## Opdracht 2 - Databases
@@ -81,7 +83,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 3. Kies bij **Connect via integration runtime** de **Self-Hosted IR**
 
-4. Vul bij **Host** het **D:\\**
+4. Vul bij **Host** het volgende in **D:\\**
 
 5. Vul bij de **User Name** het SQL admin account in genaamd: **sqladmin**.
 
@@ -94,5 +96,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 9. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
 
 10. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+
+11. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
 
 ### Einde Lab3
