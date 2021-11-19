@@ -64,7 +64,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 3. Je zult zien dat er al een container is genaamd **data**, klik deze aan. De container is nog leeg en deze gaan wij vullen met het overgebleven bestand genaamd **Dates.csv**.
 
-4. In de horizontale navigatiebalk zien we een aantal opties zoals: Upload, Change access level, refresh, etc. Klik op **Upload**, klik op de het blauwe mapje en kies vervolgens het bestaand genaamd **** en klik vervolgens op de **Upload** knop.
+4. In de horizontale navigatiebalk zien we een aantal opties zoals: Upload, Change access level, refresh, etc. Klik op **Upload**, klik op de het blauwe mapje en kies vervolgens het bestaand genaamd **Dates.csv** en klik vervolgens op de **Upload** knop.
 
 5. Het bestand wordt geupload en zou binnen enkele seconden in de container verschijnen.
 
