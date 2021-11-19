@@ -35,7 +35,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 ## Opdracht 2 - Databases
 
-1. Nu de Azure Key Vault is aangemaakt kunnen wij deze gebruiken om beveiligde connecties te maken met de databases. klik op **New**, en zoek naar **SQL**. Klik de **Azure SQL Databases** aan.
+1. Nu de Azure Key Vault is aangemaakt kunnen wij deze gebruiken om beveiligde connecties te maken met de databases. klik op **New**, en zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
 
 2. Geef de Linked services een duidelijke naam.
 
