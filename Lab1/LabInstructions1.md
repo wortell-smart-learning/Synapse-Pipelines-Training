@@ -20,7 +20,9 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 2. Je wordt nu gebracht naar het inlogscherm van de Azure Portal en log vervolgens in met het account waar de Azure Pass op is geactiveerd.
 
 3. In het deployscherm zijn alle vereisten velden al voorzien van waardes. Je dient alleen zelf een resourcegroup aan te maken door op de **create new** (of de equivalent in een andere taal) te klikken en vul een naam in en klik vervolgens op OK. De best practise is om een resourcegroup te laten beginnen met rg- gevolgd door een omschrijvende naam en eindigend met een -omgeving. 
+
 *Praktijkvoorbeeld:* rg-dataplatform-dev 
+
 *Trainingsvoorbeeld:* rg-adf-training
 
 4. Klik op de knop **Review + Create** (of de equivalent in een andere taal). De code wordt vervolgens gevalideerd. Als de validatie geslaagd is wordt dit aangegeven door een groene balk en wordt de knop **Create** (of de equivalent in een andere taal) beschikbaar. Klik op de knop en de uitrol van de omgeving zal starten. Mocht er iets fout gaan gedurende de uitrol, laat die weten aan de trainer.
