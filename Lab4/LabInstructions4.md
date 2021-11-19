@@ -32,7 +32,7 @@ Nu de Linked Services aangemaakt zijn kunnen wij bij specifieke data zoals een t
 9. Doe Opdracht 1 nogmaals, maar nu voor de **sqldb-target** Database.
 
 
-## Opdracht 2 - Storage Account
+## Opdracht 2 - Storage Account / File system
 
 1. Klik de **Dataset Actions** aan en klik vervolgens op **New Dataset**.
 
