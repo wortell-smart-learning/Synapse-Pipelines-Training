@@ -25,7 +25,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
    *Trainingsvoorbeeld:* rg-adf-training
 
-4. Klik op de knop **Review + Create** (of de equivalent in een andere taal). De code wordt vervolgens gevalideerd. Als de validatie geslaagd is wordt dit aangegeven door een groene balk en wordt de knop **Create** (of de equivalent in een andere taal) beschikbaar. Klik op de knop en de uitrol van de omgeving zal starten. Mocht er iets fout gaan gedurende de uitrol, laat die weten aan de trainer.
+4. Klik op de knop **Review + Create** (of de equivalent in een andere taal). De code wordt vervolgens gevalideerd. Als de validatie geslaagd is wordt dit aangegeven door een groene balk en wordt de knop **Create** (of de equivalent in een andere taal) beschikbaar. Klik op de knop en de uitrol van de omgeving zal starten. Mocht er iets fout gaan gedurende de uitrol, laat dit weten aan de trainer.
 
 5. Als de uitrol voltooid is krijg je daar een melding van en hoera! Jouw omgeving is klaar voor gebruik! 
 

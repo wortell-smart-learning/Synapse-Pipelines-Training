@@ -17,9 +17,10 @@ Gedurende de lab gaan we meerdere soorten IRs aanmaken, configureren, installere
 
 3. Klik op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Azure** en weer **continue**. We kunnen nu een nieuwe **AutoResolveIntegrationRuntime** aanmaken, waarbij we ook specifiek de **Region** kunnen aangeven. Hiermee weten we zeker dat onze Data altijd binnen deze regio blijft. 
 
-4. Geef de IR een naam en kies voor West Europe als **Region**. De best practise is om te beginnen met IR- gevolgt door wat voor een soort IR het is en uiteindelijk de -regio.
+4. Geef de IR een naam en kies voor West Europe als **Region**. De best practise is om te beginnen met IR- gevolgt door wat voor een soort IR het is, de -regio en de -omgeving.
     
-    *Praktijkvoorbeeld:* IR-AutoResolve-WestEU
+    *Praktijkvoorbeeld:* IR-AutoResolve-WestEU-TST
+    *Trainingsvoorbeeld:* IR-AutoResolve-WestEU-Training
 
 5. Klik op **Create**, Hoera! je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn. 
 
@@ -48,19 +49,23 @@ Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 
 
 1. Klik de **Self-Hosted IR** aan die je net hebt aangemaakt. Ga naar de tab **Sharing** en kopieer de resourceID door op het **blauwe vakje** te klikken of deze te selecteren en te kopieeren. 
 
-2. Sluit de tab door op **Cancel** te klikken. 
+2. Klik op het **Blauwe plusje** met de tekst **Grant permissions to another Data Factory or user-assigned managed idenitiy**
 
-3. Rechtboven in beeld, zie je een rij met iconen. Klik op de 2e van links, het icoon met **de 2 schermen en pijljes** (Switch Data Factory).
+3. De adf-linked zou hier automatisch tussen moeten staan, vink het aan en klik vervolgens op **Add**
 
-4. Er zal een nieuw scherm verschijnen, en het meeste zal al van te voren zijn ingevuld. Kies bij **Data Factory Name** de adf-Linked en klik vervolgens op **OK**.
+4. Sluit de tab door op **Cancel** te klikken. 
 
-5. De andere ADF wordt nu geladen, wanneer dit voltooid is klik je links op de **gereedschapskist** (manage) en vervolgens weer op **Integration runtimes**.
+5. Rechtboven in beeld, zie je een rij met iconen. Klik op de 2e van links, het icoon met **de 2 schermen en pijljes** (Switch Data Factory).
 
-6. Eenmaal aangekomen op het scherm van de IRs, klik weer op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Linked Self-Hosted** en weer **continue**.
+6. Er zal een nieuw scherm verschijnen, en het meeste zal al van te voren zijn ingevuld. Kies bij **Data Factory Name** de adf-Linked en klik vervolgens op **OK**.
 
-7. Plak de gekopieerde resourceID alvast in het veld van de **Resource ID** en geeft de IR een correcte naam.
+7. De andere ADF wordt nu geladen, wanneer dit voltooid is klik je links op de **gereedschapskist** (manage) en vervolgens weer op **Integration runtimes**.
 
-8. Klik op **Create** en de gelinkede Self-Hosted IR zou moeten verschijnen met een **Groen bolletje**.
+8. Eenmaal aangekomen op het scherm van de IRs, klik weer op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Linked Self-Hosted** en weer **continue**.
+
+9. Plak de gekopieerde resourceID alvast in het veld van de **Resource ID** en geeft de IR een correcte naam.
+
+10. Klik op **Create** en de gelinkede Self-Hosted IR zou moeten verschijnen met een **Groen bolletje**.
     Het linken van Self-Hosted integration runtimes zie je vaak bij omgevingen die bij dezelfde data moeten komen. Het is dan ook gebruikelijk om meerere Virtual Machines te hebben met meerdere Self-Hosted IRs, dit zodat er een goed onderscheid gemaakt kan worden tussen Ontwikkel, Test, Acceptatie en Productie. Het komt nog wel eens voor dat een Ontwikkel en Test omgeving dezelfde Self-Hosted IR gebruiken, net zoals voor Acceptatie en Productie mits hier een specifieke case voor is.
 
     Het linken voor een Self-Hosted IR wordt vaak ook gebruikt als er meerdere teams zijn die bij 1 bepaalde databron moeten zijn, hiervoor heb je dan meer 1 IR nodig (en dus Virtual Machine) wat weer kosten en resouces bespaard.
