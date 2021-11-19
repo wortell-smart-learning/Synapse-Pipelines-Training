@@ -29,7 +29,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 ## Opdracht 2 - Data klaar zetten deel 1
 
-1. In de Github map van Lab1 vinden wij een map genaamd **LabEnvironment**. Hierin vind je niet alleen de code van de Azure uitrol maar, voor de database en 2 .csv bestanden genaamd **.** en **.**. Klik op het eerste .csv bestand en klik vervolgens op **Download**. Herhaal deze stap voor het andere bestand.
+1. In de Github map van Lab1 vinden wij een map genaamd **LabEnvironment**. Hierin vind je niet alleen de code van de Azure uitrol maar, voor de database en 2 .csv bestanden genaamd **SalesPersonal.csv** en **Dates.csv**. Klik op het eerste .csv bestand en klik vervolgens op **Download**. Herhaal deze stap voor het andere bestand.
 
 2. Beide bestanden zouden nu je lokaal hebben staan, dit staat waarschijnelijk in de downloads folder.
 
@@ -53,7 +53,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 9. Het bureablad van de Virtual Machine wordt geladen. Navigeer na het laden van het bureaublad naar de werkblak en klik op **File explorer** (Het gele mapje). Klik vervolgens op **This PC** gevolgt door te klikken op **Temporary Storage(D:)**.
 
-10. Kopieer het gedownloaden bestand genaamd **.** en plak deze in op de D-schijf van de Virtual Machine. Voor nu zijn we hierop klaar, minimaliseer het scherm, we hebben de Virtual Machine later vandaag nog nodig.
+10. Kopieer het gedownloaden bestand genaamd **SalesPersonal.csv** en plak deze in op de D-schijf van de Virtual Machine. Voor nu zijn we hierop klaar, minimaliseer het scherm, we hebben de Virtual Machine later vandaag nog nodig.
 
 
 ## Opdracht 3 - Data klaar zetten deel 2
@@ -62,7 +62,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 2. In de Blade (Navigatiebalk aan de linkerkant) vinden we onder het kopje **Data storage** de optie **Containers**, klik deze aan.
 
-3. Je zult zien dat er al een container is genaamd **data**, klik deze aan. De container is nog leeg en deze gaan wij vullen met het overgebleven bestand genaamd **.**.
+3. Je zult zien dat er al een container is genaamd **data**, klik deze aan. De container is nog leeg en deze gaan wij vullen met het overgebleven bestand genaamd **Dates.csv**.
 
 4. In de horizontale navigatiebalk zien we een aantal opties zoals: Upload, Change access level, refresh, etc. Klik op **Upload**, klik op de het blauwe mapje en kies vervolgens het bestaand genaamd **** en klik vervolgens op de **Upload** knop.
 
