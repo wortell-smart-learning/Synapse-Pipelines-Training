@@ -77,7 +77,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 2. De loginnaam van het sqladmin-account zou al ingevuld staan, voer vervolgens het wachtwoord in. Dit is hetzelfde wachtwoord als in Opdracht 2. 
    Wanneer je ingelogd bent, zie je een query-interface voor je en de tabbellen, views en stored procedure mappen aan de linkerkant. 
 
-3. Ga terug naar de Github map van Lab1 en in de map **LabEnvironment**. Klik vervoglens op het .sql bestand genaamd **Target-Database**. De code zou nu zichtbaar worden, selecteer alle code en plak deze in de Query editor en klik vervolgens op de knop **Run**.
+3. Ga terug naar de Github map van Lab1 en in de map **LabEnvironment**. Klik vervoglens op het .sql bestand genaamd **Target-Database.sql**. De code zou nu zichtbaar worden, selecteer alle code en plak deze in de Query editor en klik vervolgens op de knop **Run**.
 
 4. Wanneer de query is uitgevoerd, is jouw database klaar voor gebruik!
 
