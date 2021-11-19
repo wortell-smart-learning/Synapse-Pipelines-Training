@@ -40,10 +40,12 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 5. Je wordt nu naar een nieuw scherm gebracht en de vereisten velden staan al ingevuld voor je. Klik vervolgens op **Download RDP File**.
 
 6. Wanneer de download klaar is klik je het RDP-bestand aan en klik vervolgens op **Connect**. Er zal een nieuw scherm komen welke vraagt om een gebruikersnaam en wachtwoord, vul de onderstaande gegevens in:
-*Gebruikersnaam:* sqladmin
-*Wachtwoord:* Welkom12345!
 
-De gebruikersnaam en het wachtwoorden verdienen zeker geen security prijs, maar werken uitstekend voor trainingsdoeleinde. Wanneer je de gegevens hebt ingevuld, klik op OK.
+    *Gebruikersnaam:* sqladmin
+
+    *Wachtwoord:* Welkom12345!
+
+    De gebruikersnaam en het wachtwoorden verdienen zeker geen security prijs, maar werken uitstekend voor trainingsdoeleinde. Wanneer je de gegevens hebt ingevuld, klik op OK.
 
 7. Er kan een nieuw scherm komen om het certificaat te vertrouwen, klik vervolgens op **Yes**.
 
