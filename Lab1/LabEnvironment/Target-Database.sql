@@ -1,21 +1,29 @@
 CREATE SCHEMA [Stg]
 GO
 
-CREATE TABLE [Stg].[Dates](
-	[Date] [datetime] NOT NULL,        
-    [Day] [tinyint] NOT NULL,         
-    [DayName] [nvarchar](16) NOT NULL,     
-    [Week] [tinyint] NOT NULL,         
-    [ISOWeek] [tinyint] NOT NULL,     
-    [DayOfWeek] [tinyint] NOT NULL,    
-    [Month] [tinyint] NOT NULL,       
-    [MonthName] [nvarchar](16) NOT NULL,    
-    [Quarter] [tinyint] NOT NULL,       
-    [Year] [smallint] NOT NULL,          
-    [FirstOfMonth] [datetime] NOT NULL,
-    [LastOfYear] [datetime] NOT NULL, 
-    [DayOfYear] [smallint] NOT NULL    
-)ON [PRIMARY]
+CREATE TABLE [Stg].[Dates] (
+    [DateKey]   	INT          NOT NULL,
+    [Date]          DATE         NULL,
+    [DayOfMonth]    TINYINT      NULL,
+    [Month]         VARCHAR (8)  NULL,
+    [MonthLong]     VARCHAR (14) NULL,
+    [MonthName]     CHAR (3)     NULL,
+    [MonthNameLong] VARCHAR (9)  NULL,
+    [MonthNr]       TINYINT      NULL,
+    [YearMonth]     INT          NULL,
+    [MonthStart]    DATE         NULL,
+    [MonthEnd]      DATE         NULL,
+    [Quarter]       CHAR (7)     NULL,
+    [QuarterName]   CHAR (3)     NULL,
+    [QuarterNr]     TINYINT      NULL,
+    [Year]          SMALLINT     NULL,
+    [IsoWeek]       TINYINT      NULL,
+    [IsoYear]       SMALLINT     NULL,
+    [YearWeek]      INT          NULL,
+    [DayOfWeek]     TINYINT      NULL,
+    [DayNameLong]   VARCHAR (9)  NULL,
+    [DayNameShort]  CHAR (3)     NULL,
+) ON [PRIMARY]
 GO
 
 CREATE TABLE [Stg].[ProductCategoryDiscount](
@@ -50,7 +58,7 @@ GO
 
 CREATE TABLE [Stg].[Customer](
 	[CustomerID] [int] NOT NULL,
-	[NameStyle] [tinyint] NOT NULL,
+	[NameStyle] [bit] NOT NULL,
 	[Title] [nvarchar](8) NULL,
 	[FirstName] [nvarchar](30) NOT NULL,
 	[MiddleName] [nvarchar](30) NULL,
@@ -65,6 +73,7 @@ CREATE TABLE [Stg].[Customer](
 	[rowguid] [uniqueidentifier] NOT NULL,
 	[ModifiedDate] [datetime] NOT NULL
 ) ON [PRIMARY]
+GO
 
 CREATE TABLE [Stg].[CustomerAddress](
 	[CustomerID] [int] NOT NULL,
@@ -77,7 +86,7 @@ GO
 
 CREATE TABLE [Stg].[Product](
 	[ProductID] [int] NOT NULL,
-	[Name] [nvarchar](30) NOT NULL,
+	[Name] [nvarchar](50) NOT NULL,
 	[ProductNumber] [nvarchar](25) NOT NULL,
 	[Color] [nvarchar](15) NULL,
 	[StandardCost] [money] NOT NULL,
@@ -151,10 +160,10 @@ CREATE TABLE [Stg].[SalesOrderHeader](
 	[DueDate] [datetime] NOT NULL,
 	[ShipDate] [datetime] NULL,
 	[Status] [tinyint] NOT NULL,
-	[OnlineOrderFlag] [tinyint] NOT NULL,
+	[OnlineOrderFlag] [bit] NOT NULL,
 	[SalesOrderNumber] [nvarchar](23) NOT NULL,
 	[PurchaseOrderNumber] [nvarchar](23) NULL,
-	[AccountNumber] [int] NULL,
+	[AccountNumber] [nvarchar](23) NULL,
 	[CustomerID] [int] NOT NULL,
 	[ShipToAddressID] [int] NULL,
 	[BillToAddressID] [int] NULL,
@@ -179,10 +188,10 @@ CREATE TYPE [stg].[UDT_SalesOrderHeader] AS TABLE
 	[DueDate] [datetime] NOT NULL,
 	[ShipDate] [datetime] NULL,
 	[Status] [tinyint] NOT NULL,
-	[OnlineOrderFlag] [tinyint] NOT NULL,
+	[OnlineOrderFlag] [bit] NOT NULL,
 	[SalesOrderNumber] [nvarchar](23) NOT NULL,
 	[PurchaseOrderNumber] [nvarchar](23) NULL,
-	[AccountNumber] [int] NULL,
+	[AccountNumber] [nvarchar](23) NULL,
 	[CustomerID] [int] NOT NULL,
 	[ShipToAddressID] [int] NULL,
 	[BillToAddressID] [int] NULL,
@@ -292,76 +301,113 @@ BEGIN
 END;
 GO
 
-
 CREATE PROCEDURE [stg].[USP_DL_Dates]
-    @StartDate  date,
-	@CutoffDate date
+    @StartYear  smallint,
+	@EndYear smallint
 AS                            
 BEGIN
-WITH seq(n) AS 
+WITH e1(n) AS
 (
-  SELECT 0 UNION ALL SELECT n + 1 FROM seq
-  WHERE n < DATEDIFF(DAY, @StartDate, @CutoffDate)
-),
-d(d) AS 
-(
-  SELECT DATEADD(DAY, n, @StartDate) FROM seq
-),
-src AS
-(
-  SELECT
-    Date         = CONVERT(date, d),
-    Day          = DATEPART(DAY,       d),
-    DayName      = DATENAME(WEEKDAY,   d),
-    Week         = DATEPART(WEEK,      d),
-    ISOWeek      = DATEPART(ISO_WEEK,  d),
-    DayOfWeek    = DATEPART(WEEKDAY,   d),
-    Month        = DATEPART(MONTH,     d),
-    MonthName    = DATENAME(MONTH,     d),
-    Quarter      = DATEPART(Quarter,   d),
-    Year         = DATEPART(YEAR,      d),
-    FirstOfMonth = DATEFROMPARTS(YEAR(d), MONTH(d), 1),
-    LastOfYear   = DATEFROMPARTS(YEAR(d), 12, 31),
-    DayOfYear    = DATEPART(DAYOFYEAR, d)
-  FROM d
+    SELECT 1 UNION ALL SELECT 1 UNION ALL SELECT 1 UNION ALL 
+    SELECT 1 UNION ALL SELECT 1 UNION ALL SELECT 1 UNION ALL 
+    SELECT 1 UNION ALL SELECT 1 UNION ALL SELECT 1 UNION ALL SELECT 1
+), -- 10
+e2(n) AS (SELECT 1 FROM e1 CROSS JOIN e1 AS b), -- 10*10
+e3(n) AS (SELECT 1 FROM e2 CROSS JOIN e2 AS b), -- 100*100
+e4(n) AS (SELECT 1 FROM e3 CROSS JOIN (SELECT TOP 5 n FROM e1) AS b)  -- 5*10000
+,e5 as (SELECT Dateadd(Day, Row_number()OVER (ORDER BY n) - 1, Cast(CONVERT(varchar(4),@StartYear) + '-01-01' AS DATE)) AS dates
+        FROM   e4),
+DateTable AS (
+
+       SELECT DateKey = CONVERT(int,LEFT(CONVERT(CHAR(8), dates, 112), 8)),
+			  [Date] = dates,
+			  [DayOfMonth] = DAY(dates),
+              [Month] = CONCAT(Year(dates), ' ', LEFT(DATENAME(Month,(dates)),3)),
+			  [MonthLong] = CONCAT(Year(dates),' ', DATENAME(Month,(dates))),
+			  [MonthName] = LEFT(DATENAME(Month,(dates)),3),
+			  [MonthNameLong] = DATENAME(Month,(dates)),
+			  [MonthNr] = Month(dates),
+			  [YearMonth] = CONCAT(YEAR(dates), RIGHT(CONCAT('0',MONTH(dates)),2)),
+			  [MonthStart] = CONVERT(date,DATEADD(mm, DATEDIFF(mm, 0, dates), 0)),
+			  [MonthEnd] = CONVERT(date,DATEADD(dd, -1, DATEADD(mm, DATEDIFF(mm, 0, dates) + 1, 0))),
+			  [Quarter] = CONCAT(Year(dates), ' Q', DATEPART(q,dates)),
+			  [QuarterName] = CONCAT('Q', DATEPART(q,dates)),
+			  [QuarterNr] = Month(dates) / 4 + 1,
+              [Year] = Year(dates),
+			  [IsoWeek] = DATEPART(ISO_WEEK,dates),
+			  [IsoYear] =  CASE
+							WHEN Datepart(isowk, dates) = 1 AND Month(dates) = 12 THEN Year(dates)+1
+							WHEN Datepart(isowk, dates) = 53 AND Month(dates) = 1 THEN Year(dates)-1
+							WHEN Datepart(isowk, dates) = 52 AND Month(dates) = 1 THEN Year(dates)-1             
+							ELSE Year(dates)
+							END,
+             [YearWeek] = CONVERT(NVARCHAR(4), 
+                          CASE
+							WHEN Datepart(isowk, dates) = 1 AND Month(dates) = 12 THEN Year(dates)+1
+							WHEN Datepart(isowk, dates) = 53 AND Month(dates) = 1 THEN Year(dates)-1
+							WHEN Datepart(isowk, dates) = 52 AND Month(dates) = 1 THEN Year(dates)-1             
+							ELSE Year(dates)
+							END)
+                            + RIGHT('0' + CONVERT(nvarchar(2),DATEPART(ISO_WEEK,dates)),2),
+			 [DayOfWeek] = DATEPART(weekday,dates),
+			 [DayNameLong] = DATENAME(dw,dates),
+			 [DayNameShort] = LEFT(DATENAME(dw,dates),3)
+
+       FROM   e5
+       WHERE  Year(dates) <= @EndYear 
 )
-MERGE INTO [Stg].[Dates] WITH (TABLOCK) AS t 
+MERGE INTO [Stg].[Dates] AS t 
 	USING 
 		(SELECT 
-			 * FROM src
-  			   ORDER BY Date
+			 * FROM DateTable
 		) AS s 
-	ON (  s.[Date] = t.[Date]  ) 
+	ON (  s.[DateKey] = t.[DateKey]  ) 
 	WHEN NOT MATCHED BY TARGET 
 	THEN INSERT ( 
-			[Date],        
-    		[Day],         
-    		[DayName],     
-    		[Week],         
-    		[ISOWeek],     
-    		[DayOfWeek],    
-    		[Month],       
-    		[MonthName],    
-    		[Quarter],       
-    		[Year],          
-    		[FirstOfMonth],
-    		[LastOfYear], 
-    		[DayOfYear]  
+			[DateKey],
+            [Date],
+            [DayOfMonth],
+            [Month],
+            [MonthLong],
+            [MonthName],
+            [MonthNameLong],
+            [MonthNr],
+            [YearMonth],
+            [MonthStart],
+            [MonthEnd],
+            [Quarter],
+            [QuarterName],
+            [QuarterNr],
+            [Year],
+            [IsoWeek],
+            [IsoYear],
+            [YearWeek],
+            [DayOfWeek],
+            [DayNameLong],
+            [DayNameShort] 
 	) 
 	VALUES ( 
-			[Date],        
-    		[Day],         
-    		[DayName],     
-    		[Week],         
-    		[ISOWeek],     
-    		[DayOfWeek],    
-    		[Month],       
-    		[MonthName],    
-    		[Quarter],       
-    		[Year],          
-    		[FirstOfMonth],
-    		[LastOfYear], 
-    		[DayOfYear]
+			[DateKey],
+            [Date],
+            [DayOfMonth],
+            [Month],
+            [MonthLong],
+            [MonthName],
+            [MonthNameLong],
+            [MonthNr],
+            [YearMonth],
+            [MonthStart],
+            [MonthEnd],
+            [Quarter],
+            [QuarterName],
+            [QuarterNr],
+            [Year],
+            [IsoWeek],
+            [IsoYear],
+            [YearWeek],
+            [DayOfWeek],
+            [DayNameLong],
+            [DayNameShort] 
 	);  
 END;
 GO

@@ -36,7 +36,7 @@ Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
     **Truncate table [Stg].[SalesPersonal]**.
 
-10. Wanneer alle 3 de pipelines zijn aangemaakt. Maak een nieuwe pipeline aan genaamd: **PL_copy_Master**.
+10. Wanneer alle 3 de pipelines zijn aangemaakt. Maak een nieuwe pipeline aan genaamd: **PL_copy_Master_Training**.
 
 11. Onder de tab van **Activities** is er een optie genaamd **General**, welke een **Execute Pipeline** activiteit bevat. Sleep er 3 naar het canvas.
 

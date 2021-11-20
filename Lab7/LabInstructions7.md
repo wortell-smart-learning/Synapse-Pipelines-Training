@@ -6,7 +6,7 @@ Om de lab te kunnen starten is het van belang dat Lab5 is afgerond en dat de Vir
 
 *Doel*
 
-Gisteren hebben wij van A tot Z de ADF ingericht en pipelines gedraait. Zoals in Lab2 aangegeven kan het voorkomen dat een ander team ook een ADF heeft en kan het ook voorkomen dat er een afhankelijk bestaat tussen beide ADFs of naar andere diensten.  In de lab gaan we hiermee aan de slag.
+Gisteren hebben wij van A tot Z de ADF ingericht en pipelines gedraait. Zoals in Lab2 aangegeven kan het voorkomen dat een ander team ook een ADF heeft en kan het ook voorkomen dat er een afhankelijk bestaat tussen beide ADFs of naar andere diensten.  In de lab gaan we hiermee aan de slag, volg de opdrachten stap voor stap.
 
 ## Opdracht 1 - Globale parameters
 

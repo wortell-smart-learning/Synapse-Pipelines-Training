@@ -223,6 +223,20 @@
             "type":"SystemAssigned"
          }
       },
+         {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2020-04-01-preview",
+            "name": "[parameters('dataFactoryName')]",
+            "scope": "[concat('Microsoft.DataFactory/factories', '/', parameters('dataFactoryName'))]",
+            "dependsOn": [
+               "[resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName'))]",
+               "[resourceId('Microsoft.DataFactory/factories', parameters('linkedDataFactoryName'))]"
+               ],
+            "properties": {
+                "roleDefinitionId": "Contributor",
+                "principalId": "[reference(resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName')),'2018-06-01', 'full').identity.principalId]"
+            }
+        },
       {
          "type":"Microsoft.KeyVault/vaults",
          "apiVersion":"2021-04-01-preview",
