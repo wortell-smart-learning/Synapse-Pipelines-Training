@@ -150,9 +150,9 @@ Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
 17. In het nieuwescherm zie je in de lijst **Variables** staan, klik op de variablen **FilterDate** en vervolgens op **OK**.
 
-18. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
+18. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
 
-19. Klik **Trigger now** en vervolgens op op **OK**.
+19. Klik op **Add trigger** en vervolgens **Trigger now** en gevolgt bij **OK**.
 
 20. Klik aan de linkerkant op het **Radartje** (Monitor). Ga naar **Pipeline runs** indien deze niet meteen opent. Je ziet nu nieuwe pipelines draaien en bij de pipeline van **Address** zou je nu een **[@]** moet zien staan. Klik deze aan, je zou de waarde moeten zien die in je variable had gestopt.
 

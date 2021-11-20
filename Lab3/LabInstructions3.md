@@ -97,6 +97,6 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 10. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
 
-11. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
+11. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
 
 ### Einde Lab3

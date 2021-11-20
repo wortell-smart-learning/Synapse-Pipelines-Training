@@ -55,6 +55,6 @@ Nu de Linked Services aangemaakt zijn kunnen wij bij specifieke data zoals een t
 
 10. Doe Opdracht 2 nogmaals, maar kies nu voor de **File system** connector en kies het .csv bestand genaamd **SalesPersonal.csv**.
 
-11. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
+11. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
 
 ### Einde Lab4
