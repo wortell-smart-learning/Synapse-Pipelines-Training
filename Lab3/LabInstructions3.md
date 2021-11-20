@@ -14,7 +14,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 2. klik op **New**, en zoek naar **Key vault**. Klik de **Azure Key vault** aan.
 
-3. Geef de Linked services een duidelijke naam. De best practise is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
+3. Geef de Linked services een duidelijke naam. Het aangeraden format is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
 
     *Praktijkvoorbeeld:* LS_KV_Dataplatform_PRD
 

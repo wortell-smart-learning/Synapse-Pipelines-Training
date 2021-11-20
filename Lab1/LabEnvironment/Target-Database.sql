@@ -20,9 +20,7 @@ GO
 
 CREATE TABLE [Stg].[ProductCategoryDiscount](
 [Name] [nvarchar](30) NOT NULL,
-[Discount] DECIMAL(4,2) NULL,
-[rowguid] [uniqueidentifier] NOT NULL,
-[ModifiedDate] [datetime] NOT NULL
+[Discount] DECIMAL(4,2) NULL
 ) ON [PRIMARY]
 GO
 
@@ -33,9 +31,7 @@ CREATE TABLE [Stg].[SalesPersonal](
 	[MiddleName] [nvarchar](30) NULL,
 	[LastName] [nvarchar](30) NOT NULL,
 	[Suffix] [nvarchar](10) NULL,
-	[EmailAddress] [nvarchar](50) NULL,
-	[rowguid] [uniqueidentifier] NOT NULL,
-	[ModifiedDate] [datetime] NOT NULL
+	[EmailAddress] [nvarchar](50) NULL
 ) ON [PRIMARY]
 GO
 

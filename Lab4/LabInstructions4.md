@@ -10,15 +10,16 @@ Nu de Linked Services aangemaakt zijn kunnen wij bij specifieke data zoals een t
 
 ## Opdracht 1 - Source Database
 
-1. Klik links op het **Potloodje** (Author). Aan de linker kant zie je een lijst met categorien zoals: Pipelines, Datasets, Data flows en Power Query. De laatste vallen buiten beschouwing voor deze training.
+1. Klik links op het **Potloodje** (Author). Aan de linkerkant zie je een lijst met categorien zoals: Pipelines, Datasets, Data flows en Power Query. De laatste vallen buiten beschouwing voor deze training.
 
 2. Naast **Datasets** zie je op dit moment een 0 staan, wanneer je met jouw muis op het vak van **Datasets** gaat staan zie je een optie met **3 bolletjes** (Dataset Actions) verschijnen aan de rechterkant. Klik de **Dataset Actions** aan en klik vervolgens op **New Dataset**.
 
 3. Een vergelijkbaar scherm als bij de **Linked Services** zal verschijnen. Zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
 
-4. Geef de Dataset een duidelijke naam. De best practise is om te beginnen met DS_, het typen dataset, (schema) ,de tabel/bestands naam en eindigend met _omgeving.
+4. Geef de Dataset een duidelijke naam. Het aangeraden format is om te beginnen met DS_, het typen dataset, (schema) ,de tabel/bestands naam en eindigend met _omgeving.
 
-    *Praktijkvoorbeeld:* DS_sql_dimdatum_acc
+    *Praktijkvoorbeeld:* DS_sql_dwh_dimdatum_acc
+    
     *Trainingsvoorbeeld:* DS_asql_SalesLT_Address_training
 
 5. Bij **Linked Services** kies de **sqldb_source** database.
@@ -29,7 +30,7 @@ Nu de Linked Services aangemaakt zijn kunnen wij bij specifieke data zoals een t
 
 8. Klik op de tab **Schema**. Je ziet hier de kolommen uit de geselecteerde tabel en de bijhorende datatypes.
 
-9. Doe Opdracht 1 nogmaals, maar nu voor de **sqldb-target** Database.
+9. Doe Opdracht 1 nogmaals, maar nu voor de **sqldb-target** Database voor de tabbellen **Address**, **ProductCategoryDiscount** en **SalesPersonal**.
 
 
 ## Opdracht 2 - Storage Account / File system
@@ -48,8 +49,12 @@ Nu de Linked Services aangemaakt zijn kunnen wij bij specifieke data zoals een t
 
 7. Klik op **OK** en vervolgens nog een keer op **OK** om de Dataset te voltooien.
 
-8. Doe Opdracht 2 nogmaals, maar kies nu voor de **File system** connector en kies het .csv bestand genaamd **SalesPersonal.csv**.
+8. Klik op **Preview data**, je zult zien dat de data er nog niet erg gaaf uitziet. Om dit aan te passen dienen we nog 2 aanpassingen te verrichten.
 
-9. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
+9. Kies bij **Column delimiter** voor de opties **Semicolon (;)**. en vink aan **First row as header**. Wanneer je nu weer op **Preview data** klikt zou het in een tabel moeten zijn met kolommen.
 
+10. Doe Opdracht 2 nogmaals, maar kies nu voor de **File system** connector en kies het .csv bestand genaamd **SalesPersonal.csv**.
 
+11. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
+
+### Einde Lab4
