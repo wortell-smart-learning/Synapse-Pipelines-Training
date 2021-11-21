@@ -233,8 +233,8 @@
          {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "name": "[guid(subscription().id, reference(resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName')),'2018-06-01', 'full').identity.principalId, parameters('roleDefinitionId'))]",
-            "scope": "[concat('Microsoft.DataFactory/factories', '/', parameters('dataFactoryName'))]",
+            "name": "[guid(parameters('roleDefinitionId'))]",
+            "scope": "[concat('Microsoft.DataFactory/factories', '/', parameters('linkedDataFactoryName'))]",
             "dependsOn": [
                "[resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName'))]",
                "[resourceId('Microsoft.DataFactory/factories', parameters('linkedDataFactoryName'))]"
