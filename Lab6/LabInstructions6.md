@@ -22,11 +22,11 @@ Om de lab te kunnen starten is het van belang dat Lab5 is afgerond.
 
     *Schedule:* Een **Schedule trigger** kan 1 of meerdere pipelines uitvoeren op het opgegeven schema. Je hebt zelf de controlle en flexibiliteit wanneer een trigger af moet gaan en stelt je in staat om dus een start en einddatum in te stellen.
 
-    *Tumbeling window* Een **Tumbeling window trigger** kan 1 pipeline uitvoeren voor elk gedefineerd tijdsframe. Je gebruikt deze voor tijdgebaseerde data, zodat je hier iets mee kan doen.
+    *Tumbeling window:* Een **Tumbeling window trigger** kan 1 pipeline uitvoeren voor elk gedefineerd tijdsframe. Je gebruikt deze voor tijdgebaseerde data, zodat je hier iets mee kan doen.
 
-    *Event Trigger* Een **Event trigger** kan 1 of meerdere pipelines uitvoeren gebaseerd op een gebeurtenis in een blobstorage. Zoals bij het aanmaken of verwijderen van een bestand.
+    *Event Trigger:* Een **Event trigger** kan 1 of meerdere pipelines uitvoeren gebaseerd op een gebeurtenis in een blobstorage. Zoals bij het aanmaken of verwijderen van een bestand.
 
-    *Custom Trigger* Een **Custom trigger** kan 1 of meerdere pipeles uitvoeren gebaseerd op een event uit de **Event Grid** dienst.
+    *Custom Trigger:* Een **Custom trigger** kan 1 of meerdere pipeles uitvoeren gebaseerd op een event uit de **Event Grid** dienst.
 
 5. Vul bij **Time zone** het volgende in: **Amsterdam** en kies de optie **Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna (UTC+1)**.
 
@@ -34,7 +34,7 @@ Om de lab te kunnen starten is het van belang dat Lab5 is afgerond.
 
 7. Vink **Specify an end date** aan en zet deze op 5 minuten later dan de gekozen **Start date** en klik vervolgens op **OK**.
 
-8.  Klik links op het **Potloodje** (Author) en klik vervolgens de **PL_copy_master** pipeline aan.
+8. Klik links op het **Potloodje** (Author) en klik vervolgens de **PL_copy_master** pipeline aan.
 
 9. Klik op **Add trigger** en vervolgens **New/Edit**.
 
