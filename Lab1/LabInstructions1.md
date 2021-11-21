@@ -15,7 +15,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 ## Opdracht 1 - Azure services uitrollen
 
-1. Klink op de onderstaande **deploy to azure** knop.
+1. Klink op de onderstaande **deploy to azure** knop. Mocht je de handout fysiekhebben ontvangen, ga naar de Github repo aangegeven door de trainer.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCloudShiftBV%2FADF-Training%2Fmain%2FLab1%2FLabEnvironment%2Fazuredeploy.json)
 
