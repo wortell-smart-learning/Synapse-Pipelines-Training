@@ -54,17 +54,17 @@ Stel eerst jezelf kort voor.
 Het doel van de kennismaking is:
 Van elkaar weten wat je komt leren zodat je elkaar kunt helpen. Vragen bij de kennismaking:
 
-	Naam / leeftijd.
+-	Naam / leeftijd.
 
-	Wat is je functie en/of achtergrond.
+-	Wat is je functie en/of achtergrond.
 
-	Wat wil je in deze training leren.
+-	Wat wil je in deze training leren.
 
-	Wat weet je al van ADF.
+-	Wat weet je al van ADF.
 
 ___
 
-9:45 - Sheet 6 t/m 11 
+9:45 - Sheet 6 t/m 9 
 
 ## **Hoofdstuk 1: Data orchestratie** 
 
@@ -86,7 +86,7 @@ Na deze les weet de deelnemer wat de volgende zaken zijn:
 -	Data orchestratie uitleggen.
 -	Uitleggen dat data orchestratie gebruikt wordt voor het samenbrengen, samenvoegen en prepareren van data voor analyse doeleide en t.b.v. besluitvorming.
 -	Vraag: Uit welke onderdelen denk jij dat data orchestratie bestaat?
--	Uitleggen welke onderdelen er zijn en wat bij elke onderdeel plaats vind,
+-	Uitleggen welke onderdelen er zijn en wat bij elke onderdeel plaats vind.
 -	Uitleggen welke uitdagingen data orchestratie met zich mee brengt.
 -	Vraag: Wie heeft er wel eens eerder één van deze problemen mee gemaakt?
 -	Vraag: Hoe heb jij dit opgelost?
@@ -99,7 +99,7 @@ ___
 
 ___
 
-10:30 - Sheet 12 t/m 15, adf.azure.com
+10:30 - Sheet 10 t/m 14, adf.azure.com
 
 ## **Hoofdstuk 2: Azure Data Factory**
 
@@ -123,8 +123,8 @@ Na deze les weet de deelnemer:
 -	Vraag: Waar zou jij de ADF voor willen gebruiken?
 -	Hoe gaat de ADF te werk.
 -	Welke componenten zijn nodig voor een complete orchestratie.
-Vraag: Wie kan aangeven welke componenten er allemaal zijn? 
-Vraag: In welke volgorde denk jij dat de componenten horen?
+-   Vraag: Wie kan aangeven welke componenten er allemaal zijn? 
+-   Vraag: In welke volgorde denk jij dat de componenten horen?
 
 *Reflectie:*
 -	Vraag: Hoe staan jullie hier tegenover?   
@@ -132,7 +132,7 @@ Vraag: In welke volgorde denk jij dat de componenten horen?
 ___
 
 
-11:00 - Sheet 16, Portal.azure.com, GitHub voor virtueel. Handout voor klassikaal
+11:00 - Sheet 15, Portal.azure.com, GitHub voor virtueel. Handout voor klassikaal
 
 
 ## **Lab1, Azure environment deployen**
@@ -152,7 +152,7 @@ Met deze omgeving kunnen we verder in de training aan de slag met de bijhorende 
 
 ___
 
-11:45 - Sheet 17 en 18, adf.azure.com
+11:45 - Sheet 16 t/m 18, adf.azure.com
 
 ## **Hoofdstuk 3: Integration Runtimes**
 
@@ -202,7 +202,7 @@ ___
 
 ___
 
-13:30 - Sheet 19, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+13:30 - Sheet 20, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab2, Integration Runtimes**
 
@@ -221,7 +221,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab2 volgen. Deze s
 
 ___
 
-14:00 - Sheet 20, adf.azure.com 
+14:00 - Sheet 21 t/m 23, adf.azure.com 
 
 ## **Hoofdstuk 4: Linked Services**
 
@@ -243,7 +243,7 @@ Na deze les weet de deelnemer wat een Linked Service is en waarvoor het wordt ge
 
 ___
 
-14:15 - Sheets 21, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+14:15 - Sheets 24, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab3, Linked Services*
 
@@ -261,7 +261,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab3 volgen. Deze s
 
 ___
 
-14:30 - Sheets 22, adf.azure.com
+14:30 - Sheets 25 t/m 27, adf.azure.com
 
 ## **Hoofdstuk 5: Datasets**
 
@@ -280,7 +280,7 @@ Na deze les weet de deelnemer wat een Dataset is en waarvoor het wordt gebruikt.
 
 ___
 
-14:45 - Sheets 23, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+14:45 - Sheets 28, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab4, Datasets**
 
@@ -304,7 +304,7 @@ ___
 
 ___
 
-15:15 - Sheet 24, adf.azure.com 
+15:15 - Sheet 29 t/m 31, adf.azure.com 
 
 ## **Hoofdstuk 6: Pipelines**
 
@@ -324,7 +324,7 @@ Na deze les weet de deelnemer wat een Pipeline is en waarvoor het wordt gebruikt
 
 ___
 
-15:30 - Sheet 25, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+15:30 - Sheet 32, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab5, Pipelines**
 
@@ -338,11 +338,11 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab5 volgen. Deze s
 
 *Reflectie:*
 -	Vraag: Hoe vonden jullie het aanmaken van de Pipeline?
--	Vraag: Kan je hier iets mee in de praktijk
+-	Vraag: Kan je hier iets mee in de praktijk?
 
 ___
 
-15:45 - Sheet 26, adf.azure.com
+15:45 - Sheet 33 t/m 35, adf.azure.com
 
 ## **Hoofdstuk 7: Triggers**
 
@@ -364,7 +364,7 @@ Na deze les weet de deelnemer wat een Triggers is en waarvoor het wordt gebruikt
 
 ___
 
-16:00 - Sheet 27, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+16:00 - Sheet 36, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab6, Triggers**
 
@@ -382,7 +382,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab6 volgen. Deze s
 
 ___
 
-16:30 - Sheet 28
+16:30 - Sheet 37
 
 ## **Leerdoelen aanhalen**
 
@@ -392,7 +392,7 @@ Dag 1 doornemen, wat hebben we allemaal behandeld ten opzichte van de gestelde l
 
 ___
 
-16:45 - Sheet 29
+16:45 - Sheet 38
 
 **Vragen, adviezen en/of feedback**
 
@@ -409,7 +409,7 @@ ___
 # **Draaiboek Azure Data Factory (ADF) Fundamentals Dag 2**
 **2 daagse / 22 & 23 november en 24 & 25 november 2021 / max 11 deelnemers.**
 
-9:00 - Sheet 1 / 4
+9:00 - Sheet 1 t/m 4
 
 ## **Inleiding:**
 **Welkom** heten bij de training.
@@ -483,11 +483,11 @@ ___
 -	Vraag: Wat is een Dataset?
 -	Vraag: Waar kan je doen met een Dataset?
 -	Sildes van de Datasets doorlopen.
--	Wat is een Pipeline?
--	Wat kan je met een Pipeline?
+-	Vraag: Wat is een Pipeline?
+-	Vraag: Wat kan je met een Pipeline?
 -	Sildes van de Pipelines doorlopen.
--	Wat is een Trigger?
--	Welke soorten Triggers zijn er?
+-	Vraag: Wat is een Trigger?
+-	Vraag: Welke soorten Triggers zijn er?
 -	Sildes van de Triggers doornemen.
 
 ___
@@ -498,7 +498,7 @@ ___
 
 ___
 
-10:15 - Sheet 6, adf.azure.com
+10:15 - Sheet 6 t/m 8, adf.azure.com
 
 ## **Hoofdstuk 8: Global Parameters**
 
@@ -517,7 +517,7 @@ Na deze les weet de deelnemer wat een global parameters zijn en waarvoor het wor
 
 ___
 
-10:30 - Sheet 7, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+10:30 - Sheet 9, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab7, Global Parameters**
 
@@ -535,7 +535,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab7 volgen. Deze s
 
 ___
 
-11:00 - Sheet 8 t/m 13
+11:00 - Sheet 10 t/m 14
 
 ## **Hoofdstuk 9: Activities**
 
@@ -568,7 +568,7 @@ ___
 
 ___
 
-13:00 - Sheet 14, Sheet 6 t/m 13
+13:00 - Sheet 15, Sheet 6 t/m 14
 
 ## **Recap ochtend**
 
@@ -591,7 +591,7 @@ ___
 
 ___
 
-13:30 - Sheet 15, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+13:30 - Sheet 16, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab8, Activities**
 
@@ -609,7 +609,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab8 volgen. Deze s
 
 ___
 
-14:30 - Sheet 16, adf.azure.com
+14:30 - Sheet 17 t/m 19, adf.azure.com
 
 ## **Hoofdstuk 10: Batches en DIUs**
 
@@ -636,7 +636,7 @@ Na deze les weet de deelnemer hoe hij/zij data overdacht kan versnellen door dat
 
 ___
 
-14:45 - Sheet 17, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+14:45 - Sheet 20, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab9, Batches en DIUs**
 
@@ -658,7 +658,7 @@ ___
 
 ## **Koffiepauze**
 
-15:15 - Sheet 18 en 19, adf.azure.com, dev.azure.com
+15:15 - Sheet 21 t/m 23, adf.azure.com, dev.azure.com
 
 ## **Hoofdstuk 11: GIT**
 
@@ -680,7 +680,7 @@ Na deze les weet de deelnemer hoe hij/zij GIT moet toepassen op de ADF.
 
 ___
 
-15:45 - Sheets 20 t/m 23, adf.azure.com, dev.azure.com
+15:45 - Sheets 24 t/m 27, adf.azure.com, dev.azure.com
 
 ## **Hoofstuk 12: DevOps** 
 
@@ -702,7 +702,7 @@ Na deze les weet de deelnemer hoe hij/zij DevOps kan toepassen op het CI/CD depl
 
 ___
 
-16:30 - Sheet 24
+16:30 - Sheet 28
 
 ## **Leerdoelen aanhalen**
 
@@ -712,7 +712,7 @@ Dag 2 doornemen, wat hebben we allemaal behandeld ten opzichte van de gestelde l
 
 ___
 
-16:45 - Sheet 25
+16:45 - Sheet 29
 
 **Vragen, adviezen en/of feedback**
 
