@@ -120,7 +120,14 @@
             "metadata":{
                 "description":"The name of the Public IP Address."
             }
-        }
+        },
+        "roleDefinitionId": {
+         "type": "string",
+         "defaultValue": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+         "metadata": {
+        "description": "roleDefinition for the assignment - default is contributor"
+      }
+    }
    },
    "variables":{
         "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
@@ -226,14 +233,14 @@
          {
             "type": "Microsoft.Authorization/roleAssignments",
             "apiVersion": "2020-04-01-preview",
-            "name": "[parameters('dataFactoryName')]",
+            "name": "[guid(subscription().id, reference(resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName')),'2018-06-01', 'full').identity.principalId, parameters('roleDefinitionId'))]",
             "scope": "[concat('Microsoft.DataFactory/factories', '/', parameters('dataFactoryName'))]",
             "dependsOn": [
                "[resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName'))]",
                "[resourceId('Microsoft.DataFactory/factories', parameters('linkedDataFactoryName'))]"
                ],
             "properties": {
-                "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
                 "principalId": "[reference(resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName')),'2018-06-01', 'full').identity.principalId]"
             }
         },
