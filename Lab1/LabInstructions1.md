@@ -15,13 +15,13 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 ## Opdracht 1 - Azure services uitrollen
 
-1. Klink op de onderstaande **deploy to azure** knop. Mocht je de handout fysiekhebben ontvangen, ga naar de Github repo aangegeven door de trainer.
+1. Klink op de onderstaande **deploy to azure** knop. Mocht je de handout fysiek hebben ontvangen, ga naar de Github repo aangegeven door de trainer.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCloudShiftBV%2FADF-Training%2Fmain%2FLab1%2FLabEnvironment%2Fazuredeploy.json)
 
 2. Je wordt nu gebracht naar het inlogscherm van de Azure Portal en log vervolgens in met het account waar de Azure Pass op is geactiveerd.
 
-3. In het deployscherm zijn alle vereisten velden al voorzien van waardes. Je dient alleen zelf een resourcegroup aan te maken door op de **create new** (of de equivalent in een andere taal) te klikken en vul een naam in en klik vervolgens op OK. De best practise is om een resourcegroup te laten beginnen met rg- gevolgd door een omschrijvende naam en eindigend met een -omgeving. 
+3. In het deployscherm zijn alle vereisten velden al voorzien van waardes. LET OP: **Region** dient op: **West Europe** te staan, is dit niet het geval, pas deze aan. Je dient alleen zelf een resourcegroup aan te maken door op de **create new** (of de equivalent in een andere taal) te klikken en vul een naam in en klik vervolgens op OK. De best practise is om een resourcegroup te laten beginnen met rg- gevolgd door een omschrijvende naam en eindigend met een -omgeving. 
 
    *Praktijkvoorbeeld:* rg-dataplatform-dev 
 
@@ -33,7 +33,8 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 ## Opdracht 2 - Data klaar zetten deel 1
 
-1. In de Github map van Lab1 vinden wij een map genaamd **LabEnvironment**. Hierin vind je niet alleen de code van de Azure uitrol maar, voor de database en 2 .csv bestanden genaamd **SalesPersonal.csv** en **ProductCategoryDiscount.csv**. Klik op het eerste .csv bestand en klik vervolgens op **Download**. Herhaal deze stap voor het andere bestand.
+1. In de Github map van Lab1 (ADF-Training/tree/main/Lab1/LabEnvironment) vinden wij een map genaamd **LabEnvironment**. Hierin vind je niet alleen de code van de Azure uitrol maar, voor de database en 2 .csv bestanden genaamd **SalesPersonal.csv** en **ProductCategoryDiscount.csv**. Ga terug naar de hoofdmap (ADF-Training/) en klik op de **groene knop** genaamd: **Code**. Klik vervolgens op **Download ZIP**. Hiermee zou krijg je de bestanden lokaal en kan je deze gebruiken voor de vervolg stappen.
+
 
 2. Beide bestanden zouden nu je lokaal hebben staan, dit staat waarschijnelijk in de downloads folder.
 
