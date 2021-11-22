@@ -667,12 +667,12 @@ Na deze les weet de deelnemer hoe hij/zij GIT moet toepassen op de ADF.
 
 *Structuur:*
 -	Wat is GIT?
--	Hoe verhoud GIT zich ten opzichten van VSTS?
+-	Hoe verhoud GIT zich ten opzichten van TFS?
 -	Hoe pas je GIT toe in ADF? (DEMO)
 
 *Theorie:*
 -	Wat is GIT.
--	GIT vs VSTS als versiebeheer.
+-	GIT vs TFS als versiebeheer.
 -	Vraag: Wie heeft er wel eens met GIT gewerkt?
 -	Vraag: Hoe heb je dat ervaren?
 -	Welke soorten GIT zijn er voor ADF.
