@@ -13,7 +13,7 @@ Gedurende de lab gaan we meerdere soorten IRs aanmaken, configureren, installere
 
 ## Opdracht 1 - Auto Resolve Integration runtime
 
-1. Ga naar de Azure portal (portal.azure.com). Klik de Data Factory aan waar bij **niet** het woord Linked instaat. Een nieuwe pagina zal laden met een knop **Open Azure Data Factory Studio** (of de equivalent in een andere taal) klik deze aan. Je wordt nu naar de pagina van de ADF geleid.
+1. Ga naar de Azure portal (portal.azure.com). Klik de Data Factory aan waarbij **niet** het woord Linked instaat. Een nieuwe pagina zal laden met een knop **Open Azure Data Factory Studio** (of de equivalent in een andere taal) klik deze aan. Je wordt nu naar de pagina van de ADF geleid.
 
 2. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Integration runtimes**. Je zult zien dat er al een **AutoResolveIntegrationRuntime** bestaat. Dit is de standaard IR binnen Azure waarmee je tussen de verschillende diensten data mee kan verplaatsen.
 
@@ -40,7 +40,7 @@ Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 
 
 5.  Je hoeft alleen de IR een naam te geven. De regio is afhankelijk van waar de Virtual Machine staat en klik op **Create**.
 
-6. Wanneer de IR is aangemaakt krijg je meteen een scherm met 2 opties voor installatie. Gezien je al op de Virtual Machine zit kies je voor Optie 1. Klik op **Download and install integration runtime**. En start vervolgens de installatie door op het gedownloaden bestand te klikken. Dit kan door de popup rechtsbovenin of via **File Explorer** (Het gele mapje) naar **Downloads** te gaan.
+6. Wanneer de IR is aangemaakt krijg je meteen een scherm met 2 opties voor installatie. Gezien je al op de Virtual Machine zit kies je voor Optie 1 (Express setup). Klik op **Click here to launch the express setup for this computer**. En start vervolgens de installatie door op het gedownloaden bestand te klikken. Dit kan door de popup rechtsbovenin of via **File Explorer** (Het gele mapje) naar **Downloads** te gaan.
 
 7. Wanneer je de installatie start gebeurd alles voor de rest automatisch, wacht de installatie rustig af.
 
