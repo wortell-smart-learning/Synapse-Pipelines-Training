@@ -126,7 +126,7 @@ Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
 5. Er verschijnt nu een Query veld, klik deze aan. Onder het veld verschijnt de optie **Add dynamic content** klik deze aan.
 
-6. Type/ plak de volgende query in het veld: **Select * FROM [SalesLT].[Address] Where ModifiedDate >= @{formatDateTime(pipeline().parameters.ModifiedDate,'yyyy-MM-dd')}**
+6. Type of plak de volgende query in het veld: **Select * FROM [SalesLT].[Address] Where ModifiedDate >= @{formatDateTime(pipeline().parameters.ModifiedDate,'yyyy-MM-dd')}**
 
 7. Wanneer je nu op **Preview data** klikt, krijg je de vraag in een waarde in te vullen. Vul hier **1900-01-01** in om mee te testen. Klik vervolgens op **OK**.
 
