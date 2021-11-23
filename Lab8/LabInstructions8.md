@@ -55,7 +55,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 10. Zet het vinkje uit bij **First row only**.
 
-11. Klik bij **Use query** op de optie **query** en type/plak de volgende code: 
+11. Klik bij **Use query** op de optie **query** en type of plak de volgende code: 
 
     SELECT
     COUNT(*) AS Registered_Customers,
@@ -67,19 +67,21 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 12. Uit de lijst met **Activities**, klik op de optie **Iteration & conditionals**. Klik en sleep **filter** op het canvas.
 
-13. Geef de **filter** de naam **Best seller**.
+13. Sleep het **groene blokje** van de Lookup naar de reeds aangemaakte filter. Zodat de aan elkaar zij verbonden.
 
-14. klik op de tab **Settings** en klik bij **Items** op het veld er naast en vervolgens op **Add dynamic content**.
+14. Geef de **filter** de naam **Best seller**.
 
-15. Plak/ type de volgende code: **@activity('Lookup_SalesPersonal').output.value** en klik op **OK**.
+15. klik op de tab **Settings** en klik bij **Items** op het veld er naast en vervolgens op **Add dynamic content**.
 
-16. Klik bij **Condition** op het veld er naast en vervolgens op **Add dynamic content**.
+16. Plak of type de volgende code: **@activity('Lookup_SalesPersonal').output.value** en klik op **OK**.
 
-17. Type of plak de volgende code: **@greaterOrEquals(item().Registered_Customers,100)**.
+17. Klik bij **Condition** op het veld er naast en vervolgens op **Add dynamic content**.
 
-18. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+18. Type of plak de volgende code: **@greaterOrEquals(item().Registered_Customers,100)**.
 
-19. Klik op **Debug** en wacht tot de pipeline klaar is, bekijk de resultaten door op de **Output** van de **Best seller** stap te kijken.
+19. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+
+20. Klik op **Debug** en wacht tot de pipeline klaar is, bekijk de resultaten door op de **Output** van de **Best seller** stap te kijken.
 
 
 ## Opdracht 3 - Inserten in een Stored Procedure
@@ -98,7 +100,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 7. Hernoem deze Dataset naar **DS_asql_Stg_SalesOrderHeader_Training** en pas de linked service aan naar **LS_sqldb_target**.
 
-8. Klik bij **Table** op **Edit** en klik in het 2e vlak type of plak **DeltaTable** en klik op **OK**.
+8. Klik bij **Table** op **Edit** (1e veld moet leeg blijven) en klik in het 2e vlak type of plak **DeltaTable** en klik op **OK**.
 
 9. Klik bij Pipelines op **Pipeline Action** en op **New Pipeline**.
 
@@ -147,13 +149,11 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 11. Noem de Pipeline als volgt: **PL_copy_deltaload_Training**.
 
-12. Maak een nieuwe parameter aan door op **New** te klikken en noem deze **Tablelist**. Kies als **Type** voor **Array**.
+12. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Lookup** op het canvas.
 
-13. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Lookup** op het canvas.
+13. Geef de **lookup** de volgende naam: **Lookup_SourceTables**, klik vervolgens op de **Settings** tab en kies bij **Source dataset** de **DS_aaqsl_sqldb_SourceTables_training**.
 
-14. Geef de **lookup** de volgende naam: **Lookup_SourceTables**, klik vervolgens op de **Settings** tab en kies bij **Source dataset** de **DS_aaqsl_sqldb_SourceTables_training**.
-
-15. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en plak/ type de volgende query:
+14. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en plak of type de volgende query:
 
     SELECT 
     TABLE_SCHEMA AS Table_Schema,
@@ -163,33 +163,33 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
     Indien **First row only** staat aangevinkt, zet deze uit.
 
-16. Uit de lijst met **Activities**, klik op de optie **Iteration & Conditionals**. Klik en sleep **ForEach** op het canvas.
+15. Uit de lijst met **Activities**, klik op de optie **Iteration & Conditionals**. Klik en sleep **ForEach** op het canvas.
 
-17. Sleep het **Groene blokje** van **Lookup_SourceTables** naar de **ForEach** zodat deze opeenvolgend aan elkaar zijn verbonden.
+16. Sleep het **Groene blokje** van **Lookup_SourceTables** naar de **ForEach** zodat deze opeenvolgend aan elkaar zijn verbonden.
 
-18. Geef de **ForEach** de volgende naam: **ForEachTable** en klik op de tab **Settings**.
+17. Geef de **ForEach** de volgende naam: **ForEachTable** en klik op de tab **Settings**.
 
-19. Klik op het vlak naast **Items** en vervolgens op **Add dynamic content**. Klik de Activity outputs **Activity outputs** aan en klik vervolgens op **OK**.
+18. Klik op het vlak naast **Items** en vervolgens op **Add dynamic content**. Klik bij Activity outputs op de **LookUop** en plaats vervolgens .value achter de express. Klik vervolgens op **OK**.
 
-20. klik op het **potloodje** in de **ForEachTable** en uit de lijst met **Activities**, klik op de optie **Move & transform**. Klik en sleep **Copy Data** op het canvas.
+19. klik op het **potloodje** in de **ForEachTable** en uit de lijst met **Activities**, klik op de optie **Move & transform**. Klik en sleep **Copy Data** op het canvas.
 
-21. Geef de **Copy data** de volgende naam: **Copy Tables** en klik vervolgens op de tab **Source** en kies voor de **Source dataset** de **DS_aqsl_sqldb_SourceTables_training**.
+20. Geef de **Copy data** de volgende naam: **Copy Tables** en klik vervolgens op de tab **Source** en kies voor de **Source dataset** de **DS_aqsl_sqldb_SourceTables_training**.
 
-22. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en vervolgens op **Add dynamic content** en type of plak:
+21. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en vervolgens op **Add dynamic content** en type of plak:
 
     SELECT * FROM @{item().Table_Schema}.@{item().Table_Name}
 
-23. Klik op de tab **Sink** en daarna op het veld naast **TargetTableName** gevolgd door **Add dynamic content** en plak/ type: 
+22. Klik op de tab **Sink** en daarna op het veld naast **TargetTableName** gevolgd door **Add dynamic content** en plak of type: 
     
     @item().Table_Name
 
-24. Klik op het veld naast **Pre-copy script** en vervolgens op **Add dynamic content** en plak/ type: 
+23. Klik op het veld naast **Pre-copy script** en vervolgens op **Add dynamic content** en plak of type: 
 
     Truncate Table Stg.@{item().Table_Name}
 
-25. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+24. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
-26. Klik op **Debug** en wacht tot de pipeline klaar is.
+25. Klik op **Debug** en wacht tot de pipeline klaar is.
 
 ### Einde Lab8
 
