@@ -42,7 +42,7 @@ Om de lab te kunnen starten is het van belang dat Lab5 is afgerond.
 
 11. Zet de **Status** op **Started** en klik op **OK** en vervolgens nog één keer op **OK**.
 
-12. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+12. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 13. Klik aan de linkerkant op het **Radartje** (Monitor) en ga naar **pipeline runs**. Klik rond de starttijd op **Refresh**, je zult zien dat je pipeline automatisch is afgetrapt.
 

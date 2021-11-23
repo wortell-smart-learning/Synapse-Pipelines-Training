@@ -26,7 +26,7 @@ Het is van belang om de %2F niet mee te kopieeren. Gebaseerd op het voorbeeld zo
 
 5. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **DataFactory** met als **Value** de naam van de adf-linked, deze kan je vinden in je resourcegroup.
 
-6. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+6. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 
 ## Opdracht 2 - API caller
@@ -51,7 +51,7 @@ Het is van belang om de %2F niet mee te kopieeren. Gebaseerd op het voorbeeld zo
 
 10. Kies bij **Authentication** voor **Managed Identity** en vul bij **Resource** het volgende in: **https://management.core.windows.net/**.
 
-11. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 
 ## Opdracht 3 - Linked ADF pipeline
@@ -68,7 +68,7 @@ Het is van belang om de %2F niet mee te kopieeren. Gebaseerd op het voorbeeld zo
 
 6. Klik vervolgens op de tab **Settings** en pas de **Wait time in seconds** aan naar 10.
 
-7. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+7. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 8. Switch op dezelfde manier als stap 1 en 2 weer terug naar de **niet** linked adf.
 

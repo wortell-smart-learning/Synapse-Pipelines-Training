@@ -58,7 +58,7 @@ Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
     Kies voor **Success**. Je zult zien dat er niks veranderd omdat er al een **groen blokje** achter de pipeline zat. Klik en sleep het **groene blokje** naar 1 van de andere pipelines en doe dat vervolgens nog één keer voor een andere pipeline. Je zou nu alle 3 de pipelines aan elkaar verbonden hebben met 2 **groene pijlen**.
 
-15. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
+15. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
 
 16. Hoera! je eerste pipelines klaar. Nu willen we de pipeline nog draaien, dit kan op verschillende manieren. In het scherm van de pipeline zelf zie je een **Play knop** met de tekst **Debug**. Dit zorgt ervoor dat je de pipeline draait zoals je hem nu hebt gemaakt, zonder dat deze nog opgeslagen is. Naast **Debug** zien we een **Bliksemschicht** met de tekst **Add trigger**. Als je deze aanklikt krijg je de optie voor **Trigger now**, hiermee draai je de pipeline zoals deze gepublisched is. Klik **Trigger now** aan en een optie zou verschijnen om parameter waarde in te vullen, gezien deze er niet zijn kunnen we op **OK** klikken.
 
@@ -150,7 +150,7 @@ Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
 17. In het nieuwescherm zie je in de lijst **Variables** staan, klik op de variablen **FilterDate** en vervolgens op **OK**.
 
-18. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
+18. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
 
 19. Klik op **Add trigger** en vervolgens **Trigger now** en gevolgt bij **OK**.
 

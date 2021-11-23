@@ -28,7 +28,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 8. Vul bij **EndYear** het volgende in: **2099**.
 
-9. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+9. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 10. Klik op **Debug** en wacht tot de pipeline klaar is.
 
@@ -79,7 +79,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 18. Type of plak de volgende code: **@greaterOrEquals(item().Registered_Customers,100)**.
 
-19. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+19. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 20. Klik op **Debug** en wacht tot de pipeline klaar is, bekijk de resultaten door op de **Output** van de **Best seller** stap te kijken.
 
@@ -120,7 +120,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 17. zorg ervoor dat de **Table type parameter name** staat op **Deltatable**.
 
-18. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+18. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 19. Klik op **Debug** en wacht tot de pipeline klaar is.
 
@@ -179,7 +179,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
     SELECT * FROM @{item().Table_Schema}.@{item().Table_Name}
 
-22. Klik op de tab **Sink** en kies vervolgens de **DS_aaqsl_sqldb_TargetTables_training** linked service, klik daarna op het veld naast **TargetTableName** gevolgd door **Add dynamic content** en plak of type: 
+22. Klik op de tab **Sink** en kies vervolgens de **DS_aaqsl_sqldb_SourceTables_training** linked service, klik daarna op het veld naast **TargetTableName** gevolgd door **Add dynamic content** en plak of type: 
     
     @item().Table_Name
 
@@ -187,7 +187,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
     Truncate Table Stg.@{item().Table_Name}
 
-24. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+24. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 25. Klik op **Debug** en wacht tot de pipeline klaar is.
 
