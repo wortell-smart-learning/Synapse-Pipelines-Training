@@ -179,7 +179,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
     SELECT * FROM @{item().Table_Schema}.@{item().Table_Name}
 
-22. Klik op de tab **Sink** en kies vervolgens de **DS_aaqsl_sqldb_SourceTables_training** linked service, klik daarna op het veld naast **TargetTableName** gevolgd door **Add dynamic content** en plak of type: 
+22. Klik op de tab **Sink** en kies vervolgens de **DS_aaqsl_sqldb_TargetTables_training** linked service, klik daarna op het veld naast **TargetTableName** gevolgd door **Add dynamic content** en plak of type: 
     
     @item().Table_Name
 
