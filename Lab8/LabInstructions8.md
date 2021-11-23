@@ -169,7 +169,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 17. Geef de **ForEach** de volgende naam: **ForEachTable** en klik op de tab **Settings**.
 
-18. Klik op het vlak naast **Items** en vervolgens op **Add dynamic content**. Klik bij Activity outputs op de **LookUop** en plaats vervolgens .value achter de express. Klik vervolgens op **OK**.
+18. Klik op het vlak naast **Items** en vervolgens op **Add dynamic content**. Klik bij Activity outputs op de **LookUop** en plaats vervolgens **.value** achter de express. Klik vervolgens op **OK**.
 
 19. klik op het **potloodje** in de **ForEachTable** en uit de lijst met **Activities**, klik op de optie **Move & transform**. Klik en sleep **Copy Data** op het canvas.
 
