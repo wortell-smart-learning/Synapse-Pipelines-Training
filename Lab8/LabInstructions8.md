@@ -75,7 +75,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 16. Klik bij **Condition** op het veld er naast en vervolgens op **Add dynamic content**.
 
-17. Type/ plak de volgende code: **@greaterOrEquals(item().Registered_Customers,100)**.
+17. Type of plak de volgende code: **@greaterOrEquals(item().Registered_Customers,100)**.
 
 18. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
@@ -98,7 +98,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 7. Hernoem deze Dataset naar **DS_asql_Stg_SalesOrderHeader_Training** en pas de linked service aan naar **LS_sqldb_target**.
 
-8. Klik bij **Table** op **Edit** en klik in het 2e vlak type/ plak **DeltaTable** en klik op **OK**.
+8. Klik bij **Table** op **Edit** en klik in het 2e vlak type of plak **DeltaTable** en klik op **OK**.
 
 9. Klik bij Pipelines op **Pipeline Action** en op **New Pipeline**.
 
@@ -175,7 +175,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 21. Geef de **Copy data** de volgende naam: **Copy Tables** en klik vervolgens op de tab **Source** en kies voor de **Source dataset** de **DS_aqsl_sqldb_SourceTables_training**.
 
-22. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en vervolgens op **Add dynamic content** en type/ plak:
+22. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en vervolgens op **Add dynamic content** en type of plak:
 
     SELECT * FROM @{item().Table_Schema}.@{item().Table_Name}
 
