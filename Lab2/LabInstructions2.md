@@ -22,6 +22,7 @@ Gedurende de lab gaan we meerdere soorten IRs aanmaken, configureren, installere
 4. Geef de IR een naam en kies voor West Europe als **Region**. Het aangeraden format is om te beginnen met IR- gevolgt door wat voor een soort IR het is, de -regio en de -omgeving.
     
     *Praktijkvoorbeeld:* IR-AutoResolve-WestEU-TST
+    
     *Trainingsvoorbeeld:* IR-AutoResolve-WestEU-Training
 
 5. Klik op **Create**, Hoera! je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn. 
