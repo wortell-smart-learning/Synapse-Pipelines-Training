@@ -32,7 +32,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 7. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
 
-8. De Linked Service naar de Azure Key Vault is nu aangemaakt, maar deze is nog niet gepubliseerd. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen jouw aanpassingen **Live** te staan, en kan het gebruikt worden.
+8. De Linked Service naar de Azure Key Vault is nu aangemaakt, maar deze is nog niet gepubliseerd. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen jouw aanpassingen **Live** te staan, en kan het gebruikt worden.
 
 
 ## Opdracht 2 - Databases
@@ -99,7 +99,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 10. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
 
-11. Klik op de **Blauze knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
+11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
 
 ### Einde Lab3
 
