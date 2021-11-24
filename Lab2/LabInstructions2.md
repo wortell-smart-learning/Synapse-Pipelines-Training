@@ -69,7 +69,7 @@ Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 
 9. Plak de gekopieerde resourceID alvast in het veld van de **Resource ID** en geeft de IR een correcte naam.
 
 10. Klik op **Create** en de gelinkede Self-Hosted IR zou moeten verschijnen met een **Groen bolletje**.
-    Het linken van Self-Hosted integration runtimes zie je vaak bij omgevingen die bij dezelfde data moeten komen. Het is dan ook gebruikelijk om meerere Virtual Machines te hebben met meerdere Self-Hosted IRs, dit zodat er een goed onderscheid gemaakt kan worden tussen Ontwikkel, Test, Acceptatie en Productie. Het komt nog wel eens voor dat een Ontwikkel en Test omgeving dezelfde Self-Hosted IR gebruiken, net zoals voor Acceptatie en Productie mits hier een specifieke case voor is.
+    Het linken van Self-Hosted integration runtimes zie je vaak bij omgevingen die bij dezelfde data moeten komen. Het is dan ook gebruikelijk om meerdere Virtual Machines te hebben met meerdere Self-Hosted IRs, dit zodat er een goed onderscheid gemaakt kan worden tussen Ontwikkel, Test, Acceptatie en Productie. Het komt nog wel eens voor dat een Ontwikkel en Test omgeving dezelfde Self-Hosted IR gebruiken, net zoals voor Acceptatie en Productie mits hier een specifieke case voor is.
 
     Het linken voor een Self-Hosted IR wordt vaak ook gebruikt als er meerdere teams zijn die bij 1 bepaalde databron moeten zijn, hiervoor heb je dan meer 1 IR nodig (en dus Virtual Machine) wat weer kosten en resouces bespaard.
 
