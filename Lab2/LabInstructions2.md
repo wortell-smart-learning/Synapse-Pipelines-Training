@@ -22,7 +22,7 @@ Gedurende de lab gaan we meerdere soorten IRs aanmaken, configureren, installere
 4. Geef de IR een naam en kies voor West Europe als **Region**. Het aangeraden format is om te beginnen met IR- gevolgt door wat voor een soort IR het is, de -regio en de -omgeving.
     
     *Praktijkvoorbeeld:* IR-AutoResolve-WestEU-TST
-    
+
     *Trainingsvoorbeeld:* IR-AutoResolve-WestEU-Training
 
 5. Klik op **Create**, Hoera! je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn. 
@@ -43,7 +43,7 @@ Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 
 
 6. Wanneer de IR is aangemaakt krijg je meteen een scherm met 2 opties voor installatie. Gezien je al op de Virtual Machine zit kies je voor Optie 1 (Express setup). Klik op **Click here to launch the express setup for this computer**. En start vervolgens de installatie door op het gedownloaden bestand te klikken. Dit kan door de popup rechtsbovenin of via **File Explorer** (Het gele mapje) naar **Downloads** te gaan.
 
-7. Wanneer je de installatie start gebeurd alles voor de rest automatisch, wacht de installatie rustig af.
+7. Wanneer je de installatie start gebeurt alles voor de rest automatisch, wacht de installatie rustig af.
 
 8. Wanneer de installatie is afgerond, klik op **Close**. In de ADF zou je nu een **Groen bolletje** moeten zien bij de Self-Hosted IR.
 
@@ -56,7 +56,7 @@ Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 
 
 3. De adf-linked zou hier automatisch tussen moeten staan, vink het aan en klik vervolgens op **Add**
 
-4. Sluit de tab door op **Cancel** te klikken. 
+4. Sluit de tab door op **OK** te klikken. 
 
 5. Rechtboven in beeld, zie je een rij met iconen. Klik op de 2e van links, het icoon met **de 2 schermen en pijljes** (Switch Data Factory).
 
