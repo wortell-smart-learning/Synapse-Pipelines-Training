@@ -56,7 +56,7 @@ Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 
 
 3. De adf-linked zou hier automatisch tussen moeten staan, vink het aan en klik vervolgens op **Add**
 
-4. Sluit de tab door op **OK** te klikken. 
+4. Sluit de tab door op **Apply** te klikken. 
 
 5. Rechtboven in beeld, zie je een rij met iconen. Klik op de 2e van links, het icoon met **de 2 schermen en pijljes** (Switch Data Factory).
 
