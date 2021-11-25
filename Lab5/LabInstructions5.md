@@ -67,21 +67,24 @@ Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
 ## Opdracht 2 - Monitoring
 
-1. Klik aan de linkerkant op het **Radartje** (Monitor). Je komt nu meteen bij **Pipeline runs** uit, en zal in de horizontale navigatie balk 2 opties zien in de vorm van **Triggered** en **Debug**. In beide tabs zou de **PL_copy_Master** pipeline moeten staan.
+1. Klik aan de linkerkant op het **Radartje** (Monitor). Je komt nu meteen bij **Pipeline runs** uit, en zal in de horizontale navigatie balk 2 opties zien in de vorm van **Triggered** en **Debug**. In beide tabs zou de **PL_copy_Master** pipeline moeten staan en de bijhorende onderliggende pipelines.
 
-2. Klik de **PL_copy_Master** pipeline aan, in 1 van de 2 tabbladen. Net als bij het draaien van de Debug variant zien we een regel met informatie over de gedraaide pipeline. Hou je muis op de naam van de pipeline, er verschijnen nu 2 opties: **Input**, **Output**. 
+2. Klik de één van de onderliggende pipelines aan, in 1 van de 2 tabbladen. Net als bij het draaien van de Debug variant zien we een regel met informatie over de gedraaide pipeline. Hou je muis op de naam van de pipeline, er verschijnen nu 2 opties: **Input**, **Output** en **Details**. 
 
 3. Klik op **Input**, je ziet nu een stuk JSON code waaruit te lezen is welke kolom uit de source, naar welke kolom in de sink is gegaan. Hierin kan je ook informatie zien als je specifieke data d.m.v. een query ophaald, parameters, variable en meer. Sluit de **Input Tab** af door op het **Kruisje** te klikken.
 
 4. Klik op **Output**, ook hier zie je een stuk JSON code. De **Output** bevat informatie over het draaien, zoals: Hoelang duurde het, hoeveel rijen zijn gelezen en hoeveel zijn overgehaald en meer. Sluit de **Output Tab** af door op het **Kruisje** te klikken.
 
-5. Aan de linkerkant zien we **Notifications** met de optie **Alerts & metrics**. Klik deze aan.
+5. Klik op **Details**, je ziet een visuele weergaven van de **Output**.
+Sluit de **Details** af door op het **Kruisje** te klikken.
 
-6. In de horizontale navigatiebalk zien we de opties **New alert rule**. Klik deze aan.
+6. Aan de linkerkant zien we **Notifications** met de optie **Alerts & metrics**. Klik deze aan.
 
-7. Geef de **Alert rule name** een duidelijke naam.
+7. In de horizontale navigatiebalk zien we de opties **New alert rule**. Klik deze aan.
 
-8. Bij **Severity** zijn er meerdere opties mogelijk, namelijk:
+8. Geef de **Alert rule name** een duidelijke naam.
+
+9. Bij **Severity** zijn er meerdere opties mogelijk, namelijk:
 
     Sev 0 = Critical
 
@@ -95,23 +98,23 @@ Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
     Voor ons doeleinde kiezen we **Sev0**.
 
-9. Klik bij **Targer criteria** op het **Add criteria**. Een lange lijst met opties zal verschijnen voor verschillende soorten metrics waarover gerapporteerd kunnen worden. Kies voor de **Succeeded pipeline runs metrics** en klik op **Conntinue**.  
+10. Klik bij **Targer criteria** op het **Add criteria**. Een lange lijst met opties zal verschijnen voor verschillende soorten metrics waarover gerapporteerd kunnen worden. Kies voor de **Succeeded pipeline runs metrics** en klik op **Conntinue**.  
 
-10. Klik bij **Values** de optie bij **Name** aan en kies de **PL_copy_Master** pipeline.
+11. Klik bij **Values** de optie bij **Name** aan en kies de **PL_copy_Master** pipeline.
 
-11. De andere settings kunnen blijven zoals ze zijn. Klik vervolgens op **Add criteria**.
+12. De andere settings kunnen blijven zoals ze zijn. Klik vervolgens op **Add criteria**.
 
-12. Klik bij **Configure Email/SMS/Push/Voice notification** op **Configure notification**.
+13. Klik bij **Configure Email/SMS/Push/Voice notification** op **Configure notification**.
 
-13. Een nieuwe **Action group** zal aangemaakt moeten worden. Dit is een groep waarin mensen geplaatst kunnen worden om genotificeerd te worden over de door jouw aangemaakte regel. Vul bij **Action group name** een duidelijke naam in en geeft bij **Short name** een herkenbare afkorting van de groepsnaam.
+14. Een nieuwe **Action group** zal aangemaakt moeten worden. Dit is een groep waarin mensen geplaatst kunnen worden om genotificeerd te worden over de door jouw aangemaakte regel. Vul bij **Action group name** een duidelijke naam in en geeft bij **Short name** een herkenbare afkorting van de groepsnaam.
 
-14. Klik bij **Notifications** op **Add notification** en geeft de **Action name** een duidelijke naam. Kies vervolgens bij **Select which notifications you'd like to receive** de optie **Email** en vul hier een e-mailadres is waar je nu toegang tot hebt. Andere opties mogen ook zodat je deze kan uitproberen. Wanneer je alles hebt toegevoegd dat je wilt, klik je op **Add notification**.
+15. Klik bij **Notifications** op **Add notification** en geeft de **Action name** een duidelijke naam. Kies vervolgens bij **Select which notifications you'd like to receive** de optie **Email** en vul hier een e-mailadres is waar je nu toegang tot hebt. Andere opties mogen ook zodat je deze kan uitproberen. Wanneer je alles hebt toegevoegd dat je wilt, klik je op **Add notification**.
 
-15. Klik vervolgens op **Add action group**. Gaat dit fout, laat het weten aan de trainer.
+16. Klik vervolgens op **Add action group**. Gaat dit fout, laat het weten aan de trainer.
 
-16. Klik op **Create alert rule**
+17. Klik op **Create alert rule**
 
-17. Ga terug naar **Pipeline runs** en de tab **Triggered**, houd je muis op de naam van de **PL_copy_Master**. Er verschijnt een **Play knop met pijltjes** (rerun) klik deze aan. Wacht tot pipeline weer klaar is, na iets meer dan een minuut zou je een mail en/of andere notificaties dienen te ontvangen.
+18. Ga terug naar **Pipeline runs** en de tab **Triggered**, houd je muis op de naam van de **PL_copy_Master**. Er verschijnt een **Play knop met pijltjes** (rerun) klik deze aan. Wacht tot pipeline weer klaar is, na iets meer dan een minuut zou je een mail en/of andere notificaties dienen te ontvangen.
 
 
 ## Opdracht 3 - Parameters en Variablen
