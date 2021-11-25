@@ -47,7 +47,7 @@ Het is van belang om de %2F niet mee te kopieeren. Gebaseerd op het voorbeeld zo
 
 8. Vul in het veld naast **body** het volgende in: **{}**.
 
-9. Kies bij **Integration runtime** de eigen genaamkte AutoResolve-IR.
+9. Kies bij **Integration runtime** de eigen genaamkte **Azure IR**.
 
 10. Kies bij **Authentication** voor **Managed Identity** en vul bij **Resource** het volgende in: **https://management.core.windows.net/**.
 

@@ -41,7 +41,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 2. Geef de Linked services een duidelijke naam.
 
-3. Kies bij **Connect via integration runtime** de eigen gemaakte **Auto Resolve IR**.
+3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
 
 4. Kies bij de **Server Name** de Server naam in zoals deze in je resourcegroup staat.
 
@@ -68,7 +68,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 
 2. Geef de Linked services een duidelijke naam.
 
-3. Kies bij **Connect via integration runtime** de eigen gemaakte **Auto Resolve IR**.
+3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
 
 4. Kies bij **Storage account name** het storage account zoals deze in je resourcegroup staat.
 
