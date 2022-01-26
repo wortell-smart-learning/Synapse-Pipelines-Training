@@ -17,7 +17,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 1. Klink op de onderstaande **deploy to azure** knop. Mocht je de handout fysiek hebben ontvangen, ga naar de Github repo aangegeven door de trainer.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FCloudShiftBV%2FADF-Training%2Fmain%2FLab1%2FLabEnvironment%2Fazuredeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvstrien%2FADF-Training%2Fmain%2FLab1%2FLabEnvironment%2Fazuredeploy.json)
 
 2. Je wordt nu gebracht naar het inlogscherm van de Azure Portal en log vervolgens in met het account waar de Azure Pass op is geactiveerd.
 
