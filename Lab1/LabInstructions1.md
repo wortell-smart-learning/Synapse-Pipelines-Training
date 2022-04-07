@@ -21,7 +21,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 2. Je wordt nu gebracht naar het inlogscherm van de Azure Portal en log vervolgens in met het account waar de Azure Pass op is geactiveerd.
 
-3. In het deployscherm zijn alle vereisten velden al voorzien van waardes. LET OP: **Region** dient op: **West Europe** te staan, is dit niet het geval, pas deze aan. Je dient alleen zelf een resourcegroup aan te maken door op de **create new** (of de equivalent in een andere taal) te klikken en vul een naam in en klik vervolgens op OK. De best practise is om een resourcegroup te laten beginnen met rg- gevolgd door een omschrijvende naam en eindigend met een -omgeving. 
+3. In het deployscherm zijn alle vereisten velden al voorzien van waardes. LET OP: Voor je Azure Pass subscription moet je **Region** in te vullen met **East US** te staan. Je dient alleen zelf een resourcegroup aan te maken door op de **create new** (of de equivalent in een andere taal) te klikken en vul een naam in en klik vervolgens op OK. De best practise is om een resourcegroup te laten beginnen met rg- gevolgd door een omschrijvende naam en eindigend met een -omgeving. 
 
    *Praktijkvoorbeeld:* rg-dataplatform-dev 
 
