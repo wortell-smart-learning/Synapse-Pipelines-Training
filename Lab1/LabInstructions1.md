@@ -36,7 +36,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 1. In de Github map van Lab1 (ADF-Training/tree/main/Lab1/LabEnvironment) vinden wij een map genaamd **LabEnvironment**. Hierin vind je niet alleen de code van de Azure uitrol maar, voor de database en 2 .csv bestanden genaamd **SalesPersonal.csv** en **ProductCategoryDiscount.csv**. Ga terug naar de hoofdmap (ADF-Training/) en klik op de **groene knop** genaamd: **Code**. Klik vervolgens op **Download ZIP**. Hiermee zou krijg je de bestanden lokaal en kan je deze gebruiken voor de vervolg stappen.
 
 
-2. Beide bestanden zouden nu je lokaal hebben staan, dit staat waarschijnelijk in de downloads folder.
+2. Beide bestanden zouden nu je lokaal hebben staan, dit staat waarschijnlijk in de downloads folder.
 
 3. Ga terug naar de Azure Portal, en zoek in jouw resourcegroup naar de **Virtual Machine** en klik deze vervolgens aan.
 
