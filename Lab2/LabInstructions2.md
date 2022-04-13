@@ -19,11 +19,11 @@ Gedurende de lab gaan we meerdere soorten IRs aanmaken, configureren, installere
 
 3. Klik op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Azure** en weer **continue**. We kunnen nu een nieuwe **Azure Integration Runtime** aanmaken, waarbij we ook specifiek de **Region** kunnen aangeven. Hiermee weten we zeker dat onze Data altijd binnen deze regio blijft. 
 
-4. Geef de IR een naam en kies voor West Europe als **Region**. Het aangeraden format is om te beginnen met IR- gevolgt door wat voor een soort IR het is, de -regio en de -omgeving.
+4. Geef de IR een naam en kies voor East US als **Region**. Het aangeraden format is om te beginnen met IR- gevolgt door wat voor een soort IR het is, de -regio en de -omgeving.
     
-    *Praktijkvoorbeeld:* IR-AzureResolve-WestEU-TST
+    *Praktijkvoorbeeld:* IR-AzureResolve-EastEU-TST
 
-    *Trainingsvoorbeeld:* IR-AzureResolve-WestEU-Training
+    *Trainingsvoorbeeld:* IR-AzureResolve-EastEU-Training
 
 5. Klik op **Create**, Hoera! je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn. 
 
