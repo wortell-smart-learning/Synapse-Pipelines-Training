@@ -10,7 +10,7 @@ https://www.microsoftazurepass.com/Home/HowTo
 
 *Doel*
 
-Gedurende de training hebben we een werkende omgeving nodig om **hand-on** aan de slag te kunnen gaan met de Azure Data Factory.
+Gedurende de training hebben we een werkende omgeving nodig om **hands-on** aan de slag te kunnen gaan met de Azure Data Factory.
 In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en richten wij de database in. Volg de opdrachten stap voor stap.
 
 ## Opdracht 1 - Azure services uitrollen
