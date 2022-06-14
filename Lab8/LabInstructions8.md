@@ -51,7 +51,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 8. Noem de lookup: **Lookup_SalesPersonal**.
 
-9. Ga naar de tab **Settings** en kies bij **Source dataset** de **DS_asql_Stg_Customers_Training**.
+9. Ga naar de tab **Settings** en kies bij **Source dataset** de **DS_asql_SalesLT_Customers_Training**.
 
 10. Zet het vinkje uit bij **First row only**.
 
