@@ -47,7 +47,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 6. Noem de pipeline: **PL_Filter_SalesPersonal_Training**.
 
-7. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Loopup** op het canvas.
+7. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Lookup** op het canvas.
 
 8. Noem de lookup: **Lookup_SalesPersonal**.
 
