@@ -48,7 +48,7 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
     *Gebruikersnaam:* sqladmin
 
-    *Wachtwoord:* Welkom12345!
+    *Wachtwoord:* WortellSmartLearning.nl
 
     De gebruikersnaam en het wachtwoorden verdienen zeker geen security prijs, maar werken uitstekend voor trainingsdoeleinde. Wanneer je de gegevens hebt ingevuld, klik op OK.
 
