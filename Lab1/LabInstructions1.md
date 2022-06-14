@@ -8,8 +8,8 @@ https://www.microsoftazurepass.com/Home/HowTo
 
 *Doel*
 
-Gedurende de training hebben we een werkende omgeving nodig om **hands-on** aan de slag te kunnen gaan met de Azure Data Factory.
-In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en richten wij de database in. Volg de opdrachten stap voor stap.
+Gedurende de training heb je een werkende omgeving nodig om **hands-on** aan de slag te kunnen gaan met de Azure Data Factory.
+In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en richten je de database in. Volg de opdrachten stap voor stap.
 
 ## Opdracht 1 - Azure services uitrollen
 
@@ -31,58 +31,55 @@ In deze reeks opdrachten rollen we de omgeving uit, zetten de data klaar en rich
 
 ## Opdracht 2 - Data klaar zetten deel 1
 
-1. In de Github map van Lab1 (ADF-Training/tree/main/Lab1/LabEnvironment) vinden wij een map genaamd **LabEnvironment**. Hierin vind je niet alleen de code van de Azure uitrol maar, voor de database en 2 .csv bestanden genaamd **SalesPersonal.csv** en **ProductCategoryDiscount.csv**. Ga terug naar de hoofdmap (ADF-Training/) en klik op de **groene knop** genaamd: **Code**. Klik vervolgens op **Download ZIP**. Hiermee zou krijg je de bestanden lokaal en kan je deze gebruiken voor de vervolg stappen.
-
-
-2. Beide bestanden zouden nu je lokaal hebben staan, dit staat waarschijnlijk in de downloads folder.
-
-3. Ga terug naar de Azure Portal, en zoek in jouw resourcegroup naar de **Virtual Machine** en klik deze vervolgens aan.
-
-4. In de horizontale navigatiebalk zien we een aantal opties zoals: Connect, Start, Stop, Capture, Delete, etc (of de equivalenten in een andere taal). Klik vervolgens op **Connect** en kies **RDP**.
-
-5. Je wordt nu naar een nieuw scherm gebracht en de vereisten velden staan al ingevuld voor je. Klik vervolgens op **Download RDP File**.
-
-6. Wanneer de download klaar is klik je het RDP-bestand aan en klik vervolgens op **Connect**. Er zal een nieuw scherm komen welke vraagt om een gebruikersnaam en wachtwoord, vul de onderstaande gegevens in:
-
-    *Gebruikersnaam:* sqladmin
-
-    *Wachtwoord:* WortellSmartLearning.nl
-
-    De gebruikersnaam en het wachtwoorden verdienen zeker geen security prijs, maar werken uitstekend voor trainingsdoeleinde. Wanneer je de gegevens hebt ingevuld, klik op OK.
-
-7. Er kan een nieuw scherm komen om het certificaat te vertrouwen, klik vervolgens op **Yes**.
-
-8. Er wordt nu een verbinding tot stand gebracht met jouw Virtual Machine. Dit kan even duren en er is een kans dat er een scherm komt met sliders om bepaalde zaken te accepteren. Zet alles op **NO** en ga verder.
-
-9. Het bureablad van de Virtual Machine wordt geladen. Navigeer na het laden van het bureaublad naar de werkblak en klik op **File explorer** (Het gele mapje). Klik vervolgens op **This PC** gevolgt door te klikken op **Temporary Storage(D:)**.
-
-10. Kopieer het gedownloaden bestand genaamd **SalesPersonal.csv** en plak deze in op de D-schijf van de Virtual Machine. Voor nu zijn we hierop klaar, minimaliseer het scherm, we hebben de Virtual Machine later vandaag nog nodig.
+1. In de Github map van Lab1 vind je de map [LabEnvironment](https://github.com/wortell-smart-learning/ADF-Training/tree/main/Lab1/LabEnvironment). Hierin:
+   * Een SQL-bestand voor de database
+   * Twee CSV-bestanden genaamd **SalesPersonal.csv** en **ProductCategoryDiscount.csv**
+1. Download met behulp van de volgende link het Zip-bestand voor de gehele repository: [Download ZIPO](https://github.com/wortell-smart-learning/ADF-Training/archive/refs/heads/main.zip)
+1. Beide bestanden zouden nu je lokaal hebben staan, dit staat waarschijnlijk in de downloads folder.
+1. Ga terug naar de Azure Portal, en zoek in jouw resourcegroup naar de **Virtual Machine** en klik deze vervolgens aan.
+1. In de horizontale navigatiebalk zie je een aantal opties zoals:
+   * Connect
+   * Start
+   * Stop
+   * Capture
+   * Delete
+   * etc (of de equivalenten in een andere taal).
+1. Klik op **Connect** en kies **RDP**.
+1. Je wordt nu naar een nieuw scherm gebracht en de vereisten velden staan al ingevuld voor je. Klik vervolgens op **Download RDP File**.
+1. Wanneer de download klaar is klik je het RDP-bestand aan en klik vervolgens op **Connect**. Er zal een nieuw scherm komen welke vraagt om een gebruikersnaam en wachtwoord, vul de onderstaande gegevens in:
+   * *Gebruikersnaam:* sqladmin
+   * *Wachtwoord:* WortellSmartLearning.nl  
+   * De gebruikersnaam en het wachtwoorden verdienen zeker geen security prijs, maar werken uitstekend voor trainingsdoeleinden.
+1. Wanneer je de gegevens hebt ingevuld, klik op OK.
+1. Er kan een nieuw scherm komen om het certificaat te vertrouwen, klik vervolgens op **Yes**.
+1. Er wordt nu een verbinding tot stand gebracht met jouw Virtual Machine. Dit kan even duren en er is een kans dat er een scherm komt met sliders om bepaalde zaken te accepteren. Zet alles op **NO** en ga verder.
+1. Het bureablad van de Virtual Machine wordt geladen. Navigeer na het laden van het bureaublad naar de werkblak en klik op **File explorer** (Het gele mapje). Klik vervolgens op **This PC** gevolgt door te klikken op **Temporary Storage(D:)**.
+1. Kopieer het gedownloaden bestand genaamd **SalesPersonal.csv** en plak deze in op de D-schijf van de Virtual Machine.
+   * Momenteel hoef je hier niets mee te doen
+   * Minimaliseer het scherm, later vandaag heb je de Virtual Machine nog nodig.
 
 
 ## Opdracht 3 - Data klaar zetten deel 2
 
-1. Ga terug naar de Azure portal (portal.azure.com) en zoek binen je resourcegroup naar het **Storage Account** en klik deze aan.
-
-2. In de Blade (Navigatiebalk aan de linkerkant) vinden we onder het kopje **Data storage** de optie **Containers**, klik deze aan.
-
-3. Je zult zien dat er al een container is genaamd **data**, klik deze aan. De container is nog leeg en deze gaan wij vullen met het overgebleven bestand genaamd **ProductCategoryDiscount.csv**.
-
-4. In de horizontale navigatiebalk zien we een aantal opties zoals: Upload, Change access level, refresh, etc. Klik op **Upload**, klik op de het blauwe mapje en kies vervolgens het bestaand genaamd **ProductCategoryDiscount.csv** en klik vervolgens op de **Upload** knop.
-
-5. Het bestand wordt geupload en zou binnen enkele seconden in de container verschijnen.
+14. Ga terug naar de Azure portal (portal.azure.com) en zoek binen je resourcegroup naar het **Storage Account** en klik deze aan.
+14. In de Blade (Navigatiebalk aan de linkerkant) vind je onder het kopje **Data storage** de optie **Containers**, klik deze aan.
+14. Je zult zien dat er al een container is genaamd **data**, klik deze aan. De container is nog leeg en deze gaan wij vullen met het overgebleven bestand genaamd **ProductCategoryDiscount.csv**.
+14. In de horizontale navigatiebalk zie je een aantal opties zoals:
+    * Upload
+    * Change access level
+    * refresh
+14. Klik op **Upload**, klik op de het blauwe mapje en kies vervolgens het bestaand genaamd **ProductCategoryDiscount.csv** en klik vervolgens op de **Upload** knop.
+14. Het bestand wordt geupload en zou binnen enkele seconden in de container verschijnen.
 
 
 ## Opdracht 4 - Database inrichten
 
-1. Ga terug naar je resourcegroup. In de lijst zie je 2 databases (sqldb-source en sqldb-target) en 1 server. De sqldb-source is al ingericht en voorzien van data (AdventureWorksLT).
-   Klik de **sqldb-target** database aan en vervolgens in de Blade op **Query editor (preview)**.
-
-2. De loginnaam van het sqladmin-account zou al ingevuld staan, voer vervolgens het wachtwoord in. Dit is hetzelfde wachtwoord als in Opdracht 2. 
-   Wanneer je ingelogd bent, zie je een query-interface voor je en de tabbellen, views en stored procedure mappen aan de linkerkant. 
-
-3. Ga terug naar de Github map van Lab1 en in de map **LabEnvironment**. Klik vervoglens op het .sql bestand genaamd **Target-Database.sql**. De code zou nu zichtbaar worden, selecteer alle code en plak deze in de Query editor en klik vervolgens op de knop **Run**.
-
-4. Wanneer de query is uitgevoerd, is jouw database klaar voor gebruik!
+20. Ga terug naar je resourcegroup. In de lijst zie je 2 databases (sqldb-source en sqldb-target) en 1 server. De sqldb-source is al ingericht en voorzien van data (AdventureWorksLT).
+20. Klik de **sqldb-target** database aan en vervolgens in de Blade op **Query editor (preview)**.
+    * De loginnaam van het sqladmin-account zou al ingevuld staan, voer vervolgens het wachtwoord in. Dit is hetzelfde wachtwoord als in Opdracht 2.
+20. Wanneer je ingelogd bent, zie je een query-interface voor je en de tabbellen, views en stored procedure mappen aan de linkerkant.
+20. Ga terug naar de Github map van Lab1 en in de map **LabEnvironment**. Klik vervoglens op het .sql bestand genaamd **Target-Database.sql**. De code zou nu zichtbaar worden, selecteer alle code en plak deze in de Query editor en klik vervolgens op de knop **Run**.
+20. Wanneer de query is uitgevoerd, is jouw database klaar voor gebruik!
 
 ## Einde Lab 1
 

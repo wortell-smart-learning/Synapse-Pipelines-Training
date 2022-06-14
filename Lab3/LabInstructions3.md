@@ -2,11 +2,11 @@
 
 *Vereisten*
 
-Om de lab te kunnen starten is het van belang dat Lab2 is afgerond.
+Om het lab te kunnen starten is het van belang dat Lab2 is afgerond.
 
 *Doel*
 
-Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties met de betreffende diensten gemaakt worden. Gedurende de Lab zullen we meerdere connecties leggen. Volg de opdrachten stap voor stap.
+Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties met de betreffende diensten gemaakt worden. Gedurende het lab leg je meerdere connecties. Volg de opdrachten stap voor stap.
 
 ## Opdracht 1 - Azure Key Vault
 

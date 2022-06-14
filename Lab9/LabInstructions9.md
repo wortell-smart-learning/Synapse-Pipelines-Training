@@ -3,7 +3,7 @@
 
 *Vereisten*
 
-Om de lab te kunnen starten is het van belang dat Lab8 is afgerond.
+Om het lab te kunnen starten is het van belang dat Lab8 is afgerond.
 
 *Doel*
 

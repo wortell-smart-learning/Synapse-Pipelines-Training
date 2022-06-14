@@ -147,7 +147,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab1 volgen. Deze s
 
 *Reflectie:*
 
-Met deze omgeving kunnen we verder in de training aan de slag met de bijhorende labs.
+Met deze omgeving kun je verder in de training aan de slag met de bijhorende labs.
 -	Vraag: Hoe vonden jullie het inrichten van de omgeving?
 
 ___

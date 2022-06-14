@@ -2,7 +2,7 @@
 
 *Vereisten*
 
-Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
+Om het lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
 *Doel*
 

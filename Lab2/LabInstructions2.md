@@ -2,12 +2,12 @@
 
 *Vereisten*
 
-Om de lab te kunnen starten is het van belang dat Lab1 is afgerond.
+Om het lab te kunnen starten is het van belang dat Lab1 is afgerond.
 
 *Doel*
 
 De Azure Data Factory maakt gebruik van Integration Runtimes (IR), welke dient als rekeninfrastructuur om de verschillende vormen van data verplaatsingen uit te kunnen voeren. 
-Gedurende de lab gaan we meerdere soorten IRs aanmaken, configureren, installeren en linken. Volg de opdrachten stap voor stap.
+Gedurende dit lab maak je meerdere soorten IRs aan. Ook configureer, installeer en "link" je deze. Volg de opdrachten stap voor stap.
 
 ## Opdracht 1 - Azure Integration runtime
 
@@ -15,7 +15,7 @@ Gedurende de lab gaan we meerdere soorten IRs aanmaken, configureren, installere
 
 2. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Integration runtimes**. Je zult zien dat er al een **AutoResolveIntegrationRuntime** bestaat. Dit is de standaard IR binnen Azure waarmee je tussen de verschillende diensten data mee kan verplaatsen.
 
-3. Klik op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Azure** en weer **continue**. We kunnen nu een nieuwe **Azure Integration Runtime** aanmaken, waarbij we ook specifiek de **Region** kunnen aangeven. Hiermee weten we zeker dat onze Data altijd binnen deze regio blijft. 
+3. Klik op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Azure** en weer **continue**. Je kunt nu een nieuwe **Azure Integration Runtime** aanmaken, waarbij je ook specifiek de **Region** kunnen aangeven. Hiermee weet je zeker dat onze Data altijd binnen deze regio blijft.
 
 4. Geef de IR een naam en kies voor East US als **Region**. Het aangeraden format is om te beginnen met IR- gevolgt door wat voor een soort IR het is, de -regio en de -omgeving.
     
