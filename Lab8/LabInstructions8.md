@@ -47,11 +47,11 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 6. Noem de pipeline: **PL_Filter_SalesPersonal_Training**.
 
-7. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Loopup** op het canvas.
+7. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Lookup** op het canvas.
 
 8. Noem de lookup: **Lookup_SalesPersonal**.
 
-9. Ga naar de tab **Settings** en kies bij **Source dataset** de **DS_asql_Stg_Customers_Training**.
+9. Ga naar de tab **Settings** en kies bij **Source dataset** de **DS_asql_SalesLT_Customers_Training**.
 
 10. Zet het vinkje uit bij **First row only**.
 
@@ -169,7 +169,7 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 17. Geef de **ForEach** de volgende naam: **ForEachTable** en klik op de tab **Settings**.
 
-18. Klik op het vlak naast **Items** en vervolgens op **Add dynamic content**. Klik bij Activity outputs op de **LookUop** en plaats vervolgens **.value** achter de express. Klik vervolgens op **OK**.
+18. Klik op het vlak naast **Items** en vervolgens op **Add dynamic content**. Klik bij Activity outputs op de **LookUp** en plaats vervolgens **.value** achter de express. Klik vervolgens op **OK**.
 
 19. klik op het **potloodje** in de **ForEachTable** en uit de lijst met **Activities**, klik op de optie **Move & transform**. Klik en sleep **Copy Data** op het canvas.
 
