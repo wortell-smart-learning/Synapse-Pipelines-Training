@@ -34,7 +34,7 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 1. In de Github map van Lab1 vind je de map [LabEnvironment](https://github.com/wortell-smart-learning/ADF-Training/tree/main/Lab1/LabEnvironment). Hierin:
    * Een SQL-bestand voor de database
    * Twee CSV-bestanden genaamd **SalesPersonal.csv** en **ProductCategoryDiscount.csv**
-1. Download met behulp van de volgende link het Zip-bestand voor de gehele repository: [Download ZIPO](https://github.com/wortell-smart-learning/ADF-Training/archive/refs/heads/main.zip)
+1. Download met behulp van de volgende link het Zip-bestand voor de gehele repository: [Download ZIP](https://github.com/wortell-smart-learning/ADF-Training/archive/refs/heads/main.zip)
 1. Beide bestanden zouden nu je lokaal hebben staan, dit staat waarschijnlijk in de downloads folder.
 1. Ga terug naar de Azure Portal, en zoek in jouw resourcegroup naar de **Virtual Machine** en klik deze vervolgens aan.
 1. In de horizontale navigatiebalk zie je een aantal opties zoals:
