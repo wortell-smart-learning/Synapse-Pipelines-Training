@@ -2,14 +2,13 @@
 
 *Vereisten*
 
-Voorafgaand aan de training zou je een zogeheten **Azure Pass** ontvangen hebben van Sigma Data Learning.  
-Indien dit niet het geval is kan er nu tijdelijk gebruik gemaakt worden van een gratis voucher, volg de stappen op de pagina om deze te activeren:
-https://www.microsoftazurepass.com/Home/HowTo
+Om aan deze training te beginnen is het belangrijk dat je een eigen Azure-omgeving hebt met voldoende rechten om Azure Data Factory en bijbehorende resources te kunnen inrichten.
 
 *Doel*
 
 Gedurende de training heb je een werkende omgeving nodig om **hands-on** aan de slag te kunnen gaan met de Azure Data Factory.
-In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en richten je de database in. Volg de opdrachten stap voor stap.
+
+In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en richt je de database in. Volg de opdrachten stap voor stap.
 
 ## Opdracht 1 - Azure services uitrollen
 
@@ -17,17 +16,17 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvstrien%2FADF-Training%2Fmain%2FLab1%2FLabEnvironment%2Fazuredeploy.json)
 
-2. Je wordt nu gebracht naar het inlogscherm van de Azure Portal en log vervolgens in met het account waar de Azure Pass op is geactiveerd.
+2. In het deployscherm zijn alle vereisten velden al voorzien van waardes. Je dient alleen zelf een resourcegroup aan te maken door op de **create new** te klikken. Vul hier een naam in en klik vervolgens op OK. 
 
-3. In het deployscherm zijn alle vereisten velden al voorzien van waardes. LET OP: Voor je Azure Pass subscription moet je **Region** in te vullen met **East US** te staan. Je dient alleen zelf een resourcegroup aan te maken door op de **create new** (of de equivalent in een andere taal) te klikken en vul een naam in en klik vervolgens op OK. De best practise is om een resourcegroup te laten beginnen met rg- gevolgd door een omschrijvende naam en eindigend met een -omgeving. 
+> Een *best practice* is om de naam van een resourcegroup te laten beginnen met `rg-` gevolgd door een omschrijvende naam en eindigend met een `-omgeving`. 
+>
+> * Praktijkvoorbeeld:* `rg-dataplatform-dev`
+> * Trainingsvoorbeeld:* `rg-adf-training`
+>
 
-   *Praktijkvoorbeeld:* rg-dataplatform-dev 
+3. Klik op de knop **Review + Create**. De code wordt vervolgens gevalideerd. Als de validatie geslaagd is wordt dit aangegeven door een groene balk en wordt de knop **Create**  beschikbaar. Klik op de knop en de uitrol van de omgeving zal starten. Mocht er iets fout gaan gedurende de uitrol, laat dit weten aan de trainer.
 
-   *Trainingsvoorbeeld:* rg-adf-training
-
-4. Klik op de knop **Review + Create** (of de equivalent in een andere taal). De code wordt vervolgens gevalideerd. Als de validatie geslaagd is wordt dit aangegeven door een groene balk en wordt de knop **Create** (of de equivalent in een andere taal) beschikbaar. Klik op de knop en de uitrol van de omgeving zal starten. Mocht er iets fout gaan gedurende de uitrol, laat dit weten aan de trainer.
-
-5. Als de uitrol voltooid is krijg je daar een melding van en hoera! Jouw omgeving is klaar voor gebruik! 
+4. Als de uitrol voltooid is krijg je daar een melding van en hoera! Jouw omgeving is klaar voor gebruik! 
 
 ## Opdracht 2 - Data klaar zetten deel 1
 
@@ -47,14 +46,15 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 1. Klik op **Connect** en kies **RDP**.
 1. Je wordt nu naar een nieuw scherm gebracht en de vereisten velden staan al ingevuld voor je. Klik vervolgens op **Download RDP File**.
 1. Wanneer de download klaar is klik je het RDP-bestand aan en klik vervolgens op **Connect**. Er zal een nieuw scherm komen welke vraagt om een gebruikersnaam en wachtwoord, vul de onderstaande gegevens in:
-   * *Gebruikersnaam:* sqladmin
-   * *Wachtwoord:* WortellSmartLearning.nl  
-   * De gebruikersnaam en het wachtwoorden verdienen zeker geen security prijs, maar werken uitstekend voor trainingsdoeleinden.
+   * *Gebruikersnaam:* `sqladmin`
+   * *Wachtwoord:* `WortellSmartLearning.nl`  
+   **De kans is aanwezig dat Windows probeert in te loggen met je domein-account (het account van jouw eigen organisatie). Kies in dat geval voor **more choices** --> **Use a different account**:  
+   ![Login via RDP](./img/win-login.gif)
 1. Wanneer je de gegevens hebt ingevuld, klik op OK.
 1. Er kan een nieuw scherm komen om het certificaat te vertrouwen, klik vervolgens op **Yes**.
-1. Er wordt nu een verbinding tot stand gebracht met jouw Virtual Machine. Dit kan even duren en er is een kans dat er een scherm komt met sliders om bepaalde zaken te accepteren. Zet alles op **NO** en ga verder.
+1. Er wordt nu een verbinding tot stand gebracht met jouw Virtual Machine. Dit kan even duren en er is een kans dat er een scherm komt met sliders om bepaalde zaken te accepteren. Zet alles op **No** en klik **Accept**.
 1. Het bureablad van de Virtual Machine wordt geladen. Navigeer na het laden van het bureaublad naar de werkblak en klik op **File explorer** (Het gele mapje). Klik vervolgens op **This PC** gevolgt door te klikken op **Temporary Storage(D:)**.
-1. Kopieer het gedownloaden bestand genaamd **SalesPersonal.csv** en plak deze in op de D-schijf van de Virtual Machine.
+1. Kopieer het gedownloade bestand genaamd **SalesPersonal.csv** en plak deze in op de D-schijf van de Virtual Machine.
    * Momenteel hoef je hier niets mee te doen
    * Minimaliseer het scherm, later vandaag heb je de Virtual Machine nog nodig.
 
@@ -68,7 +68,7 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
     * Upload
     * Change access level
     * refresh
-14. Klik op **Upload**, klik op de het blauwe mapje en kies vervolgens het bestaand genaamd **ProductCategoryDiscount.csv** en klik vervolgens op de **Upload** knop.
+14. Klik op **Upload**, klik op **Browse for files** en kies vervolgens het bestaand genaamd **ProductCategoryDiscount.csv** en klik vervolgens op de **Upload** knop.
 14. Het bestand wordt geupload en zou binnen enkele seconden in de container verschijnen.
 
 
@@ -80,8 +80,6 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 20. Wanneer je ingelogd bent, zie je een query-interface voor je en de tabbellen, views en stored procedure mappen aan de linkerkant.
 20. Ga terug naar de Github map van Lab1 en in de map **LabEnvironment**. Klik vervoglens op het .sql bestand genaamd **Target-Database.sql**. De code zou nu zichtbaar worden, selecteer alle code en plak deze in de Query editor en klik vervolgens op de knop **Run**.
 20. Wanneer de query is uitgevoerd, is jouw database klaar voor gebruik!
-
-## Einde Lab 1
 
 ## Inhoudsopgave
 
