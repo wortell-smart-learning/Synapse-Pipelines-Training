@@ -44,19 +44,12 @@ De eerste *dataset* die we aankoppelen is een tabel die binnen onze brondatabase
    > Voor nu gebruiken we hier even CSV - groot voordeel daarvan voor nu is dat het door mensen leesbaar is, zodat je kunt inzien wat er gebeurt.
 4. Geef de Dataset een duidelijke naam.
 5. Bij **Linked Services** kies het **storage account**.
-6. De optie om een pad op te geven zal verschijnen. Klik op het **blauwe mapje**(Browse). Kies vervolgens de map **data** en het bestand genaamd **ProductCategoryDiscount.csv**.
-
+6. De optie om een pad op te geven zal verschijnen. Klik op het witte mapje (**Browse**). Kies vervolgens de map **data** en het bestand genaamd **ProductCategoryDiscount.csv**.
 7. Klik op **OK** en vervolgens nog een keer op **OK** om de Dataset te voltooien.
-
 8. Klik op **Preview data**, je zult zien dat de data er nog niet erg gaaf uitziet. Om dit aan te passen dienen we nog 2 aanpassingen te verrichten.
-
 9. Kies bij **Column delimiter** voor de opties **Semicolon (;)**. en vink aan **First row as header**. Wanneer je nu weer op **Preview data** klikt zou het in een tabel moeten zijn met kolommen.
-
 10. Doe Opdracht 2 nogmaals, maar kies nu voor de **File system** connector en kies het .csv bestand genaamd **SalesPersonal.csv**.
-
 11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
-
-## Einde Lab 4
 
 ## Inhoudsopgave
 
