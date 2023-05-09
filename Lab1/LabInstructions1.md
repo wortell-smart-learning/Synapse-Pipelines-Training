@@ -42,7 +42,7 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
    * Stop
    * Capture
    * Delete
-   * etc (of de equivalenten in een andere taal).
+   * etc
 1. Klik op **Connect** en kies **RDP**.
 1. Je wordt nu naar een nieuw scherm gebracht en de vereisten velden staan al ingevuld voor je. Klik vervolgens op **Download RDP File**.
 1. Wanneer de download klaar is klik je het RDP-bestand aan en klik vervolgens op **Connect**. Er zal een nieuw scherm komen welke vraagt om een gebruikersnaam en wachtwoord, vul de onderstaande gegevens in:
