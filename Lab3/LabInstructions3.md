@@ -37,7 +37,7 @@ Voordat we echter *secrets* uit de Key Vault kunnen benaderen, zullen we de Key 
 Met de Key Vault aangesloten is het mogelijk om wachtwoorden op te halen om een beveiligde verbinding op te zetten met bijvoorbeeld de databases.
 
 1. Klik op **New**, en zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
-2. Geef de Linked services een duidelijke naam.
+2. Geef de Linked services een duidelijke naam, bijvoorbeeld `LS_sqldb_source`
 3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
 4. Kies bij de **Server Name** de Server naam in zoals deze in je resourcegroup staat.
 5. Kies bij de **Database Name** de source Database naam in zoals deze in je resourcegroup staat. De source database begint met **sqldb-source-** als naam.
