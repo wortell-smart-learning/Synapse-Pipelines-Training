@@ -1,8 +1,12 @@
-# powerbi-training
+# Azure Data Factory
 
 Welkom bij de [Wortell Smart Learning](https://www.wortell.nl/nl/smart-learning) training "Azure Data Factory Fundamentals"!
 
-Hieronder vind je een overzicht van de verschillende labs:
+Deze training is opgebouwd uit drie dagen, die als training ook los te volgen zijn:
+
+1. Azure Data Factory (ADF): Inrichting en Beheer
+2. Azure Data Factory (ADF): Orchestratie en Development
+3. Azure Data Factory (ADF): Data Flows
 
 ## Inhoudsopgave
 
@@ -18,4 +22,7 @@ Hieronder vind je een overzicht van de verschillende labs:
 
 ## Meer informatie
 
-Meer informatie over deze training kun je vinden op [https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf](https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf)
+Meer informatie over deze trainingen kun je vinden op:
+
+* [https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf-inrichting-en-beheer](https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf-inrichting-en-beheer)
+* [https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf-orchestratie-en-development](https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf-orchestratie-en-development)
