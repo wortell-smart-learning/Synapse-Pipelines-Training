@@ -6,7 +6,7 @@ Om het lab te kunnen starten is het van belang dat Lab5 is afgerond en dat de Vi
 
 *Doel*
 
-Gisteren hebben wij van A tot Z de ADF ingericht en pipelines gedraait. Zoals in Lab2 aangegeven kan het voorkomen dat een ander team ook een ADF heeft en kan het ook voorkomen dat er een afhankelijk bestaat tussen beide ADFs of naar andere diensten.  In het lab gaan we hiermee aan de slag, volg de opdrachten stap voor stap.
+Gisteren hebben wij van A tot Z de ADF ingericht en pipelines gedraaid. Zoals in Lab2 aangegeven kan het voorkomen dat een ander team ook een ADF heeft en kan het ook voorkomen dat er een afhankelijkheid bestaat tussen beide ADFs of naar andere diensten.  In het lab gaan we hiermee aan de slag, door met behulp van een API-call de pipeline in adf-linked uit te voeren. Volg de opdrachten stap voor stap.
 
 ## Opdracht 1 - Globale parameters
 
@@ -24,7 +24,9 @@ Het is van belang om de %2F niet mee te kopieeren. Gebaseerd op het voorbeeld zo
 
 5. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **DataFactory** met als **Value** de naam van de adf-linked, deze kan je vinden in je resourcegroup.
 
-6. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+6. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **Pipeline** met als **Value** de naam van de pipeline in de adf-linked, **pl_wait**.
+
+7. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
 
 ## Opdracht 2 - API caller
@@ -39,7 +41,9 @@ Het is van belang om de %2F niet mee te kopieeren. Gebaseerd op het voorbeeld zo
 
 5. Klik op veld naast **URL** en vervolgens op **Add dynamic content**.
 
-6. Plak/ Type de volgende code in de het veld: **https://management.azure.com/subscriptions/@{pipeline().globalParameters.SubscriptionID}/resourceGroups/@{pipeline().globalParameters.Resourcegroup}/providers/Microsoft.DataFactory/factories/@{pipeline().globalParameters.DataFactory}/pipelines/pl_wait/createRun?api-version=2018-06-01**
+6. Plak of type de volgende code in de het veld: **https://management.azure.com/subscriptions/@{pipeline().globalParameters.SubscriptionID}/resourceGroups/@{pipeline().globalParameters.Resourcegroup}/providers/Microsoft.DataFactory/factories/@{pipeline().globalParameters.DataFactory}/pipelines/@{pipeline().globalParameters.Pipeline}/createRun?api-version=2018-06-01**
+   
+   Wil je meer weten over de mogelijkheden van de Data factory REST API, dan kun je die in de [Microsoft documentatie](https://docs.microsoft.com/nl-nl/rest/api/datafactory/pipelines) teruglezen.
 
 7. Kies bij **Methode** voor **POST**. Klik bij **Headers** op **New** en vul bij **name** het volgende in: **Content-Type** en bij **value**: **application/json**.
 
