@@ -28,14 +28,14 @@ Gedurende dit lab maak je meerdere soorten IRs aan. Ook configureer, installeer 
 
 ## Opdracht 2 - Self-Hosted Integration runtime
 
-1. Ga terug naar je Virtual Machine als je deze open hebt staan, anders je volg de stappen uit Lab1, opdracht 2 weer.
+1. Ga terug naar je Virtual Machine als je deze open hebt staan, anders volg je de stappen uit Lab1, opdracht 2 weer.
 
 2. Open de **Edge browser** en ga naar de Azure portal (portal.azure.com) en login met het juiste account waar de Azure pass op staat.
 
 3. Ga terug naar de ADF (zonder linked in de naam) via de resourcegroup zoals uitlegd in opdracht 1.
 
 4. Eenmaal aangekomen op het scherm van de IRs, klik weer op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Self-Hosted** en weer **continue**.
-Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 433 en 1433 open zodat deze bij Azure kan komen voor zowel de Database (1433) als een storage account (433). De minimale vereisten om een Self-Hosted IR goed te draaien is een Virtual machine met 4 cpu cores van 2Ghz of hoger, 8GB RAM en 80GB schijfruimte. In de praktijk blijkt dat 16GB RAM en een SSD kunnen helpen om de data beter verplaatsbaar te maken, hierbij kan hooguit de cpu de limiterende factor zijn.
+Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 443 en 1433 open zodat deze bij Azure kan komen voor zowel de Database (1433) als een storage account (443). De minimale vereisten om een Self-Hosted IR goed te draaien is een Virtual machine met 4 cpu cores van 2Ghz of hoger, 8GB RAM en 80GB schijfruimte. In de praktijk blijkt dat 16GB RAM en een SSD kunnen helpen om de data beter verplaatsbaar te maken, hierbij kan hooguit de cpu de limiterende factor zijn.
 
 5.  Je hoeft alleen de IR een naam te geven. De regio is afhankelijk van waar de Virtual Machine staat en klik op **Create**.
 
@@ -43,7 +43,7 @@ Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 
 
 7. Wanneer je de installatie start gebeurt alles voor de rest automatisch, wacht de installatie rustig af.
 
-8. Wanneer de installatie is afgerond, klik op **Close**. In de ADF zou je nu een **Groen bolletje** moeten zien bij de Self-Hosted IR.
+8. Wanneer de installatie is afgerond, klik op **Close**. In de ADF zou je nu een **Groen bolletje** moeten zien bij de Self-Hosted IR. Indien dit niet zo is, zou dit wel zo moeten zijn na een **refresh**.
 
 
 ## Opdracht 3 - Integration runtimes linken
