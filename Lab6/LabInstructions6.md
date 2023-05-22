@@ -18,7 +18,7 @@ Om het lab te kunnen starten is het van belang dat Lab5 is afgerond.
 
 4. Kies bij **Type** de optie **Schedule**. Zet de **Start date** op vandaag en 10 minuten later dan het nu is. Er zijn meer verschillende opties zoals je hebt kunnen zien zoals:
 
-    *Schedule:* Een **Schedule trigger** kan 1 of meerdere pipelines uitvoeren op het opgegeven schema. Je hebt zelf de controlle en flexibiliteit wanneer een trigger af moet gaan en stelt je in staat om dus een start en einddatum in te stellen.
+    *Schedule:* Een **Schedule trigger** kan 1 of meerdere pipelines uitvoeren op het opgegeven schema. Je hebt zelf de controle en flexibiliteit wanneer een trigger af moet gaan en stelt je in staat om dus een start en einddatum in te stellen.
 
     *Tumbeling window:* Een **Tumbeling window trigger** kan 1 pipeline uitvoeren voor elk gedefineerd tijdsframe. Je gebruikt deze voor tijdgebaseerde data, zodat je hier iets mee kan doen.
 
@@ -42,9 +42,7 @@ Om het lab te kunnen starten is het van belang dat Lab5 is afgerond.
 
 12. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
-13. Klik aan de linkerkant op het **Radartje** (Monitor) en ga naar **pipeline runs**. Klik rond de starttijd op **Refresh**, je zult zien dat je pipeline automatisch is afgetrapt.
-
-## Einde Lab6
+13. Klik aan de linkerkant op **Monitor** en ga naar **pipeline runs**. Klik rond de starttijd op **Refresh**, je zult zien dat je pipeline automatisch is afgetrapt.
 
 ## Inhoudsopgave
 
