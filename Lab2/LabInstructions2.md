@@ -34,7 +34,7 @@ Data vanuit een on-premises omgeving of een afgeschermd netwerk is voor Azure Da
 2. Ga naar de Azure portal (portal.azure.com) en login met het account waarmee je de training uitvoert.
 3. Ga terug naar de ADF (zonder linked in de naam) via de resourcegroup zoals uitlegd in opdracht 1.
 4. Eenmaal aangekomen op het scherm van de IRs, klik weer op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Self-Hosted** en weer **continue**.
-   > Een Self-Hosted IR draai je meestal op een on-premises Virtual Machine met poort 433 en 1433 open zodat deze bij Azure kan komen voor zowel de Database (1433) als een storage account (433). De minimale vereisten om een Self-Hosted IR goed te draaien zijn:
+   > Een Self-Hosted IR draai je meestal op een on-premises Virtual Machine met poort 443 en 1433 open zodat deze bij Azure kan komen voor zowel de Database (1433) als een storage account (443). De minimale vereisten om een Self-Hosted IR goed te draaien zijn:
    >
    > * 4 cpu cores van 2Ghz of sneller
    > * 8GB RAM
@@ -46,7 +46,8 @@ Data vanuit een on-premises omgeving of een afgeschermd netwerk is voor Azure Da
 6. Wanneer de IR is aangemaakt krijg je meteen een scherm met 2 opties voor installatie. Gezien je al op de Virtual Machine zit kies je voor Optie 1 (Express setup). Klik op **Click here to launch the express setup for this computer**. En start vervolgens de installatie door op het gedownloaden bestand te klikken. Dit kan door de popup rechtsbovenin of via **File Explorer** (Het gele mapje) naar **Downloads** te gaan.
    > Wanneer je niet vanaf de VM op de Azure portal van jouw organisatie kan komen, is **Option 2** een mogelijkheid: je downloadt de IR dan handmatig, en gebruikt één van de weergegeven sleutels tijdens de installatie.
 7. Wanneer je de installatie start gebeurt alles voor de rest automatisch, wacht de installatie rustig af.
-8. Wanneer de installatie is afgerond, klik op **Close**. In de ADF zou je nu een **Groen bolletje** moeten zien bij de Self-Hosted IR.
+
+8. Wanneer de installatie is afgerond, klik op **Close**. In de ADF zou je nu een **Groen bolletje** moeten zien bij de Self-Hosted IR. Indien dit niet zo is, zou dit wel zo moeten zijn na een **refresh**.
 
 Je hebt nu een *self-hosted* IR gemaakt, waardoor Azure Data Factory data van en naar een on-premises omgeving kan verplaatsen.
 
