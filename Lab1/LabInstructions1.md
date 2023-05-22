@@ -43,6 +43,7 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
    * Capture
    * Delete
    * etc
+1. Start de VM indien deze nog niet gestart is
 1. Klik op **Connect** en kies **RDP**.
 1. Je wordt nu naar een nieuw scherm gebracht en de vereisten velden staan al ingevuld voor je. Klik vervolgens op **Download RDP File**.
 1. Wanneer de download klaar is klik je het RDP-bestand aan en klik vervolgens op **Connect**. Er zal een nieuw scherm komen welke vraagt om een gebruikersnaam en wachtwoord, vul de onderstaande gegevens in:
@@ -61,14 +62,14 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 
 ## Opdracht 3 - Data klaar zetten deel 2
 
-14. Ga terug naar de Azure portal (portal.azure.com) en zoek binen je resourcegroup naar het **Storage Account** en klik deze aan.
+14. Ga terug naar de Azure portal (portal.azure.com) en zoek binnen je resourcegroup naar het **Storage Account** en klik deze aan.
 14. In de Blade (Navigatiebalk aan de linkerkant) vind je onder het kopje **Data storage** de optie **Containers**, klik deze aan.
 14. Je zult zien dat er al een container is genaamd **data**, klik deze aan. De container is nog leeg en deze gaan wij vullen met het overgebleven bestand genaamd **ProductCategoryDiscount.csv**.
 14. In de horizontale navigatiebalk zie je een aantal opties zoals:
     * Upload
     * Change access level
     * refresh
-14. Klik op **Upload**, klik op **Browse for files** en kies vervolgens het bestaand genaamd **ProductCategoryDiscount.csv** en klik vervolgens op de **Upload** knop.
+14. Klik op **Upload**, klik op **browse for files** en selecteer het bestaand genaamd **ProductCategoryDiscount.csv** of sleep het bestand vanuit explorer naar het drag 'n drop gebied in de portal en klik vervolgens op de **Upload** knop.
 14. Het bestand wordt geupload en zou binnen enkele seconden in de container verschijnen.
 
 
