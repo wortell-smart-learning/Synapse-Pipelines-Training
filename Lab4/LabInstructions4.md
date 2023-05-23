@@ -19,7 +19,7 @@ De eerste *dataset* die we aankoppelen is een tabel die binnen onze brondatabase
 4. Geef de Dataset een duidelijke naam. Het aangeraden format is om te beginnen met `DS_`, het type dataset, eventueel het *schema* waarbinnen de tabel zich bevindt, de tabelnaam en eindigend met _omgeving.
    * Praktijkvoorbeeld: `DS_sql_dwh_dimdatum_acc`
    * Trainingsvoorbeeld: `DS_asql_SalesLT_Address_training`
-5. Bij **Linked Services** kies je de Linked Service die verwijst naar de brondatabase (**LS_sqldb_source**).
+5. Bij **Linked Services** kies je de Linked Service die verwijst naar de brondatabase (`LS_sqldb_source`).
 6. De IR wordt automatisch toegepast vanuit de Linked Service. De optie om een **Table name** te selecteren zal nu ook verschenen zijn, klik hierop en kies voor **SalesLT.Address**. Voltooi het aanmaken door onderaan de pagina op **OK** te klikken.
 7. Wanneer de **Dataset** is aangemaakt kom je in het overzichtscherm van de dataset. Klik op het brilletje (**Preview Data**) om een voorbeeld van de data te zien.
 8. Klik op de tab **Schema**. Je ziet hier de kolommen uit de geselecteerde tabel en de bijhorende datatypes.

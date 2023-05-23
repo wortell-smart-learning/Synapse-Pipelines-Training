@@ -37,7 +37,7 @@ Om het lab te kunnen starten is het van belang dat Lab4 is afgerond.
    * `Truncate table [Stg].[ProductCategoryDiscount]`
    * `Truncate table [Stg].[SalesPersonal]`
 
-10. Wanneer alle 3 de pipelines zijn aangemaakt. Maak een nieuwe pipeline aan genaamd: **PL_copy_Master_Training**.
+10. Wanneer alle 3 de pipelines zijn aangemaakt. Maak een nieuwe pipeline aan genaamd: `PL_copy_Master_Training`.
 
 11. Onder de tab van **Activities** is er een optie genaamd **General**, welke een **Execute Pipeline** activiteit bevat. Sleep er 3 naar het canvas.
 
@@ -60,7 +60,7 @@ Om het lab te kunnen starten is het van belang dat Lab4 is afgerond.
 15. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
 
 16. Hoera! je eerste pipelines klaar. Nu willen we de pipeline nog draaien, dit kan op verschillende manieren:
-    * In het scherm van de pipeline zelf zie je een **Play knop** met de tekst **Debug**. Dit zorgt ervoor dat je de pipeline draait zoals je hem nu hebt gemaakt. Ook als je nog niet hebt opgeslagen of gepubliceerd, wordt de pipeline uitgevoerd zoals je deze nu in je scherm ziet.
+    * In het scherm van de pipeline zelf zie je een `Play knop` met de tekst **Debug**. Dit zorgt ervoor dat je de pipeline draait zoals je hem nu hebt gemaakt. Ook als je nog niet hebt opgeslagen of gepubliceerd, wordt de pipeline uitgevoerd zoals je deze nu in je scherm ziet.
     * Naast **Debug** zien we een **Bliksemschicht** met de tekst **Add trigger**. Als je deze aanklikt krijg je de optie voor **Trigger now**, hiermee draai je de pipeline zoals deze gepubliceerd is. Klik **Trigger now** aan en een optie zou verschijnen om parameter waarde in te vullen, gezien deze er niet zijn kunnen we op **OK** klikken.
 
 17. Wacht tot je de melding rechtsboven in beeld krijgt met dat de pipeline succesvol heeft gedraait. Draai de pipeline hierna nog eens via de **Debug knop**. Je zult zien dat de informatie over het draaien van de pipeline onder in beeld verschijnt.
@@ -69,7 +69,7 @@ Om het lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
 In het onderdeel "monitoring" kun je niet alleen bekijken hoe eerdere pipelines gedraaid hebben, maar je kunt ook notificaties uitsturen wanneer er aan bepaalde voorwaarden voldaan wordt.
 
-1. Klik aan de linkerkant op het metertje (**Monitor**). Je komt nu meteen bij **Pipeline runs** uit, en zal in de horizontale navigatie balk 2 opties zien in de vorm van **Triggered** en **Debug**. In beide tabs zou zowel de **PL_copy_Master** pipeline moeten staan als de bijhorende onderliggende pipelines.
+1. Klik aan de linkerkant op het metertje (**Monitor**). Je komt nu meteen bij **Pipeline runs** uit, en zal in de horizontale navigatie balk 2 opties zien in de vorm van **Triggered** en **Debug**. In beide tabs zou zowel de `PL_copy_Master` pipeline moeten staan als de bijhorende onderliggende pipelines.
 
 2. Klik de één van de onderliggende pipelines aan, in 1 van de 2 tabbladen. Net als bij het draaien van de Debug variant zie je een regel met informatie over de gedraaide pipeline. Houd je muis op de naam van de activity onderin het scherm, er verschijnen nu 2 opties: **Input**, **Output** en **Details**.
 
@@ -102,7 +102,7 @@ Sluit de **Details** af door op het **Kruisje** te klikken.
 
 10. Klik bij **Targer criteria** op het **Add criteria**. Een lange lijst met opties zal verschijnen voor verschillende soorten metrics waarover gerapporteerd kunnen worden. Kies voor de **Succeeded pipeline runs metrics** en klik op **Continue**.  
 
-11. Klik bij **Values** de optie bij **Name** aan en kies de **PL_copy_Master** pipeline.
+11. Klik bij **Values** de optie bij **Name** aan en kies de `PL_copy_Master` pipeline.
 
 12. De andere settings kunnen blijven zoals ze zijn. Klik vervolgens op **Add criteria**.
 
@@ -116,7 +116,7 @@ Sluit de **Details** af door op het **Kruisje** te klikken.
 
 17. Klik op **Create alert rule**
 
-18. Ga terug naar **Pipeline runs** en de tab **Triggered**, houd je muis op de naam van de **PL_copy_Master**. Er verschijnt een **Play knop met pijltjes** (rerun) klik deze aan. Wacht tot pipeline weer klaar is, na iets meer dan een minuut zou je een mail en/of andere notificaties dienen te ontvangen.
+18. Ga terug naar **Pipeline runs** en de tab **Triggered**, houd je muis op de naam van de `PL_copy_Master`. Er verschijnt een `Play knop met pijltjes` (rerun) klik deze aan. Wacht tot pipeline weer klaar is, na iets meer dan een minuut zou je een mail en/of andere notificaties dienen te ontvangen.
 
 
 ## Opdracht 3 - Parameters en Variablen
@@ -141,7 +141,7 @@ Met behulp van parameters kun je je pipeline meer dynamisch maken. Bijvoorbeeld 
 
 7. Wanneer je nu op **Preview data** klikt, krijg je de vraag in een waarde in te vullen. Vul hier **1900-01-01** in om mee te testen. Klik vervolgens op **OK**.
 
-8. Ga nu naar de **PL_copy_Master** en klik de "execute pipeline activity" voor **Address** aan. In de tab **Settings** zal je zien dat er gevraagd wordt om een **Value** voor de parameter **ModifiedDate**. We gaan deze niet handmatig vullen, maar met behulp van een variabele.
+8. Ga nu naar de `PL_copy_Master` en klik de "execute pipeline activity" voor **Address** aan. In de tab **Settings** zal je zien dat er gevraagd wordt om een **Value** voor de parameter **ModifiedDate**. We gaan deze niet handmatig vullen, maar met behulp van een variabele.
 
 9. Klik op het canvas en vervolgens op de tab **Variables**. maak een nieuwe variable aan door op **New** te klikken.
 

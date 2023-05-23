@@ -32,7 +32,7 @@ Om het lab te kunnen starten is het van belang dat Lab5 is afgerond.
 
 7. Vink **Specify an end date** aan en zet deze op 5 minuten later dan de gekozen **Start date** en klik vervolgens op **OK**.
 
-8. Klik links op het **Potloodje** (Author) en klik vervolgens de **PL_copy_master** pipeline aan.
+8. Klik links op het **Potloodje** (Author) en klik vervolgens de `PL_copy_master` pipeline aan.
 
 9. Klik op **Add trigger** en vervolgens **New/Edit**.
 

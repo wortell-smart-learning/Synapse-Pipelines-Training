@@ -25,7 +25,7 @@ Volg de opdrachten stap voor stap.
 
 5. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **DataFactory** met als **Value** de naam van de adf-linked, deze kan je vinden in je resourcegroup.
 
-6. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **Pipeline** met als **Value** de naam van de pipeline in de adf-linked, **PL_Wait**.
+6. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **Pipeline** met als **Value** de naam van de pipeline in de adf-linked, `PL_Wait`.
 
 7. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
@@ -68,7 +68,7 @@ We hebben nu vier parameters aangemaakt op *factory*-niveau. Dit zijn globale co
 
 2. Er zal een nieuw scherm verschijnen, en het meeste zal al van te voren zijn ingevuld. Kies bij **Data Factory Name** de adf-Linked en klik vervolgens op **OK**.
 
-3. Maak een nieuwe pipeline aan genaamd: **PL_Wait**.
+3. Maak een nieuwe pipeline aan genaamd: `PL_Wait`.
 
 4. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Wait** op het canvas.
 
@@ -84,7 +84,7 @@ We hebben nu vier parameters aangemaakt op *factory*-niveau. Dit zijn globale co
 
 10. Wanneer de pipeline is voltooid, switch via stap 1 en 2 terug naar de adf-linked.
 
-11. Klik aan de linkerkant op **Monitor**. Je komt nu meteen bij **Pipeline runs** uit en zou de **PL_wait** tussen de lijst van uitgevoerde pipelines dienen te staan.
+11. Klik aan de linkerkant op **Monitor**. Je komt nu meteen bij **Pipeline runs** uit en zou de `PL_wait` tussen de lijst van uitgevoerde pipelines dienen te staan.
 
 12. Als laatste zou je nog even kunnen kijken naar de doorlooptijd van de twee pipelines (in de linked en de niet-linked factory). Wat valt je op? Hoe zou je dit verklaren?
 
