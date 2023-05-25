@@ -1,8 +1,17 @@
 {
    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
+   "parameters": {
+      "initials": {
+         "type": "string",
+         "defaultValue": "",
+         "metadata": {
+            "description": "Your initials (so for Koos van Strien that would be KvS)"
+         }
+      }
+   },
    "variables": {
-      "uniqueString": "[uniqueString(resourceGroup().id)]",
+      "uniqueString": "[concat(substring(uniqueString(resourceGroup().id), 0, 3), parameters('initials'))]",
       "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]",
       "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
       "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
