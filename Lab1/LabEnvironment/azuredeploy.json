@@ -314,7 +314,8 @@
          "apiVersion": "2019-02-01",
          "location": "[variables('location')]",
          "properties": {
-            "publicIpAllocationMethod": "Static"
+            "publicIpAllocationMethod": "Static",
+            "publicIPAddressVersion": "IPv6"
          },
          "sku": {
             "name": "Basic"
