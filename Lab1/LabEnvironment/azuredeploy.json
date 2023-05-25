@@ -314,6 +314,7 @@
          "apiVersion": "2019-02-01",
          "location": "[variables('location')]",
          "properties": {
+            "publicIPAllocationMethod": "Dynamic",
             "publicIPAddressVersion": "IPv6"
          },
          "sku": {
