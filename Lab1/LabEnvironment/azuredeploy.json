@@ -314,11 +314,11 @@
          "apiVersion": "2019-02-01",
          "location": "[variables('location')]",
          "properties": {
-            "publicIPAllocationMethod": "Dynamic",
-            "publicIPAddressVersion": "IPv6"
+            "publicIPAllocationMethod": "Static",
+            "publicIPAddressVersion": "IPv4"
          },
          "sku": {
-            "name": "Basic"
+            "name": "Standard"
          }
       },
       {
