@@ -11,7 +11,7 @@
       }
    },
    "variables": {
-      "uniqueString": "[concat(substring(uniqueString(resourceGroup().id), 0, 3), parameters('initials'))]",
+      "uniqueString": "[concat(substring(uniqueString(resourceGroup().id), 0, 3), toLower(parameters('initials')))]",
       "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]",
       "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
       "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
