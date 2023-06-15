@@ -64,37 +64,6 @@ De tweede bron die we toevoegen is een Storage Account. Deze kunnen we bijvoorbe
 
 De rechten op het Storage Account zijn uitgedeeld via Azure AD. Hier heb je dus geen *secret* voor hoeven gebruiken.
 
-## Opdracht 4 - File system
-
-De derde bron die we toevoegen is een on-premises filesystem. Omdat het filesystem on-premises staat, moeten we hier de juiste Integration Runtime moeten gebruiken! Ook is deze VM niet in ons domein, waardoor we moeten aangeven met welke username / password we zullen inloggen
-
-1. klik op **New**, en zoek naar **file**. Klik de **File system** aan.
-2. Geef de Linked services een duidelijke naam.
-3. Kies bij **Connect via integration runtime** de **Self-Hosted IR**
-4. Vul bij **Host** het volgende in **D:\\**
-5. Vul bij de **User Name** het SQL admin account in genaamd: **sqladmin**.
-6. Bij de optie tussen **Password** en **Azure Key Vault**, kies de Key vault.
-7. Kies bij **AKV linked service** de eerder aangemaakte Key Vault Linked Service.
-8. Kies bij **Secret Name** de optie **sqladmin**
-9. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Dit gaat fout, maar dit lossen we zo meteen op!
-10. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
-11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
-
-> ## Waarom gaat de verbinding met het File System fout
->
-> Sinds versie 5.22 heeft de Self-Hosted Integration Runtime strengere beveiligingsmaatregelen. Eén van die maatregelen is dat een self-hosted IR niet zomaar bij lokale bestanden mag.
->
-> In de training willen we deze bestanden echter juist benaderen om te simuleren dat er een on-premises bron aanwezig is. Daarom zullen we deze beveiligingsmaatregel moeten uitzetten. Dit doe je als volgt:
->
-> 1. Maak verbinding met de VM
-> 2. Open het startmenu en typ **Powershell**
-> 3. Kies **Run as administrator**  
->    In Powershell voer je nu het volgende in:
-> 4. `cd 'C:\Program Files\Microsoft Integration Runtime\5.0\Shared\'`
-> 5. `.\dmgcmd -DisableLocalFolderPathValidation`
->
-> De instelling wordt nu aangepast, en de IR herstart. De Linked Service zou nu moeten werken **Test Connection** naar `D:\` moeten werken.
-
 ## Inhoudsopgave
 
 1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)

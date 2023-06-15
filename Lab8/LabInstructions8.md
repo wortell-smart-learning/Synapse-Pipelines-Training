@@ -90,51 +90,7 @@ Allereerst halen we hier data op uit een SQL-database, en doen een filtering op 
 20. Klik op **Debug** en wacht tot de pipeline klaar is, bekijk de resultaten door op de **Output** van de **Best seller** stap te kijken.
 
 
-## Opdracht 3 - Inserten in een Stored Procedure
-
-Binnen ADF is er de mogelijkheid voor een **stored procedure insert**. Dit maakt het mogelijk om aan de database-zijde logica toe te voegen over hoe binnenkomende data behandeld moet worden. Als je benieuwd bent hoe dit werkt, kun je verbinding maken met de target-database met bijvoorbeeld Azure Data Studio of SSMS. Je kunt dan de stored procedure-definitie `Stg.USP_DL_SalesOrderHeader` bekijken.
-
-1. Klik bij Datasets op **Dataset Actions** en op **New Dataset**.
-
-2. Zoek op **SQL** en kies **Azure SQL Database**. Klik vervolgens op **Continue**.
-
-3. Noem de Dataset `DS_asql_SalesLT_SalesOrderHeader_Training` en kies als linked service de `LS_sqldb_source`.
-
-4. Kies bij **Table name** voor de tabel **SalesLT.SalesOrderHeader** en klik op **OK**.
-
-5. Houd je muis op de `DS_asql_SalesLT_SalesOrderHeader_Training` en klik op de **3 bolletjes er achter** (Actions). 
-
-6. Klik vervolgens op de optie **Clone**, een kopie van de Dataset zal verschijnen.
-
-7. Hernoem deze Dataset naar `DS_asql_Stg_SalesOrderHeader_Training` en pas de linked service aan naar `LS_sqldb_target`.
-
-8. Klik bij **Table** op **Edit**.
-   * Maak het eerste veld (schema) leeg
-   * Type of plak in het tweede veld (table name) `DeltaTable`.
-
-9. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
-
-10. Noem de Pipeline als volgt: `PL_copy_Deltaload_SalesOrderHeader_Training`.
-
-11. Uit de lijst met **Activities**, klik op de optie **Move & transform**. Klik en sleep **Copy Data** op het canvas.
-
-12. Geef de **Copy data** de naam `Copy SalesOrderHeader`. Klik vervolgens op de tab **Source** en kies voor de **Source dataset** de `DS_asql_SalesLT_SalesOrderHeader_Training`.
-
-13. Klik op de tab **Sink** en kies voor de **Sink dataset** de `DS_asql_Stg_SalesOrderHeader_Training`.
-
-14. Vul bij **Pre-copy Script** de volgende code in: `Truncate table [Stg].[SalesOrderHeader]`.
-
-15. Kies bij **Write behavior** voor **Stored Procedure** en selecteer hier `[Stg].[USP_DL_SalesOrderHeader]`.
-
-16. Pas de **Table type** aan naar **[Stg].[UDT_SalesOrderHeader]**
-
-17. zorg ervoor dat de **Table type parameter name** staat op **Deltatable**.
-
-18. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
-
-19. Klik op **Debug** en wacht tot de pipeline klaar is.
-
-## Opdracht 4 - Dynamische pipelines/ Datasets
+## Opdracht 3 - Dynamische pipelines/ Datasets
 
 Tot nu toe hebben we alle tabellen stuk voor stuk ingeladen, met eigen datasets en pipelines. Dat is echter (gelukkig) niet nodig in ADF: je kunt je pipelines en datasets *dynamisch* maken. Dat houdt in:
 
@@ -172,11 +128,13 @@ Zo kun je bijvoorbeeld een lijst op te halen tabellen uitlezen uit een CSV-besta
 
 14. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en plak of type de volgende query:
 
+    ```sql
     SELECT 
     TABLE_SCHEMA AS Table_Schema,
     TABLE_NAME AS Table_Name
     FROM INFORMATION_SCHEMA.TABLES
     WHERE TABLE_SCHEMA = 'SalesLT' AND TABLE_TYPE = 'BASE TABLE'
+    ```
 
     Indien **First row only** staat aangevinkt, zet deze uit.
 
@@ -194,15 +152,21 @@ Zo kun je bijvoorbeeld een lijst op te halen tabellen uitlezen uit een CSV-besta
 
 21. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en vervolgens op **Add dynamic content** en type of plak:
 
+    ```sql
     SELECT * FROM @{item().Table_Schema}.@{item().Table_Name}
+    ```
 
 22. Klik op de tab **Sink** en kies vervolgens de `DS_aqsl_sqldb_TargetTables_training` linked service, klik daarna op het veld naast **TargetTableName** gevolgd door **Add dynamic content** en plak of type: 
-    
+
+    ```sql
     @item().Table_Name
+    ```
 
 23. Klik op het veld naast **Pre-copy script** en vervolgens op **Add dynamic content** en plak of type: 
 
-    Truncate Table Stg.@{item().Table_Name}
+    ```sql
+    TRUNCATE TABLE Stg.@{item().Table_Name}
+    ```
 
 24. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 

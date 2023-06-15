@@ -2,9 +2,11 @@
 
 Welkom bij de [Wortell Smart Learning](https://www.wortell.nl/nl/smart-learning) training "Azure Data Factory Fundamentals"!
 
-Deze training is opgebouwd uit drie dagen, die als training ook los te volgen zijn:
+Dit is de LIGHT versie van de training. Er zijn een paar wijzigingen ten opzichte van de volledige training:
 
-1. Azure Data Factory (ADF): Inrichting en Beheer
-2. Azure Data Factory (ADF): Orchestratie en Development
-3. Azure Data Factory (ADF): Data Flows
+* Lab 0 (opzetten van omgevingen) is een voorbereidende stap
+* Er is geen Virtuele Machine meer
+* Linked Integration Runtimes worden niet behandeld
+* Self-hosted Integration Runtimes worden niet behandeld
+* Inserts in stored procedures blijven buiten beschouwing
 

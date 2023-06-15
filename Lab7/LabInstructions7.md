@@ -61,33 +61,6 @@ We hebben nu vier parameters aangemaakt op *factory*-niveau. Dit zijn globale co
 
 12. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
-
-## Opdracht 3 - Linked ADF pipeline
-
-1. Rechtboven in beeld, zie je een rij met iconen. Klik op de 2e van links, het icoon met **de 2 schermen en pijljes** (Switch Data Factory).
-
-2. Er zal een nieuw scherm verschijnen, en het meeste zal al van te voren zijn ingevuld. Kies bij **Data Factory Name** de adf-Linked en klik vervolgens op **OK**.
-
-3. Maak een nieuwe pipeline aan genaamd: `PL_Wait`.
-
-4. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Wait** op het canvas.
-
-5. Geef het **Wait blokje** een duidelijke naam.
-
-6. Klik vervolgens op de tab **Settings** en pas de **Wait time in seconds** aan naar 10.
-
-7. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
-
-8. Switch op dezelfde manier als stap 1 en 2 weer terug naar de **niet** linked adf.
-
-9. Klik op de pipeline die je in Opdracht 2 hebt gemaakt, klik vervolgens op **Debug**.
-
-10. Wanneer de pipeline is voltooid, switch via stap 1 en 2 terug naar de adf-linked.
-
-11. Klik aan de linkerkant op **Monitor**. Je komt nu meteen bij **Pipeline runs** uit en zou de `PL_wait` tussen de lijst van uitgevoerde pipelines dienen te staan.
-
-12. Als laatste zou je nog even kunnen kijken naar de doorlooptijd van de twee pipelines (in de linked en de niet-linked factory). Wat valt je op? Hoe zou je dit verklaren?
-
 ## Inhoudsopgave
 
 1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)

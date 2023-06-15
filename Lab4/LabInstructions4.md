@@ -48,7 +48,7 @@ De eerste *dataset* die we aankoppelen is een tabel die binnen onze brondatabase
 7. Klik op **OK** en vervolgens nog een keer op **OK** om de Dataset te voltooien.
 8. Klik op **Preview data**, je zult zien dat de data er nog niet erg gaaf uitziet. Om dit aan te passen dienen we nog 2 aanpassingen te verrichten.
 9. Kies bij **Column delimiter** voor de opties **Semicolon (;)**. en vink aan **First row as header**. Wanneer je nu weer op **Preview data** klikt zou het in een tabel moeten zijn met kolommen.
-10. Doe Opdracht 2 nogmaals, maar kies nu voor de **File system** connector en kies het .csv bestand genaamd **SalesPersonal.csv**.
+10. Doe Opdracht 2 nogmaals, kies nu het .csv bestand **SalesPersonal.csv**.
 11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
 
 ## Inhoudsopgave
