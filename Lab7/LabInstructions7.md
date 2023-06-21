@@ -1,5 +1,5 @@
 
-# Lab 9 - Batching en DIUs
+# Lab 7 - Batching en DIUs
 
 *Vereisten*
 
@@ -34,7 +34,7 @@ We hebben nu zo goed als alles behandeld rondom de standaard orchestratie in de 
 
 Wil je meer weten over de kosten die je aan ADF kwijt bent? Koen Verbeeck schreef dit handige artikel: [How you can save up to 80% on Azure Data Factory pricing](https://sqlkover.com/how-you-can-save-up-to-80-on-azure-data-factory-pricing/)
 
-## Einde Lab 9
+## Einde Lab 7
 
 ## Inhoudsopgave
 

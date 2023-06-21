@@ -1,4 +1,4 @@
-# Lab 8 - Activities
+# Lab 6 - Activities
 
 *Vereisten*
 
@@ -172,7 +172,7 @@ Zo kun je bijvoorbeeld een lijst op te halen tabellen uitlezen uit een CSV-besta
 
 25. Klik op **Debug** en wacht tot de pipeline klaar is.
 
-## Einde Lab 8
+## Einde Lab 6
 
 ## Inhoudsopgave
 

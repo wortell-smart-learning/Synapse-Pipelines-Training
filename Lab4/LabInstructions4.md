@@ -1,4 +1,4 @@
-# Lab 5 - Pipelines
+# Lab 4 - Pipelines
 
 *Vereisten*
 

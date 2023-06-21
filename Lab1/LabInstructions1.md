@@ -1,4 +1,4 @@
-# Lab 2 - Integration Runtimes
+# Lab 1 - Integration Runtimes
 
 *Vereisten*
 

@@ -1,4 +1,4 @@
-# Lab 1 - De Azure omgeving prepareren
+# Voorbereiding - De Azure omgeving prepareren
 
 *Vereisten*
 

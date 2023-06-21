@@ -1,4 +1,4 @@
-# Lab 3 - Linked Services
+# Lab 2 - Linked Services
 
 *Vereisten*
 

@@ -1,4 +1,4 @@
-# Lab 6 - Triggers
+# Lab 5 - Triggers
 
 *Vereisten*
 
