@@ -1,57 +1,186 @@
-# Lab 6 - Triggers
+# Lab 8 - Activities
 
 *Vereisten*
 
-Om het lab te kunnen starten is het van belang dat Lab5 is afgerond.
+Om het lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
 *Doel*
 
- We hebben nu pipelines gemaakt en handmatig aangezet. Dit is natuurlijk erg omslachtig, zeker als je incrementeel of nachtverwerkingen wilt realiseren. Dit kunnen wij automatiseren door het gebruik van triggers. Volg de opdrachten stap voor stap.
+We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. Er zijn er nog veel meer en sommige zijn heel handig als je deze met elkaar laten samenwerken om zodoende geavanceerde pipelines te creeeren. Volg de opdrachten stap voor stap.
 
-## Opdracht 1 - Triggers
+## Opdracht 1 - Stored Procedure uitvoeren
 
-1. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Triggers**. 
+Stored Procedures zijn opgeslagen programma's op de database. Vaak worden acties op de database (zoals het leegmaken van een tabel, of het starten van een proces binnen de database) in een stored procedure "gevangen". Met ADF kun je deze nu orchestreren.
 
-2. Klik op **New**, een nieuw scherm zal naar voren komen om trigger aan te kunnen maken. 
+1. Zorg dat je weer terug bent in ADF. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
 
-3. Geef de trigger een duidelijke naam. Het aangeraden format begint met TR_, naam van de pipeline die getriggerd wordt.
+2. Noem de pipeline: `PL_Process_Dates_Training`.
 
-4. Kies bij **Type** de optie **Schedule**. Zet de **Start date** op vandaag en 10 minuten later dan het nu is. Er zijn meer verschillende opties zoals je hebt kunnen zien zoals:
+3. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Stored Procedure** op het canvas.
 
-    *Schedule:* Een **Schedule trigger** kan 1 of meerdere pipelines uitvoeren op het opgegeven schema. Je hebt zelf de controle en flexibiliteit wanneer een trigger af moet gaan en stelt je in staat om dus een start en einddatum in te stellen.
+4. Noem de **Stored Procedure** als volgt: **USP_DL_Dates**. Klik vervolgens op de tab **Settings**.
 
-    *Tumbeling window:* Een **Tumbeling window trigger** kan 1 pipeline uitvoeren voor elk gedefineerd tijdsframe. Je gebruikt deze voor tijdgebaseerde data, zodat je hier iets mee kan doen.
+5. Kies bij **Linked service** voor de `LS_sqldb_target` en bij **Stored Procedure name** de **[Stg].[USP_DL_Dates]**.
 
-    *Event Trigger:* Een **Event trigger** kan 1 of meerdere pipelines uitvoeren gebaseerd op een gebeurtenis in een blobstorage. Zoals bij het aanmaken of verwijderen van een bestand.
+6. Klik op **Stored procedure parameters** en vervoglens op **import**. De parameters van de stored procedure worden nu ingeladen.
 
-    *Custom Trigger:* Een **Custom trigger** kan 1 of meerdere pipeles uitvoeren gebaseerd op een event uit de **Event Grid** dienst.
+7. Vul bij **StartYear** het volgende in: **1900**.
 
-5. Vul bij **Time zone** het volgende in: **Amsterdam** en kies de optie **Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna (UTC+1)**.
+8. Vul bij **EndYear** het volgende in: **2099**.
 
-6. Zet de **Recurrence** op 1 minuten.
+9. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
 
-7. Vink **Specify an end date** aan en zet deze op 5 minuten later dan de gekozen **Start date** en klik vervolgens op **OK**.
+10. Klik op **Debug** en wacht tot de pipeline klaar is.
 
-8. Klik links op het **Potloodje** (Author) en klik vervolgens de `PL_copy_master` pipeline aan.
+## Opdracht 2 - Conditioneel filteren
 
-9. Klik op **Add trigger** en vervolgens **New/Edit**.
+Je kunt data uit de database ook gebruiken om je orchestratie mee uit te voeren, bijvoorbeeld:
 
-10. Klik bij **Choose Triggers** de trigger die je zojuist hebt gemaakt. Het scherm van de trigger zal verschijnen. Mocht het al later zijn dan de tijd die je had ingesteld pas deze nu aan inclusief de eindtijd.
+* Een proces dat alleen mag starten als er een bepaalde rij in je instellingen-tabel aanwezig is
+* Voor elke klant die er in de Customers-tabel aanwezig is een eigen pipeline starten
 
-11. Zet de **Status** op **Started** en klik op **OK** en vervolgens nog één keer op **OK**.
+Allereerst halen we hier data op uit een SQL-database, en doen een filtering op die data binnen de ADF pipeline.
 
-12. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+1. Klik bij Datasets op **Dataset Actions** en op **New Dataset**.
 
-13. Klik aan de linkerkant op **Monitor** en ga naar **pipeline runs**. Klik rond de starttijd op **Refresh**, je zult zien dat je pipeline automatisch is afgetrapt.
+2. Zoek op **SQL** en kies **Azure SQL Database**. Klik vervolgens op **Continue**.
+
+3. Noem de Dataset als volgt: `DS_asql_SalesLT_Customers_Training` en kies als linked service de `LS_sqldb_source`.
+
+4. Kies bij **Table** voor **SalesLT.Customer** en klik op **OK**.
+
+5. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
+
+6. Noem de pipeline: `PL_Filter_SalesPersonal_Training`.
+
+7. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Lookup** op het canvas.
+
+8. Noem de lookup: **Lookup_SalesPersonal**.
+
+9. Ga naar de tab **Settings** en kies bij **Source dataset** de `DS_asql_SalesLT_Customers_Training`.
+
+10. Zet het vinkje uit bij **First row only**.
+
+11. Klik bij **Use query** op de optie **query** en type of plak de volgende code: 
+
+    SELECT
+    COUNT(*) AS Registered_Customers,
+    SalesPerson
+
+    FROM [SalesLT].[Customer]
+
+    GROUP BY SalesPerson
+
+12. Uit de lijst met **Activities**, klik op de optie **Iteration & conditionals**. Klik en sleep **filter** op het canvas.
+
+13. Sleep het **groene blokje** van de Lookup naar de filter activity. Zodat deze aan elkaar zijn verbonden.
+
+14. Geef de **filter** de naam **Best seller**.
+
+15. klik op de tab **Settings** en klik bij **Items** op het veld er naast en vervolgens op **Add dynamic content**.
+
+16. Klik onder **Activity outputs** op **Lookup_SalesPersonal value array** en klik op **OK**.
+
+17. Klik bij **Condition** op het veld er naast en vervolgens op **Add dynamic content**.
+
+18. Ga naar **Functions**, en type of plak de volgende code: `@greaterOrEquals(item().Registered_Customers,100)`
+
+19. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+
+20. Klik op **Debug** en wacht tot de pipeline klaar is, bekijk de resultaten door op de **Output** van de **Best seller** stap te kijken.
+
+
+## Opdracht 3 - Dynamische pipelines/ Datasets
+
+Tot nu toe hebben we alle tabellen stuk voor stuk ingeladen, met eigen datasets en pipelines. Dat is echter (gelukkig) niet nodig in ADF: je kunt je pipelines en datasets *dynamisch* maken. Dat houdt in:
+
+* Je voegt parameters toe aan je dataset (bijvoorbeeld voor de tabelnaam)
+* Je laat het *schema* leeg. ADF doet nu een *schema infer*, wat betekent dat het schema op het moment van uitvoeren bepaald wordt.
+* Bij het gebruiken van de dataset geef je de benodigde parameters mee.
+
+Zo kun je bijvoorbeeld een lijst op te halen tabellen uitlezen uit een CSV-bestand of SQL-configuratietabel, waarna je ze met een ForEach-loop één voor één uitleest.
+
+1. Klik bij Datasets op **Dataset Actions** en op **New Dataset**.
+
+2. Zoek op **SQL** en kies **Azure SQL Database**. Klik vervolgens op **Continue**.
+
+3. Noem de Dataset als volgt: `DS_asql_sqldb_SourceTables_Training` en kies als linked service de `LS_sqldb_source`.
+
+4. Laat de **Table name** leeg en klik op **OK**.
+
+5. Herhaal stap 1 t/m 4 voor de **sqldb-target** en noem de Dataset als volgt: `DS_asql_sqldb_TargetTables_training`.
+
+6. Wanneer de Dataset voor de **sqldb-target** is aangemaakt, ga naar de tab **Parameters** en klik op **New**.
+
+7. Geef de parameter de naam `TargetTableName`.
+
+8. Ga naar de tab **Connection** en vink **Edit** aan. Vul in het eerste veld **Stg** in en klik op het 2e veld en vervolgens op **Add dynamic content**.
+
+9. Kies uit de lijst de parameter genaamd: **TargetTableName** en klik vervolgens op **OK**.
+
+10. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
+
+11. Noem de Pipeline als volgt: `PL_copy_deltaload_Training`.
+
+12. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Lookup** op het canvas.
+
+13. Geef de **lookup** de naam `Lookup_SourceTables`, klik vervolgens op de **Settings** tab en kies bij **Source dataset** de `DS_aqsl_sqldb_SourceTables_training`.
+
+14. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en plak of type de volgende query:
+
+    ```sql
+    SELECT 
+    TABLE_SCHEMA AS Table_Schema,
+    TABLE_NAME AS Table_Name
+    FROM INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_SCHEMA = 'SalesLT' AND TABLE_TYPE = 'BASE TABLE'
+    ```
+
+    Indien **First row only** staat aangevinkt, zet deze uit.
+
+15. Uit de lijst met **Activities**, klik op de optie **Iteration & Conditionals**. Klik en sleep **ForEach** op het canvas.
+
+16. Sleep het **Groene blokje** van **Lookup_SourceTables** naar de **ForEach** zodat deze opeenvolgend aan elkaar zijn verbonden.
+
+17. Geef de **ForEach** de naam `ForEachTable` en klik op de tab **Settings**.
+
+18. Klik op het vlak naast **Items** en vervolgens op **Add dynamic content**. Kies voor `Lookup_SourceTables value array`.
+
+19. klik op de **plus** in de **ForEachTable**. Kies nu de activity **Copy Data**.
+
+20. Geef de **Copy data** de naam `Copy Tables` en klik vervolgens op de tab **Source** en kies voor de **Source dataset** de `DS_aqsl_sqldb_SourceTables_training`.
+
+21. Klik bij **Use query** de optie **Query** aan. Klik vervolgens in het query veld en vervolgens op **Add dynamic content** en type of plak:
+
+    ```sql
+    SELECT * FROM @{item().Table_Schema}.@{item().Table_Name}
+    ```
+
+22. Klik op de tab **Sink** en kies vervolgens de `DS_aqsl_sqldb_TargetTables_training` linked service, klik daarna op het veld naast **TargetTableName** gevolgd door **Add dynamic content** en plak of type: 
+
+    ```sql
+    @item().Table_Name
+    ```
+
+23. Klik op het veld naast **Pre-copy script** en vervolgens op **Add dynamic content** en plak of type: 
+
+    ```sql
+    TRUNCATE TABLE Stg.@{item().Table_Name}
+    ```
+
+24. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+
+25. Klik op **Debug** en wacht tot de pipeline klaar is.
+
+## Einde Lab 8
 
 ## Inhoudsopgave
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
-2. [Integration Runtimes](../Lab2/LabInstructions2.md)
-3. [Linked Services](../Lab3/LabInstructions3.md)
-4. [Datasets](../Lab4/LabInstructions4.md)
-5. [Pipelines](../Lab5/LabInstructions5.md)
-6. [Triggers](../Lab6/LabInstructions6.md)
-7. [Global Parameters](../Lab7/LabInstructions7.md)
-8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+0. [De Azure omgeving prepareren](../0Prep/LabVoorbereiding0.md)
+1. [Integration Runtimes](../Lab1/LabInstructions1.md)
+2. [Linked Services](../Lab2/LabInstructions2.md)
+3. [Datasets](../Lab3/LabInstructions3.md)
+4. [Pipelines](../Lab4/LabInstructions4.md)
+5. [Triggers](../Lab5/LabInstructions6.md)
+6. [Activities](../Lab6/LabInstructions6.md)
+7. [Batching en DIUs](../Lab7/LabInstructions7.md)

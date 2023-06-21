@@ -28,20 +28,20 @@ Na de training kan de deelnemer
 * Hoofdstuk 1: Data orchestratie
 * Korte pauze
 * Hoofdstuk 2: De Azure Data Factory
-* Lab1, Azure environment deployen
+* 0Prep, Azure environment deployen
 * Hoofdstuk 3: Integration Runtimes
 * Lunch
 * Korte recap
-* Lab2, Integration Runtimes
+* Lab1, Integration Runtimes
 * Hoofdstuk 4: Linked Servrices
-* Lab3, Linked Services
+* Lab2, Linked Services
 * Hoofdstuk 5: Datasets
-* Lab4, Datasets
+* Lab3, Datasets
 * Korte pauze
 * Hoofdstuk 6: Pipelines
-* Lab5, Pipelines
+* Lab4, Pipelines
 * Hoofdstuk 7: Triggers
-* Lab6, Triggers
+* Lab5, Triggers
 * Recap training
 * Vragen, adviesen en feedback
 ___
@@ -135,7 +135,7 @@ ___
 11:00 - Sheet 15, Portal.azure.com, GitHub voor virtueel. Handout voor klassikaal
 
 
-## Lab1, Azure environment deployen
+## 0Prep, Azure environment deployen
 
 *Doel:*
 
@@ -143,7 +143,7 @@ De trainings omgeving uit te rollen zodat elke deelnemer voor zich aan de slag k
 
 *Instructie:*
 
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab1 volgen. Deze stap voor stap uitvoeren om de trainings omgeving klaar te zetten in Azure.
+Jullie kunnen aan de hand van Github/ handout de uitleg voor 0Prep volgen. Deze stap voor stap uitvoeren om de trainings omgeving klaar te zetten in Azure.
 
 *Reflectie:*
 
@@ -204,7 +204,7 @@ ___
 
 13:30 - Sheet 20, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
-## **Lab2, Integration Runtimes**
+## **Lab1, Integration Runtimes**
 
 *Doel:*
 
@@ -212,7 +212,7 @@ Na deze oefening weet de deelnemer hoe hij/zij een Integration Runtime (IR) moet
 
 *Instructie:*
 
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab2 volgen. Deze stap voor stap uitvoeren om jullie eerste IR’s aan te maken.
+Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab1 volgen. Deze stap voor stap uitvoeren om jullie eerste IR’s aan te maken.
 
 *Reflectie:*
 
@@ -245,7 +245,7 @@ ___
 
 14:15 - Sheets 24, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
-## **Lab3, Linked Services*
+## **Lab2, Linked Services*
 
 *Doel:*
 
@@ -253,7 +253,7 @@ Na deze oefening weet de deelnemer hoe hij/zij een Linked Service moet aanmaken 
 
 *Instructie:*
 
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab3 volgen. Deze stap voor stap uitvoeren om jullie eerste Linked Services aan te maken.
+Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab2 volgen. Deze stap voor stap uitvoeren om jullie eerste Linked Services aan te maken.
 
 *Reflectie:*
 * Vraag: Hoe vonden jullie het aanmaken van de Linked Services?
@@ -282,7 +282,7 @@ ___
 
 14:45 - Sheets 28, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
-## **Lab4, Datasets**
+## **Lab3, Datasets**
 
 *Doel:*
 
@@ -290,7 +290,7 @@ Na deze oefening weet de deelnemer hoe hij/zij een Dataset moet aanmaken binnen 
 
 *Instructie:*
 
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab4 volgen. Deze stap voor stap uitvoeren om jullie eerste Datasets aan te maken.
+Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab3 volgen. Deze stap voor stap uitvoeren om jullie eerste Datasets aan te maken.
 
 *Reflectie:*
 * Vraag: Hoe vonden jullie het aanmaken van de Dataset?
@@ -326,7 +326,7 @@ ___
 
 15:30 - Sheet 32, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
-## **Lab5, Pipelines**
+## **Lab4, Pipelines**
 
 *Doel:*
 
@@ -334,7 +334,7 @@ Na deze oefening weet de deelnemer hoe hij/zij een Pipeline moet aanmaken binnen
 
 *Instructie:*
 
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab5 volgen. Deze stap voor stap uitvoeren om jullie eerste Pipeline aan te maken.
+Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab4 volgen. Deze stap voor stap uitvoeren om jullie eerste Pipeline aan te maken.
 
 *Reflectie:*
 * Vraag: Hoe vonden jullie het aanmaken van de Pipeline?
@@ -366,7 +366,7 @@ ___
 
 16:00 - Sheet 36, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
-## **Lab6, Triggers**
+## **Lab5, Triggers**
 
 *Doel:*
 
@@ -374,7 +374,7 @@ Na deze oefening weet de deelnemer hoe hij/zij een Trigger moet aanmaken binnen 
 
 *Instructie:*
 
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab6 volgen. Deze stap voor stap uitvoeren om jullie eerste Trigger aan te maken.
+Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab5 volgen. Deze stap voor stap uitvoeren om jullie eerste Trigger aan te maken.
 
 *Reflectie:*
 * Vraag: Hoe vonden jullie het aanmaken van de Trigger?
@@ -431,14 +431,13 @@ Na de training kan de deelnemer:
 * Inleiding
 * Recap dag 1
 * Hoofstuk 8: Global Parameters
-* Lab7, Global Parameters
 * Korte pauze
 * Hoofdstuk 9: Activities
 * Lunch
 * Korte recap
-* Lab8, Activities
+* Lab6, Activities
 * Hoofstuk 10: Batches en DIUs
-* Lab9, Batches en DIUs
+* Lab7, Batches en DIUs
 * Korte pauze
 * Hoofdstuk 11: GIT
 * Hoofdstuk 12: DevOps
@@ -519,22 +518,6 @@ ___
 
 10:30 - Sheet 9, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
-## **Lab7, Global Parameters**
-
-*Doel:*
-
-Na deze oefening weet de deelnemer hoe hij/zij een global parameter moet aanmaken binnen ADF.
-
-*Instructie:*
-
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab7 volgen. Deze stap voor stap uitvoeren om jullie eerste global parameter aan te maken en te verwerken in een pipeline.
-
-*Reflectie:*
-* Vraag: Hoe vonden jullie het toepassen van globale parameters?
-* Vraag: Kan je hier iets mee in de praktijk?
-
-___
-
 11:00 - Sheet 10 t/m 14
 
 ## **Hoofdstuk 9: Activities**
@@ -593,7 +576,7 @@ ___
 
 13:30 - Sheet 16, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
-## **Lab8, Activities**
+## **Lab6, Activities**
 
 *Doel:*
 
@@ -601,7 +584,7 @@ Na deze oefening weet de deelnemer hoe hij/zij een verschillende activities moet
 
 *Instructie:*
 
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab8 volgen. Deze stap voor stap uitvoeren om met de verschillende activities en best practises aan de slag te gaan.
+Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab6 volgen. Deze stap voor stap uitvoeren om met de verschillende activities en best practises aan de slag te gaan.
 
 *Reflectie:*
 * Vraag: Hoe vonden jullie het maken van geavanceerde pipelines?
@@ -638,7 +621,7 @@ ___
 
 14:45 - Sheet 20, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
 
-## **Lab9, Batches en DIUs**
+## **Lab7, Batches en DIUs**
 
 *Doel:*
 
@@ -646,7 +629,7 @@ Na deze oefening weet de deelnemer hoe hij/zij Batching en DIUs moet toepassen o
 
 *Instructie:*
 
-Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab8 volgen. Deze stap voor stap uitvoeren om jullie pipelines te voorzien van batching en extra DIUs.
+Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab6 volgen. Deze stap voor stap uitvoeren om jullie pipelines te voorzien van batching en extra DIUs.
 
 *Reflectie:*
 * Vraag: Hoe vonden jullie het toepassen van batches en DIUs?

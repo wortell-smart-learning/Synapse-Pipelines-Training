@@ -1,74 +1,48 @@
-# Lab 7 - Global Parameters
+
+# Lab 9 - Batching en DIUs
 
 *Vereisten*
 
-Om het lab te kunnen starten is het van belang dat Lab5 is afgerond en dat de Virtual Machine opgestart is en de IR draait.
+Om het lab te kunnen starten is het van belang dat Lab6 is afgerond.
 
 *Doel*
 
-Gisteren hebben wij van A tot Z de ADF ingericht en pipelines gedraaid. Zoals in Lab2 aangegeven kan het voorkomen dat een ander team ook een ADF heeft en kan het ook voorkomen dat er een afhankelijkheid bestaat tussen beide ADFs of naar andere diensten.  In het lab gaan we hiermee aan de slag, door met behulp van een API-call de pipeline in adf-linked uit te voeren.
+We hebben nu zo goed als alles behandeld rondom de standaard orchestratie in de ADF. Toch kan het voorkomen dat enkele pipelines zoveel data moeten overhalen dat ze niet heel vlot draaien. Er zijn enkele knoppen waar nog aan gedraaid kan worden om dit sneller te kunnen laten verlopen in de vorm van Batching en DIUs. Volg de opdrachten stap voor stap.
 
-Volg de opdrachten stap voor stap.
+## Opdracht 1 - Batching
 
-## Opdracht 1 - Globale parameters
+1. Ga naar de `PL_copy_Deltaload_Training` pipeline en klik binnen de **ForEach** op de **Copy data** activiteit.
 
-1. Ga naar de ADF (adf.azure.com) en kies voor de **Niet** linked ADF.
+2. Ga naar de tab **Sink**. Onder **Pre-copy script** zie je de optie **Write batch size** en vul hier 1 in.
 
-2. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Global parameters**. 
+3. Klik op **Debug** en wacht tot de pipeline klaar is. Je zult zien dat het nu heel lang duurt om alles te laden omdat er 1 rij per keer wordt weggeschreven. Dit is natuurlijk niet gunstig en je wilt dit zo hoog mogelijk hebben. Normaliter bepaalt de ADF zelf hoe groot zijn Batch sizes zijn, dit is meestal tussen de 1200 en 1500 regels. Het kan zijn dat je een proces hebt, waarbij het van belang is dat alle data in 1x geladen wordt zodat er geen mismatches kunnen ontstaan. Dit is bijvoorbeeld erg fijn als je een row-based datamodel hanteert. 
 
-3. Klik op **New**, een nieuw scherm zal naar voren komen. Vul bij **Name** het volgende in: **SubscriptionID** en bij **Value** je subscriptionID. Deze kan je vinden in de URL van de ADF. 
-   Voorbeeld: `https://adf.azure.com/en-us/management/globalparameters?factory=%2Fsubscriptions%2Ffae3cd10-ede1-4e32-b796-362b72f8e236%2FresourceGroups%2Frg-adf-training%2F`
+4. Verander de **batchsize** van 1 in iets anders,  klik op **Debug** en bekijk je resultaten. Probeer enkele **batchsizes** tot het moment dat het geen verschil meer maakt.
 
-   Het is van belang om de %2F niet mee te kopieeren. Gebaseerd op het voorbeeld zou de SubscriptieID het volgende zijn: **fae3cd10-ede1-4e32-b796-362b72f8e236**
+## Opdracht 2 - Data Integration Units.
 
-4. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **Resourcegroup** met als **Value** de resourcegroup naam, deze kan je ook uit de URL kopiëren. 
+1. Ga in de **Copy Tables** activiteit naar de tab **Settings**.
+   Je ziet hier de optie voor **Data integration unit**, en deze staat standaard op **Auto**. Hiermee bepaalt de ADF zelf hoeveel DIUs het denkt nodig te hebben voor een bepaalde workload. Vaak is de bepaling accuraat maar...:
+     * Bij **Auto** start het aantal DIU's op 4. Door dat standaard op 2 in te stellen realiseer je al een redelijke besparing.
+     * Soms heb je bij voorbaat extra rekenkracht nodig, dan kun je de DIU's juist handmatig verhogen.
 
-5. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **DataFactory** met als **Value** de naam van de adf-linked, deze kan je vinden in je resourcegroup.
+2. Pas de **Data integration unit** naar **2**.
 
-6. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **Pipeline** met als **Value** de naam van de pipeline in de adf-linked, `PL_Wait`.
+3. Klik op **Debug** en wacht tot de pipeline klaar is. Bekijk de resultaten, het meeste zal klaar zijn tussen de 10 en 15 seconden. 
 
-7. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+4. Verander de **Data integration unit** van 2 in iets anders,  klik op **Debug** en bekijk je resultaten. Probeer enkele **Data integration units** tot het moment dat het geen verschil meer maakt.
 
-We hebben nu vier parameters aangemaakt op *factory*-niveau. Dit zijn globale constanten die in de hele Data Factory gebruikt kunnen worden. Op deze manier kun je instellingen eenvoudig centraal beheren.
+Wil je meer weten over de kosten die je aan ADF kwijt bent? Koen Verbeeck schreef dit handige artikel: [How you can save up to 80% on Azure Data Factory pricing](https://sqlkover.com/how-you-can-save-up-to-80-on-azure-data-factory-pricing/)
 
-## Opdracht 2 - API caller
-
-1. Klik links op het **Potloodje** (Author) en maak een nieuwe pipeline aan.
-
-2. Geef de pipeline een duidelijke naam.
-
-3. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Web** op het canvas.
-
-4. Geef het **Web blokje** een duidelijke naam en klik vervolgens op de tab **Settings**.
-
-5. Klik op veld naast **URL** en vervolgens op **Add dynamic content**.
-
-6. Plak of type de volgende code in de het veld:
-   `https://management.azure.com/subscriptions/@{pipeline().globalParameters.SubscriptionID}/resourceGroups/@{pipeline().globalParameters.Resourcegroup}/providers/Microsoft.DataFactory/factories/@{pipeline().globalParameters.DataFactory}/pipelines/@{pipeline().globalParameters.Pipeline}/createRun?api-version=2018-06-01`
-
-   > Wil je meer weten over de mogelijkheden van de Data factory REST API, dan kun je die in de [Microsoft documentatie](https://docs.microsoft.com/nl-nl/rest/api/datafactory/pipelines) teruglezen.
-
-7. Kies bij **Methode** voor **POST**.
-
-8. Vul in het veld naast **body** het volgende in: **{}**.
-
-9. Kies bij **Authentication** voor **System Assigned Managed Identity** en vul bij **Resource** het volgende in: `https://management.core.windows.net/`.
-
-10. Klik bij **Headers** op **New** en vul bij **name** het volgende in: **Content-Type** en bij **value**: **application/json**.
-
-11. Kies onder **Advanced** bij **Integration runtime** de eigen genaamkte **Azure IR**.
-
-
-12. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+## Einde Lab 9
 
 ## Inhoudsopgave
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
-2. [Integration Runtimes](../Lab2/LabInstructions2.md)
-3. [Linked Services](../Lab3/LabInstructions3.md)
-4. [Datasets](../Lab4/LabInstructions4.md)
-5. [Pipelines](../Lab5/LabInstructions5.md)
-6. [Triggers](../Lab6/LabInstructions6.md)
-7. [Global Parameters](../Lab7/LabInstructions7.md)
-8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+0. [De Azure omgeving prepareren](../0Prep/LabVoorbereiding0.md)
+1. [Integration Runtimes](../Lab1/LabInstructions1.md)
+2. [Linked Services](../Lab2/LabInstructions2.md)
+3. [Datasets](../Lab3/LabInstructions3.md)
+4. [Pipelines](../Lab4/LabInstructions4.md)
+5. [Triggers](../Lab5/LabInstructions6.md)
+6. [Activities](../Lab6/LabInstructions6.md)
+7. [Batching en DIUs](../Lab7/LabInstructions7.md)

@@ -1,4 +1,4 @@
-# Lab 2 - Integration Runtimes
+# Lab 3 - Linked Services
 
 *Vereisten*
 
@@ -6,34 +6,71 @@ Om het lab te kunnen starten is het van belang dat Lab1 is afgerond.
 
 *Doel*
 
-De Azure Data Factory maakt gebruik van een *Integration Runtime (IR)*. In feite is dit de plek waar je pipeline "uitgevoerd" wordt: bijvoorbeeld in een specifieke Azure-region of on-premises.
+Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties met de betreffende diensten gemaakt worden. Gedurende het lab leg je meerdere connecties, met o.a.:
 
-Gedurende dit lab maak je meerdere soorten IRs aan. Ook configureer, installeer en "link" je deze. Volg de opdrachten stap voor stap.
+* een SQL database (bijv. een bronsysteem of Data Warehouse)
+* een Storage account (bijv. zoals een Data Lake)
+* een File system (bijv. een share)
 
-## Opdracht 1 - Azure Integration Runtime aanmaken
+Sommige van deze bronnen kun je benaderen met behulp van *managed identity*: in dat geval worden binnen AAD rechten uitgedeeld aan de Data Factory. Andere bronnen zul je moeten benaderen met een *secret*, bijvoorbeeld een certificaat of een gebruikersnaam/wachtwoord. Deze *secrets* sla je in Azure centraal op in de Key Vault. Vanuit daar kun je dan eenvoudig bepalen welke diensten welke *secrets* mogen bekijken.
 
-Binnen ADF krijg je altijd een Integration Runtime "cadeau": een zogenaamde "Auto Resolve" IR. Dat betekent dat Azure wereldwijd met je meekijkt welke plek handig zou zijn om jouw pipeline uit te gaan voeren en er eentje voor je uitkiest. Dat kan handig zijn om de eerste stappen te maken, maar het is aan te raden om explicieter te zijn waar je data verwerkt wordt. Deels vanuit performance- en kostenoverwegingen, maar ook vanuit security- en compliance-perspectief (weten waar je data verwerkt wordt).
+## Opdracht 1 - Azure Key Vault
 
-In deze eerste opdracht gaan we daarom een Integration Runtime aanmaken waarin je zelf de locatie aangeeft. In je omgeving heb je twee Data Factories, die later beiden gebruik gaan maken van de ene IR die we aanmaken.
+Azure Data Factory is eenvoudig te koppelen met Azure Key Vault, waarin we wachtwoorden en connection strings opslaan. We kunnen een verbinding naar een bron dan laten vullen door een *secret* uit de *Key Vault*. Op het moment dat ADF verbinding maakt met die bron, zal ADF eerst de *secret* ophalen uit de Key Vault.
 
-1. Ga naar de [Azure portal](portal.azure.com). Klik de Data Factory aan waarbij **niet** het woord Linked instaat. Een nieuwe pagina zal laden met een knop **Launch Studio** klik deze aan. Je wordt nu naar de pagina van de ADF geleid.
-2. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Integration runtimes**. Je zult zien dat er al een **AutoResolveIntegrationRuntime** bestaat. Dit is de standaard IR binnen Azure waarmee je tussen de verschillende diensten als SQL Database, Azure Data Lake Store e.d. data mee kan verplaatsen.
-3. Klik op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Azure** en weer **continue**. Je kunt nu een nieuwe **Azure Integration Runtime** aanmaken, waarbij je ook specifiek de **Region** kunnen aangeven. Hiermee weet je zeker dat de data altijd binnen deze regio blijft.
-4. Geef de IR een naam en kies de **Region** waarbinnen de rest van je resources zich bevinden. Qua naamgeving is het handig om te beginnen met `IR-` gevolgd door wat voor een soort IR het is, de -regio en de -omgeving.
-   * Praktijkvoorbeeld: `IR-AzureResolve-EastUS-TST`
-   * Trainingsvoorbeeld: `IR-AzureResolve-WestEurope-Training`
-5. Klik op **Create**
+Voordat we echter *secrets* uit de Key Vault kunnen benaderen, zullen we de Key Vault eerst moeten aankoppelen als *Linked Service*.
 
-Je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn.
+1. Ga de ADF. Klik vervolgens weer op Manage. Ga naar **Linked Services**.
+2. klik op **New**, en zoek naar **Key vault**. Klik de **Azure Key vault** aan.
+3. Geef de Linked services een duidelijke naam. Het aangeraden format is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
+   * Praktijkvoorbeeld: `LS_KV_Dataplatform_PRD`
+   * Trainingsvoorbeeld: `LS_KV_rcc4bh5724jim_Training`
+     In de naamgeving is een minteken (`-`) niet toegestaan. Een *underscore* (`_`) is wel mogelijk.
+4. Kies de **Azure Subscription** die je in de training gebruikt
+5. Kies bij **Azure Key vault Name** de key vault uit jouw Key Vault (deze start met `kv_`).
+6. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
+7. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+8. De Linked Service naar de Azure Key Vault is nu aangemaakt, maar deze is nog niet gepubliseerd. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de aanpassingen live te staan, en kan de Key Vault gebruikt worden.
+
+## Opdracht 2 - Databases
+
+Met de Key Vault aangesloten is het mogelijk om wachtwoorden op te halen om een beveiligde verbinding op te zetten met bijvoorbeeld de databases.
+
+1. Klik op **New**, en zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
+2. Geef de Linked services een duidelijke naam, bijvoorbeeld `LS_sqldb_source`
+3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
+4. Kies bij de **Server Name** de Server naam in zoals deze in je resourcegroup staat.
+5. Kies bij de **Database Name** de source Database naam in zoals deze in je resourcegroup staat. De source database begint met **sqldb-source-** als naam.
+6. Vul bij de **User Name** het SQL admin account in genaamd: **sqladmin**.
+7. Bij de optie tussen **Password** en **Azure Key Vault**, kies de Key vault.
+8. Kies bij **AKV linked service** de eerder aangemaakte Key Vault Linked Service.
+9. Kies bij **Secret Name** de optie **sqladmin**
+10. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
+11. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+12. Doe Opdracht 2 nogmaals, maar nu voor de **sqldb-target** Database.
+
+Je hebt nu twee Linked Services aangemaakt. Dit maakt het voor ADF mogelijk om verbinding te maken met de twee databases.
+
+## Opdracht 3 - Storage Account
+
+De tweede bron die we toevoegen is een Storage Account. Deze kunnen we bijvoorbeeld gebruiken als *landing zone* voor de data, of als Data Lake.
+
+1. klik op **New**, en zoek naar **storage**. Klik de **Azure Blob Storage** aan.
+2. Geef de Linked services een duidelijke naam.
+3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
+4. Kies bij **Storage account name** het storage account zoals deze in je resourcegroup staat.
+5. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
+6. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+
+De rechten op het Storage Account zijn uitgedeeld via Azure AD. Hier heb je dus geen *secret* voor hoeven gebruiken.
 
 ## Inhoudsopgave
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
-2. [Integration Runtimes](../Lab2/LabInstructions2.md)
-3. [Linked Services](../Lab3/LabInstructions3.md)
-4. [Datasets](../Lab4/LabInstructions4.md)
-5. [Pipelines](../Lab5/LabInstructions5.md)
-6. [Triggers](../Lab6/LabInstructions6.md)
-7. [Global Parameters](../Lab7/LabInstructions7.md)
-8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+0. [De Azure omgeving prepareren](../0Prep/LabVoorbereiding0.md)
+1. [Integration Runtimes](../Lab1/LabInstructions1.md)
+2. [Linked Services](../Lab2/LabInstructions2.md)
+3. [Datasets](../Lab3/LabInstructions3.md)
+4. [Pipelines](../Lab4/LabInstructions4.md)
+5. [Triggers](../Lab5/LabInstructions6.md)
+6. [Activities](../Lab6/LabInstructions6.md)
+7. [Batching en DIUs](../Lab7/LabInstructions7.md)

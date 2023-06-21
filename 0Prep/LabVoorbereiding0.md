@@ -47,17 +47,16 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 20. Klik de **sqldb-target** database aan en vervolgens in de Blade op **Query editor (preview)**.
     * De loginnaam van het sqladmin-account zou al ingevuld staan, voer vervolgens het wachtwoord in. Dit is hetzelfde wachtwoord als in Opdracht 2.
 20. Wanneer je ingelogd bent, zie je een query-interface voor je en de tabbellen, views en stored procedure mappen aan de linkerkant.
-20. Ga terug naar de Github map van Lab1 en in de map **LabEnvironment**. Klik vervoglens op het .sql bestand genaamd **Target-Database.sql**. De code zou nu zichtbaar worden, selecteer alle code en plak deze in de Query editor en klik vervolgens op de knop **Run**.
+20. Ga terug naar de Github map van 0Prep en in de map **LabEnvironment**. Klik vervoglens op het .sql bestand genaamd **Target-Database.sql**. De code zou nu zichtbaar worden, selecteer alle code en plak deze in de Query editor en klik vervolgens op de knop **Run**.
 20. Wanneer de query is uitgevoerd, is jouw database klaar voor gebruik!
 
 ## Inhoudsopgave
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
-2. [Integration Runtimes](../Lab2/LabInstructions2.md)
-3. [Linked Services](../Lab3/LabInstructions3.md)
-4. [Datasets](../Lab4/LabInstructions4.md)
-5. [Pipelines](../Lab5/LabInstructions5.md)
-6. [Triggers](../Lab6/LabInstructions6.md)
-7. [Global Parameters](../Lab7/LabInstructions7.md)
-8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+1. [De Azure omgeving prepareren](../0Prep/LabVoorbereiding0.md)
+2. [Integration Runtimes](../Lab1/LabInstructions1.md)
+3. [Linked Services](../Lab2/LabInstructions2.md)
+4. [Datasets](../Lab3/LabInstructions3.md)
+5. [Pipelines](../Lab4/LabInstructions4.md)
+6. [Triggers](../Lab5/LabInstructions5.md)
+8. [Activities](../Lab6/LabInstructions6.md)
+9. [Batching en DIUs](../Lab7/LabInstructions7.md)
