@@ -115,8 +115,7 @@
          "name": "[variables('keyVaultName')]",
          "location": "[variables('location')]",
          "dependsOn": [
-            "[resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName'))]",
-            "WaitSection"
+            "[resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName'))]"
          ],
          "properties": {
             "tenantId": "[subscription().tenantId]",
