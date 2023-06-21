@@ -10,7 +10,7 @@ Deze training is opgebouwd uit drie dagen, die als training ook los te volgen zi
 
 ## Inhoudsopgave
 
-1. [De Azure omgeving prepareren](Lab1/LabInstructions1.md)
+1. [De Azure omgeving prepareren](0Prep/LabInstructions1.md)
 2. [Integration Runtimes](Lab2/LabInstructions2.md)
 3. [Linked Services](Lab3/LabInstructions3.md)
 4. [Datasets](Lab4/LabInstructions4.md)
