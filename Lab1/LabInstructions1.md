@@ -34,3 +34,5 @@ Je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn.
 5. [Triggers](../Lab5/LabInstructions6.md)
 6. [Activities](../Lab6/LabInstructions6.md)
 7. [Batching en DIUs](../Lab7/LabInstructions7.md)
+8. [Eerste Data Flows](../Lab8/LabInstructions8.md)
+9. [Data integratie flows](../Lab9/LabInstructions9.md)

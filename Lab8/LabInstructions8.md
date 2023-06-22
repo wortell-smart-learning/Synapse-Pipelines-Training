@@ -1,4 +1,4 @@
-# Lab 8 - Batching en DIUs
+# Lab 8 - Eerste Data Flows
 
 *Vereisten*
 
@@ -40,3 +40,15 @@ Zorg er daarom voor dat de volgende zaken ingericht worden:
 * Maak een bijbehorende pipeline die deze Data Flow ook uitvoert
 * Publiceer alle resources, en test de pipeline
 
+## Inhoudsopgave
+
+0. [De Azure omgeving prepareren](../0Prep/LabVoorbereiding0.md)
+1. [Integration Runtimes](../Lab1/LabInstructions1.md)
+2. [Linked Services](../Lab2/LabInstructions2.md)
+3. [Datasets](../Lab3/LabInstructions3.md)
+4. [Pipelines](../Lab4/LabInstructions4.md)
+5. [Triggers](../Lab5/LabInstructions6.md)
+6. [Activities](../Lab6/LabInstructions6.md)
+7. [Batching en DIUs](../Lab7/LabInstructions7.md)
+8. [Eerste Data Flows](../Lab8/LabInstructions8.md)
+9. [Data integratie flows](../Lab9/LabInstructions9.md)
