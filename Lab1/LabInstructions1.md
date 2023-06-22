@@ -31,7 +31,7 @@ Je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn.
 2. [Linked Services](../Lab2/LabInstructions2.md)
 3. [Datasets](../Lab3/LabInstructions3.md)
 4. [Pipelines](../Lab4/LabInstructions4.md)
-5. [Triggers](../Lab5/LabInstructions6.md)
+5. [Triggers](../Lab5/LabInstructions5.md)
 6. [Activities](../Lab6/LabInstructions6.md)
 7. [Batching en DIUs](../Lab7/LabInstructions7.md)
 8. [Eerste Data Flows](../Lab8/LabInstructions8.md)
