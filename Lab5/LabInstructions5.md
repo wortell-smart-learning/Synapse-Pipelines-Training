@@ -171,9 +171,9 @@ With the help of parameters, you can make your pipeline more dynamic. For exampl
 
 20. Click on **Monitor** (the meter) on the left. Go to **Pipeline runs** if it doesn't open immediately. You should now see new pipelines running and in the pipeline of **Address** you should now see an **[@]** under the **Parameters** column. Click on this, you should see the value that you put in your variable.
 
-## Inhoudsopgave
+## Table of Contents
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
 2. [Integration Runtimes](../Lab2/LabInstructions2.md)
 3. [Linked Services](../Lab3/LabInstructions3.md)
 4. [Datasets](../Lab4/LabInstructions4.md)
@@ -181,4 +181,4 @@ With the help of parameters, you can make your pipeline more dynamic. For exampl
 6. [Triggers](../Lab6/LabInstructions6.md)
 7. [Global Parameters](../Lab7/LabInstructions7.md)
 8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)

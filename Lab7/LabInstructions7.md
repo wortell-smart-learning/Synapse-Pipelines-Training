@@ -1,92 +1,92 @@
 # Lab 7 - Global Parameters
 
-*Vereisten*
+*Requirements*
 
-Om het lab te kunnen starten is het van belang dat Lab5 is afgerond en dat de Virtual Machine opgestart is en de IR draait.
+In order to start the lab, it is important that Lab5 is completed and that the Virtual Machine is booted up and the IR is running.
 
-*Doel*
+*Objective*
 
-Gisteren hebben wij van A tot Z de ADF ingericht en pipelines gedraaid. Zoals in Lab2 aangegeven kan het voorkomen dat een ander team ook een ADF heeft en kan het ook voorkomen dat er een afhankelijkheid bestaat tussen beide ADFs of naar andere diensten.  In het lab gaan we hiermee aan de slag, door met behulp van een API-call de pipeline in adf-linked uit te voeren.
+Yesterday, we set up the ADF from A to Z and ran pipelines. As mentioned in Lab2, it can happen that another team also has an ADF and there might be a dependency between both ADFs or to other services. In the lab, we will tackle this by executing the pipeline in adf-linked using an API-call.
 
-Volg de opdrachten stap voor stap.
+Follow the instructions step by step.
 
-## Opdracht 1 - Globale parameters
+## Assignment 1 - Global parameters
 
-1. Ga naar de ADF (adf.azure.com) en kies voor de **Niet** linked ADF.
+1. Go to the ADF (adf.azure.com) and choose the **Non** linked ADF.
 
-2. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Global parameters**. 
+2. Click on the **toolbox** (Manage) on the left. Then click on **Global parameters** on the left.
 
-3. Klik op **New**, een nieuw scherm zal naar voren komen. Vul bij **Name** het volgende in: **SubscriptionID** en bij **Value** je subscriptionID. Deze kan je vinden in de URL van de ADF. 
-   Voorbeeld: `https://adf.azure.com/en-us/management/globalparameters?factory=%2Fsubscriptions%2Ffae3cd10-ede1-4e32-b796-362b72f8e236%2FresourceGroups%2Frg-adf-training%2F`
+3. Click on **New**, a new screen will appear. Fill in the following for **Name**: **SubscriptionID** and your subscriptionID for **Value**. You can find this in the URL of the ADF. 
+   Example: `https://adf.azure.com/en-us/management/globalparameters?factory=%2Fsubscriptions%2Ffae3cd10-ede1-4e32-b796-362b72f8e236%2FresourceGroups%2Frg-adf-training%2F`
 
-   Het is van belang om de %2F niet mee te kopieeren. Gebaseerd op het voorbeeld zou de SubscriptieID het volgende zijn: **fae3cd10-ede1-4e32-b796-362b72f8e236**
+   It is important not to copy the %2F. Based on the example, the SubscriptionID would be: **fae3cd10-ede1-4e32-b796-362b72f8e236**
 
-4. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **Resourcegroup** met als **Value** de resourcegroup naam, deze kan je ook uit de URL kopiëren. 
+4. Repeat step 3, but now create a Global parameter named: **Resourcegroup** with as **Value** the resource group name, which you can also copy from the URL.
 
-5. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **DataFactory** met als **Value** de naam van de adf-linked, deze kan je vinden in je resourcegroup.
+5. Repeat step 3, but now create a Global parameter named: **DataFactory** with as **Value** the name of the adf-linked, which you can find in your resource group.
 
-6. Herhaal stap 3, maar maak nu een Global parameter aan genaamd: **Pipeline** met als **Value** de naam van de pipeline in de adf-linked, `PL_Wait`.
+6. Repeat step 3, but now create a Global parameter named: **Pipeline** with as **Value** the name of the pipeline in the adf-linked, `PL_Wait`.
 
-7. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+7. Click on the **Blue button** with the text **Publish all** and then on the button **Publish**.
 
-We hebben nu vier parameters aangemaakt op *factory*-niveau. Dit zijn globale constanten die in de hele Data Factory gebruikt kunnen worden. Op deze manier kun je instellingen eenvoudig centraal beheren.
+We have now created four parameters at *factory* level. These are global constants that can be used throughout the entire Data Factory. In this way, you can easily manage settings centrally.
 
-## Opdracht 2 - API caller
+## Assignment 2 - API caller
 
-1. Klik links op het **Potloodje** (Author) en maak een nieuwe pipeline aan.
+1. Click on the **Pencil** (Author) on the left and create a new pipeline.
 
-2. Geef de pipeline een duidelijke naam.
+2. Give the pipeline a clear name.
 
-3. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Web** op het canvas.
+3. From the list of **Activities**, click on the **General** option. Click and drag **Web** onto the canvas.
 
-4. Geef het **Web blokje** een duidelijke naam en klik vervolgens op de tab **Settings**.
+4. Give the **Web block** a clear name and then click on the **Settings** tab.
 
-5. Klik op veld naast **URL** en vervolgens op **Add dynamic content**.
+5. Click on the field next to **URL** and then on **Add dynamic content**.
 
-6. Plak of type de volgende code in de het veld:
+6. Paste or type the following code into the field:
    `https://management.azure.com/subscriptions/@{pipeline().globalParameters.SubscriptionID}/resourceGroups/@{pipeline().globalParameters.Resourcegroup}/providers/Microsoft.DataFactory/factories/@{pipeline().globalParameters.DataFactory}/pipelines/@{pipeline().globalParameters.Pipeline}/createRun?api-version=2018-06-01`
 
-   > Wil je meer weten over de mogelijkheden van de Data factory REST API, dan kun je die in de [Microsoft documentatie](https://docs.microsoft.com/nl-nl/rest/api/datafactory/pipelines) teruglezen.
+   > If you want to know more about the possibilities of the Data Factory REST API, you can read about it in the [Microsoft documentation](https://docs.microsoft.com/nl-nl/rest/api/datafactory/pipelines).
 
-7. Kies bij **Methode** voor **POST**.
+7. Choose **POST** for **Method**.
 
-8. Vul in het veld naast **body** het volgende in: **{}**.
+8. Fill in the field next to **body
 
-9. Kies bij **Authentication** voor **System Assigned Managed Identity** en vul bij **Resource** het volgende in: `https://management.core.windows.net/`.
+** with: **{}**.
 
-10. Klik bij **Headers** op **New** en vul bij **name** het volgende in: **Content-Type** en bij **value**: **application/json**.
+9. Choose **System Assigned Managed Identity** for **Authentication** and fill in the following for **Resource**: `https://management.core.windows.net/`.
 
-11. Kies onder **Advanced** bij **Integration runtime** de eigen genaamkte **Azure IR**.
+10. Click on **New** next to **Headers** and fill in the following for **name**: **Content-Type** and for **value**: **application/json**.
 
+11. Choose the self-named **Azure IR** under **Advanced** for **Integration runtime**.
 
-12. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+12. Click on the **Blue button** with the text **Publish all** and then on the button **Publish**.
 
+## Assignment 3 - Linked ADF pipeline
 
-## Opdracht 3 - Linked ADF pipeline
+1. At the top right of the screen, you will see a row of icons. Click on the second from the left, the icon with **the 2 screens and arrows** (Switch Data Factory).
 
-1. Rechtboven in beeld, zie je een rij met iconen. Klik op de 2e van links, het icoon met **de 2 schermen en pijljes** (Switch Data Factory).
+2. A new screen will appear, and most of it will already be filled in. Choose the adf-Linked at **Data Factory Name** and then click on **OK**.
 
-2. Er zal een nieuw scherm verschijnen, en het meeste zal al van te voren zijn ingevuld. Kies bij **Data Factory Name** de adf-Linked en klik vervolgens op **OK**.
+3. Create a new pipeline named: `PL_Wait`.
 
-3. Maak een nieuwe pipeline aan genaamd: `PL_Wait`.
+4. From the list of **Activities**, click on the **General** option. Click and drag **Wait** onto the canvas.
 
-4. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Wait** op het canvas.
+5. Give the **Wait block** a clear name.
 
-5. Geef het **Wait blokje** een duidelijke naam.
+6. Then click on the **Settings** tab and change the **Wait time in seconds** to 10.
 
-6. Klik vervolgens op de tab **Settings** en pas de **Wait time in seconds** aan naar 10.
+7. Click on the **Blue button** with the text **Publish all** and then on the button **Publish**.
 
-7. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+8. Switch back to the **non** linked adf in the same way as steps 1 and 2.
 
-8. Switch op dezelfde manier als stap 1 en 2 weer terug naar de **niet** linked adf.
+9. Click on the pipeline you created in Assignment 2, then click on **Debug**.
 
-9. Klik op de pipeline die je in Opdracht 2 hebt gemaakt, klik vervolgens op **Debug**.
+10. Once the pipeline is completed, switch back to the adf-linked via steps 1 and 2.
 
-10. Wanneer de pipeline is voltooid, switch via stap 1 en 2 terug naar de adf-linked.
+11. Click on **Monitor** on the left side. You will now immediately land on **Pipeline runs** and `PL_wait` should be among the list of executed pipelines.
 
-11. Klik aan de linkerkant op **Monitor**. Je komt nu meteen bij **Pipeline runs** uit en zou de `PL_wait` tussen de lijst van uitgevoerde pipelines dienen te staan.
-
-12. Als laatste zou je nog even kunnen kijken naar de doorlooptijd van de twee pipelines (in de linked en de niet-linked factory). Wat valt je op? Hoe zou je dit verklaren?
+12. Finally, you could take a look at the run time of the two pipelines (in the linked and the non-linked factory). What do you notice? How would you explain this?
 
 ## Inhoudsopgave
 

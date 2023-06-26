@@ -1,52 +1,54 @@
+Here's the English translation of the provided text:
+
 # Lab 6 - Triggers
 
-*Vereisten*
+*Requirements*
 
-Om het lab te kunnen starten is het van belang dat Lab5 is afgerond.
+To be able to start the lab, it is important that Lab5 has been completed.
 
-*Doel*
+*Objective*
 
- We hebben nu pipelines gemaakt en handmatig aangezet. Dit is natuurlijk erg omslachtig, zeker als je incrementeel of nachtverwerkingen wilt realiseren. Dit kunnen wij automatiseren door het gebruik van triggers. Volg de opdrachten stap voor stap.
+We have now created pipelines and manually started them. This is, of course, very cumbersome, especially if you want to realize incremental or night-time processing. We can automate this by using triggers. Follow the tasks step by step.
 
-## Opdracht 1 - Triggers
+## Task 1 - Triggers
 
-1. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Triggers**. 
+1. Click on the **toolbox** (Manage) on the left. Then click on **Triggers** on the left side.
 
-2. Klik op **New**, een nieuw scherm zal naar voren komen om trigger aan te kunnen maken. 
+2. Click on **New**, a new screen will appear to be able to create a trigger.
 
-3. Geef de trigger een duidelijke naam. Het aangeraden format begint met TR_, naam van de pipeline die getriggerd wordt.
+3. Give the trigger a clear name. The recommended format starts with TR_, followed by the name of the pipeline being triggered.
 
-4. Kies bij **Type** de optie **Schedule**. Zet de **Start date** op vandaag en 10 minuten later dan het nu is. Er zijn meer verschillende opties zoals je hebt kunnen zien zoals:
+4. Choose the **Schedule** option under **Type**. Set the **Start date** to today and 10 minutes later than the current time. There are several different options as you have been able to see, such as:
 
-    *Schedule:* Een **Schedule trigger** kan 1 of meerdere pipelines uitvoeren op het opgegeven schema. Je hebt zelf de controle en flexibiliteit wanneer een trigger af moet gaan en stelt je in staat om dus een start en einddatum in te stellen.
+    *Schedule:* A **Schedule trigger** can execute 1 or more pipelines based on the specified schedule. You have control and flexibility as to when a trigger should fire, allowing you to set a start and end date.
 
-    *Tumbeling window:* Een **Tumbeling window trigger** kan 1 pipeline uitvoeren voor elk gedefineerd tijdsframe. Je gebruikt deze voor tijdgebaseerde data, zodat je hier iets mee kan doen.
+    *Tumbling window:* A **Tumbling window trigger** can execute 1 pipeline for each defined time frame. You use this for time-based data so you can do something with it.
 
-    *Event Trigger:* Een **Event trigger** kan 1 of meerdere pipelines uitvoeren gebaseerd op een gebeurtenis in een blobstorage. Zoals bij het aanmaken of verwijderen van een bestand.
+    *Event Trigger:* An **Event trigger** can execute 1 or more pipelines based on an event in blob storage, such as the creation or deletion of a file.
 
-    *Custom Trigger:* Een **Custom trigger** kan 1 of meerdere pipeles uitvoeren gebaseerd op een event uit de **Event Grid** dienst.
+    *Custom Trigger:* A **Custom trigger** can execute 1 or more pipelines based on an event from the **Event Grid** service.
 
-5. Vul bij **Time zone** het volgende in: **Amsterdam** en kies de optie **Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna (UTC+1)**.
+5. For **Time zone**, fill in the following: **Amsterdam** and choose the option **Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna (UTC+1)**.
 
-6. Zet de **Recurrence** op 1 minuten.
+6. Set the **Recurrence** to 1 minute.
 
-7. Vink **Specify an end date** aan en zet deze op 5 minuten later dan de gekozen **Start date** en klik vervolgens op **OK**.
+7. Check **Specify an end date** and set it 5 minutes later than the chosen **Start date** and then click on **OK**.
 
-8. Klik links op het **Potloodje** (Author) en klik vervolgens de `PL_copy_master` pipeline aan.
+8. Click on the **Pencil** (Author) on the left and then click on the `PL_copy_master` pipeline.
 
-9. Klik op **Add trigger** en vervolgens **New/Edit**.
+9. Click on **Add trigger** and then **New/Edit**.
 
-10. Klik bij **Choose Triggers** de trigger die je zojuist hebt gemaakt. Het scherm van de trigger zal verschijnen. Mocht het al later zijn dan de tijd die je had ingesteld pas deze nu aan inclusief de eindtijd.
+10. At **Choose Triggers**, click on the trigger you just created. The trigger's screen will appear. If it's already later than the time you set, adjust this now, including the end time.
 
-11. Zet de **Status** op **Started** en klik op **OK** en vervolgens nog één keer op **OK**.
+11. Set the **Status** to **Started** and click **OK** and then **OK** again.
 
-12. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+12. Click on the **Blue button** with the text **Publish all** and then click on the **Publish** button.
 
-13. Klik aan de linkerkant op **Monitor** en ga naar **pipeline runs**. Klik rond de starttijd op **Refresh**, je zult zien dat je pipeline automatisch is afgetrapt.
+13. Click on **Monitor** on the left side and go to **pipeline runs**. Click on **Refresh** around the start time, you will see that your pipeline has automatically been triggered.
 
-## Inhoudsopgave
+## Table of Contents
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
 2. [Integration Runtimes](../Lab2/LabInstructions2.md)
 3. [Linked Services](../Lab3/LabInstructions3.md)
 4. [Datasets](../Lab4/LabInstructions4.md)
@@ -54,4 +56,4 @@ Om het lab te kunnen starten is het van belang dat Lab5 is afgerond.
 6. [Triggers](../Lab6/LabInstructions6.md)
 7. [Global Parameters](../Lab7/LabInstructions7.md)
 8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)
