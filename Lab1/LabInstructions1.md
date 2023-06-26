@@ -92,4 +92,4 @@ In this series of assignments, the environment is set up, you prepare the data, 
 6. [Triggers](../Lab6/LabInstructions6.md)
 7. [Global Parameters](../Lab7/LabInstructions7.md)
 8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)
