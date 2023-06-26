@@ -1,44 +1,43 @@
 
-# Lab 9 - Batching en DIUs
+# Lab 9 - Batching and DIUs
 
-*Vereisten*
+*Requirements*
 
-Om het lab te kunnen starten is het van belang dat Lab8 is afgerond.
+In order to start the lab, it's important that Lab 8 is completed.
 
-*Doel*
+*Objective*
 
-We hebben nu zo goed als alles behandeld rondom de standaard orchestratie in de ADF. Toch kan het voorkomen dat enkele pipelines zoveel data moeten overhalen dat ze niet heel vlot draaien. Er zijn enkele knoppen waar nog aan gedraaid kan worden om dit sneller te kunnen laten verlopen in de vorm van Batching en DIUs. Volg de opdrachten stap voor stap.
+We've now covered just about everything regarding standard orchestration in the ADF. However, there may be situations where certain pipelines have to pull so much data that they don't run very smoothly. There are a few buttons that can still be tweaked to speed this up in the form of Batching and DIUs. Follow the assignments step by step.
 
-## Opdracht 1 - Batching
+## Assignment 1 - Batching
 
-1. Ga naar de `PL_copy_Deltaload_Training` pipeline en klik binnen de **ForEach** op de **Copy data** activiteit.
+1. Go to the `PL_copy_Deltaload_Training` pipeline and click on the **Copy data** activity within the **ForEach**.
 
-2. Ga naar de tab **Sink**. Onder **Pre-copy script** zie je de optie **Write batch size** en vul hier 1 in.
+2. Go to the **Sink** tab. Under **Pre-copy script**, you'll see the option **Write batch size**. Fill in 1 here.
 
-3. Klik op **Debug** en wacht tot de pipeline klaar is. Je zult zien dat het nu heel lang duurt om alles te laden omdat er 1 rij per keer wordt weggeschreven. Dit is natuurlijk niet gunstig en je wilt dit zo hoog mogelijk hebben. Normaliter bepaalt de ADF zelf hoe groot zijn Batch sizes zijn, dit is meestal tussen de 1200 en 1500 regels. Het kan zijn dat je een proces hebt, waarbij het van belang is dat alle data in 1x geladen wordt zodat er geen mismatches kunnen ontstaan. Dit is bijvoorbeeld erg fijn als je een row-based datamodel hanteert. 
+3. Click on **Debug** and wait until the pipeline is done. You'll see that it now takes a long time to load everything because only one row at a time is written. This, of course, is not favorable, and you want this to be as high as possible. Normally, the ADF itself determines how large its batch sizes are, usually between 1200 and 1500 lines. It could be that you have a process where it is important that all data is loaded at once so that no mismatches can occur. This is especially nice if you use a row-based data model.
 
-4. Verander de **batchsize** van 1 in iets anders,  klik op **Debug** en bekijk je resultaten. Probeer enkele **batchsizes** tot het moment dat het geen verschil meer maakt.
+4. Change the **batch size** from 1 to something else, click on **Debug**, and check your results. Try a few **batch sizes** until it makes no difference anymore.
 
-## Opdracht 2 - Data Integration Units.
+## Assignment 2 - Data Integration Units.
 
-1. Ga in de **Copy Tables** activiteit naar de tab **Settings**.
-   Je ziet hier de optie voor **Data integration unit**, en deze staat standaard op **Auto**. Hiermee bepaalt de ADF zelf hoeveel DIUs het denkt nodig te hebben voor een bepaalde workload. Vaak is de bepaling accuraat maar...:
-     * Bij **Auto** start het aantal DIU's op 4. Door dat standaard op 2 in te stellen realiseer je al een redelijke besparing.
-     * Soms heb je bij voorbaat extra rekenkracht nodig, dan kun je de DIU's juist handmatig verhogen.
+1. In the **Copy Tables** activity, go to the **Settings** tab. Here you see the option for **Data integration unit**, which is set to **Auto** by default. With this, the ADF determines itself how many DIUs it thinks it needs for a certain workload. Often, this determination is accurate, but...:
+     * With **Auto**, the number of DIUs starts at 4. By defaulting this to 2, you can already achieve considerable savings.
+     * Sometimes you need extra computing power in advance, then you can manually increase the DIUs.
 
-2. Pas de **Data integration unit** naar **2**.
+2. Change the **Data integration unit** to **2**.
 
-3. Klik op **Debug** en wacht tot de pipeline klaar is. Bekijk de resultaten, het meeste zal klaar zijn tussen de 10 en 15 seconden. 
+3. Click on **Debug** and wait until the pipeline is done. Check the results, most will be ready between 10 and 15 seconds.
 
-4. Verander de **Data integration unit** van 2 in iets anders,  klik op **Debug** en bekijk je resultaten. Probeer enkele **Data integration units** tot het moment dat het geen verschil meer maakt.
+4. Change the **Data integration unit** from 2 to something else, click on **Debug**, and check your results. Try a few **Data integration units** until it makes no difference anymore.
 
-Wil je meer weten over de kosten die je aan ADF kwijt bent? Koen Verbeeck schreef dit handige artikel: [How you can save up to 80% on Azure Data Factory pricing](https://sqlkover.com/how-you-can-save-up-to-80-on-azure-data-factory-pricing/)
+Do you want to know more about the costs you incur with ADF? Koen Verbeeck wrote this helpful article: [How you can save up to 80% on Azure Data Factory pricing](https://sqlkover.com/how-you-can-save-up-to-80-on-azure-data-factory-pricing/)
 
-## Einde Lab 9
+## End of Lab 9
 
-## Inhoudsopgave
+## Table of Contents
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
 2. [Integration Runtimes](../Lab2/LabInstructions2.md)
 3. [Linked Services](../Lab3/LabInstructions3.md)
 4. [Datasets](../Lab4/LabInstructions4.md)
@@ -46,4 +45,4 @@ Wil je meer weten over de kosten die je aan ADF kwijt bent? Koen Verbeeck schree
 6. [Triggers](../Lab6/LabInstructions6.md)
 7. [Global Parameters](../Lab7/LabInstructions7.md)
 8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)
