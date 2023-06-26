@@ -4,7 +4,6 @@
    "parameters": {
       "initials": {
          "type": "string",
-         "defaultValue": "",
          "metadata": {
             "description": "Your initials (so for Koos van Strien that would be KvS)"
          }
