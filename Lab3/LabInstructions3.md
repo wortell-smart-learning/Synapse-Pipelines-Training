@@ -1,103 +1,103 @@
 # Lab 3 - Linked Services
 
-*Vereisten*
+*Requirements*
 
-Om het lab te kunnen starten is het van belang dat Lab2 is afgerond.
+To start the lab, it's essential that Lab2 has been completed.
 
-*Doel*
+*Objective*
 
-Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties met de betreffende diensten gemaakt worden. Gedurende het lab leg je meerdere connecties, met o.a.:
+To allow data to flow over the recently created IRs, connections to the respective services must be made. During the lab, you will establish multiple connections, with e.g.:
 
-* een SQL database (bijv. een bronsysteem of Data Warehouse)
-* een Storage account (bijv. zoals een Data Lake)
-* een File system (bijv. een share)
+* a SQL database (e.g. a source system or Data Warehouse)
+* a Storage account (e.g. like a Data Lake)
+* a File system (e.g. a share)
 
-Sommige van deze bronnen kun je benaderen met behulp van *managed identity*: in dat geval worden binnen AAD rechten uitgedeeld aan de Data Factory. Andere bronnen zul je moeten benaderen met een *secret*, bijvoorbeeld een certificaat of een gebruikersnaam/wachtwoord. Deze *secrets* sla je in Azure centraal op in de Key Vault. Vanuit daar kun je dan eenvoudig bepalen welke diensten welke *secrets* mogen bekijken.
+Some of these sources can be accessed with the help of *managed identity*: in this case, AAD grants rights to the Data Factory. Other sources you will have to access with a *secret*, such as a certificate or a username/password. These *secrets* are centrally stored in Azure in the Key Vault. From there, you can easily determine which services can view which *secrets*.
 
-## Opdracht 1 - Azure Key Vault
+## Task 1 - Azure Key Vault
 
-Azure Data Factory is eenvoudig te koppelen met Azure Key Vault, waarin we wachtwoorden en connection strings opslaan. We kunnen een verbinding naar een bron dan laten vullen door een *secret* uit de *Key Vault*. Op het moment dat ADF verbinding maakt met die bron, zal ADF eerst de *secret* ophalen uit de Key Vault.
+Azure Data Factory can be easily linked with Azure Key Vault, where we store passwords and connection strings. We can have a connection to a source filled by a *secret* from the *Key Vault*. At the moment that ADF makes a connection with that source, ADF will first retrieve the *secret* from the Key Vault.
 
-Voordat we echter *secrets* uit de Key Vault kunnen benaderen, zullen we de Key Vault eerst moeten aankoppelen als *Linked Service*.
+Before we can access *secrets* from the Key Vault, we will have to attach the Key Vault as a *Linked Service* first.
 
-1. Ga terug naar de **niet** linked ADF. Klik vervolgens weer op Manage. Ga naar **Linked Services**.
-2. klik op **New**, en zoek naar **Key vault**. Klik de **Azure Key vault** aan.
-3. Geef de Linked services een duidelijke naam. Het aangeraden format is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
-   * Praktijkvoorbeeld: `LS_KV_Dataplatform_PRD`
-   * Trainingsvoorbeeld: `LS_KV_rcc4bh5724jim_Training`
-     In de naamgeving is een minteken (`-`) niet toegestaan. Een *underscore* (`_`) is wel mogelijk.
-4. Kies de **Azure Subscription** die je in de training gebruikt
-5. Kies bij **Azure Key vault Name** de key vault uit jouw Key Vault (deze start met `kv_`).
-6. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
-7. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
-8. De Linked Service naar de Azure Key Vault is nu aangemaakt, maar deze is nog niet gepubliseerd. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de aanpassingen live te staan, en kan de Key Vault gebruikt worden.
+1. Go back to the **unlinked** ADF. Then click on Manage again. Go to **Linked Services**.
+2. Click on **New**, and search for **Key vault**. Click on the **Azure Key vault**.
+3. Give the Linked services a clear name. The recommended format is to start with LS_, the name of the service in your resource group and ending with _environment.
+   * Practical example: `LS_KV_Dataplatform_PRD`
+   * Training example: `LS_KV_rcc4bh5724jim_Training`
+     In the naming, a dash (`-`) is not allowed. An *underscore* (`_`) is possible.
+4. Choose the **Azure Subscription** that you are using in the training.
+5. At **Azure Key vault Name** choose the key vault from your Key Vault (this starts with `kv_`).
+6. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
+7. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
+8. The Linked Service to the Azure Key Vault has now been created, but it has not been published yet. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button. By publishing, the changes go live, and the Key Vault can be used.
 
-## Opdracht 2 - Databases
+## Task 2 - Databases
 
-Met de Key Vault aangesloten is het mogelijk om wachtwoorden op te halen om een beveiligde verbinding op te zetten met bijvoorbeeld de databases.
+With the Key Vault connected, it is possible to retrieve passwords to set up a secure connection with, for example, the databases.
 
-1. Klik op **New**, en zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
-2. Geef de Linked services een duidelijke naam, bijvoorbeeld `LS_sqldb_source`
-3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
-4. Kies bij de **Server Name** de Server naam in zoals deze in je resourcegroup staat.
-5. Kies bij de **Database Name** de source Database naam in zoals deze in je resourcegroup staat. De source database begint met **sqldb-source-** als naam.
-6. Vul bij de **User Name** het SQL admin account in genaamd: **sqladmin**.
-7. Bij de optie tussen **Password** en **Azure Key Vault**, kies de Key vault.
-8. Kies bij **AKV linked service** de eerder aangemaakte Key Vault Linked Service.
-9. Kies bij **Secret Name** de optie **sqladmin**
-10. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
-11. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
-12. Doe Opdracht 2 nogmaals, maar nu voor de **sqldb-target** Database.
+1. Click on **New**, and search for **SQL**. Double-click the **Azure SQL Databases**.
+2. Give the Linked services a clear name, for example `LS_sqldb_source`
+3. Choose at **Connect via integration runtime** your own made **Azure IR**.
+4. Choose at **Server Name** the Server name as it appears in your resource group.
+5. Choose at **Database Name** the source Database name as it appears in your resource group. The source database starts with **sqldb-source-** as a name.
+6. Fill in the **User Name** with the SQL admin account named: **sqladmin**.
+7. For the option between **Password** and **Azure Key Vault**, choose the Key vault.
+8. Choose at **AKV linked service** the previously created Key Vault Linked Service.
+9. Choose at **Secret Name** the option **sqladmin**
+10. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
+11. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
+12. Repeat Task 2, but now for the **sqldb-target** Database.
 
-Je hebt nu twee Linked Services aangemaakt. Dit maakt het voor ADF mogelijk om verbinding te maken met de twee databases.
+You have now created two Linked Services. This enables ADF to connect to the two databases.
 
-## Opdracht 3 - Storage Account
+## Task 3 - Storage Account
 
-De tweede bron die we toevoegen is een Storage Account. Deze kunnen we bijvoorbeeld gebruiken als *landing zone* voor de data, of als Data Lake.
+The second source we add is a Storage Account. We can use this, for example, as a *landing zone* for the data, or as a Data Lake.
 
-1. klik op **New**, en zoek naar **storage**. Klik de **Azure Blob Storage** aan.
-2. Geef de Linked services een duidelijke naam.
-3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
-4. Kies bij **Storage account name** het storage account zoals deze in je resourcegroup staat.
-5. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
-6. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+1. Click on **New**, and search for **storage**. Click on the **Azure Blob Storage**.
+2. Give the Linked services a clear name.
+3. Choose at **Connect via integration runtime** your own made **Azure IR**.
+4. Choose at **Storage account name** the storage account as it appears in your resource group.
+5. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
+6. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
 
-De rechten op het Storage Account zijn uitgedeeld via Azure AD. Hier heb je dus geen *secret* voor hoeven gebruiken.
+The rights on the Storage Account are distributed via Azure AD. So you didn't have to use a *secret* for this.
 
-## Opdracht 4 - File system
+## Task 4 - File system
 
-De derde bron die we toevoegen is een on-premises filesystem. Omdat het filesystem on-premises staat, moeten we hier de juiste Integration Runtime moeten gebruiken! Ook is deze VM niet in ons domein, waardoor we moeten aangeven met welke username / password we zullen inloggen
+The third source we add is an on-premises filesystem. Because the filesystem is on-premises, we need to use the correct Integration Runtime! Also, this VM is not in our domain, so we need to indicate which username/password we will log in with.
 
-1. klik op **New**, en zoek naar **file**. Klik de **File system** aan.
-2. Geef de Linked services een duidelijke naam.
-3. Kies bij **Connect via integration runtime** de **Self-Hosted IR**
-4. Vul bij **Host** het volgende in **D:\\**
-5. Vul bij de **User Name** het SQL admin account in genaamd: **sqladmin**.
-6. Bij de optie tussen **Password** en **Azure Key Vault**, kies de Key vault.
-7. Kies bij **AKV linked service** de eerder aangemaakte Key Vault Linked Service.
-8. Kies bij **Secret Name** de optie **sqladmin**
-9. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Dit gaat fout, maar dit lossen we zo meteen op!
-10. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
-11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+1. Click on **New**, and search for **file**. Click on the **File system**.
+2. Give the Linked services a clear name.
+3. Choose at **Connect via integration runtime** the **Self-Hosted IR**.
+4. Fill in the **Host** with the following **D:\\**
+5. Fill in the **User Name** with the SQL admin account named: **sqladmin**.
+6. For the option between **Password** and **Azure Key Vault**, choose the Key vault.
+7. Choose at **AKV linked service** the previously created Key Vault Linked Service.
+8. Choose at **Secret Name** the option **sqladmin**
+9. Click on the **Test Connection** button to validate that the connection can be established. This will fail, but we'll fix that in a moment!
+10. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
+11. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button.
 
-> ## Waarom gaat de verbinding met het File System fout
+> ## Why does the connection with the File System fail
 >
-> Sinds versie 5.22 heeft de Self-Hosted Integration Runtime strengere beveiligingsmaatregelen. Eén van die maatregelen is dat een self-hosted IR niet zomaar bij lokale bestanden mag.
+> Since version 5.22, the Self-Hosted Integration Runtime has stricter security measures. One of these measures is that a self-hosted IR cannot just access local files.
 >
-> In de training willen we deze bestanden echter juist benaderen om te simuleren dat er een on-premises bron aanwezig is. Daarom zullen we deze beveiligingsmaatregel moeten uitzetten. Dit doe je als volgt:
+> In the training, however, we want to access these files to simulate that an on-premises source is present. Therefore, we will have to turn off this security measure. Here's how:
 >
-> 1. Maak verbinding met de VM
-> 2. Open het startmenu en typ **Powershell**
-> 3. Kies **Run as administrator**  
->    In Powershell voer je nu het volgende in:
+> 1. Connect to the VM
+> 2. Open the start menu and type **Powershell**
+> 3. Choose **Run as administrator**  
+>    In Powershell, you now enter the following:
 > 4. `cd 'C:\Program Files\Microsoft Integration Runtime\5.0\Shared\'`
 > 5. `.\dmgcmd -DisableLocalFolderPathValidation`
 >
-> De instelling wordt nu aangepast, en de IR herstart. De Linked Service zou nu moeten werken **Test Connection** naar `D:\` moeten werken.
+> The setting is now adjusted, and the IR restarts. The Linked Service should now work **Test Connection** to `D:\` should work.
 
-## Inhoudsopgave
+## Table of Contents
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
 2. [Integration Runtimes](../Lab2/LabInstructions2.md)
 3. [Linked Services](../Lab3/LabInstructions3.md)
 4. [Datasets](../Lab4/LabInstructions4.md)
@@ -105,4 +105,4 @@ De derde bron die we toevoegen is een on-premises filesystem. Omdat het filesyst
 6. [Triggers](../Lab6/LabInstructions6.md)
 7. [Global Parameters](../Lab7/LabInstructions7.md)
 8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)
