@@ -33,9 +33,7 @@ Data from an on-premises environment or a shielded network is not directly acces
 1. Go back to your Virtual Machine if you have it open, otherwise, you follow the steps from Lab1, assignment 2 again.
 2. Go to the Azure portal (portal.azure.com) and log in with the account with which you perform the training.
 3. Go back to the ADF (without linked in the name) via the resource group as explained in assignment 1.
-4. Once you arrive at the screen of the IRs, click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Self-Hosted** and **
-
-continue** again.
+4. Once you arrive at the screen of the IRs, click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Self-Hosted** and **continue** again.
    > A Self-Hosted IR usually runs on an on-premises Virtual Machine with ports 443 and 1433 open so it can access Azure for both the Database (1433) and a storage account (443). The minimum requirements to run a Self-Hosted IR properly are:
    >
    > * 4 CPU cores of 2GHz or faster
