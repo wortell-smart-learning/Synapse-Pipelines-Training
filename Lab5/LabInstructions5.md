@@ -1,92 +1,95 @@
 # Lab 5 - Pipelines
 
-*Vereisten*
+*Requirements*
 
-Om het lab te kunnen starten is het van belang dat Lab4 is afgerond.
+In order to start the lab, it is essential that Lab4 has been completed.
 
-*Doel*
+*Objective*
 
- Het wordt nu tijd dat we data gaan verplaatsen van punt A naar punt B. Dit doen we door een pipeline aan te maken met een copy activiteit. De activiteit zorgt ervoor dat er een Source en Sink (Destination / Target) aan elkaar gekoppeld kunnen worden en dat er letterlijk een pump & dump plaats kan vinden. Volg de opdrachten stap voor stap.
+It's time now that we start moving data from point A to point B. We do this by creating a pipeline with a copy activity. The activity ensures that a Source and Sink (Destination / Target) can be connected to each other and that a literal pump & dump can take place. Follow the instructions step by step.
 
-## Opdracht 1 - Database pipelines
+## Assignment 1 - Database pipelines
 
-1. Naast **Pipeline** zie je op dit moment een 0 staan. Wanneer je met je muis op het vak van **Pipeline** gaat staan zie je een optie met **3 bolletjes** (Pipeline Actions) verschijnen aan de rechterkant. Klik de **Pipeline Actions** aan en klik vervolgens op **New Pipeline**.
+1. Next to **Pipeline**, you currently see a 0. When you hover over the **Pipeline** box with your mouse, an option with **3 dots** (Pipeline Actions) appears on the right side. Click on **Pipeline Actions** and then click on **New Pipeline**.
 
-2. Geef de Pipeline een duidelijke naam. Het aangeraden format is om te beginnen met `PL_`, het soort activiteit, (schema), de tabel/bestands naam, bron (source), doel (sink) en eindigend met `_omgeving`. Heb je een pipeline die meerdere pipelines orchistreerd kan je het format globaler houden.
-   * Praktijkvoorbeeld: `PL_copy_visits_clubmanager_to_datalake_prd`
-   * Trainingsvoorbeeld: `PL_copy_address_training`
+2. Give the Pipeline a clear name. The recommended format is to start with `PL_`, the type of activity, (schema), the table/file name, source, target, and end with `_environment`. If you have a pipeline that orchestrates multiple pipelines, you can keep the format more general.
+   * Practical example: `PL_copy_visits_clubmanager_to_datalake_prd`
+   * Training example: `PL_copy_address_training`
 
-3. Aan de linkerkant zien we een lijst met de categorieen van de **Activities**. Klik op **Move & transform**. 2 opties zullen verschijnen **Copy data** en **Data flow**. De Data flow houden we buiten beschouwing voor vandaag. Klik en sleep de **Copy data** naar het canvas in het midden van het scherm.
+3. On the left side we see a list of **Activities** categories. Click on **Move & transform**. 2 options will appear: **Copy data** and **Data flow**. We will ignore the Data flow for today. Click and drag the **Copy data** to the canvas in the middle of the screen.
 
-4. Geef de Activiteit een duidelijke naam.
+4. Give the Activity a clear name.
 
-5. Klik op de tab **Source**. Er wordt gevraagd om een **Source dataset** op te geven. Klik deze aan en kies de Dataset voor **Address** vanuit de **sqldb-source**.
+5. Click on the **Source** tab. You will be asked to specify a **Source dataset**. Click on it and choose the Dataset for **Address** from the **sqldb-source**.
 
-6. Klik op de tab **Sink**. Er wordt gevraagd om een **Sink dataset** op te geven. Klik deze aan en kies de Dataset voor **Address** vanuit de **sqldb-target**.
+6. Click on the **Sink** tab. You will be asked to specify a **Sink dataset**. Click on it and choose the Dataset for **Address** from the **sqldb-target**.
 
-7. Verschillende opties zullen verschijnen, waaronder ook de optie voor een **Pre-copy script**. Hier kan je SQL-code uitvoeren voordat de Copy activiteit data gaat verplaatsen. Gezien we de pipeline meerdere keren willen kunnen draaien zonder dubbele data te krijgen kan je hier het volgende invullen/ plakken:
+7. Various options will appear, including the option for a **Pre-copy script**. Here you can execute SQL code before the Copy activity starts moving data. Since we want to be able to run the pipeline multiple times without getting duplicate data, you can fill in / paste the following:
 
    ```sql
    Truncate table [Stg].[Address]
    ```
 
-8. Klik op de tab **Mapping**. Je zult een knop zien met **Import schemas**, klik hierop. 
-   > Weet je nog dat bij Datasets de kolommen en datatypes kunnen komen te staan? Door dit proces te draaien worden de kolommen die matchen aan elkaar gekoppeld. Hiermee weet je zeker dat de data in de juiste kolom terecht komt. Dit is handig voor een tabel waarbij er een 1 op 1 mapping is. Doe je meerdere tabellen tegelijk dan zijn er andere opties.
+8. Click on the **Mapping** tab. You will see a button with **Import schemas**, click on it. 
+   > Remember how Datasets can list the columns and datatypes? By running this process, matching columns are linked to each other. This ensures that the data ends up in the right column. This is useful for a table where there is a 1 to 1 mapping. If you are doing multiple tables at once, there are other options.
 
-9. Doe stap 1 t/m 8 opnieuw maar nu ook voor **ProductCategoryDiscount** en **SalesPersonal**. Hiervoor kan je de volgende **Pre-copy scripts** gebruiken:
+9. Repeat steps 1 to 8, but now also for **ProductCategoryDiscount** and **SalesPersonal**. For this you can use the following **Pre-copy scripts**:
    * `Truncate table [Stg].[ProductCategoryDiscount]`
    * `Truncate table [Stg].[SalesPersonal]`
 
-10. Wanneer alle 3 de pipelines zijn aangemaakt. Maak een nieuwe pipeline aan genaamd: `PL_copy_Master_Training`.
+10. When all 3 pipelines have been created, create a new pipeline named: `PL_copy_Master_Training`.
 
-11. Onder de tab van **Activities** is er een optie genaamd **General**, welke een **Execute Pipeline** activiteit bevat. Sleep er 3 naar het canvas.
+11. Under the **Activities** tab there is an option called **General**, which contains an **Execute Pipeline** activity. Drag 3 onto the canvas.
 
-12. Hernoem elke pipeline 1 voor 1 naar de 3 pipelines die je hiervoor hebt aangemaakt voor **Address**, **SalesPersonal** en **ProductCategoryDiscount**. Mocht de naam te lang zijn voor wat mag, maak hem voor nu wat korter.
+12. Rename each pipeline one by one to the 3 pipelines you have created before for **Address**, **SalesPersonal**, and **ProductCategoryDiscount**. If the name is too long for what is allowed, make it shorter for now.
 
-13. Ga per pipeline naar de tab **Settings** en kies de bijbehorende pipeline. Doe dit voor alle 3 de pipelines.
+13. Go to the **Settings** tab for each
 
-14. Op dit moment zouden alle 3 de pipelines parallel lopen, wat makkelijk zou moeten kunnen gezien er geen afhankelijkheid van elkaar is. Ondanks dat gaan we ze sequentieel maken. Klik op 1 van de 3 pipelines. Je zult aan de rechterzijde van het blokje van de pipeline **vier vierkantjes met symbolen** zien. Klik hier op en een lijst met de volgende opties komt naar voren:
+ pipeline and choose the corresponding pipeline. Do this for all 3 pipelines.
 
-    On Skip = Wanneer de pipeline wordt overgeslagen ga door naar de volgende.
+14. At this moment, all 3 pipelines would run in parallel, which should be easy as there is no dependence on each other. Despite this, we are going to make them sequential. Click on one of the 3 pipelines. On the right side of the pipeline block you will see **four squares with symbols**. Click on it and a list with the following options will appear:
 
-    On Success = Wanneer de pipeline succesvol heeft gedraaid ga door naar de volgende.
+    On Skip = When the pipeline is skipped, move on to the next one.
 
-    On Failure = Wanneer de pipeline faalt ga door naar de volgende.
+    On Success = When the pipeline has run successfully, move on to the next one.
 
-    On Completion = Wanneer de pipeline klaar is, ongeacht sucess of falen ga door naar de volgende.
+    On Failure = When the pipeline fails, move on to the next one.
 
-    Klik en sleep het **groene blokje** naar 1 van de andere pipelines en doe dat vervolgens nog één keer voor een andere pipeline. Je zou nu alle 3 de pipelines aan elkaar verbonden hebben met 2 **groene pijlen**.
+    On Completion = When the pipeline is finished, regardless of success or failure, move on to the next one.
 
-15. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
+    Click and drag the **green block** to one of the other pipelines, and then do it again for another pipeline. You should now have connected all 3 pipelines to each other with 2 **green arrows**.
 
-16. Hoera! je eerste pipelines klaar. Nu willen we de pipeline nog draaien, dit kan op verschillende manieren:
-    * In het scherm van de pipeline zelf zie je een `Play knop` met de tekst **Debug**. Dit zorgt ervoor dat je de pipeline draait zoals je hem nu hebt gemaakt. Ook als je nog niet hebt opgeslagen of gepubliceerd, wordt de pipeline uitgevoerd zoals je deze nu in je scherm ziet.
-    * Naast **Debug** zien we een **Bliksemschicht** met de tekst **Add trigger**. Als je deze aanklikt krijg je de optie voor **Trigger now**, hiermee draai je de pipeline zoals deze gepubliceerd is. Klik **Trigger now** aan en een optie zou verschijnen om parameter waarde in te vullen, gezien deze er niet zijn kunnen we op **OK** klikken.
+15. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button. By publishing, the other changes become **Live**, and can be used.
 
-17. Wacht tot je de melding rechtsboven in beeld krijgt met dat de pipeline succesvol heeft gedraait. Draai de pipeline hierna nog eens via de **Debug knop**. Je zult zien dat de informatie over het draaien van de pipeline onder in beeld verschijnt.
+16. Hooray! Your first pipelines are ready. Now we want to run the pipeline, which can be done in different ways:
+    * In the pipeline screen, you see a `Play button` with the text **Debug**. This allows you to run the pipeline as you have created it now. Even if you haven't saved or published yet, the pipeline will be executed as you see it on your screen now.
+    * Next to **Debug** we see a **Lightning bolt** with the text **Add trigger**. If you click on this, you get the option for **Trigger now**, with this you run the pipeline as it is published. Click **Trigger now** and an option would appear to fill in parameter value, since there are none we can click **OK**.
 
-## Opdracht 2 - Monitoring
+17. Wait until you get the message at the top right of the screen saying that the pipeline has run successfully. Run the pipeline again via the **Debug button**. You will see that the information about the pipeline running appears at the bottom of the screen.
 
-In het onderdeel "monitoring" kun je niet alleen bekijken hoe eerdere pipelines gedraaid hebben, maar je kunt ook notificaties uitsturen wanneer er aan bepaalde voorwaarden voldaan wordt.
 
-1. Klik aan de linkerkant op het metertje (**Monitor**). Je komt nu meteen bij **Pipeline runs** uit, en zal in de horizontale navigatie balk 2 opties zien in de vorm van **Triggered** en **Debug**. In beide tabs zou zowel de `PL_copy_Master` pipeline moeten staan als de bijhorende onderliggende pipelines.
+## Assignment 2 - Monitoring
 
-2. Klik de één van de onderliggende pipelines aan, in 1 van de 2 tabbladen. Net als bij het draaien van de Debug variant zie je een regel met informatie over de gedraaide pipeline. Houd je muis op de naam van de activity onderin het scherm, er verschijnen nu 2 opties: **Input**, **Output** en **Details**.
+In the "monitoring" section, you can not only view how previous pipelines have run, but also send notifications when certain conditions are met.
 
-3. Klik op **Input**, je ziet nu een stuk JSON code waaruit te lezen is welke kolom uit de source, naar welke kolom in de sink is gegaan. Hierin kan je ook informatie zien als je specifieke data d.m.v. een query ophaalt, parameters, variabelen en meer. Sluit de **Input Tab** af door op het **Kruisje** te klikken.
+1. Click on the meter icon (**Monitor**) on the left side. You will now immediately go to **Pipeline runs**, and will see 2 options in the form of **Triggered** and **Debug** in the horizontal navigation bar. In both tabs, the `PL_copy_Master` pipeline should be present, as well as the corresponding underlying pipelines.
 
-4. Klik op **Output**, ook hier zie je een stuk JSON code. De **Output** bevat informatie over het draaien, zoals: Hoelang duurde het, hoeveel rijen zijn gelezen en hoeveel zijn overgehaald en meer. Sluit de **Output Tab** af door op het **Kruisje** te klikken.
+2. Click on one of the underlying pipelines, in one of the two tabs. Just like when running the Debug variant, you see a line of information about the run pipeline. Hover your mouse over the name of the activity at the bottom of the screen, now 2 options appear: **Input**, **Output**, and **Details**.
 
-5. Klik op **Details**, je ziet een visuele weergaven van de **Output**.
-Sluit de **Details** af door op het **Kruisje** te klikken.
+3. Click on **Input**, now you will see a piece of JSON code from which you can read which column from the source went to which column in the sink. In this, you can also see information if you fetch specific data using a query, parameters, variables, and more. Close the **Input Tab** by clicking on the **Cross**.
 
-6. Aan de linkerkant zien we **Notifications** met de optie **Alerts & metrics**. Klik deze aan.
+4. Click on **Output**, here too you will see a piece of JSON code. The **Output** contains information about the run, such as: How long did it take, how many rows were read and how many were transferred, and more. Close the **Output Tab** by clicking on the **Cross**.
 
-7. In de horizontale navigatiebalk zien we de optie **New alert rule**. Klik deze aan.
+5. Click on **Details**, you see a visual representation of the **Output**.
+Close the **Details** by clicking on the **Cross**.
 
-8. We gaan een Alert Rule maken die een notificatie stuurt wanneer de pipeline een fout heeft. Geef de **Alert rule name** een duidelijke naam die de lading dekt (bijv. `Alert on error`).
+6. On the left side, we see **Notifications** with the option **Alerts & metrics**. Click on this.
 
-9. Bij **Severity** zijn er meerdere opties mogelijk, namelijk:
+7. In the horizontal navigation bar, we see the option **New alert rule**. Click on this.
+
+8. We're going to create an Alert Rule that sends a notification when the pipeline encounters an error. Give the **Alert rule name** a clear name that covers the situation (e.g., `Alert on error`).
+
+9. Under **Severity**, multiple options are possible:
 
     Sev 0 = Critical
 
@@ -98,74 +101,75 @@ Sluit de **Details** af door op het **Kruisje** te klikken.
 
     Sev 4 = Verbose
 
-    Voor ons doeleinde kiezen we **Sev0**.
+    For our purpose, choose **Sev0**.
 
-10. Klik bij **Targer criteria** op het **Add criteria**. Een lange lijst met opties zal verschijnen voor verschillende soorten metrics waarover gerapporteerd kunnen worden. Kies voor de **Succeeded pipeline runs metrics** en klik op **Continue**.  
+10. Click on **Target criteria** on the **Add criteria**. A long list of options will appear for different types of metrics that can be reported on. Choose the **Succeeded pipeline runs metrics** and click on **Continue**.  
 
-11. Klik bij **Values** de optie bij **Name** aan en kies de `PL_copy_Master` pipeline.
+11. Click on the **Values** option at **Name** and choose the `PL_copy_Master` pipeline.
 
-12. De andere settings kunnen blijven zoals ze zijn. Klik vervolgens op **Add criteria**.
+12. The other settings can remain as they are. Then click on **Add criteria**.
 
-13. Klik bij **Configure Email/SMS/Push/Voice notification** op **Configure notification**.
+13. Click on **Configure Email/SMS/Push/Voice notification** on **Configure notification**.
 
-14. Een nieuwe **Action group** zal aangemaakt moeten worden. Dit is een groep waarin mensen geplaatst kunnen worden om genotificeerd te worden over de door jouw aangemaakte regel. Vul bij **Action group name** een duidelijke naam in en geeft bij **Short name** een herkenbare afkorting van de groepsnaam.
+14. A new **Action group** will need to be created. This is a group in which people can be placed to be notified about the rule you have created. Fill in a clear name at **Action group name** and provide a recognizable abbreviation of the group name at **Short name**.
 
-15. Klik bij **Notifications** op **Add notification** en geeft de **Action name** een duidelijke naam. Kies vervolgens bij **Select which notifications you'd like to receive** de optie **Email** en vul hier een e-mailadres is waar je nu toegang tot hebt. Andere opties mogen ook zodat je deze kan uitproberen. Wanneer je alles hebt toegevoegd dat je wilt, klik je op **Add notification**.
+15. Click on **Notifications** on **Add notification** and give the **Action name** a clear name. Then choose the **Email** option at **Select which notifications you'd like to receive** and enter an email address to which you currently have access. Other options may also be chosen so that you can try them out. When you have added everything you want, click on **Add notification**.
 
-16. Klik vervolgens op **Add action group**. Gaat dit fout, laat het weten aan de trainer.
+16. Then click on **Add action group
 
-17. Klik op **Create alert rule**
+**. If this goes wrong, let the trainer know.
 
-18. Ga terug naar **Pipeline runs** en de tab **Triggered**, houd je muis op de naam van de `PL_copy_Master`. Er verschijnt een `Play knop met pijltjes` (rerun) klik deze aan. Wacht tot pipeline weer klaar is, na iets meer dan een minuut zou je een mail en/of andere notificaties dienen te ontvangen.
+17. Click on **Create alert rule**.
 
+18. Go back to **Pipeline runs** and the **Triggered** tab, hover your mouse over the name of the `PL_copy_Master`. A `Play button with arrows` (rerun) will appear, click on it. Wait until the pipeline is ready again, after just over a minute you should receive an email and/or other notifications.
 
-## Opdracht 3 - Parameters en Variablen
+## Assignment 3 - Parameters and Variables
 
-Met behulp van parameters kun je je pipeline meer dynamisch maken. Bijvoorbeeld door alleen de data op te halen die gewijzigd is na een bepaalde datum/tijd.
+With the help of parameters, you can make your pipeline more dynamic. For example, by only fetching data that has changed after a certain date/time.
 
-1. Klik links op het **Potloodje** (Author) en ga vervolgens terug naar de pipeline voor **Address**.
+1. Click on the **Pencil** (Author) on the left and then go back to the pipeline for **Address**.
 
-2. In de balk onderin zie je de tab **Parameters**, klik deze aan als je hier niet al opzit.
+2. In the bar at the bottom, you see the **Parameters** tab, click on this if you are not already on it.
 
-3. Klik op **New**, een nieuwe parameter wordt aangemaakt. Vul bij **Name** het volgende in: **ModifiedDate**. De **Type** kan op **String** blijven staan. 
+3. Click on **New**, a new parameter is created. Enter the following for **Name**: **ModifiedDate**. The **Type** can remain set to **String**.
 
-4. Klik op het blokje voor de **Copy data**. Klik vervolgens op de tab **Source** en kies bij **Use query** de optie **Query**.
+4. Click on the block for the **Copy data**. Then click on the **Source** tab and select the **Query** option under **Use query**.
 
-5. Er verschijnt nu een Query veld, klik deze aan. Onder het veld verschijnt de optie **Add dynamic content** klik deze aan.
+5. A Query field will now appear, click on this. The option **Add dynamic content** appears below the field, click on this.
 
-6. Type of plak de volgende query in het veld:  
+6. Type or paste the following query into the field:  
 
    ```sql
    SELECT * FROM [SalesLT].[Address] WHERE ModifiedDate >= '@{formatDateTime(pipeline().parameters.ModifiedDate,'yyyy-MM-dd')}'
    ```
 
-7. Wanneer je nu op **Preview data** klikt, krijg je de vraag in een waarde in te vullen. Vul hier **1900-01-01** in om mee te testen. Klik vervolgens op **OK**.
+7. When you now click on **Preview data**, you are asked to enter a value. Enter **1900-01-01** here to test. Then click on **OK**.
 
-8. Ga nu naar de `PL_copy_Master` en klik de "execute pipeline activity" voor **Address** aan. In de tab **Settings** zal je zien dat er gevraagd wordt om een **Value** voor de parameter **ModifiedDate**. We gaan deze niet handmatig vullen, maar met behulp van een variabele.
+8. Now go to the `PL_copy_Master` and click on the "execute pipeline activity" for **Address**. In the **Settings** tab, you will see that a **Value** for the **ModifiedDate** parameter is requested. We are not going to fill this manually, but with the help of a variable.
 
-9. Klik op het canvas en vervolgens op de tab **Variables**. maak een nieuwe variable aan door op **New** te klikken.
+9. Click on the canvas and then on the **Variables** tab. Create a new variable by clicking on **New**.
 
-10. Noem de variabele `FilterDate`
+10. Name the variable `FilterDate`
 
-11. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Set variable** op het canvas. 
+11. From the list of **Activities**, click on the **General** option. Click and drag **Set variable** onto the canvas. 
 
-12. Verbind het **groene blokje** met de **Address** pipeline.
+12. Connect the **green block** with the **Address** pipeline.
 
-13. Klik op het **Set variable** blokje en geef deze een duidelijke naam, bijvoorbeeld "Stel ModifiedDate in".
+13. Click on the **Set variable** block and give it a clear name, for example "Set ModifiedDate".
 
-14. Ga naar de **Settings** tab en kies **FilterDate**. Het is nu mogelijk om een waarde te plaatsen. Vul hier het volgende in: **2007-01-01**.
+14. Go to the **Settings** tab and choose **FilterDate**. It is now possible to enter a value. Enter the following here: **2007-01-01**.
 
-15. Klik vervolgens weer op de **Address** pipeline en vervolgens op de tab **Settings**.
+15. Then click again on the **Address** pipeline and then on the **Settings** tab.
 
-16. Klik het invul veld bij **Value** aan en klik vervolgens op **Add dynamic content**.
+16. Click on the field under **Value** and then click on **Add dynamic content**.
 
-17. Ga in het nieuwe scherm naar de tabl **Variables**. Klik op de variabele **FilterDate** en vervolgens op **OK**.
+17. In the new screen, go to the **Variables** tab. Click on the **FilterDate** variable and then on **OK**.
 
-18. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**.
+18. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button.
 
-19. Klik op **Add trigger** en vervolgens **Trigger now** en gevolgt bij **OK**.
+19. Click on **Add trigger** then **Trigger now** and finally click on **OK**.
 
-20. Klik aan de linkerkant op **Monitor** (het metertje). Ga naar **Pipeline runs** indien deze niet meteen opent. Je ziet nu nieuwe pipelines draaien en bij de pipeline van **Address** zou je nu een **[@]** moet zien staan onder de kolom **Parameters**. Klik deze aan, je zou de waarde moeten zien die in je variable had gestopt.
+20. Click on **Monitor** (the meter) on the left. Go to **Pipeline runs** if it doesn't open immediately. You should now see new pipelines running and in the pipeline of **Address** you should now see an **[@]** under the **Parameters** column. Click on this, you should see the value that you put in your variable.
 
 ## Inhoudsopgave
 
