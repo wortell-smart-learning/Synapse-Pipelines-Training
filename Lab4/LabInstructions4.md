@@ -1,59 +1,59 @@
-# Lab 4 - Datasets 
+# Lab 4 - Datasets
 
-*Vereisten*
+*Requirements*
 
-Om het lab te kunnen starten is het van belang dat Lab3 is afgerond.
+In order to start the lab, it is important that Lab3 has been completed.
 
-*Doel*
+*Objective*
 
-Nu de Linked Services aangemaakt zijn kan ADF bij specifieke data zoals een tabel in een database, een .csv bestand op een storage account en meer. Om te specificeren wat je wilt hebben dien je een Dataset aan te maken. Dit gaan we in onderstaande opdrachten doen.
+Now that the Linked Services have been created, ADF can access specific data such as a table in a database, a .csv file on a storage account, and more. To specify what you want, you need to create a Dataset. This is what we will do in the tasks below.
 
-## Opdracht 1 - Source Database
+## Task 1 - Source Database
 
-De eerste *dataset* die we aankoppelen is een tabel die binnen onze brondatabase leeft.
+The first *dataset* we connect is a table that lives within our source database.
 
-1. Klik links op het **Potloodje** (Author). Aan de linkerkant zie je een lijst met categorien zoals: Pipelines, Datasets, Data flows en Power Query.  
-   Vandaag leggen we de focus op **Pipelines** en **Datasets**.
-2. Naast **Datasets** zie je op dit moment een 0 staan, wanneer je met jouw muis op het vak van **Datasets** gaat staan zie je een optie met **3 bolletjes** (Datasets Actions) verschijnen aan de rechterkant. Klik de **Dataset Actions** aan en klik vervolgens op **New Dataset**.
-3. Een vergelijkbaar scherm als bij de **Linked Services** zal verschijnen. Zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
-4. Geef de Dataset een duidelijke naam. Het aangeraden format is om te beginnen met `DS_`, het type dataset, eventueel het *schema* waarbinnen de tabel zich bevindt, de tabelnaam en eindigend met _omgeving.
-   * Praktijkvoorbeeld: `DS_sql_dwh_dimdatum_acc`
-   * Trainingsvoorbeeld: `DS_asql_SalesLT_Address_training`
-5. Bij **Linked Services** kies je de Linked Service die verwijst naar de brondatabase (`LS_sqldb_source`).
-6. De IR wordt automatisch toegepast vanuit de Linked Service. De optie om een **Table name** te selecteren zal nu ook verschenen zijn, klik hierop en kies voor **SalesLT.Address**. Voltooi het aanmaken door onderaan de pagina op **OK** te klikken.
-7. Wanneer de **Dataset** is aangemaakt kom je in het overzichtscherm van de dataset. Klik op het brilletje (**Preview Data**) om een voorbeeld van de data te zien.
-8. Klik op de tab **Schema**. Je ziet hier de kolommen uit de geselecteerde tabel en de bijhorende datatypes.
-9. Doe Opdracht 1 nogmaals, maar nu voor de **sqldb-target** Database voor de tabbellen **Address**, **ProductCategoryDiscount** en **SalesPersonal**.
+1. Click on the **Pencil** (Author) on the left. On the left, you see a list of categories such as: Pipelines, Datasets, Data flows, and Power Query.  
+   Today, we focus on **Pipelines** and **Datasets**.
+2. Next to **Datasets**, you currently see a 0. When you hover over the **Datasets** box with your mouse, you see an option with **3 dots** (Datasets Actions) appear on the right. Click on **Dataset Actions** and then click on **New Dataset**.
+3. A screen similar to the **Linked Services** will appear. Search for **SQL**. Double click on **Azure SQL Databases**.
+4. Give the Dataset a clear name. The recommended format is to start with `DS_`, the type of dataset, possibly the *schema* within which the table is located, the table name, and ending with _environment.
+   * Practical example: `DS_sql_dwh_dimdatum_acc`
+   * Training example: `DS_asql_SalesLT_Address_training`
+5. At **Linked Services**, you choose the Linked Service that refers to the source database (`LS_sqldb_source`).
+6. The IR is automatically applied from the Linked Service. The option to select a **Table name** should now also have appeared, click on it and choose **SalesLT.Address**. Complete the creation by clicking **OK** at the bottom of the page.
+7. Once the **Dataset** has been created, you will enter the dataset overview screen. Click on the magnifying glass (**Preview Data**) to preview the data.
+8. Click on the **Schema** tab. Here you see the columns from the selected table and the corresponding datatypes.
+9. Repeat Task 1, but this time for the **sqldb-target** Database for the tables **Address**, **ProductCategoryDiscount**, and **SalesPersonal**.
 
-## Opdracht 2 - Storage Account / File system
+## Task 2 - Storage Account / File system
 
-1. Klik de **Dataset Actions** aan en klik vervolgens op **New Dataset**.
-2. Zoek naar **storage**. Klik de **Azure Blob Storage** aan.
-3. Kies voor **DelimitedText** (csv).  
-   > ## Welk bestandsformaat
+1. Click on the **Dataset Actions** and then click on **New Dataset**.
+2. Search for **storage**. Click on **Azure Blob Storage**.
+3. Choose **DelimitedText** (csv).  
+   > ## Which file format
    >
-   > Je ziet hier een aantal veelvoorkomende bestandsformaten:
+   > You will see several common file formats here:
    >
    > * Excel
    > * Json
    > * XML
    > * DelimitedText (csv)
    >
-   > Voor Cloud Dataplatforms wordt daarnaast het **Parquet**-formaat veel gebruikt. Parquet is zeer compact in de opslag, geoptimaliseerd voor analyses (Column-based is i.p.v. Row-based) en bevat datatypes (in tegenstelling tot CSV-bestanden, waar komma's, punten, lijstscheidingstekens, string delimiters en datumnotaties nogal eens tot verwarring leiden - om maar niet te spreken over encoding).
+   > For Cloud Data Platforms, the **Parquet** format is also often used. Parquet is very compact in storage, optimized for analyses (Column-based instead of Row-based) and contains datatypes (unlike CSV files, where commas, dots, list separators, string delimiters, and date notations often lead to confusion - not to mention encoding).
    >
-   > Voor nu gebruiken we hier even CSV - groot voordeel daarvan voor nu is dat het door mensen leesbaar is, zodat je kunt inzien wat er gebeurt.
-4. Geef de Dataset een duidelijke naam.
-5. Bij **Linked Services** kies het **storage account**.
-6. De optie om een pad op te geven zal verschijnen. Klik op het witte mapje (**Browse**). Kies vervolgens de map **data** en het bestand genaamd **ProductCategoryDiscount.csv**.
-7. Klik op **OK** en vervolgens nog een keer op **OK** om de Dataset te voltooien.
-8. Klik op **Preview data**, je zult zien dat de data er nog niet erg gaaf uitziet. Om dit aan te passen dienen we nog 2 aanpassingen te verrichten.
-9. Kies bij **Column delimiter** voor de opties **Semicolon (;)**. en vink aan **First row as header**. Wanneer je nu weer op **Preview data** klikt zou het in een tabel moeten zijn met kolommen.
-10. Doe Opdracht 2 nogmaals, maar kies nu voor de **File system** connector en kies het .csv bestand genaamd **SalesPersonal.csv**.
-11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
+   > For now, we will use CSV here - a major advantage of it for now is that it is human-readable, so you can see what is happening.
+4. Give the Dataset a clear name.
+5. At **Linked Services** choose the **storage account**.
+6. The option to specify a path will appear. Click on the white folder (**Browse**). Then choose the **data** folder and the file named **ProductCategoryDiscount.csv**.
+7. Click **OK** and then again **OK** to complete the Dataset.
+8. Click on **Preview data**, you will see that the data does not yet look very cool. To adjust this, we still need to make 2 changes.
+9. Choose the **Semicolon (;)** options for **Column delimiter**. and check **First row as header**. When you now click on **Preview data** again, it should be in a table with columns.
+10. Repeat Task 2, but now choose the **File system** connector and choose the .csv file named **SalesPersonal.csv**.
+11. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button. 
 
-## Inhoudsopgave
+## Table of Contents
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
 2. [Integration Runtimes](../Lab2/LabInstructions2.md)
 3. [Linked Services](../Lab3/LabInstructions3.md)
 4. [Datasets](../Lab4/LabInstructions4.md)
@@ -61,4 +61,4 @@ De eerste *dataset* die we aankoppelen is een tabel die binnen onze brondatabase
 6. [Triggers](../Lab6/LabInstructions6.md)
 7. [Global Parameters](../Lab7/LabInstructions7.md)
 8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)
