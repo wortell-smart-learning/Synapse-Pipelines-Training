@@ -49,7 +49,7 @@ In this series of assignments, the environment is set up, you prepare the data, 
 1. When the download is complete, click on the RDP file and then click on **Connect**. A new screen will appear asking for a username and password, fill in the following details:
    * *Username:* `sqladmin`
    * *Password:* `WortellSmartLearning.nl`  
-   **There is a chance that Windows tries to log in with your domain account (the account of your own organization). In that case, choose **more choices** --> **Use a different account**:  
+   **There is a chance that Windows tries to log in with your domain account (the account of your own organization). In that case, choose *more choices* --> *Use a different account***:  
    ![Login via RDP](./img/win-login.gif)
 1. After filling in the details, click OK.
 1. A new screen may appear to trust the certificate, then click on **Yes**.
