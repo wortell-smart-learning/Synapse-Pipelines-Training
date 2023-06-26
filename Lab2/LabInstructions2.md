@@ -1,78 +1,82 @@
 # Lab 2 - Integration Runtimes
 
-*Vereisten*
+*Requirements*
 
-Om het lab te kunnen starten is het van belang dat Lab1 is afgerond.
+To be able to start the lab, it is important that Lab1 has been completed.
 
-*Doel*
+*Objective*
 
-De Azure Data Factory maakt gebruik van een *Integration Runtime (IR)*. In feite is dit de plek waar je pipeline "uitgevoerd" wordt: bijvoorbeeld in een specifieke Azure-region of on-premises.
+Azure Data Factory uses an *Integration Runtime (IR)*. In fact, this is where your pipeline is "executed": for example, in a specific Azure region or on-premises.
 
-Gedurende dit lab maak je meerdere soorten IRs aan. Ook configureer, installeer en "link" je deze. Volg de opdrachten stap voor stap.
+During this lab, you will create several types of IRs. You will also configure, install, and "link" them. Follow the assignments step by step.
 
-## Opdracht 1 - Azure Integration Runtime aanmaken
+## Assignment 1 - Creating Azure Integration Runtime
 
-Binnen ADF krijg je altijd een Integration Runtime "cadeau": een zogenaamde "Auto Resolve" IR. Dat betekent dat Azure wereldwijd met je meekijkt welke plek handig zou zijn om jouw pipeline uit te gaan voeren en er eentje voor je uitkiest. Dat kan handig zijn om de eerste stappen te maken, maar het is aan te raden om explicieter te zijn waar je data verwerkt wordt. Deels vanuit performance- en kostenoverwegingen, maar ook vanuit security- en compliance-perspectief (weten waar je data verwerkt wordt).
+Within ADF, you always get an Integration Runtime "for free": a so-called "Auto Resolve" IR. This means that Azure globally checks which place would be convenient to execute your pipeline and picks one for you. This can be helpful to make the first steps, but it is advisable to be more explicit about where your data is processed. Partly from performance and cost considerations, but also from a security and compliance perspective (knowing where your data is processed).
 
-In deze eerste opdracht gaan we daarom een Integration Runtime aanmaken waarin je zelf de locatie aangeeft. In je omgeving heb je twee Data Factories, die later beiden gebruik gaan maken van de ene IR die we aanmaken.
+In this first assignment, we are going to create an Integration Runtime where you specify the location yourself. In your environment, you have two Data Factories, which will later both use the one IR we create.
 
-1. Ga naar de [Azure portal](portal.azure.com). Klik de Data Factory aan waarbij **niet** het woord Linked instaat. Een nieuwe pagina zal laden met een knop **Launch Studio** klik deze aan. Je wordt nu naar de pagina van de ADF geleid.
-2. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Integration runtimes**. Je zult zien dat er al een **AutoResolveIntegrationRuntime** bestaat. Dit is de standaard IR binnen Azure waarmee je tussen de verschillende diensten als SQL Database, Azure Data Lake Store e.d. data mee kan verplaatsen.
-3. Klik op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Azure** en weer **continue**. Je kunt nu een nieuwe **Azure Integration Runtime** aanmaken, waarbij je ook specifiek de **Region** kunnen aangeven. Hiermee weet je zeker dat de data altijd binnen deze regio blijft.
-4. Geef de IR een naam en kies de **Region** waarbinnen de rest van je resources zich bevinden. Qua naamgeving is het handig om te beginnen met `IR-` gevolgd door wat voor een soort IR het is, de -regio en de -omgeving.
-   * Praktijkvoorbeeld: `IR-AzureResolve-EastUS-TST`
-   * Trainingsvoorbeeld: `IR-AzureResolve-WestEurope-Training`
-5. Klik op **Create**
+1. Go to the [Azure portal](portal.azure.com). Click on the Data Factory that does **not** contain the word Linked. A new page will load with a **Launch Studio** button, click on it. You are now directed to the page of the ADF.
+2. Click on the **toolbox** (Manage) on the left. Then click on **Integration runtimes** on the left. You will see that an **AutoResolveIntegrationRuntime** already exists. This is the standard IR within Azure that you can use to move data between different services like SQL Database, Azure Data Lake Store, etc.
+3. Click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Azure** and **continue** again. You can now create a new **Azure Integration Runtime**, where you can also specifically indicate the **Region**. This way, you can be sure that the data always remains within this region.
+4. Give the IR a name and choose the **Region** where the rest of your resources are located. For naming, it is handy to start with `IR-` followed by what kind of IR it is, the -region, and the -environment.
+   * Practical example: `IR-AzureResolve-EastUS-TST`
+   * Training example: `IR-AzureResolve-WestEurope-Training`
+5. Click on **Create**
 
-Je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn.
+Your IR is now being created and should be ready within a few seconds.
 
-## Opdracht 2 - Self-Hosted Integration runtime
+## Assignment 2 - Self-Hosted Integration Runtime
 
-Data vanuit een on-premises omgeving of een afgeschermd netwerk is voor Azure Data Factory niet direct benaderbaar. Met een *self-hosted* IR kun je ook deze omgevingen aansluiten: je installeert dan op een VM in je afgeschermde netwerk (bijv. on-premises) een *self-hosted Integration Runtime*. Deze legt vervolgens de verbinding met Azure Data Factory.
+Data from an on-premises environment or a shielded network is not directly accessible for Azure Data Factory. With a *self-hosted* IR, you can also connect these environments: you then install a *self-hosted Integration Runtime* on a VM in your shielded network (e.g. on-premises). This then establishes the connection with Azure Data Factory.
 
-1. Ga terug naar je Virtual Machine als je deze open hebt staan, anders je volg de stappen uit Lab1, opdracht 2 weer.
-2. Ga naar de Azure portal (portal.azure.com) en login met het account waarmee je de training uitvoert.
-3. Ga terug naar de ADF (zonder linked in de naam) via de resourcegroup zoals uitlegd in opdracht 1.
-4. Eenmaal aangekomen op het scherm van de IRs, klik weer op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Self-Hosted** en weer **continue**.
-   > Een Self-Hosted IR draai je meestal op een on-premises Virtual Machine met poort 443 en 1433 open zodat deze bij Azure kan komen voor zowel de Database (1433) als een storage account (443). De minimale vereisten om een Self-Hosted IR goed te draaien zijn:
+1. Go back to your Virtual Machine if you have it open, otherwise, you follow the steps from Lab1, assignment 2 again.
+2. Go to the Azure portal (portal.azure.com) and log in with the account with which you perform the training.
+3. Go back to the ADF (without linked in the name) via the resource group as explained in assignment 1.
+4. Once you arrive at the screen of the IRs, click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Self-Hosted** and **
+
+continue** again.
+   > A Self-Hosted IR usually runs on an on-premises Virtual Machine with ports 443 and 1433 open so it can access Azure for both the Database (1433) and a storage account (443). The minimum requirements to run a Self-Hosted IR properly are:
    >
-   > * 4 cpu cores van 2Ghz of sneller
+   > * 4 CPU cores of 2GHz or faster
    > * 8GB RAM
-   > * 80GB schijfruimte
+   > * 80GB disk space
    >
-   > In de praktijk blijkt dat 16GB RAM en een SSD kunnen helpen om de data beter verplaatsbaar te maken, hierbij kan hooguit de CPU de limiterende factor zijn.
-   > De Integration Runtime is ook direct te downloaden vanaf [https://www.microsoft.com/en-us/download/details.aspx?id=39717](https://www.microsoft.com/en-us/download/details.aspx?id=39717)
-5. Je hoeft alleen de IR een naam te geven. De regio is afhankelijk van waar de Virtual Machine staat en klik op **Create**.
-6. Wanneer de IR is aangemaakt krijg je meteen een scherm met 2 opties voor installatie. Gezien je al op de Virtual Machine zit kies je voor Optie 1 (Express setup). Klik op **Click here to launch the express setup for this computer**. En start vervolgens de installatie door op het gedownloaden bestand te klikken. Dit kan door de popup rechtsbovenin of via **File Explorer** (Het gele mapje) naar **Downloads** te gaan.
-   > Wanneer je niet vanaf de VM op de Azure portal van jouw organisatie kan komen, is **Option 2** een mogelijkheid: je downloadt de IR dan handmatig, en gebruikt één van de weergegeven sleutels tijdens de installatie.
-7. Wanneer je de installatie start gebeurt alles voor de rest automatisch, wacht de installatie rustig af.
+   > In practice, it turns out that 16GB RAM and an SSD can help to move the data better, where only the CPU could be the limiting factor.
+   > The Integration Runtime can also be downloaded directly from [https://www.microsoft.com/en-us/download/details.aspx?id=39717](https://www.microsoft.com/en-us/download/details.aspx?id=39717)
+5. You only need to give the IR a name. The region depends on where the Virtual Machine is located and click on **Create**.
+6. When the IR has been created, you immediately get a screen with 2 options for installation. Since you are already on the Virtual Machine, choose Option 1 (Express setup). Click on **Click here to launch the express setup for this computer**. And then start the installation by clicking on the downloaded file. This can be done via the popup in the upper right corner or through **File Explorer** (The yellow folder) to go to **Downloads**.
+   > If you can't access the Azure portal of your organization from the VM, **Option 2** is an option: you then manually download the IR, and use one of the keys shown during the installation.
+7. When you start the installation, everything else happens automatically, wait patiently for the installation.
+   
+8. When the installation is complete, click on **Close**. In the ADF, you should now see a **Green circle** next to the Self-Hosted IR. If this is not the case, it should be after a **refresh**.
 
-8. Wanneer de installatie is afgerond, klik op **Close**. In de ADF zou je nu een **Groen bolletje** moeten zien bij de Self-Hosted IR. Indien dit niet zo is, zou dit wel zo moeten zijn na een **refresh**.
+You have now created a *self-hosted* IR, allowing Azure Data Factory to move data from and to an on-premises environment.
 
-Je hebt nu een *self-hosted* IR gemaakt, waardoor Azure Data Factory data van en naar een on-premises omgeving kan verplaatsen.
+## Assignment 3 - Linking Integration Runtimes
 
-## Opdracht 3 - Integration runtimes linken
+If you use multiple Data Factories, you can choose to "link" an existing IR in multiple Data Factories. This prevents you from having to install an IR multiple times.
 
-Wanneer je meerdere Data Factories gebruikt, kun je ervoor kiezen een bestaande IR in meerdere Data Factories te "linken". Dit voorkomt dat je een IR meerdere keren moet installeren.
+1. Click on the **Self-Hosted IR** you just created. Go to the **Sharing** tab and copy the resourceID by clicking on the **blue box** or selecting and copying it.
+2. Click on the **Blue plus sign** with the text **Grant permissions to another Data Factory or user-assigned managed identity**
+3. The adf-linked should automatically be among them, check it and then click on **Add**
+4. Close the tab by clicking on **Apply**.
+5. In the top right corner, you see a row of icons. Click on the 2nd from the left, the icon with **the 2 screens and arrows** (Switch Data Factory).
+6. A new screen will appear, and most of it will be filled in beforehand. Choose the adf-linked at **Data Factory Name** and then click on **OK**.
+7. The other ADF is now being loaded. Once this is completed, click on the **toolbox** (manage) on the left and then on **Integration runtimes** again.
+8. Once you arrive at the screen of the IRs, click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Linked Self-Hosted** and **continue** again.
+9. Paste the copied resourceID
 
-1. Klik de **Self-Hosted IR** aan die je net hebt aangemaakt. Ga naar de tab **Sharing** en kopieer de resourceID door op het **blauwe vakje** te klikken of deze te selecteren en te kopieeren.
-2. Klik op het **Blauwe plusje** met de tekst **Grant permissions to another Data Factory or user-assigned managed idenitiy**
-3. De adf-linked zou hier automatisch tussen moeten staan, vink het aan en klik vervolgens op **Add**
-4. Sluit de tab door op **Apply** te klikken.
-5. Rechtboven in beeld, zie je een rij met iconen. Klik op de 2e van links, het icoon met **de 2 schermen en pijljes** (Switch Data Factory).
-6. Er zal een nieuw scherm verschijnen, en het meeste zal al van te voren zijn ingevuld. Kies bij **Data Factory Name** de adf-linked en klik vervolgens op **OK**.
-7. De andere ADF wordt nu geladen. Wanneer dit voltooid is klik je links op de **gereedschapskist** (manage) en vervolgens weer op **Integration runtimes**.
-8. Eenmaal aangekomen op het scherm van de IRs, klik weer op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Linked Self-Hosted** en weer **continue**.
-9. Plak de gekopieerde resourceID alvast in het veld van de **Resource ID** en geeft de IR een correcte naam.
-10. Klik op **Create** en de gelinkede Self-Hosted IR zou moeten verschijnen met een **Groen bolletje**.
+ into the **Resource ID** field and give the IR a correct name.
+10. Click on **Create** and the linked Self-Hosted IR should appear with a **Green circle**.
 
-Hoewel het koppelen van self-hosted IR's erg handig is, is het niet altijd wenselijk dat bijvoorbeeld een ontwikkel-omgeving via dezelfde IR data kan ontsluiten als een productie-omgeving. Het komt nog wel eens voor dat een Ontwikkel en Test omgeving dezelfde Self-Hosted IR gebruiken, net zoals voor Acceptatie en Productie mits hier een specifieke case voor is.
+While linking self-hosted IRs is very useful, it's not always desirable that, for example, a development environment can extract data via the same IR as a production environment. It often happens that a Development and Test environment use the same Self-Hosted IR, just like for Acceptance and Production if there is a specific case for it.
 
-Het linken voor een Self-Hosted IR wordt vaak gebruikt als er meerdere teams zijn die dezelfde databron gebruiken. Doordat je maar 1 1 IR nodig hebt (en dus Virtual Machine) bespaar je kosten en resources.
+The linking for a Self-Hosted IR is often used when there are multiple teams using the same data source. Since you only need one IR (and thus Virtual Machine), you save costs and resources.
 
-## Inhoudsopgave
+## Table of Contents
 
-1. [De Azure omgeving prepareren](../Lab1/LabInstructions1.md)
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
 2. [Integration Runtimes](../Lab2/LabInstructions2.md)
 3. [Linked Services](../Lab3/LabInstructions3.md)
 4. [Datasets](../Lab4/LabInstructions4.md)
@@ -80,4 +84,4 @@ Het linken voor een Self-Hosted IR wordt vaak gebruikt als er meerdere teams zij
 6. [Triggers](../Lab6/LabInstructions6.md)
 7. [Global Parameters](../Lab7/LabInstructions7.md)
 8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching en DIUs](../Lab9/LabInstructions9.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)
