@@ -1,80 +1,85 @@
-<div style="font-size: 9px; margin-left: 1cm;"></div><div style="font-size: 9px; margin-left: auto; margin-right: 1cm; "> <img src="data:image/png;base64,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" height=26 /></div>
+# Lab 2 - Integration Runtimes
 
-# Lab2 - Integration Runtimes
+*Requirements*
 
-*Vereisten*
+To be able to start the lab, it is important that Lab1 has been completed.
 
-Om de lab te kunnen starten is het van belang dat Lab1 is afgerond.
+*Objective*
 
-*Doel*
+Azure Data Factory uses an *Integration Runtime (IR)*. In fact, this is where your pipeline is "executed": for example, in a specific Azure region or on-premises.
 
-De Azure Data Factory maakt gebruik van Integration Runtimes (IR), welke dient als rekeninfrastructuur om de verschillende vormen van data verplaatsingen uit te kunnen voeren. 
-Gedurende de lab gaan we meerdere soorten IRs aanmaken, configureren, installeren en linken. Volg de opdrachten stap voor stap.
+During this lab, you will create several types of IRs. You will also configure, install, and "link" them. Follow the assignments step by step.
 
-## Opdracht 1 - Azure Integration runtime
+## Assignment 1 - Creating Azure Integration Runtime
 
-1. Ga naar de Azure portal (portal.azure.com). Klik de Data Factory aan waarbij **niet** het woord Linked instaat. Een nieuwe pagina zal laden met een knop **Open Azure Data Factory Studio** (of de equivalent in een andere taal) klik deze aan. Je wordt nu naar de pagina van de ADF geleid.
+Within ADF, you always get an Integration Runtime "for free": a so-called "Auto Resolve" IR. This means that Azure globally checks which place would be convenient to execute your pipeline and picks one for you. This can be helpful to make the first steps, but it is advisable to be more explicit about where your data is processed. Partly from performance and cost considerations, but also from a security and compliance perspective (knowing where your data is processed).
 
-2. Klik links op de **gereedschapskist** (Manage). Klik vervolgens aan de linkerkant op **Integration runtimes**. Je zult zien dat er al een **AutoResolveIntegrationRuntime** bestaat. Dit is de standaard IR binnen Azure waarmee je tussen de verschillende diensten data mee kan verplaatsen.
+In this first assignment, we are going to create an Integration Runtime where you specify the location yourself. In your environment, you have two Data Factories, which will later both use the one IR we create.
 
-3. Klik op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Azure** en weer **continue**. We kunnen nu een nieuwe **Azure Integration Runtime** aanmaken, waarbij we ook specifiek de **Region** kunnen aangeven. Hiermee weten we zeker dat onze Data altijd binnen deze regio blijft. 
+1. Go to the [Azure portal](portal.azure.com). Click on the Data Factory that does **not** contain the word Linked. A new page will load with a **Launch Studio** button, click on it. You are now directed to the page of the ADF.
+2. Click on the **toolbox** (Manage) on the left. Then click on **Integration runtimes** on the left. You will see that an **AutoResolveIntegrationRuntime** already exists. This is the standard IR within Azure that you can use to move data between different services like SQL Database, Azure Data Lake Store, etc.
+3. Click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Azure** and **continue** again. You can now create a new **Azure Integration Runtime**, where you can also specifically indicate the **Region**. This way, you can be sure that the data always remains within this region.
+4. Give the IR a name and choose the **Region** where the rest of your resources are located. For naming, it is handy to start with `IR-` followed by what kind of IR it is, the -region, and the -environment.
+   * Practical example: `IR-AzureResolve-EastUS-TST`
+   * Training example: `IR-AzureResolve-WestEurope-Training`
+5. Click on **Create**
 
-4. Geef de IR een naam en kies voor West Europe als **Region**. Het aangeraden format is om te beginnen met IR- gevolgt door wat voor een soort IR het is, de -regio en de -omgeving.
-    
-    *Praktijkvoorbeeld:* IR-AzureResolve-WestEU-TST
+Your IR is now being created and should be ready within a few seconds.
 
-    *Trainingsvoorbeeld:* IR-AzureResolve-WestEU-Training
+## Assignment 2 - Self-Hosted Integration Runtime
 
-5. Klik op **Create**, Hoera! je IR wordt nu aangemaakt en zou binnen enkele seconden klaar moeten zijn. 
+Data from an on-premises environment or a shielded network is not directly accessible for Azure Data Factory. With a *self-hosted* IR, you can also connect these environments: you then install a *self-hosted Integration Runtime* on a VM in your shielded network (e.g. on-premises). This then establishes the connection with Azure Data Factory.
 
+1. Go back to your Virtual Machine if you have it open, otherwise, you follow the steps from Lab1, assignment 2 again.
+2. Go to the Azure portal (portal.azure.com) and log in with the account with which you perform the training.
+3. Go back to the ADF (without linked in the name) via the resource group as explained in assignment 1.
+4. Once you arrive at the screen of the IRs, click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Self-Hosted** and **continue** again.
+   > A Self-Hosted IR usually runs on an on-premises Virtual Machine with ports 443 and 1433 open so it can access Azure for both the Database (1433) and a storage account (443). The minimum requirements to run a Self-Hosted IR properly are:
+   >
+   > * 4 CPU cores of 2GHz or faster
+   > * 8GB RAM
+   > * 80GB disk space
+   >
+   > In practice, it turns out that 16GB RAM and an SSD can help to move the data better, where only the CPU could be the limiting factor.
+   > The Integration Runtime can also be downloaded directly from [https://www.microsoft.com/en-us/download/details.aspx?id=39717](https://www.microsoft.com/en-us/download/details.aspx?id=39717)
+5. You only need to give the IR a name. The region depends on where the Virtual Machine is located and click on **Create**.
+6. When the IR has been created, you immediately get a screen with 2 options for installation. Since you are already on the Virtual Machine, choose Option 1 (Express setup). Click on **Click here to launch the express setup for this computer**. And then start the installation by clicking on the downloaded file. This can be done via the popup in the upper right corner or through **File Explorer** (The yellow folder) to go to **Downloads**.
+   > If you can't access the Azure portal of your organization from the VM, **Option 2** is an option: you then manually download the IR, and use one of the keys shown during the installation.
+7. When you start the installation, everything else happens automatically, wait patiently for the installation.
+   
+8. When the installation is complete, click on **Close**. In the ADF, you should now see a **Green circle** next to the Self-Hosted IR. If this is not the case, it should be after a **refresh**.
 
-## Opdracht 2 - Self-Hosted Integration runtime
+You have now created a *self-hosted* IR, allowing Azure Data Factory to move data from and to an on-premises environment.
 
-1. Ga terug naar je Virtual Machine als je deze open hebt staan, anders je volg de stappen uit Lab1, opdracht 2 weer.
+## Assignment 3 - Linking Integration Runtimes
 
-2. Open de **Edge browser** en ga naar de Azure portal (portal.azure.com) en login met het juiste account waar de Azure pass op staat.
+If you use multiple Data Factories, you can choose to "link" an existing IR in multiple Data Factories. This prevents you from having to install an IR multiple times.
 
-3. Ga terug naar de ADF (zonder linked in de naam) via de resourcegroup zoals uitlegd in opdracht 1.
+1. Click on the **Self-Hosted IR** you just created. Go to the **Sharing** tab and copy the resourceID by clicking on the **blue box** or selecting and copying it.
+2. Click on the **Blue plus sign** with the text **Grant permissions to another Data Factory or user-assigned managed identity**
+3. The adf-linked should automatically be among them, check it and then click on **Add**
+4. Close the tab by clicking on **Apply**.
+5. In the top right corner, you see a row of icons. Click on the 2nd from the left, the icon with **the 2 screens and arrows** (Switch Data Factory).
+6. A new screen will appear, and most of it will be filled in beforehand. Choose the adf-linked at **Data Factory Name** and then click on **OK**.
+7. The other ADF is now being loaded. Once this is completed, click on the **toolbox** (manage) on the left and then on **Integration runtimes** again.
+8. Once you arrive at the screen of the IRs, click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Linked Self-Hosted** and **continue** again.
+9. Paste the copied resourceID
 
-4. Eenmaal aangekomen op het scherm van de IRs, klik weer op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Self-Hosted** en weer **continue**.
-Een Self-Hosted IR draai je normaal op een On-premise Virtual Machine met poort 433 en 1433 open zodat deze bij Azure kan komen voor zowel de Database (1433) als een storage account (433). De minimale vereisten om een Self-Hosted IR goed te draaien is een Virtual machine met 4 cpu cores van 2Ghz of hoger, 8GB RAM en 80GB schijfruimte. In de praktijk blijkt dat 16GB RAM en een SSD kunnen helpen om de data beter verplaatsbaar te maken, hierbij kan hooguit de cpu de limiterende factor zijn.
+ into the **Resource ID** field and give the IR a correct name.
+10. Click on **Create** and the linked Self-Hosted IR should appear with a **Green circle**.
 
-5.  Je hoeft alleen de IR een naam te geven. De regio is afhankelijk van waar de Virtual Machine staat en klik op **Create**.
+While linking self-hosted IRs is very useful, it's not always desirable that, for example, a development environment can extract data via the same IR as a production environment. It often happens that a Development and Test environment use the same Self-Hosted IR, just like for Acceptance and Production if there is a specific case for it.
 
-6. Wanneer de IR is aangemaakt krijg je meteen een scherm met 2 opties voor installatie. Gezien je al op de Virtual Machine zit kies je voor Optie 1 (Express setup). Klik op **Click here to launch the express setup for this computer**. En start vervolgens de installatie door op het gedownloaden bestand te klikken. Dit kan door de popup rechtsbovenin of via **File Explorer** (Het gele mapje) naar **Downloads** te gaan.
+The linking for a Self-Hosted IR is often used when there are multiple teams using the same data source. Since you only need one IR (and thus Virtual Machine), you save costs and resources.
 
-7. Wanneer je de installatie start gebeurt alles voor de rest automatisch, wacht de installatie rustig af.
+## Table of Contents
 
-8. Wanneer de installatie is afgerond, klik op **Close**. In de ADF zou je nu een **Groen bolletje** moeten zien bij de Self-Hosted IR.
-
-
-## Opdracht 3 - Integration runtimes linken
-
-1. Klik de **Self-Hosted IR** aan die je net hebt aangemaakt. Ga naar de tab **Sharing** en kopieer de resourceID door op het **blauwe vakje** te klikken of deze te selecteren en te kopieeren. 
-
-2. Klik op het **Blauwe plusje** met de tekst **Grant permissions to another Data Factory or user-assigned managed idenitiy**
-
-3. De adf-linked zou hier automatisch tussen moeten staan, vink het aan en klik vervolgens op **Add**
-
-4. Sluit de tab door op **Apply** te klikken. 
-
-5. Rechtboven in beeld, zie je een rij met iconen. Klik op de 2e van links, het icoon met **de 2 schermen en pijljes** (Switch Data Factory).
-
-6. Er zal een nieuw scherm verschijnen, en het meeste zal al van te voren zijn ingevuld. Kies bij **Data Factory Name** de adf-Linked en klik vervolgens op **OK**.
-
-7. De andere ADF wordt nu geladen, wanneer dit voltooid is klik je links op de **gereedschapskist** (manage) en vervolgens weer op **Integration runtimes**.
-
-8. Eenmaal aangekomen op het scherm van de IRs, klik weer op **New**, klik op **Azure, Self-Hosted** en op **continue** en vervolgens op **Linked Self-Hosted** en weer **continue**.
-
-9. Plak de gekopieerde resourceID alvast in het veld van de **Resource ID** en geeft de IR een correcte naam.
-
-10. Klik op **Create** en de gelinkede Self-Hosted IR zou moeten verschijnen met een **Groen bolletje**.
-    Het linken van Self-Hosted integration runtimes zie je vaak bij omgevingen die bij dezelfde data moeten komen. Het is dan ook gebruikelijk om meerdere Virtual Machines te hebben met meerdere Self-Hosted IRs, dit zodat er een goed onderscheid gemaakt kan worden tussen Ontwikkel, Test, Acceptatie en Productie. Het komt nog wel eens voor dat een Ontwikkel en Test omgeving dezelfde Self-Hosted IR gebruiken, net zoals voor Acceptatie en Productie mits hier een specifieke case voor is.
-
-    Het linken voor een Self-Hosted IR wordt vaak ook gebruikt als er meerdere teams zijn die bij 1 bepaalde databron moeten zijn, hiervoor heb je dan meer 1 IR nodig (en dus Virtual Machine) wat weer kosten en resouces bespaard.
-
-### Einde Lab2
-
-<div style="font-size: 9px; margin: 0 auto;"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>
-
-
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
+2. [Integration Runtimes](../Lab2/LabInstructions2.md)
+3. [Linked Services](../Lab3/LabInstructions3.md)
+4. [Datasets](../Lab4/LabInstructions4.md)
+5. [Pipelines](../Lab5/LabInstructions5.md)
+6. [Triggers](../Lab6/LabInstructions6.md)
+7. [Global Parameters](../Lab7/LabInstructions7.md)
+8. [Activities](../Lab8/LabInstructions8.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)

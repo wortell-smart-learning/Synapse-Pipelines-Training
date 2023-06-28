@@ -1,106 +1,108 @@
-<div style="font-size: 9px; margin-left: 1cm;"></div><div style="font-size: 9px; margin-left: auto; margin-right: 1cm; "> <img src="data:image/png;base64,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" height=26 /></div>
+# Lab 3 - Linked Services
 
-# Lab3 - Linked Services
+*Requirements*
 
-*Vereisten*
+To start the lab, it's essential that Lab2 has been completed.
 
-Om de lab te kunnen starten is het van belang dat Lab2 is afgerond.
+*Objective*
 
-*Doel*
+To allow data to flow over the recently created IRs, connections to the respective services must be made. During the lab, you will establish multiple connections, with e.g.:
 
-Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties met de betreffende diensten gemaakt worden. Gedurende de Lab zullen we meerdere connecties leggen. Volg de opdrachten stap voor stap.
+* a SQL database (e.g. a source system or Data Warehouse)
+* a Storage account (e.g. like a Data Lake)
+* a File system (e.g. a share)
 
-## Opdracht 1 - Azure Key Vault
+Some of these sources can be accessed with the help of *managed identity*: in this case, AAD grants rights to the Data Factory. Other sources you will have to access with a *secret*, such as a certificate or a username/password. These *secrets* are centrally stored in Azure in the Key Vault. From there, you can easily determine which services can view which *secrets*.
 
-1. Ga terug naar de **niet** linked ADF. Klik vervolgens weer op Manage. Je komt nu automatisch in het scherm voor de **Linked Services**.
+## Task 1 - Azure Key Vault
 
-2. klik op **New**, en zoek naar **Key vault**. Klik de **Azure Key vault** aan.
+Azure Data Factory can be easily linked with Azure Key Vault, where we store passwords and connection strings. We can have a connection to a source filled by a *secret* from the *Key Vault*. At the moment that ADF makes a connection with that source, ADF will first retrieve the *secret* from the Key Vault.
 
-3. Geef de Linked services een duidelijke naam. Het aangeraden format is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
+Before we can access *secrets* from the Key Vault, we will have to attach the Key Vault as a *Linked Service* first.
 
-    *Praktijkvoorbeeld:* LS_KV_Dataplatform_PRD
+1. Go back to the **unlinked** ADF. Then click on Manage again. Go to **Linked Services**.
+2. Click on **New**, and search for **Key vault**. Click on the **Azure Key vault**.
+3. Give the Linked services a clear name. The recommended format is to start with LS_, the name of the service in your resource group and ending with _environment.
+   * Practical example: `LS_KV_Dataplatform_PRD`
+   * Training example: `LS_KV_rcc4bh5724jim_Training`
+     In the naming, a dash (`-`) is not allowed. An *underscore* (`_`) is possible.
+4. Choose the **Azure Subscription** that you are using in the training.
+5. At **Azure Key vault Name** choose the key vault from your Key Vault (this starts with `kv_`).
+6. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
+7. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
+8. The Linked Service to the Azure Key Vault has now been created, but it has not been published yet. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button. By publishing, the changes go live, and the Key Vault can be used.
 
-    *Trainingsvoorbeeld:* LS_kv_sproty7tvzbsw_Training
-    
-    Helaas mogen - (minteken) niet gebruikt worden, wel mogen _ (Underscorers).
+## Task 2 - Databases
 
-4. Kies bij **Azure Subscription** de subsctiptie van de Azure Pass.
+With the Key Vault connected, it is possible to retrieve passwords to set up a secure connection with, for example, the databases.
 
-5. Kies bij **Azure Key vault Name** de key vault uit jouw resourcegroup.
+1. Click on **New**, and search for **SQL**. Double-click the **Azure SQL Databases**.
+2. Give the Linked services a clear name, for example `LS_sqldb_source`
+3. Choose at **Connect via integration runtime** your own made **Azure IR**.
+4. Choose at **Server Name** the Server name as it appears in your resource group.
+5. Choose at **Database Name** the source Database name as it appears in your resource group. The source database starts with **sqldb-source-** as a name.
+6. Fill in the **User Name** with the SQL admin account named: **sqladmin**.
+7. For the option between **Password** and **Azure Key Vault**, choose the Key vault.
+8. Choose at **AKV linked service** the previously created Key Vault Linked Service.
+9. Choose at **Secret Name** the option **sqladmin**
+10. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
+11. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
+12. Repeat Task 2, but now for the **sqldb-target** Database.
 
-6. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
+You have now created two Linked Services. This enables ADF to connect to the two databases.
 
-7. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+## Task 3 - Storage Account
 
-8. De Linked Service naar de Azure Key Vault is nu aangemaakt, maar deze is nog niet gepubliseerd. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen jouw aanpassingen **Live** te staan, en kan het gebruikt worden.
+The second source we add is a Storage Account. We can use this, for example, as a *landing zone* for the data, or as a Data Lake.
 
+1. Click on **New**, and search for **storage**. Click on the **Azure Blob Storage**.
+2. Give the Linked services a clear name.
+3. Choose at **Connect via integration runtime** your own made **Azure IR**.
+4. Choose at **Storage account name** the storage account as it appears in your resource group.
+5. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
+6. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
 
-## Opdracht 2 - Databases
+The rights on the Storage Account are distributed via Azure AD. So you didn't have to use a *secret* for this.
 
-1. Nu de Azure Key Vault is aangemaakt kunnen wij deze gebruiken om beveiligde connecties te maken met de databases. klik op **New**, en zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
+## Task 4 - File system
 
-2. Geef de Linked services een duidelijke naam.
+The third source we add is an on-premises filesystem. Because the filesystem is on-premises, we need to use the correct Integration Runtime! Also, this VM is not in our domain, so we need to indicate which username/password we will log in with.
 
-3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
+1. Click on **New**, and search for **file**. Click on the **File system**.
+2. Give the Linked services a clear name.
+3. Choose at **Connect via integration runtime** the **Self-Hosted IR**.
+4. Fill in the **Host** with the following **D:\\**
+5. Fill in the **User Name** with the SQL admin account named: **sqladmin**.
+6. For the option between **Password** and **Azure Key Vault**, choose the Key vault.
+7. Choose at **AKV linked service** the previously created Key Vault Linked Service.
+8. Choose at **Secret Name** the option **sqladmin**
+9. Click on the **Test Connection** button to validate that the connection can be established. This will fail, but we'll fix that in a moment!
+10. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
+11. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button.
 
-4. Kies bij de **Server Name** de Server naam in zoals deze in je resourcegroup staat.
+> ## Why does the connection with the File System fail
+>
+> Since version 5.22, the Self-Hosted Integration Runtime has stricter security measures. One of these measures is that a self-hosted IR cannot just access local files.
+>
+> In the training, however, we want to access these files to simulate that an on-premises source is present. Therefore, we will have to turn off this security measure. Here's how:
+>
+> 1. Connect to the VM
+> 2. Open the start menu and type **Powershell**
+> 3. Choose **Run as administrator**  
+>    In Powershell, you now enter the following:
+> 4. `cd 'C:\Program Files\Microsoft Integration Runtime\5.0\Shared\'`
+> 5. `.\dmgcmd -DisableLocalFolderPathValidation`
+>
+> The setting is now adjusted, and the IR restarts. The Linked Service should now work **Test Connection** to `D:\` should work.
 
-5. Kies bij de **Database Name** de source Database naam in zoals deze in je resourcegroup staat. De source database begint met **sqldb-source-** als naam.
+## Table of Contents
 
-6. Vul bij de **User Name** het SQL admin account in genaamd: **sqladmin**.
-
-7. Bij de optie tussen **Password** en **Azure Key Vault**, kies de Key vault.
-
-8. Kies bij **AKV linked service** de eerder aangemaakte Key Vault Linked Service.
-
-9. Kies bij **Secret Name** de optie **sqladmin**
-
-10. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
-
-11. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
-
-12. Doe Opdracht 2 nogmaals, maar nu voor de **sqldb-target** Database.
-
-
-## Opdracht 3 - Storage Account
-
-1. klik op **New**, en zoek naar **storage**. Klik de **Azure Blob Storage** aan.
-
-2. Geef de Linked services een duidelijke naam.
-
-3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
-
-4. Kies bij **Storage account name** het storage account zoals deze in je resourcegroup staat.
-
-5. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
-
-6. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
-
-
-## Opdracht 4 - File system
-
-1. klik op **New**, en zoek naar **file**. Klik de **File system** aan.
-
-2. Geef de Linked services een duidelijke naam.
-
-3. Kies bij **Connect via integration runtime** de **Self-Hosted IR**
-
-4. Vul bij **Host** het volgende in **D:\\**
-
-5. Vul bij de **User Name** het SQL admin account in genaamd: **sqladmin**.
-
-6. Bij de optie tussen **Password** en **Azure Key Vault**, kies de Key vault.
-
-7. Kies bij **AKV linked service** de eerder aangemaakte Key Vault Linked Service.
-
-8. Kies bij **Secret Name** de optie **sqladmin**
-
-9. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
-
-10. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
-
-11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
-
-### Einde Lab3
-
-<div style="font-size: 9px; margin: 0 auto;"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
+2. [Integration Runtimes](../Lab2/LabInstructions2.md)
+3. [Linked Services](../Lab3/LabInstructions3.md)
+4. [Datasets](../Lab4/LabInstructions4.md)
+5. [Pipelines](../Lab5/LabInstructions5.md)
+6. [Triggers](../Lab6/LabInstructions6.md)
+7. [Global Parameters](../Lab7/LabInstructions7.md)
+8. [Activities](../Lab8/LabInstructions8.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)

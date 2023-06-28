@@ -1,90 +1,95 @@
-<div style="font-size: 9px; margin-left: 1cm;"></div><div style="font-size: 9px; margin-left: auto; margin-right: 1cm; "> <img src="data:image/png;base64,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" height=26 /></div>
+# Lab 5 - Pipelines
 
-# Lab5 - Pipelines
+*Requirements*
 
-*Vereisten*
+In order to start the lab, it is essential that Lab4 has been completed.
 
-Om de lab te kunnen starten is het van belang dat Lab4 is afgerond.
+*Objective*
 
-*Doel*
+It's time now that we start moving data from point A to point B. We do this by creating a pipeline with a copy activity. The activity ensures that a Source and Sink (Destination / Target) can be connected to each other and that a literal pump & dump can take place. Follow the instructions step by step.
 
- Het wordt nu tijd dat we data gaan verplaatsen van punt A naar punt B. Dit doen we door een pipeline aan te maken met een copy activiteit. De activiteit zorgt ervoor dat er een Source en Sink (Destination/ Target) aan elkaar gekoppelt kunnen worden en dat er letterlijk een pump & dump plaats kan vinden. Volg de opdrachten stap voor stap.
+## Assignment 1 - Database pipelines
 
-## Opdracht 1 - Database pipelines
+1. Next to **Pipeline**, you currently see a 0. When you hover over the **Pipeline** box with your mouse, an option with **3 dots** (Pipeline Actions) appears on the right side. Click on **Pipeline Actions** and then click on **New Pipeline**.
 
-1. Naast **Pipeline** zie je op dit moment een 0 staan, wanneer je met jouw muis op het vak van **Pipeline** gaat staan zie je een optie met **3 bolletjes** (Pipeline Actions) verschijnen aan de rechterkant. Klik de **Pipeline Actions** aan en klik vervolgens op **New Pipeline**.
+2. Give the Pipeline a clear name. The recommended format is to start with `PL_`, the type of activity, (schema), the table/file name, source, target, and end with `_environment`. If you have a pipeline that orchestrates multiple pipelines, you can keep the format more general.
+   * Practical example: `PL_copy_visits_clubmanager_to_datalake_prd`
+   * Training example: `PL_copy_address_training`
 
-2. Geef de Pipeline een duidelijke naam. Het aangeraden format is om te beginnen met PL_, het soort activiteit, (schema), de tabel/bestands naam, bron (source), doel (sink) en eindigend met _omgeving. Heb je een pipeline die meerdere pipelines orchistreerd kan je het format globaler houden.
+3. On the left side we see a list of **Activities** categories. Click on **Move & transform**. 2 options will appear: **Copy data** and **Data flow**. We will ignore the Data flow for today. Click and drag the **Copy data** to the canvas in the middle of the screen.
 
-    *Praktijkvoorbeeld:* PL_copy_visits_clubmanager_to_datalake_prd
+4. Give the Activity a clear name.
 
-    *Trainingsvoorbeeld:* PL_copy_customers_sqldb-source_to_sqldb-target_training
+5. Click on the **Source** tab. You will be asked to specify a **Source dataset**. Click on it and choose the Dataset for **Address** from the **sqldb-source**.
 
-3. Aan de linkerkant zien we een lijst met de categorieen van de **Activities**. Klik op **Move & transform**. 2 opties zullen verschijnen **Copy data** en **Data flow**. De Data flow houden we buiten beschouwing voor deze training. Klik en sleep de **Copy data** naar het canvas in het midden van het scherm.
+6. Click on the **Sink** tab. You will be asked to specify a **Sink dataset**. Click on it and choose the Dataset for **Address** from the **sqldb-target**.
 
-4. Geef de Activiteit een duidelijke naam.
+7. Various options will appear, including the option for a **Pre-copy script**. Here you can execute SQL code before the Copy activity starts moving data. Since we want to be able to run the pipeline multiple times without getting duplicate data, you can fill in / paste the following:
 
-5. Klik op de tab **Source**. Er wordt gevraagd om een **Source dataset** op te geven. Klik deze aan en kies de Dataset voor **Address** vanuit de **sqldb-source**.
+   ```sql
+   Truncate table [Stg].[Address]
+   ```
 
-6. Klik op de tab **Sink**. Er wordt gevraagd om een **Sink dataset** op te geven. Klik deze aan en kies de Dataset voor **Address** vanuit de **sqldb-target**.
+8. Click on the **Mapping** tab. You will see a button with **Import schemas**, click on it. 
+   > Remember how Datasets can list the columns and datatypes? By running this process, matching columns are linked to each other. This ensures that the data ends up in the right column. This is useful for a table where there is a 1 to 1 mapping. If you are doing multiple tables at once, there are other options.
 
-7. Verschillende opties zullen verschijnen, waaronder ook de optie voor een **Pre-copy script**. Hier kan je SQL-code uitvoeren voordat de Copy activiteit data gaat verplaatsen. Gezien we de pipeline meerdere keren willen kunnen draaien zonder dubbele data te krijgen kan je hier het volgende invullen/ plakken: **Truncate table [Stg].[Address]**.
+9. Repeat steps 1 to 8, but now also for **ProductCategoryDiscount** and **SalesPersonal**. For this you can use the following **Pre-copy scripts**:
+   * `Truncate table [Stg].[ProductCategoryDiscount]`
+   * `Truncate table [Stg].[SalesPersonal]`
 
-8. Klik op de tab **Mapping**. Je zult een knop zien met **Import schemas**, klik hierop. Weet je nog dat bij Datasets de kolommen en datatypes kunnen komen te staan? Door dit proces te draaien worden de kolommen die matchen aan elkaar gekoppelt, hiermee weet je zeker dat de data in de juiste kolom terecht komt. Dit is heel handig voor een tabel waarbij er een mapping 1 op 1, doe je meerdere tabellen tegelijk dan zijn er andere opties, hier morgen meer over.
+10. When all 3 pipelines have been created, create a new pipeline named: `PL_copy_Master_Training`.
 
-9. Doe stap 1 t/m 8 opnieuw maar nu ook voor **ProductCategoryDiscount** en **SalesPersonal**. Hiervoor kan je de volgende **Pre-copy scripts** gebruiken: 
+11. Under the **Activities** tab there is an option called **General**, which contains an **Execute Pipeline** activity. Drag 3 onto the canvas.
 
-    **Truncate table [Stg].[ProductCategoryDiscount]**.
+12. Rename each pipeline one by one to the 3 pipelines you have created before for **Address**, **SalesPersonal**, and **ProductCategoryDiscount**. If the name is too long for what is allowed, make it shorter for now.
 
-    **Truncate table [Stg].[SalesPersonal]**.
+13. Go to the **Settings** tab for each
 
-10. Wanneer alle 3 de pipelines zijn aangemaakt. Maak een nieuwe pipeline aan genaamd: **PL_copy_Master_Training**.
+ pipeline and choose the corresponding pipeline. Do this for all 3 pipelines.
 
-11. Onder de tab van **Activities** is er een optie genaamd **General**, welke een **Execute Pipeline** activiteit bevat. Sleep er 3 naar het canvas.
+14. At this moment, all 3 pipelines would run in parallel, which should be easy as there is no dependence on each other. Despite this, we are going to make them sequential. Click on one of the 3 pipelines. On the right side of the pipeline block you will see **four squares with symbols**. Click on it and a list with the following options will appear:
 
-12. Hernoem elke pipeline 1 voor 1 naar de 3 pipelines die je hiervoor hebt aangemaakt voor **Address**, **SalesPersonal** en **ProductCategoryDiscount**. Mocht de naam te lang zijn voor wat mag, maak hem voor nu wat korter.
+    On Skip = When the pipeline is skipped, move on to the next one.
 
-13. Ga per pipeline naar de tab **Settings** en kies je matchede pipeline. Als je dit voor alle 3 de pipelines hebt gedaan ga door naar de volgende stap.
+    On Success = When the pipeline has run successfully, move on to the next one.
 
-14. Op dit moment zouden alle 3 de pipelines paralell lopen, wat makkelijk zou moeten kunnen gezien er geen afhankelijkheid van elkaar is. Ondanks dat gaan we ze sequentieel maken. Klik op 1 van de 3 pipelines. Je zult rechtsonderin het blokje van de pipeline een **Rondje met een plusje en een pijl**(Add output) zien. Klik hier op en een lijst met de volgende opties komt naar voren:
+    On Failure = When the pipeline fails, move on to the next one.
 
-    Success = Wanneer de pipeline succesvol heeft gedraaid ga door naar de volgende.
+    On Completion = When the pipeline is finished, regardless of success or failure, move on to the next one.
 
-    Failure = Wanneer de pipeline faalt ga door naar de volgende.
+    Click and drag the **green block** to one of the other pipelines, and then do it again for another pipeline. You should now have connected all 3 pipelines to each other with 2 **green arrows**.
 
-    Completion = Wanneer de pipeline klaar is, ongeacht sucess of falen ga door naar de volgende.
+15. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button. By publishing, the other changes become **Live**, and can be used.
 
-    Skipped = Wanneer de pipeline wordt overgeslagen ga door naar de volgende.
+16. Hooray! Your first pipelines are ready. Now we want to run the pipeline, which can be done in different ways:
+    * In the pipeline screen, you see a `Play button` with the text **Debug**. This allows you to run the pipeline as you have created it now. Even if you haven't saved or published yet, the pipeline will be executed as you see it on your screen now.
+    * Next to **Debug** we see a **Lightning bolt** with the text **Add trigger**. If you click on this, you get the option for **Trigger now**, with this you run the pipeline as it is published. Click **Trigger now** and an option would appear to fill in parameter value, since there are none we can click **OK**.
 
-    Kies voor **Success**. Je zult zien dat er niks veranderd omdat er al een **groen blokje** achter de pipeline zat. Klik en sleep het **groene blokje** naar 1 van de andere pipelines en doe dat vervolgens nog één keer voor een andere pipeline. Je zou nu alle 3 de pipelines aan elkaar verbonden hebben met 2 **groene pijlen**.
-
-15. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de andere aanpassingen **Live** te staan, en kan het gebruikt worden.
-
-16. Hoera! je eerste pipelines klaar. Nu willen we de pipeline nog draaien, dit kan op verschillende manieren. In het scherm van de pipeline zelf zie je een **Play knop** met de tekst **Debug**. Dit zorgt ervoor dat je de pipeline draait zoals je hem nu hebt gemaakt, zonder dat deze nog opgeslagen is. Naast **Debug** zien we een **Bliksemschicht** met de tekst **Add trigger**. Als je deze aanklikt krijg je de optie voor **Trigger now**, hiermee draai je de pipeline zoals deze gepublisched is. Klik **Trigger now** aan en een optie zou verschijnen om parameter waarde in te vullen, gezien deze er niet zijn kunnen we op **OK** klikken.
-
-17. Wacht tot je de melding rechtsboven in beeld krijgt met dat de pipeline succesvol heeft gedraait. Draai de pipeline hierna nog eens via de **Debug knop**. Je zult zien dat de informatie over het draaien van de pipeline onder in beeld verschijnt.
+17. Wait until you get the message at the top right of the screen saying that the pipeline has run successfully. Run the pipeline again via the **Debug button**. You will see that the information about the pipeline running appears at the bottom of the screen.
 
 
-## Opdracht 2 - Monitoring
+## Assignment 2 - Monitoring
 
-1. Klik aan de linkerkant op het **Radartje** (Monitor). Je komt nu meteen bij **Pipeline runs** uit, en zal in de horizontale navigatie balk 2 opties zien in de vorm van **Triggered** en **Debug**. In beide tabs zou de **PL_copy_Master** pipeline moeten staan en de bijhorende onderliggende pipelines.
+In the "monitoring" section, you can not only view how previous pipelines have run, but also send notifications when certain conditions are met.
 
-2. Klik de één van de onderliggende pipelines aan, in 1 van de 2 tabbladen. Net als bij het draaien van de Debug variant zien we een regel met informatie over de gedraaide pipeline. Hou je muis op de naam van de pipeline, er verschijnen nu 2 opties: **Input**, **Output** en **Details**. 
+1. Click on the meter icon (**Monitor**) on the left side. You will now immediately go to **Pipeline runs**, and will see 2 options in the form of **Triggered** and **Debug** in the horizontal navigation bar. In both tabs, the `PL_copy_Master` pipeline should be present, as well as the corresponding underlying pipelines.
 
-3. Klik op **Input**, je ziet nu een stuk JSON code waaruit te lezen is welke kolom uit de source, naar welke kolom in de sink is gegaan. Hierin kan je ook informatie zien als je specifieke data d.m.v. een query ophaald, parameters, variable en meer. Sluit de **Input Tab** af door op het **Kruisje** te klikken.
+2. Click on one of the underlying pipelines, in one of the two tabs. Just like when running the Debug variant, you see a line of information about the run pipeline. Hover your mouse over the name of the activity at the bottom of the screen, now 2 options appear: **Input**, **Output**, and **Details**.
 
-4. Klik op **Output**, ook hier zie je een stuk JSON code. De **Output** bevat informatie over het draaien, zoals: Hoelang duurde het, hoeveel rijen zijn gelezen en hoeveel zijn overgehaald en meer. Sluit de **Output Tab** af door op het **Kruisje** te klikken.
+3. Click on **Input**, now you will see a piece of JSON code from which you can read which column from the source went to which column in the sink. In this, you can also see information if you fetch specific data using a query, parameters, variables, and more. Close the **Input Tab** by clicking on the **Cross**.
 
-5. Klik op **Details**, je ziet een visuele weergaven van de **Output**.
-Sluit de **Details** af door op het **Kruisje** te klikken.
+4. Click on **Output**, here too you will see a piece of JSON code. The **Output** contains information about the run, such as: How long did it take, how many rows were read and how many were transferred, and more. Close the **Output Tab** by clicking on the **Cross**.
 
-6. Aan de linkerkant zien we **Notifications** met de optie **Alerts & metrics**. Klik deze aan.
+5. Click on **Details**, you see a visual representation of the **Output**.
+Close the **Details** by clicking on the **Cross**.
 
-7. In de horizontale navigatiebalk zien we de opties **New alert rule**. Klik deze aan.
+6. On the left side, we see **Notifications** with the option **Alerts & metrics**. Click on this.
 
-8. Geef de **Alert rule name** een duidelijke naam.
+7. In the horizontal navigation bar, we see the option **New alert rule**. Click on this.
 
-9. Bij **Severity** zijn er meerdere opties mogelijk, namelijk:
+8. We're going to create an Alert Rule that sends a notification when the pipeline encounters an error. Give the **Alert rule name** a clear name that covers the situation (e.g., `Alert on error`).
+
+9. Under **Severity**, multiple options are possible:
 
     Sev 0 = Critical
 
@@ -96,69 +101,84 @@ Sluit de **Details** af door op het **Kruisje** te klikken.
 
     Sev 4 = Verbose
 
-    Voor ons doeleinde kiezen we **Sev0**.
+    For our purpose, choose **Sev0**.
 
-10. Klik bij **Targer criteria** op het **Add criteria**. Een lange lijst met opties zal verschijnen voor verschillende soorten metrics waarover gerapporteerd kunnen worden. Kies voor de **Succeeded pipeline runs metrics** en klik op **Conntinue**.  
+10. Click on **Target criteria** on the **Add criteria**. A long list of options will appear for different types of metrics that can be reported on. Choose the **Succeeded pipeline runs metrics** and click on **Continue**.  
 
-11. Klik bij **Values** de optie bij **Name** aan en kies de **PL_copy_Master** pipeline.
+11. Click on the **Values** option at **Name** and choose the `PL_copy_Master` pipeline.
 
-12. De andere settings kunnen blijven zoals ze zijn. Klik vervolgens op **Add criteria**.
+12. The other settings can remain as they are. Then click on **Add criteria**.
 
-13. Klik bij **Configure Email/SMS/Push/Voice notification** op **Configure notification**.
+13. Click on **Configure Email/SMS/Push/Voice notification** on **Configure notification**.
 
-14. Een nieuwe **Action group** zal aangemaakt moeten worden. Dit is een groep waarin mensen geplaatst kunnen worden om genotificeerd te worden over de door jouw aangemaakte regel. Vul bij **Action group name** een duidelijke naam in en geeft bij **Short name** een herkenbare afkorting van de groepsnaam.
+14. A new **Action group** will need to be created. This is a group in which people can be placed to be notified about the rule you have created. Fill in a clear name at **Action group name** and provide a recognizable abbreviation of the group name at **Short name**.
 
-15. Klik bij **Notifications** op **Add notification** en geeft de **Action name** een duidelijke naam. Kies vervolgens bij **Select which notifications you'd like to receive** de optie **Email** en vul hier een e-mailadres is waar je nu toegang tot hebt. Andere opties mogen ook zodat je deze kan uitproberen. Wanneer je alles hebt toegevoegd dat je wilt, klik je op **Add notification**.
+15. Click on **Notifications** on **Add notification** and give the **Action name** a clear name. Then choose the **Email** option at **Select which notifications you'd like to receive** and enter an email address to which you currently have access. Other options may also be chosen so that you can try them out. When you have added everything you want, click on **Add notification**.
 
-16. Klik vervolgens op **Add action group**. Gaat dit fout, laat het weten aan de trainer.
+16. Then click on **Add action group
 
-17. Klik op **Create alert rule**
+**. If this goes wrong, let the trainer know.
 
-18. Ga terug naar **Pipeline runs** en de tab **Triggered**, houd je muis op de naam van de **PL_copy_Master**. Er verschijnt een **Play knop met pijltjes** (rerun) klik deze aan. Wacht tot pipeline weer klaar is, na iets meer dan een minuut zou je een mail en/of andere notificaties dienen te ontvangen.
+17. Click on **Create alert rule**.
 
+18. Go back to **Pipeline runs** and the **Triggered** tab, hover your mouse over the name of the `PL_copy_Master`. A `Play button with arrows` (rerun) will appear, click on it. Wait until the pipeline is ready again, after just over a minute you should receive an email and/or other notifications.
 
-## Opdracht 3 - Parameters en Variablen
+## Assignment 3 - Parameters and Variables
 
-1. Klik links op het **Potloodje** (Author) en ga vervolgens terug naar de pipelines voor **Address**.
+With the help of parameters, you can make your pipeline more dynamic. For example, by only fetching data that has changed after a certain date/time.
 
-2. In de balk onderin zie je de tab **Parameters**, klik deze aan als je hier niet al opzit.
+1. Click on the **Pencil** (Author) on the left and then go back to the pipeline for **Address**.
 
-3. Klik op **New**, een nieuwe parameter wordt aangemaakt. Vul bij **Name** het volgende in: **ModifiedDate**. De **Type** kan op **String** blijven staan. 
+2. In the bar at the bottom, you see the **Parameters** tab, click on this if you are not already on it.
 
-4. Klik op het blokje voor de **Copy data**. Klik vervolgens op de tab **Source** en kies bij **Use query** de optie **Query**.
+3. Click on **New**, a new parameter is created. Enter the following for **Name**: **ModifiedDate**. The **Type** can remain set to **String**.
 
-5. Er verschijnt nu een Query veld, klik deze aan. Onder het veld verschijnt de optie **Add dynamic content** klik deze aan.
+4. Click on the block for the **Copy data**. Then click on the **Source** tab and select the **Query** option under **Use query**.
 
-6. Type of plak de volgende query in het veld: **Select * FROM [SalesLT].[Address] Where ModifiedDate >= @{formatDateTime(pipeline().parameters.ModifiedDate,'yyyy-MM-dd')}**
+5. A Query field will now appear, click on this. The option **Add dynamic content** appears below the field, click on this.
 
-7. Wanneer je nu op **Preview data** klikt, krijg je de vraag in een waarde in te vullen. Vul hier **1900-01-01** in om mee te testen. Klik vervolgens op **OK**.
+6. Type or paste the following query into the field:  
 
-8. Ga nu naar de **PL_copy_Master** en klik de pipeline voor **Address** aan. In de tab **Settings** zal je zien dat er gevraagd wordt om een **Value** voor de parameter **ModifiedData**.
+   ```sql
+   SELECT * FROM [SalesLT].[Address] WHERE ModifiedDate >= '@{formatDateTime(pipeline().parameters.ModifiedDate,'yyyy-MM-dd')}'
+   ```
 
-9. Klik op het canvas en vervolgens op de tab **Variables**. maak een nieuwe variable aan door op **New** te klikken.
+7. When you now click on **Preview data**, you are asked to enter a value. Enter **1900-01-01** here to test. Then click on **OK**.
 
-10. Noem de variabelen: **FilterDate**. 
+8. Now go to the `PL_copy_Master` and click on the "execute pipeline activity" for **Address**. In the **Settings** tab, you will see that a **Value** for the **ModifiedDate** parameter is requested. We are not going to fill this manually, but with the help of a variable.
 
-11. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Set variable** op het canvas. 
+9. Click on the canvas and then on the **Variables** tab. Create a new variable by clicking on **New**.
 
-12. Verbind het **groene blokje** met de **Address** pipeline.
+10. Name the variable `FilterDate`
 
-13. Klik op het **Set variable** blokje en geef deze een duidelijke naam.
+11. From the list of **Activities**, click on the **General** option. Click and drag **Set variable** onto the canvas. 
 
-14. Ga naar de **Variables** tab en kies **FilterDate**. Het is nu mogelijk om een waarde te plaatsen. Vul hier het volgende in: **2007-01-01**.
+12. Connect the **green block** with the **Address** pipeline.
 
-15. Klik vervolgens weer op de **Address** pipeline en vervolgens op de tab **Settings**.
+13. Click on the **Set variable** block and give it a clear name, for example "Set ModifiedDate".
 
-16. Klik het invul veld bij **Value** aan en klik vervolgens op **Add dynamic content**.
+14. Go to the **Settings** tab and choose **FilterDate**. It is now possible to enter a value. Enter the following here: **2007-01-01**.
 
-17. In het nieuwescherm zie je in de lijst **Variables** staan, klik op de variablen **FilterDate** en vervolgens op **OK**.
+15. Then click again on the **Address** pipeline and then on the **Settings** tab.
 
-18. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
+16. Click on the field under **Value** and then click on **Add dynamic content**.
 
-19. Klik op **Add trigger** en vervolgens **Trigger now** en gevolgt bij **OK**.
+17. In the new screen, go to the **Variables** tab. Click on the **FilterDate** variable and then on **OK**.
 
-20. Klik aan de linkerkant op het **Radartje** (Monitor). Ga naar **Pipeline runs** indien deze niet meteen opent. Je ziet nu nieuwe pipelines draaien en bij de pipeline van **Address** zou je nu een **[@]** moet zien staan. Klik deze aan, je zou de waarde moeten zien die in je variable had gestopt.
+18. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button.
 
-### Einde Lab5
+19. Click on **Add trigger** then **Trigger now** and finally click on **OK**.
 
-<div style="font-size: 9px; margin: 0 auto;"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>
+20. Click on **Monitor** (the meter) on the left. Go to **Pipeline runs** if it doesn't open immediately. You should now see new pipelines running and in the pipeline of **Address** you should now see an **[@]** under the **Parameters** column. Click on this, you should see the value that you put in your variable.
+
+## Table of Contents
+
+1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
+2. [Integration Runtimes](../Lab2/LabInstructions2.md)
+3. [Linked Services](../Lab3/LabInstructions3.md)
+4. [Datasets](../Lab4/LabInstructions4.md)
+5. [Pipelines](../Lab5/LabInstructions5.md)
+6. [Triggers](../Lab6/LabInstructions6.md)
+7. [Global Parameters](../Lab7/LabInstructions7.md)
+8. [Activities](../Lab8/LabInstructions8.md)
+9. [Batching and DIUs](../Lab9/LabInstructions9.md)

@@ -1,477 +1,396 @@
 {
-   "$schema":"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-   "contentVersion":"1.0.0.0",
-   "parameters":{
-      "serverName":{
-         "type":"string",
-         "defaultValue":"[concat('sql-',uniqueString('sql', resourceGroup().id))]",
-         "metadata":{
-            "description":"The name of the SQL logical server."
-         }
-      },
-      "sourceDBName":{
-         "type":"string",
-         "defaultValue":"[concat('sqldb-source-',uniqueString('sqldb-source', resourceGroup().id))]",
-         "metadata":{
-            "description":"The name of the SQL Database."
-         }
-      },
-      "targetDBName":{
-         "type":"string",
-         "defaultValue":"[concat('sqldb-target-',uniqueString('sqldb-target', resourceGroup().id))]",
-         "metadata":{
-            "description":"The name of the SQL Database."
-         }
-      },
-      "location":{
-         "type":"string",
-         "defaultValue":"[resourceGroup().location]",
-         "metadata":{
-            "description":"Location for all resources."
-         }
-      },
-      "administratorLogin":{
-         "type":"string",
-         "defaultValue":"sqladmin",
-         "metadata":{
-            "description":"The administrator username of the SQL logical server."
-         }
-      },
-      "administratorLoginPassword":{
-         "type":"securestring",
-         "defaultValue":"Welkom12345!",
-         "metadata":{
-            "description":"The administrator password of the SQL logical server."
-         }
-      },
-      "storageAccountName":{
-         "type":"string",
-         "defaultValue":"[concat('st',uniqueString('st', resourceGroup().id))]",
-         "metadata":{
-            "description":"Specifies the name of the Azure Storage account."
-         }
-      },
-      "containerName":{
-         "type":"string",
-         "defaultValue":"data",
-         "metadata":{
-            "description":"Specifies the name of the blob container."
-         }
-      },
-      "dataFactoryName":{
-         "type":"string",
-         "defaultValue":"[concat('adf-',uniqueString('adf', resourceGroup().id))]",
-         "metadata":{
-            "description":"Specifies the name of the Azure Data Factory."
-         }
-      },
-       "linkedDataFactoryName":{
-         "type":"string",
-         "defaultValue":"[concat('adf-linked-',uniqueString('adf-linked', resourceGroup().id))]",
-         "metadata":{
-            "description":"Specifies the name of the Linked Azure Data Factory."
-         }
-      },
-      "keyVaultName":{
-         "type":"string",
-         "defaultValue":"[concat('kv-',uniqueString('kv', resourceGroup().id))]",
-         "metadata":{
-            "description":"Specifies the name of the key vault."
-         }
-      },
-      "virtualMachineName": {
-            "type": "string",
-            "defaultValue":"[concat('vm-',uniqueString('vm', resourceGroup().id))]",
-            "metadata":{
-                "description":"The name of the Virtual Machine."
-            }
-        },
-        "networkInterfaceName": {
-            "type": "string",
-            "defaultValue":"[concat('nic-',uniqueString('nic', resourceGroup().id))]",
-            "metadata":{
-                "description":"The name of the Network Interface Card."
-            }
-        },
-        "virtualNetworkName": {
-            "type": "string",
-            "defaultValue":"[concat('vnet-',uniqueString('vnet', resourceGroup().id))]",
-            "metadata":{
-                "description":"The name of the Virtual Network."
-            }
-        },
-        "networkSecurityGroupName": {
-            "type": "string",
-            "defaultValue":"[concat('nsg-',uniqueString('nsg', resourceGroup().id))]",
-            "metadata":{
-                "description":"The name of the Network Security Group."
-            }
-        },
-        "subnetName": {
-            "type": "string",
-            "defaultValue":"[concat('sn-',uniqueString('sn', resourceGroup().id))]",
-            "metadata":{
-                "description":"The name of the Subnet."
-            }
-        },
-        "publicIpAddressName": {
-            "type": "string",
-            "defaultValue":"[concat('pip-',uniqueString('pip', resourceGroup().id))]",
-            "metadata":{
-                "description":"The name of the Public IP Address."
-            }
-        },
-        "roleDefinitionId": {
+   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+   "contentVersion": "1.0.0.0",
+   "parameters": {
+      "initials": {
          "type": "string",
-         "defaultValue": "b24988ac-6180-42a0-ab88-20f7382dd24c",
          "metadata": {
-        "description": "roleDefinition for the assignment - default is contributor"
+            "description": "Your initials (so for Koos van Strien that would be KvS)"
+         }
       }
-    }
    },
-   "variables":{
-        "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
-        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]"
+   "variables": {
+      "uniqueString": "[concat(substring(uniqueString(resourceGroup().id), 0, 3), toLower(parameters('initials')))]",
+      "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]",
+      "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+      "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
+      "serverName": "[concat('sql-',variables('uniqueString'))]",
+      "sourceDBName": "sqldb-source",
+      "targetDBName": "sqldb-target",
+      "location": "[resourceGroup().location]",
+      "administratorLogin": "sqladmin",
+      "administratorLoginPassword": "WortellSmartLearning.nl",
+      "storageAccountName": "[concat('st',variables('uniqueString'))]",
+      "containerName": "data",
+      "dataFactoryName": "[concat('adf-',variables('uniqueString'))]",
+      "linkedDataFactoryName": "[concat('adf-linked-',variables('uniqueString'))]",
+      "keyVaultName": "[concat('kv-',variables('uniqueString'))]",
+      "virtualMachineName": "[concat('vm-',variables('uniqueString'))]",
+      "networkInterfaceName": "[concat('nic-',variables('uniqueString'))]",
+      "virtualNetworkName": "[concat('vnet-',variables('uniqueString'))]",
+      "networkSecurityGroupName": "[concat('nsg-',variables('uniqueString'))]",
+      "subnetName": "subnet",
+      "publicIpAddressName": "[concat('pip-',variables('uniqueString'))]",
+      "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
    },
-   "resources":[
+   "resources": [
       {
-         "type":"Microsoft.Sql/servers",
-         "apiVersion":"2020-02-02-preview",
-         "name":"[parameters('serverName')]",
-         "location":"[parameters('location')]",
-         "properties":{
-            "administratorLogin":"[parameters('administratorLogin')]",
-            "administratorLoginPassword":"[parameters('administratorLoginPassword')]"
+         "type": "Microsoft.Sql/servers",
+         "apiVersion": "2020-02-02-preview",
+         "name": "[variables('serverName')]",
+         "location": "[variables('location')]",
+         "properties": {
+            "administratorLogin": "[variables('administratorLogin')]",
+            "administratorLoginPassword": "[variables('administratorLoginPassword')]"
          },
-         "resources":[
+         "resources": [
             {
-               "type":"databases",
-               "apiVersion":"2020-08-01-preview",
-               "name":"[parameters('sourceDBName')]",
-               "location":"[parameters('location')]",
-               "properties":{
-                  "sampleName":"AdventureWorksLT"
+               "type": "databases",
+               "apiVersion": "2020-08-01-preview",
+               "name": "[variables('sourceDBName')]",
+               "location": "[variables('location')]",
+               "properties": {
+                  "sampleName": "AdventureWorksLT"
                },
-               "sku":{
-                  "name":"Standard",
-                  "tier":"Standard"
+               "sku": {
+                  "name": "Standard",
+                  "tier": "Standard"
                },
-               "dependsOn":[
-                  "[resourceId('Microsoft.Sql/servers', concat(parameters('serverName')))]"
+               "dependsOn": [
+                  "[resourceId('Microsoft.Sql/servers', concat(variables('serverName')))]"
                ]
             },
             {
-               "type":"databases",
-               "apiVersion":"2020-08-01-preview",
-               "name":"[parameters('targetDBName')]",
-               "location":"[parameters('location')]",
-               "properties":{},
-               "sku":{
-                  "name":"Standard",
-                  "tier":"Standard"
+               "type": "databases",
+               "apiVersion": "2020-08-01-preview",
+               "name": "[variables('targetDBName')]",
+               "location": "[variables('location')]",
+               "properties": {},
+               "sku": {
+                  "name": "Standard",
+                  "tier": "Standard"
                },
-               "dependsOn":[
-                  "[resourceId('Microsoft.Sql/servers', concat(parameters('serverName')))]"
+               "dependsOn": [
+                  "[resourceId('Microsoft.Sql/servers', concat(variables('serverName')))]"
                ]
             }
          ]
       },
       {
-         "type":"Microsoft.Sql/servers/firewallRules",
-         "apiVersion":"2021-02-01-preview",
-         "name":"[concat(parameters('serverName'), '/AllowAllIps')]",
-         "dependsOn":[
-            "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
+         "type": "Microsoft.Sql/servers/firewallRules",
+         "apiVersion": "2021-02-01-preview",
+         "name": "[concat(variables('serverName'), '/AllowAllIps')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', variables('serverName'))]"
          ],
-         "properties":{
-            "startIpAddress":"0.0.0.0",
-            "endIpAddress":"255.255.255.255"
+         "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "255.255.255.255"
          }
       },
       {
-         "type":"Microsoft.Storage/storageAccounts",
-         "apiVersion":"2021-04-01",
-         "name":"[parameters('storageAccountName')]",
-         "location":"[parameters('location')]",
-         "sku":{
-            "name":"Standard_LRS"
+         "type": "Microsoft.Storage/storageAccounts",
+         "apiVersion": "2021-04-01",
+         "name": "[variables('storageAccountName')]",
+         "location": "[variables('location')]",
+         "sku": {
+            "name": "Standard_LRS"
          },
-         "kind":"StorageV2",
-         "properties":{
-            "accessTier":"Hot"
+         "kind": "StorageV2",
+         "properties": {
+            "accessTier": "Hot"
          }
       },
       {
-         "type":"Microsoft.Storage/storageAccounts/blobServices/containers",
-         "apiVersion":"2021-04-01",
-         "name":"[format('{0}/default/{1}', parameters('storageAccountName'), parameters('containerName'))]",
-         "dependsOn":[
-            "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+         "apiVersion": "2021-04-01",
+         "name": "[format('{0}/default/{1}', variables('storageAccountName'), variables('containerName'))]",
+         "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
          ]
       },
       {
-         "type":"Microsoft.DataFactory/factories",
-         "apiVersion":"2018-06-01",
-         "name":"[parameters('dataFactoryName')]",
-         "location":"[parameters('location')]",
-         "properties":{},
-         "identity":{
-            "type":"SystemAssigned"
+         "type": "Microsoft.DataFactory/factories",
+         "apiVersion": "2018-06-01",
+         "name": "[variables('dataFactoryName')]",
+         "location": "[variables('location')]",
+         "properties": {},
+         "identity": {
+            "type": "SystemAssigned"
          }
       },
       {
-         "type":"Microsoft.DataFactory/factories",
-         "apiVersion":"2018-06-01",
-         "name":"[parameters('linkedDataFactoryName')]",
-         "location":"[parameters('location')]",
-         "properties":{},
-         "identity":{
-            "type":"SystemAssigned"
+         "type": "Microsoft.DataFactory/factories",
+         "apiVersion": "2018-06-01",
+         "name": "[variables('linkedDataFactoryName')]",
+         "location": "[variables('location')]",
+         "properties": {},
+         "identity": {
+            "type": "SystemAssigned"
          }
       },
-         {
-            "type": "Microsoft.Authorization/roleAssignments",
-            "apiVersion": "2020-04-01-preview",
-            "name": "[guid(parameters('roleDefinitionId'))]",
-            "scope": "[concat('Microsoft.DataFactory/factories', '/', parameters('linkedDataFactoryName'))]",
-            "dependsOn": [
-               "[resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName'))]",
-               "[resourceId('Microsoft.DataFactory/factories', parameters('linkedDataFactoryName'))]"
-               ],
-            "properties": {
-                "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', parameters('roleDefinitionId'))]",
-                "principalId": "[reference(resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName')),'2018-06-01', 'full').identity.principalId]"
-            }
-        },
       {
-         "type":"Microsoft.KeyVault/vaults",
-         "apiVersion":"2021-04-01-preview",
-         "name":"[parameters('keyVaultName')]",
-         "location":"[parameters('location')]",
-         "dependsOn":[
-            "[resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName'))]",
-            "[resourceId('Microsoft.DataFactory/factories', parameters('linkedDataFactoryName'))]"
+         "type": "Microsoft.Resources/deploymentScripts",
+         "apiVersion": "2020-10-01",
+         "kind": "AzurePowerShell",
+         "name": "WaitSection",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName'))]",
+            "[resourceId('Microsoft.DataFactory/factories', variables('linkedDataFactoryName'))]"
          ],
-         "properties":{
-            "tenantId":"[subscription().tenantId]",
-            "enableSoftDelete": false,           
-            "accessPolicies":[
+         "properties": {
+            "azPowerShellVersion": "3.0",
+            "scriptContent": "start-sleep -Seconds 30",
+            "cleanupPreference": "Always",
+            "retentionInterval": "PT1H"
+         }
+      },
+      {
+         "type": "Microsoft.Authorization/roleAssignments",
+         "apiVersion": "2020-04-01-preview",
+         "name": "[guid(variables('roleDefinitionId'))]",
+         "scope": "[concat('Microsoft.DataFactory/factories', '/', variables('linkedDataFactoryName'))]",
+         "dependsOn": [
+            "[resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName'))]",
+            "[resourceId('Microsoft.DataFactory/factories', variables('linkedDataFactoryName'))]",
+            "WaitSection"
+         ],
+         "properties": {
+            "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('roleDefinitionId'))]",
+            "principalId": "[reference(resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName')),'2018-06-01', 'full').identity.principalId]"
+         }
+      },
+      {
+         "type": "Microsoft.KeyVault/vaults",
+         "apiVersion": "2021-04-01-preview",
+         "name": "[variables('keyVaultName')]",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName'))]",
+            "[resourceId('Microsoft.DataFactory/factories', variables('linkedDataFactoryName'))]",
+            "WaitSection"
+         ],
+         "properties": {
+            "tenantId": "[subscription().tenantId]",
+            "enableSoftDelete": false,
+            "accessPolicies": [
                {
-                  "objectId":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('dataFactoryName')),'2018-06-01', 'full').identity.principalId]",
-                  "tenantId":"[subscription().tenantId]",
-                  "permissions":{
-                     "secrets":[
+                  "objectId": "[reference(resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName')),'2018-06-01', 'full').identity.principalId]",
+                  "tenantId": "[subscription().tenantId]",
+                  "permissions": {
+                     "secrets": [
                         "list",
                         "get"
                      ]
                   }
                },
                {
-                  "objectId":"[reference(resourceId('Microsoft.DataFactory/factories', parameters('linkedDataFactoryName')),'2018-06-01', 'full').identity.principalId]",
-                  "tenantId":"[subscription().tenantId]",
-                  "permissions":{
-                     "secrets":[
+                  "objectId": "[reference(resourceId('Microsoft.DataFactory/factories', variables('linkedDataFactoryName')),'2018-06-01', 'full').identity.principalId]",
+                  "tenantId": "[subscription().tenantId]",
+                  "permissions": {
+                     "secrets": [
                         "list",
                         "get"
                      ]
                   }
                }
             ],
-            "sku":{
-               "name":"standard",
-               "family":"A"
+            "sku": {
+               "name": "standard",
+               "family": "A"
             },
-            "networkAcls":{
-               "defaultAction":"Allow",
-               "bypass":"AzureServices"
+            "networkAcls": {
+               "defaultAction": "Allow",
+               "bypass": "AzureServices"
             }
          }
       },
       {
-         "type":"Microsoft.KeyVault/vaults/secrets",
-         "apiVersion":"2021-04-01-preview",
-         "name":"[format('{0}/{1}', parameters('keyVaultName'), parameters('administratorLogin'))]",
-         "properties":{
-            "value":"[parameters('administratorLoginPassword')]"
+         "type": "Microsoft.KeyVault/vaults/secrets",
+         "apiVersion": "2021-04-01-preview",
+         "name": "[format('{0}/{1}', variables('keyVaultName'), variables('administratorLogin'))]",
+         "properties": {
+            "value": "[variables('administratorLoginPassword')]"
          },
-         "dependsOn":[
-            "[resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName'))]"
+         "dependsOn": [
+            "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
          ]
       },
       {
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2020-11-01",
-            "name": "[parameters('networkInterfaceName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAddress": "10.0.0.4",
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIPAddress": {
-                                "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', parameters('publicIpAddressName'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            },
-                            "primary": true,
-                            "privateIPAddressVersion": "IPv4"
-                        }
-                    }
-                ],
-                "dnsSettings": {
-                    "dnsServers": []
-                },
-                "enableAcceleratedNetworking": true,
-                "enableIPForwarding": false,
-                "networkSecurityGroup": {
-                    "id": "[variables('nsgId')]"
-                }
+         "type": "Microsoft.Network/networkInterfaces",
+         "apiVersion": "2020-11-01",
+         "name": "[variables('networkInterfaceName')]",
+         "location": "[variables('location')]",
+         "properties": {
+            "ipConfigurations": [
+               {
+                  "name": "ipconfig1",
+                  "properties": {
+                     "privateIPAddress": "10.0.0.4",
+                     "privateIPAllocationMethod": "Dynamic",
+                     "publicIPAddress": {
+                        "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+                     },
+                     "subnet": {
+                        "id": "[variables('subnetRef')]"
+                     },
+                     "primary": true,
+                     "privateIPAddressVersion": "IPv4"
+                  }
+               }
+            ],
+            "dnsSettings": {
+               "dnsServers": []
             },
-            "dependsOn":[
-            "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-            "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]"
+            "enableAcceleratedNetworking": true,
+            "enableIPForwarding": false,
+            "networkSecurityGroup": {
+               "id": "[variables('nsgId')]"
+            }
+         },
+         "dependsOn": [
+            "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+            "[resourceId('Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
          ]
-        },
-        {
-            "name": "[parameters('networkSecurityGroupName')]",
-            "type": "Microsoft.Network/networkSecurityGroups",
-            "apiVersion": "2019-02-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "securityRules": [
-                {
-                            "name": "RDP",
-                            "properties": {
-                            "protocol": "TCP",
-                            "sourcePortRange": "*",
-                            "destinationPortRange": "3389",
-                            "sourceAddressPrefix": "*",
-                            "destinationAddressPrefix": "*",
-                            "access": "Allow",
-                            "priority": 300,
-                            "direction": "Inbound",
-                            "sourcePortRanges": [],
-                            "destinationPortRanges": [],
-                            "sourceAddressPrefixes": [],
-                            "destinationAddressPrefixes": []
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "name": "[parameters('virtualNetworkName')]",
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2020-11-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "10.0.0.0/16"
-                    ]
-                },
-                 "subnets": [
-                    {
-                        "name": "[parameters('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "10.0.0.0/24",
-                            "delegations": [],
-                            "privateEndpointNetworkPolicies": "Enabled",
-                            "privateLinkServiceNetworkPolicies": "Enabled"
-                        }
-                    }
-                ],
-                "virtualNetworkPeerings": [],
-                "enableDdosProtection": false
-            }
-        },
-        {
-            "name": "[parameters('publicIpAddressName')]",
-            "type": "Microsoft.Network/publicIpAddresses",
-            "apiVersion": "2019-02-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publicIpAllocationMethod": "Static"
+      },
+      {
+         "name": "[variables('networkSecurityGroupName')]",
+         "type": "Microsoft.Network/networkSecurityGroups",
+         "apiVersion": "2019-02-01",
+         "location": "[variables('location')]",
+         "properties": {
+            "securityRules": [
+               {
+                  "name": "RDP",
+                  "properties": {
+                     "protocol": "TCP",
+                     "sourcePortRange": "*",
+                     "destinationPortRange": "3389",
+                     "sourceAddressPrefix": "*",
+                     "destinationAddressPrefix": "*",
+                     "access": "Allow",
+                     "priority": 300,
+                     "direction": "Inbound",
+                     "sourcePortRanges": [],
+                     "destinationPortRanges": [],
+                     "sourceAddressPrefixes": [],
+                     "destinationAddressPrefixes": []
+                  }
+               }
+            ]
+         }
+      },
+      {
+         "name": "[variables('virtualNetworkName')]",
+         "type": "Microsoft.Network/virtualNetworks",
+         "apiVersion": "2020-11-01",
+         "location": "[variables('location')]",
+         "properties": {
+            "addressSpace": {
+               "addressPrefixes": [
+                  "10.0.0.0/16"
+               ]
             },
-            "sku": {
-                "name": "Basic"
-            }
-        },
-        {
-            "name": "[parameters('virtualMachineName')]",
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2021-03-01",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"
+            "subnets": [
+               {
+                  "name": "[variables('subnetName')]",
+                  "properties": {
+                     "addressPrefix": "10.0.0.0/24",
+                     "delegations": [],
+                     "privateEndpointNetworkPolicies": "Enabled",
+                     "privateLinkServiceNetworkPolicies": "Enabled"
+                  }
+               }
             ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "Standard_D2s_v3"
-                },
-                "storageProfile": {
-                    "osDisk": {
-                        "createOption": "fromImage",
-                        "managedDisk": {
-                            "storageAccountType": "Premium_LRS"
-                        }
-                    },
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsDesktop",
-                        "offer": "Windows-10",
-                        "sku": "20h2-pro-g2",
-                        "version": "latest"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaceName'))]"
-                        }
-                    ]
-                },
-                "osProfile": {
-                    "computerName": "os-vm",
-                    "adminUsername": "[parameters('administratorLogin')]",
-                    "adminPassword": "[parameters('administratorLoginPassword')]",
-                    "windowsConfiguration": {
-                        "enableAutomaticUpdates": true,
-                        "provisionVmAgent": true
-                    }
-                },
-                "licenseType": "Windows_Client",
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true
-                    }
-                }
+            "virtualNetworkPeerings": [],
+            "enableDdosProtection": false
+         }
+      },
+      {
+         "name": "[variables('publicIpAddressName')]",
+         "type": "Microsoft.Network/publicIpAddresses",
+         "apiVersion": "2019-02-01",
+         "location": "[variables('location')]",
+         "properties": {
+            "publicIPAllocationMethod": "Static",
+            "publicIPAddressVersion": "IPv4"
+         },
+         "sku": {
+            "name": "Standard"
+         }
+      },
+      {
+         "name": "[variables('virtualMachineName')]",
+         "type": "Microsoft.Compute/virtualMachines",
+         "apiVersion": "2021-03-01",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]"
+         ],
+         "properties": {
+            "hardwareProfile": {
+               "vmSize": "Standard_D2s_v3"
             },
-            "identity": {
-                "type": "systemAssigned"
+            "storageProfile": {
+               "osDisk": {
+                  "createOption": "fromImage",
+                  "managedDisk": {
+                     "storageAccountType": "StandardSSD_LRS"
+                  }
+               },
+               "imageReference": {
+                  "publisher": "MicrosoftWindowsDesktop",
+                  "offer": "Windows-10",
+                  "sku": "20h2-pro-g2",
+                  "version": "latest"
+               }
+            },
+            "networkProfile": {
+               "networkInterfaces": [
+                  {
+                     "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+                  }
+               ]
+            },
+            "osProfile": {
+               "computerName": "os-vm",
+               "adminUsername": "[variables('administratorLogin')]",
+               "adminPassword": "[variables('administratorLoginPassword')]",
+               "windowsConfiguration": {
+                  "enableAutomaticUpdates": true,
+                  "provisionVmAgent": true
+               }
+            },
+            "licenseType": "Windows_Client",
+            "diagnosticsProfile": {
+               "bootDiagnostics": {
+                  "enabled": true
+               }
             }
-            
-        },
-        {
-            "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
-            "type": "Microsoft.DevTestLab/schedules",
-            "apiVersion": "2018-09-15",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
-            ],
-            "properties": {
-                "status": "Enabled",
-                "taskType": "ComputeVmShutdownTask",
-                "dailyRecurrence": {
-                    "time": "1800"
-                },
-                "timeZoneId": "W. Europe Standard Time",
-                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"
-            }
-        }
+         },
+         "identity": {
+            "type": "systemAssigned"
+         }
+
+      },
+      {
+         "name": "[concat('shutdown-computevm-', variables('virtualMachineName'))]",
+         "type": "Microsoft.DevTestLab/schedules",
+         "apiVersion": "2018-09-15",
+         "location": "[variables('location')]",
+         "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]"
+         ],
+         "properties": {
+            "status": "Enabled",
+            "taskType": "ComputeVmShutdownTask",
+            "dailyRecurrence": {
+               "time": "1800"
+            },
+            "timeZoneId": "W. Europe Standard Time",
+            "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('virtualMachineName'))]"
+         }
+      }
    ]
 }
