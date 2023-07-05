@@ -1,14 +1,10 @@
 # Lab 10 - First Data Flows
 
-*Requirements*
-
-To be able to start the lab, it is important that Lab6 is completed.
-
 *Goal*
 
-We also want to shape data integration using Data Flows. By now we have seen quite a bit of Azure Data Factory / Synapse Pipelines - the assignments are therefore more high-level!
+We want to shape data integration using Data Flows. By now we have seen quite a bit of Azure Data Factory / Synapse Pipelines - the assignments are therefore more high-level!
 
-For this assignment, it is expected that you have exported the AdventureWorkLT database to parquet files. You can of course do this yourself (with the experience of Lab 6), or you can manually upload the files - they are here:
+For this assignment, it is expected that you have exported the AdventureWorkLT database to parquet files. You can of course do this yourself, or you can manually upload the files - they are available for download here:
 
 * [Address.parquet](parquetfiles/Address.parquet)
 * [Customer.parquet](parquetfiles/Customer.parquet)
@@ -21,23 +17,36 @@ For this assignment, it is expected that you have exported the AdventureWorkLT d
 * [SalesOrderDetail.parquet](parquetfiles/SalesOrderDetail.parquet)
 * [SalesOrderHeader.parquet](parquetfiles/SalesOrderHeader.parquet)
 
-# Assignment: Simple Data Flow
+## Preparations
+
+* In your Storage Account that serves as Data Lake, create a container and folder
+  * You are free to choose your container and folder names
+  * Suggestion for container: `datalake`
+* Upload the parquet files in this container.
+  * You are again free to choose a location
+  * Suggestion for folder: `bronze/awlt/2026-12-24` (or whatever the current date is)
+
+## First step: A Simple Data Flow
 
 In this lab, we will experience the Data Flow functionality of Azure Data Factory ourselves. The main goal is to get a good understanding of all the components surrounding the Data Flow.
 
-Therefore, make sure the following items are set up:
-
-* A new Data Flow, including:
-  * As a source: the `Product.parquet` file on your Data Lake (container `stg`, folder `awlt`)
-  * An extra column with ranking should be added, indicating which product category has the most products in total.
+* Create a first new Data Flow:
+  * Source: the `Product.parquet` file on your Data Lake
+  * Transformation:
+    * An extra column with ranking should be added, indicating which product category has the most products in total.
     * For product category, `ProductCategoryID` is sufficient for now (no link needs to be made to the ProductCategory table)
     * Don't make it too hard on yourself, think in small steps (hint: what do you need to know before you can do the ranking?)
     * Use the Data preview to see if you're working in the right direction.
-  * Only the products in the top three product categories should be written down
+  * Only the products in the top three product categories should be written to the sink
     * Write the result in two places:
-      * In your Data Lake (container `datalake`, folder `bronze/analysis`, file `productcategories.parquet`)
-      * In your SQL Database (`target`). Have a table named `dbo.product_verrijkt` created by your **Sink** destination.
-* Create a corresponding pipeline that also executes this Data Flow
+      * In your Data Lake 
+        * once again free to choose your container, folder, and file names.
+        * Suggestions:
+          * container `datalake`
+          * folder `bronze/analysis`
+          * file `productcategories.parquet`)
+      * In your SQL Database (`target`). Have a table named `dbo.product_enriched` created by your **Sink** destination.
+* Create a corresponding pipeline that executes this Data Flow
 * Publish all resources, and test the pipeline
 
 ## Table of Contents
