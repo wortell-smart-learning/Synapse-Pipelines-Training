@@ -1,17 +1,17 @@
 # Lab 11: Data Integration Flow
 
 In the previous lab, we set the context for a "simple" (in terms of structure) data flow. We will now use this knowledge to integrate multiple sources.
-We will now work with a slightly larger database, taking a more typical Data Warehouse approach.
+We will now work with a slightly larger database, taking a more typical Lakehouse approach.
 
 For this data integration flow, you will need to bring together several components:
 
-* disclosure of a source database to the Data Lake
+* Ingestion of a source database to the Data Lake
   * server: `wortellsmartlearning.database.windows.net`
   * login: `student`
   * password: `WortellSmartLearning.nl`
   * database: `AdventureWorks2019`
   * place this data in the `ingest` container
-* Loading from the Data Lake to the Data Warehouse
+* Loading from the Data Lake to a SQL Database serving as a DW (`target`)
   * To start: only dim_product. Combine this based on three underlying tables that you have in the Data Lake (see table below)
   * Make sure a new *dimension key* is generated (`Dim_Product_ID`). Rename the original key to `ProductAlternateKey`
 
