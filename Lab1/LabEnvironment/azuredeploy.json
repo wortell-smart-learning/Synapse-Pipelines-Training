@@ -53,8 +53,8 @@
                   "sampleName": "AdventureWorksLT"
                },
                "sku": {
-                  "name": "Standard",
-                  "tier": "Standard"
+                  "name": "Basic",
+                  "tier": "Basic"
                },
                "dependsOn": [
                   "[resourceId('Microsoft.Sql/servers', concat(variables('serverName')))]"
@@ -67,8 +67,8 @@
                "location": "[variables('location')]",
                "properties": {},
                "sku": {
-                  "name": "Standard",
-                  "tier": "Standard"
+                  "name": "Basic",
+                  "tier": "Basic"
                },
                "dependsOn": [
                   "[resourceId('Microsoft.Sql/servers', concat(variables('serverName')))]"
