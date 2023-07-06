@@ -243,7 +243,7 @@
             "dnsSettings": {
                "dnsServers": []
             },
-            "enableAcceleratedNetworking": true,
+            "enableAcceleratedNetworking": false,
             "enableIPForwarding": false,
             "networkSecurityGroup": {
                "id": "[variables('nsgId')]"
