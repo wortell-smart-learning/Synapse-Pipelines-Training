@@ -46,3 +46,5 @@ Do you want to know more about the costs you incur with ADF? Koen Verbeeck wrote
 7. [Global Parameters](../Lab7/LabInstructions7.md)
 8. [Activities](../Lab8/LabInstructions8.md)
 9. [Batching and DIUs](../Lab9/LabInstructions9.md)
+10. [First Data Flows](../Lab10/LabInstructions10.md)
+11. [Data integration flows](../Lab11/LabInstructions11.md)
