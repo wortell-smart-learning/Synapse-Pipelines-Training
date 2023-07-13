@@ -391,6 +391,46 @@
             "timeZoneId": "W. Europe Standard Time",
             "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', variables('virtualMachineName'))]"
          }
+      },
+      {
+         "type": "Microsoft.Consumption/budgets",
+         "apiVersion": "2021-10-01",
+         "name": "[concat('budget-', toLower(parameters('initials')))]",
+         "scope": "[resourceGroup().id]",
+         "properties": {
+            "amount": 50,
+            "category": "Cost",
+            "timeGrain": "Monthly",
+            "notifications": {
+               "NotificationFor50%": {
+                  "enabled": true,
+                  "operator": "GreaterThan",
+                  "threshold": 50,
+                  "contactEmails": [
+                     "koos.van.strien@wortell.nl",
+                     "smartlearning@wortell.nl"
+                  ]
+               },
+               "NotificationFor75%": {
+                  "enabled": true,
+                  "operator": "GreaterThan",
+                  "threshold": 75,
+                  "contactEmails": [
+                     "koos.van.strien@wortell.nl",
+                     "smartlearning@wortell.nl"
+                  ]
+               },
+               "NotificationFor100%": {
+                  "enabled": true,
+                  "operator": "GreaterThan",
+                  "threshold": 100,
+                  "contactEmails": [
+                     "koos.van.strien@wortell.nl",
+                     "smartlearning@wortell.nl"
+                  ]
+               }
+            }
+         }
       }
    ]
 }
