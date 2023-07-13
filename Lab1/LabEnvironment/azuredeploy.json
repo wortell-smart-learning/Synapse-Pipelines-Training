@@ -400,11 +400,14 @@
          "type": "Microsoft.Consumption/budgets",
          "apiVersion": "2021-10-01",
          "name": "[concat('budget-', toLower(parameters('initials')))]",
-         "scope": "[resourceGroup().id]",
          "properties": {
             "amount": 50,
             "category": "Cost",
             "timeGrain": "Monthly",
+            "timePeriod": {
+               "startDate": "[utcNow('yyyy-MM-ddTHH:mm:ssZ')]",
+               "endDate": "[dateTimeAdd(utcNow('yyyy-MM-ddTHH:mm:ssZ'), 'P6M', 'yyyy-MM-ddTHH:mm:ssZ')]"
+            },
             "notifications": {
                "NotificationFor50%": {
                   "enabled": true,
