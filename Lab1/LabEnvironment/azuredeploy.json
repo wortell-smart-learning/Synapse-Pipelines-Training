@@ -53,8 +53,8 @@
                   "sampleName": "AdventureWorksLT"
                },
                "sku": {
-                  "name": "Standard",
-                  "tier": "Standard"
+                  "name": "Basic",
+                  "tier": "Basic"
                },
                "dependsOn": [
                   "[resourceId('Microsoft.Sql/servers', concat(variables('serverName')))]"
@@ -67,8 +67,8 @@
                "location": "[variables('location')]",
                "properties": {},
                "sku": {
-                  "name": "Standard",
-                  "tier": "Standard"
+                  "name": "Basic",
+                  "tier": "Basic"
                },
                "dependsOn": [
                   "[resourceId('Microsoft.Sql/servers', concat(variables('serverName')))]"
@@ -141,7 +141,7 @@
          ],
          "properties": {
             "azPowerShellVersion": "3.0",
-            "scriptContent": "start-sleep -Seconds 30",
+            "scriptContent": "start-sleep -Seconds 60",
             "cleanupPreference": "Always",
             "retentionInterval": "PT1H"
          }
@@ -243,7 +243,7 @@
             "dnsSettings": {
                "dnsServers": []
             },
-            "enableAcceleratedNetworking": true,
+            "enableAcceleratedNetworking": false,
             "enableIPForwarding": false,
             "networkSecurityGroup": {
                "id": "[variables('nsgId')]"
@@ -330,26 +330,30 @@
          ],
          "properties": {
             "hardwareProfile": {
-               "vmSize": "Standard_D2s_v3"
+               "vmSize": "Standard_B4ms"
             },
             "storageProfile": {
                "osDisk": {
                   "createOption": "fromImage",
                   "managedDisk": {
-                     "storageAccountType": "StandardSSD_LRS"
-                  }
+                     "storageAccountType": "Standard_LRS"
+                  },
+                  "deleteOption": "Delete"
                },
                "imageReference": {
-                  "publisher": "MicrosoftWindowsDesktop",
-                  "offer": "Windows-10",
-                  "sku": "20h2-pro-g2",
+                  "publisher": "microsoftwindowsdesktop",
+                  "offer": "Windows-11",
+                  "sku": "win11-22h2-pro",
                   "version": "latest"
                }
             },
             "networkProfile": {
                "networkInterfaces": [
                   {
-                     "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]"
+                     "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('networkInterfaceName'))]",
+                     "properties": {
+                        "deleteOption": "Detach"
+                     }
                   }
                ]
             },
