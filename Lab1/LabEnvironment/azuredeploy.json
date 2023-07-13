@@ -7,6 +7,13 @@
          "metadata": {
             "description": "Your initials (so for Koos van Strien that would be KvS)"
          }
+      },
+      "now": {
+         "type": "string",
+         "defaultValue": "[utcNow('yyyy-MM-01THH:mm:ssZ')]",
+         "metadata": {
+            "description": "The current date and time"
+         }
       }
    },
    "variables": {
@@ -33,8 +40,8 @@
       "publicIpAddressName": "[concat('pip-',variables('uniqueString'))]",
       "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
       "consumptionBudgetName": "[concat('budget-', toLower(parameters('initials')))]",
-      "budgetStartDate": "[utcNow('yyyy-MM-ddTHH:mm:ssZ')]",
-      "budgetEndDate": "[dateTimeAdd(variables('budgetStartDate'), 'P6M', 'yyyy-MM-ddTHH:mm:ssZ')]"
+      "budgetStartDate": "[parameters('now')]",
+      "budgetEndDate": "[dateTimeAdd(parameters('now'), 'P6M', 'yyyy-MM-01THH:mm:ssZ')]"
    },
    "resources": [
       {
