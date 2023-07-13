@@ -31,7 +31,10 @@
       "networkSecurityGroupName": "[concat('nsg-',variables('uniqueString'))]",
       "subnetName": "subnet",
       "publicIpAddressName": "[concat('pip-',variables('uniqueString'))]",
-      "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c"
+      "roleDefinitionId": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+      "consumptionBudgetName": "[concat('budget-', toLower(parameters('initials')))]",
+      "budgetStartDate": "[utcNow('yyyy-MM-ddTHH:mm:ssZ')]",
+      "budgetEndDate": "[dateTimeAdd(variables('budgetStartDate'), 'P6M', 'yyyy-MM-ddTHH:mm:ssZ')]"
    },
    "resources": [
       {
@@ -399,14 +402,14 @@
       {
          "type": "Microsoft.Consumption/budgets",
          "apiVersion": "2021-10-01",
-         "name": "[concat('budget-', toLower(parameters('initials')))]",
+         "name": "[variables('consumptionBudgetName')]",
          "properties": {
             "amount": 50,
             "category": "Cost",
             "timeGrain": "Monthly",
             "timePeriod": {
-               "startDate": "[utcNow('yyyy-MM-ddTHH:mm:ssZ')]",
-               "endDate": "[dateTimeAdd(utcNow('yyyy-MM-ddTHH:mm:ssZ'), 'P6M', 'yyyy-MM-ddTHH:mm:ssZ')]"
+               "startDate": "[variables('budgetStartDate')]",
+               "endDate": "[variables('budgetEndDate')]"
             },
             "notifications": {
                "NotificationFor50%": {
