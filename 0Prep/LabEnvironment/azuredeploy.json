@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.21.1.54444",
-      "templateHash": "1383120854623730796"
+      "templateHash": "498730103589232708"
     }
   },
   "parameters": {
@@ -21,7 +21,7 @@
     "administratorLogin": "sqladmin",
     "administratorLoginPassword": "WortellSmartLearning.nl",
     "random": "[substring(uniqueString(resourceGroup().id, subscription().id, parameters('initials')), 0, 3)]",
-    "prefix": "[format('{0}{1}', parameters('initials'), variables('random'))]"
+    "prefix": "[toLower(format('{0}{1}', parameters('initials'), variables('random')))]"
   },
   "resources": [
     {
