@@ -97,7 +97,7 @@ resource storageAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2
   scope: storageAccount
   properties: {
     principalId: synapseWorkspace.identity.principalId
-    roleDefinitionId: '7f1dbf46-3dcd-4e01-ae0f-b6b8af8e75b9' // storageBlobDataContributor role definition ID
+    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe') // storageBlobDataContributor role definition ID
   }
 }
 
