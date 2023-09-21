@@ -1,4 +1,4 @@
-# Lab 3 - Linked Services
+# Lab 3 - Datasets 
 
 *Requirements*
 
@@ -6,103 +6,60 @@ To start the lab, it's essential that Lab2 has been completed.
 
 *Objective*
 
-To allow data to flow over the recently created IRs, connections to the respective services must be made. During the lab, you will establish multiple connections, with e.g.:
+Nu de Linked Services aangemaakt zijn kan ADF bij specifieke data zoals een tabel in een database, een .csv bestand op een storage account en meer. Om te specificeren wat je wilt hebben dien je een Dataset aan te maken. Dit gaan we in onderstaande opdrachten doen.
 
-* a SQL database (e.g. a source system or Data Warehouse)
-* a Storage account (e.g. like a Data Lake)
-* a File system (e.g. a share)
+## Opdracht 1 - Source Database
 
-Some of these sources can be accessed with the help of *managed identity*: in this case, AAD grants rights to the Data Factory. Other sources you will have to access with a *secret*, such as a certificate or a username/password. These *secrets* are centrally stored in Azure in the Key Vault. From there, you can easily determine which services can view which *secrets*.
+De eerste *dataset* die we aankoppelen is een tabel die binnen onze brondatabase leeft.
 
-## Task 1 - Azure Key Vault
+1. Klik links op het **Potloodje** (Author). Aan de linkerkant zie je een lijst met categorien zoals: Pipelines, Datasets, Data flows en Power Query.  
+   Vandaag leggen we de focus op **Pipelines** en **Datasets**.
+2. Naast **Datasets** zie je op dit moment een 0 staan, wanneer je met jouw muis op het vak van **Datasets** gaat staan zie je een optie met **3 bolletjes** (Datasets Actions) verschijnen aan de rechterkant. Klik de **Dataset Actions** aan en klik vervolgens op **New Dataset**.
+3. Een vergelijkbaar scherm als bij de **Linked Services** zal verschijnen. Zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
+4. Geef de Dataset een duidelijke naam. Het aangeraden format is om te beginnen met `DS_`, het type dataset, eventueel het *schema* waarbinnen de tabel zich bevindt, de tabelnaam en eindigend met _omgeving.
+   * Praktijkvoorbeeld: `DS_sql_dwh_dimdatum_acc`
+   * Trainingsvoorbeeld: `DS_asql_SalesLT_Address_training`
+5. Bij **Linked Services** kies je de Linked Service die verwijst naar de brondatabase (`LS_sqldb_source`).
+6. De IR wordt automatisch toegepast vanuit de Linked Service. De optie om een **Table name** te selecteren zal nu ook verschenen zijn, klik hierop en kies voor **SalesLT.Address**. Voltooi het aanmaken door onderaan de pagina op **OK** te klikken.
+7. Wanneer de **Dataset** is aangemaakt kom je in het overzichtscherm van de dataset. Klik op het brilletje (**Preview Data**) om een voorbeeld van de data te zien.
+8. Klik op de tab **Schema**. Je ziet hier de kolommen uit de geselecteerde tabel en de bijhorende datatypes.
+9. Doe Opdracht 1 nogmaals, maar nu voor de **sqldb-target** Database voor de tabbellen **Address**, **ProductCategoryDiscount** en **SalesPersonal**.
 
-Azure Data Factory can be easily linked with Azure Key Vault, where we store passwords and connection strings. We can have a connection to a source filled by a *secret* from the *Key Vault*. At the moment that ADF makes a connection with that source, ADF will first retrieve the *secret* from the Key Vault.
+## Opdracht 2 - Storage Account / File system
 
-Before we can access *secrets* from the Key Vault, we will have to attach the Key Vault as a *Linked Service* first.
-
-1. Go back to the **unlinked** ADF. Then click on Manage again. Go to **Linked Services**.
-2. Click on **New**, and search for **Key vault**. Click on the **Azure Key vault**.
-3. Give the Linked services a clear name. The recommended format is to start with LS_, the name of the service in your resource group and ending with _environment.
-   * Practical example: `LS_KV_Dataplatform_PRD`
-   * Training example: `LS_KV_rcc4bh5724jim_Training`
-     In the naming, a dash (`-`) is not allowed. An *underscore* (`_`) is possible.
-4. Choose the **Azure Subscription** that you are using in the training.
-5. At **Azure Key vault Name** choose the key vault from your Key Vault (this starts with `kv_`).
-6. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
-7. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
-8. The Linked Service to the Azure Key Vault has now been created, but it has not been published yet. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button. By publishing, the changes go live, and the Key Vault can be used.
-
-## Task 2 - Databases
-
-With the Key Vault connected, it is possible to retrieve passwords to set up a secure connection with, for example, the databases.
-
-1. Click on **New**, and search for **SQL**. Double-click the **Azure SQL Databases**.
-2. Give the Linked services a clear name, for example `LS_sqldb_source`
-3. Choose at **Connect via integration runtime** your own made **Azure IR**.
-4. Choose at **Server Name** the Server name as it appears in your resource group.
-5. Choose at **Database Name** the source Database name as it appears in your resource group. The source database starts with **sqldb-source-** as a name.
-6. Fill in the **User Name** with the SQL admin account named: **sqladmin**.
-7. For the option between **Password** and **Azure Key Vault**, choose the Key vault.
-8. Choose at **AKV linked service** the previously created Key Vault Linked Service.
-9. Choose at **Secret Name** the option **sqladmin**
-10. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
-11. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
-12. Repeat Task 2, but now for the **sqldb-target** Database.
-
-You have now created two Linked Services. This enables ADF to connect to the two databases.
-
-## Task 3 - Storage Account
-
-The second source we add is a Storage Account. We can use this, for example, as a *landing zone* for the data, or as a Data Lake.
-
-1. Click on **New**, and search for **storage**. Click on the **Azure Blob Storage**.
-2. Give the Linked services a clear name.
-3. Choose at **Connect via integration runtime** your own made **Azure IR**.
-4. Choose at **Storage account name** the storage account as it appears in your resource group.
-5. Click on the **Test Connection** button to validate that the connection can be established. If this goes wrong, let the trainer know.
-6. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
-
-The rights on the Storage Account are distributed via Azure AD. So you didn't have to use a *secret* for this.
-
-## Task 4 - File system
-
-The third source we add is an on-premises filesystem. Because the filesystem is on-premises, we need to use the correct Integration Runtime! Also, this VM is not in our domain, so we need to indicate which username/password we will log in with.
-
-1. Click on **New**, and search for **file**. Click on the **File system**.
-2. Give the Linked services a clear name.
-3. Choose at **Connect via integration runtime** the **Self-Hosted IR**.
-4. Fill in the **Host** with the following **D:\\**
-5. Fill in the **User Name** with the SQL admin account named: **sqladmin**.
-6. For the option between **Password** and **Azure Key Vault**, choose the Key vault.
-7. Choose at **AKV linked service** the previously created Key Vault Linked Service.
-8. Choose at **Secret Name** the option **sqladmin**
-9. Click on the **Test Connection** button to validate that the connection can be established. This will fail, but we'll fix that in a moment!
-10. When the test is complete and a **Green dot** appears, the Linked Service can be created by clicking on **Create**.
-11. Click on the **Blue button** with the text **Publish all** and then on the **Publish** button.
-
-> ## Why does the connection with the File System fail
->
-> Since version 5.22, the Self-Hosted Integration Runtime has stricter security measures. One of these measures is that a self-hosted IR cannot just access local files.
->
-> In the training, however, we want to access these files to simulate that an on-premises source is present. Therefore, we will have to turn off this security measure. Here's how:
->
-> 1. Connect to the VM
-> 2. Open the start menu and type **Powershell**
-> 3. Choose **Run as administrator**  
->    In Powershell, you now enter the following:
-> 4. `cd 'C:\Program Files\Microsoft Integration Runtime\5.0\Shared\'`
-> 5. `.\dmgcmd -DisableLocalFolderPathValidation`
->
-> The setting is now adjusted, and the IR restarts. The Linked Service should now work **Test Connection** to `D:\` should work.
+1. Klik de **Dataset Actions** aan en klik vervolgens op **New Dataset**.
+2. Zoek naar **storage**. Klik de **Azure Blob Storage** aan.
+3. Kies voor **DelimitedText** (csv).  
+   > ## Welk bestandsformaat
+   >
+   > Je ziet hier een aantal veelvoorkomende bestandsformaten:
+   >
+   > * Excel
+   > * Json
+   > * XML
+   > * DelimitedText (csv)
+   >
+   > Voor Cloud Dataplatforms wordt daarnaast het **Parquet**-formaat veel gebruikt. Parquet is zeer compact in de opslag, geoptimaliseerd voor analyses (Column-based is i.p.v. Row-based) en bevat datatypes (in tegenstelling tot CSV-bestanden, waar komma's, punten, lijstscheidingstekens, string delimiters en datumnotaties nogal eens tot verwarring leiden - om maar niet te spreken over encoding).
+   >
+   > Voor nu gebruiken we hier even CSV - groot voordeel daarvan voor nu is dat het door mensen leesbaar is, zodat je kunt inzien wat er gebeurt.
+4. Geef de Dataset een duidelijke naam.
+5. Bij **Linked Services** kies het **storage account**.
+6. De optie om een pad op te geven zal verschijnen. Klik op het witte mapje (**Browse**). Kies vervolgens de map **data** en het bestand genaamd **ProductCategoryDiscount.csv**.
+7. Klik op **OK** en vervolgens nog een keer op **OK** om de Dataset te voltooien.
+8. Klik op **Preview data**, je zult zien dat de data er nog niet erg gaaf uitziet. Om dit aan te passen dienen we nog 2 aanpassingen te verrichten.
+9. Kies bij **Column delimiter** voor de opties **Semicolon (;)**. en vink aan **First row as header**. Wanneer je nu weer op **Preview data** klikt zou het in een tabel moeten zijn met kolommen.
+10. Doe Opdracht 2 nogmaals, kies nu het .csv bestand **SalesPersonal.csv**.
+11. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. 
 
 ## Table of Contents
 
-1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
-2. [Integration Runtimes](../Lab2/LabInstructions2.md)
-3. [Linked Services](../Lab3/LabInstructions3.md)
-4. [Datasets](../Lab4/LabInstructions4.md)
-5. [Pipelines](../Lab5/LabInstructions5.md)
-6. [Triggers](../Lab6/LabInstructions6.md)
-7. [Global Parameters](../Lab7/LabInstructions7.md)
-8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching and DIUs](../Lab9/LabInstructions9.md)
+0. [De Azure omgeving prepareren](../0Prep/LabVoorbereiding0.md)
+1. [Integration Runtimes](../Lab1/LabInstructions1.md)
+2. [Linked Services](../Lab2/LabInstructions2.md)
+3. [Datasets](../Lab3/LabInstructions3.md)
+4. [Pipelines](../Lab4/LabInstructions4.md)
+5. [Triggers](../Lab5/LabInstructions5.md)
+6. [Activities](../Lab6/LabInstructions6.md)
+7. [Batching en DIUs](../Lab7/LabInstructions7.md)
+8. [Eerste Data Flows](../Lab8/LabInstructions8.md)
+9. [Data integratie flows](../Lab9/LabInstructions9.md)

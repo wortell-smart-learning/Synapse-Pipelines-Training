@@ -10,17 +10,17 @@ Deze training is opgebouwd uit drie dagen, die als training ook los te volgen zi
 
 ## Table of Contents
 
-1. [Preparing the Azure environment](Lab1/LabInstructions1.md)
-2. [Integration Runtimes](Lab2/LabInstructions2.md)
-3. [Linked Services](Lab3/LabInstructions3.md)
-4. [Datasets](Lab4/LabInstructions4.md)
-5. [Pipelines](Lab5/LabInstructions5.md)
-6. [Triggers](Lab6/LabInstructions6.md)
-7. [Global Parameters](Lab7/LabInstructions7.md)
-8. [Activities](Lab8/LabInstructions8.md)
-9. [Batching and DIUs](Lab9/LabInstructions9.md)
-10. [First Data Flows](Lab10/LabInstructions10.md)
-11. [Data integration flows](Lab11/LabInstructions11.md)
+0. [De Azure omgeving prepareren](0Prep/LabVoorbereiding0.md)
+1. [Integration Runtimes](Lab1/LabInstructions1.md)
+2. [Linked Services](Lab2/LabInstructions2.md)
+3. [Datasets](Lab3/LabInstructions3.md)
+4. [Pipelines](Lab4/LabInstructions4.md)
+5. [Triggers](Lab5/LabInstructions5.md)
+6. [Activities](Lab6/LabInstructions6.md)
+7. [Batching en DIUs](Lab7/LabInstructions7.md)
+8. [Eerste Data Flows](Lab8/LabInstructions8.md)
+9. [Data integratie flows](Lab9/LabInstructions9.md)
+
 ## Meer informatie
 
 Meer informatie over deze trainingen kun je vinden op:

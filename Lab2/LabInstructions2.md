@@ -1,4 +1,4 @@
-# Lab 2 - Integration Runtimes
+# Lab 2 - Linked Services
 
 *Requirements*
 
@@ -6,80 +6,73 @@ To be able to start the lab, it is important that Lab1 has been completed.
 
 *Objective*
 
-Azure Data Factory uses an *Integration Runtime (IR)*. In fact, this is where your pipeline is "executed": for example, in a specific Azure region or on-premises.
+Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties met de betreffende diensten gemaakt worden. Gedurende het lab leg je meerdere connecties, met o.a.:
 
-During this lab, you will create several types of IRs. You will also configure, install, and "link" them. Follow the assignments step by step.
+* een SQL database (bijv. een bronsysteem of Data Warehouse)
+* een Storage account (bijv. zoals een Data Lake)
+* een File system (bijv. een share)
 
-## Assignment 1 - Creating Azure Integration Runtime
+Sommige van deze bronnen kun je benaderen met behulp van *managed identity*: in dat geval worden binnen AAD rechten uitgedeeld aan de Data Factory. Andere bronnen zul je moeten benaderen met een *secret*, bijvoorbeeld een certificaat of een gebruikersnaam/wachtwoord. Deze *secrets* sla je in Azure centraal op in de Key Vault. Vanuit daar kun je dan eenvoudig bepalen welke diensten welke *secrets* mogen bekijken.
 
-Within ADF, you always get an Integration Runtime "for free": a so-called "Auto Resolve" IR. This means that Azure globally checks which place would be convenient to execute your pipeline and picks one for you. This can be helpful to make the first steps, but it is advisable to be more explicit about where your data is processed. Partly from performance and cost considerations, but also from a security and compliance perspective (knowing where your data is processed).
+## Opdracht 1 - Azure Key Vault
 
-In this first assignment, we are going to create an Integration Runtime where you specify the location yourself. In your environment, you have two Data Factories, which will later both use the one IR we create.
+Azure Data Factory is eenvoudig te koppelen met Azure Key Vault, waarin we wachtwoorden en connection strings opslaan. We kunnen een verbinding naar een bron dan laten vullen door een *secret* uit de *Key Vault*. Op het moment dat ADF verbinding maakt met die bron, zal ADF eerst de *secret* ophalen uit de Key Vault.
 
-1. Go to the [Azure portal](portal.azure.com). Click on the Data Factory that does **not** contain the word Linked. A new page will load with a **Launch Studio** button, click on it. You are now directed to the page of the ADF.
-2. Click on the **toolbox** (Manage) on the left. Then click on **Integration runtimes** on the left. You will see that an **AutoResolveIntegrationRuntime** already exists. This is the standard IR within Azure that you can use to move data between different services like SQL Database, Azure Data Lake Store, etc.
-3. Click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Azure** and **continue** again. You can now create a new **Azure Integration Runtime**, where you can also specifically indicate the **Region**. This way, you can be sure that the data always remains within this region.
-4. Give the IR a name and choose the **Region** where the rest of your resources are located. For naming, it is handy to start with `IR-` followed by what kind of IR it is, the -region, and the -environment.
-   * Practical example: `IR-AzureResolve-EastUS-TST`
-   * Training example: `IR-AzureResolve-WestEurope-Training`
-5. Click on **Create**
+Voordat we echter *secrets* uit de Key Vault kunnen benaderen, zullen we de Key Vault eerst moeten aankoppelen als *Linked Service*.
 
-Your IR is now being created and should be ready within a few seconds.
+1. Ga de ADF. Klik vervolgens weer op Manage. Ga naar **Linked Services**.
+2. klik op **New**, en zoek naar **Key vault**. Klik de **Azure Key vault** aan.
+3. Geef de Linked services een duidelijke naam. Het aangeraden format is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
+   * Praktijkvoorbeeld: `LS_KV_Dataplatform_PRD`
+   * Trainingsvoorbeeld: `LS_KV_rcc4bh5724jim_Training`
+     In de naamgeving is een minteken (`-`) niet toegestaan. Een *underscore* (`_`) is wel mogelijk.
+4. Kies de **Azure Subscription** die je in de training gebruikt
+5. Kies bij **Azure Key vault Name** de key vault uit jouw Key Vault (deze start met `kv_`).
+6. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
+7. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+8. De Linked Service naar de Azure Key Vault is nu aangemaakt, maar deze is nog niet gepubliseerd. Klik op de **Blauwe knop** met de tekst **Publish all** en vervolgens op de knop **Publish**. Door te publishen komen de aanpassingen live te staan, en kan de Key Vault gebruikt worden.
 
-## Assignment 2 - Self-Hosted Integration Runtime
+## Opdracht 2 - Databases
 
-Data from an on-premises environment or a shielded network is not directly accessible for Azure Data Factory. With a *self-hosted* IR, you can also connect these environments: you then install a *self-hosted Integration Runtime* on a VM in your shielded network (e.g. on-premises). This then establishes the connection with Azure Data Factory.
+Met de Key Vault aangesloten is het mogelijk om wachtwoorden op te halen om een beveiligde verbinding op te zetten met bijvoorbeeld de databases.
 
-1. Go back to your Virtual Machine if you have it open, otherwise, you follow the steps from Lab1, assignment 2 again.
-2. Go to the Azure portal (portal.azure.com) and log in with the account with which you perform the training.
-3. Go back to the ADF (without linked in the name) via the resource group as explained in assignment 1.
-4. Once you arrive at the screen of the IRs, click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Self-Hosted** and **continue** again.
-   > A Self-Hosted IR usually runs on an on-premises Virtual Machine with ports 443 and 1433 open so it can access Azure for both the Database (1433) and a storage account (443). The minimum requirements to run a Self-Hosted IR properly are:
-   >
-   > * 4 CPU cores of 2GHz or faster
-   > * 8GB RAM
-   > * 80GB disk space
-   >
-   > In practice, it turns out that 16GB RAM and an SSD can help to move the data better, where only the CPU could be the limiting factor.
-   > The Integration Runtime can also be downloaded directly from [https://www.microsoft.com/en-us/download/details.aspx?id=39717](https://www.microsoft.com/en-us/download/details.aspx?id=39717)
-5. You only need to give the IR a name. The region depends on where the Virtual Machine is located and click on **Create**.
-6. When the IR has been created, you immediately get a screen with 2 options for installation. Since you are already on the Virtual Machine, choose Option 1 (Express setup). Click on **Click here to launch the express setup for this computer**. And then start the installation by clicking on the downloaded file. This can be done via the popup in the upper right corner or through **File Explorer** (The yellow folder) to go to **Downloads**.
-   > If you can't access the Azure portal of your organization from the VM, **Option 2** is an option: you then manually download the IR, and use one of the keys shown during the installation.
-7. When you start the installation, everything else happens automatically, wait patiently for the installation.
-   
-8. When the installation is complete, click on **Close**. In the ADF, you should now see a **Green circle** next to the Self-Hosted IR. If this is not the case, it should be after a **refresh**.
+1. Klik op **New**, en zoek naar **SQL**. Dubbelklik de **Azure SQL Databases** aan.
+2. Geef de Linked services een duidelijke naam, bijvoorbeeld `LS_sqldb_source`
+3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
+4. Kies bij de **Server Name** de Server naam in zoals deze in je resourcegroup staat.
+5. Kies bij de **Database Name** de source Database naam in zoals deze in je resourcegroup staat. De source database begint met **sqldb-source-** als naam.
+6. Vul bij de **User Name** het SQL admin account in genaamd: **sqladmin**.
+7. Bij de optie tussen **Password** en **Azure Key Vault**, kies de Key vault.
+8. Kies bij **AKV linked service** de eerder aangemaakte Key Vault Linked Service.
+9. Kies bij **Secret Name** de optie **sqladmin**
+10. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
+11. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
+12. Doe Opdracht 2 nogmaals, maar nu voor de **sqldb-target** Database.
 
-You have now created a *self-hosted* IR, allowing Azure Data Factory to move data from and to an on-premises environment.
+Je hebt nu twee Linked Services aangemaakt. Dit maakt het voor ADF mogelijk om verbinding te maken met de twee databases.
 
-## Assignment 3 - Linking Integration Runtimes
+## Opdracht 3 - Storage Account
 
-If you use multiple Data Factories, you can choose to "link" an existing IR in multiple Data Factories. This prevents you from having to install an IR multiple times.
+De tweede bron die we toevoegen is een Storage Account. Deze kunnen we bijvoorbeeld gebruiken als *landing zone* voor de data, of als Data Lake.
 
-1. Click on the **Self-Hosted IR** you just created. Go to the **Sharing** tab and copy the resourceID by clicking on the **blue box** or selecting and copying it.
-2. Click on the **Blue plus sign** with the text **Grant permissions to another Data Factory or user-assigned managed identity**
-3. The adf-linked should automatically be among them, check it and then click on **Add**
-4. Close the tab by clicking on **Apply**.
-5. In the top right corner, you see a row of icons. Click on the 2nd from the left, the icon with **the 2 screens and arrows** (Switch Data Factory).
-6. A new screen will appear, and most of it will be filled in beforehand. Choose the adf-linked at **Data Factory Name** and then click on **OK**.
-7. The other ADF is now being loaded. Once this is completed, click on the **toolbox** (manage) on the left and then on **Integration runtimes** again.
-8. Once you arrive at the screen of the IRs, click on **New**, click on **Azure, Self-Hosted**, click on **continue**, then click on **Linked Self-Hosted** and **continue** again.
-9. Paste the copied resourceID
+1. klik op **New**, en zoek naar **storage**. Klik de **Azure Blob Storage** aan.
+2. Geef de Linked services een duidelijke naam.
+3. Kies bij **Connect via integration runtime** de eigen gemaakte **Azure IR**.
+4. Kies bij **Storage account name** het storage account zoals deze in je resourcegroup staat.
+5. Klik op de knop **Test Connection** om te valideren dat de verbinding tot stand gebracht kan worden. Gaat dit fout, laat het weten aan de trainer.
+6. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
 
- into the **Resource ID** field and give the IR a correct name.
-10. Click on **Create** and the linked Self-Hosted IR should appear with a **Green circle**.
-
-While linking self-hosted IRs is very useful, it's not always desirable that, for example, a development environment can extract data via the same IR as a production environment. It often happens that a Development and Test environment use the same Self-Hosted IR, just like for Acceptance and Production if there is a specific case for it.
-
-The linking for a Self-Hosted IR is often used when there are multiple teams using the same data source. Since you only need one IR (and thus Virtual Machine), you save costs and resources.
+De rechten op het Storage Account zijn uitgedeeld via Azure AD. Hier heb je dus geen *secret* voor hoeven gebruiken.
 
 ## Table of Contents
 
-1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
-2. [Integration Runtimes](../Lab2/LabInstructions2.md)
-3. [Linked Services](../Lab3/LabInstructions3.md)
-4. [Datasets](../Lab4/LabInstructions4.md)
-5. [Pipelines](../Lab5/LabInstructions5.md)
-6. [Triggers](../Lab6/LabInstructions6.md)
-7. [Global Parameters](../Lab7/LabInstructions7.md)
-8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching and DIUs](../Lab9/LabInstructions9.md)
+0. [De Azure omgeving prepareren](../0Prep/LabVoorbereiding0.md)
+1. [Integration Runtimes](../Lab1/LabInstructions1.md)
+2. [Linked Services](../Lab2/LabInstructions2.md)
+3. [Datasets](../Lab3/LabInstructions3.md)
+4. [Pipelines](../Lab4/LabInstructions4.md)
+5. [Triggers](../Lab5/LabInstructions5.md)
+6. [Activities](../Lab6/LabInstructions6.md)
+7. [Batching en DIUs](../Lab7/LabInstructions7.md)
+8. [Eerste Data Flows](../Lab8/LabInstructions8.md)
+9. [Data integratie flows](../Lab9/LabInstructions9.md)

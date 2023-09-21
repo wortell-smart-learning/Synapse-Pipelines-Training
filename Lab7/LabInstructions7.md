@@ -1,101 +1,50 @@
-# Lab 7 - Global Parameters
+
+# Lab 7 - Batching en DIUs
 
 *Requirements*
 
-In order to start the lab, it is important that Lab5 is completed and that the Virtual Machine is booted up and the IR is running.
+Om het lab te kunnen starten is het van belang dat Lab6 is afgerond.
 
 *Objective*
 
-Yesterday, we set up the ADF from A to Z and ran pipelines. As mentioned in Lab2, it can happen that another team also has an ADF and there might be a dependency between both ADFs or to other services. In the lab, we will tackle this by executing the pipeline in adf-linked using an API-call.
+We hebben nu zo goed als alles behandeld rondom de standaard orchestratie in de ADF. Toch kan het voorkomen dat enkele pipelines zoveel data moeten overhalen dat ze niet heel vlot draaien. Er zijn enkele knoppen waar nog aan gedraaid kan worden om dit sneller te kunnen laten verlopen in de vorm van Batching en DIUs. Volg de opdrachten stap voor stap.
 
-Follow the instructions step by step.
+## Opdracht 1 - Batching
 
-## Assignment 1 - Global parameters
+1. Ga naar de `PL_copy_Deltaload_Training` pipeline en klik binnen de **ForEach** op de **Copy data** activiteit.
 
-1. Go to the ADF (adf.azure.com) and choose the **Non** linked ADF.
+2. Ga naar de tab **Sink**. Onder **Pre-copy script** zie je de optie **Write batch size** en vul hier 1 in.
 
-2. Click on the **toolbox** (Manage) on the left. Then click on **Global parameters** on the left.
+3. Klik op **Debug** en wacht tot de pipeline klaar is. Je zult zien dat het nu heel lang duurt om alles te laden omdat er 1 rij per keer wordt weggeschreven. Dit is natuurlijk niet gunstig en je wilt dit zo hoog mogelijk hebben. Normaliter bepaalt de ADF zelf hoe groot zijn Batch sizes zijn, dit is meestal tussen de 1200 en 1500 regels. Het kan zijn dat je een proces hebt, waarbij het van belang is dat alle data in 1x geladen wordt zodat er geen mismatches kunnen ontstaan. Dit is bijvoorbeeld erg fijn als je een row-based datamodel hanteert. 
 
-3. Click on **New**, a new screen will appear. Fill in the following for **Name**: **SubscriptionID** and your subscriptionID for **Value**. You can find this in the URL of the ADF. 
-   Example: `https://adf.azure.com/en-us/management/globalparameters?factory=%2Fsubscriptions%2Ffae3cd10-ede1-4e32-b796-362b72f8e236%2FresourceGroups%2Frg-adf-training%2F`
+4. Verander de **batchsize** van 1 in iets anders,  klik op **Debug** en bekijk je resultaten. Probeer enkele **batchsizes** tot het moment dat het geen verschil meer maakt.
 
-   It is important not to copy the %2F. Based on the example, the SubscriptionID would be: **fae3cd10-ede1-4e32-b796-362b72f8e236**
+## Opdracht 2 - Data Integration Units.
 
-4. Repeat step 3, but now create a Global parameter named: **Resourcegroup** with as **Value** the resource group name, which you can also copy from the URL.
+1. Ga in de **Copy Tables** activiteit naar de tab **Settings**.
+   Je ziet hier de optie voor **Data integration unit**, en deze staat standaard op **Auto**. Hiermee bepaalt de ADF zelf hoeveel DIUs het denkt nodig te hebben voor een bepaalde workload. Vaak is de bepaling accuraat maar...:
+     * Bij **Auto** start het aantal DIU's op 4. Door dat standaard op 2 in te stellen realiseer je al een redelijke besparing.
+     * Soms heb je bij voorbaat extra rekenkracht nodig, dan kun je de DIU's juist handmatig verhogen.
 
-5. Repeat step 3, but now create a Global parameter named: **DataFactory** with as **Value** the name of the adf-linked, which you can find in your resource group.
+2. Pas de **Data integration unit** naar **2**.
 
-6. Repeat step 3, but now create a Global parameter named: **Pipeline** with as **Value** the name of the pipeline in the adf-linked, `PL_Wait`.
+3. Klik op **Debug** en wacht tot de pipeline klaar is. Bekijk de resultaten, het meeste zal klaar zijn tussen de 10 en 15 seconden. 
 
-7. Click on the **Blue button** with the text **Publish all** and then on the button **Publish**.
+4. Verander de **Data integration unit** van 2 in iets anders,  klik op **Debug** en bekijk je resultaten. Probeer enkele **Data integration units** tot het moment dat het geen verschil meer maakt.
 
-We have now created four parameters at *factory* level. These are global constants that can be used throughout the entire Data Factory. In this way, you can easily manage settings centrally.
+Wil je meer weten over de kosten die je aan ADF kwijt bent? Koen Verbeeck schreef dit handige artikel: [How you can save up to 80% on Azure Data Factory pricing](https://sqlkover.com/how-you-can-save-up-to-80-on-azure-data-factory-pricing/)
 
-## Assignment 2 - API caller
+## Einde Lab 7
 
-1. Click on the **Pencil** (Author) on the left and create a new pipeline.
+## Inhoudsopgave
 
-2. Give the pipeline a clear name.
-
-3. From the list of **Activities**, click on the **General** option. Click and drag **Web** onto the canvas.
-
-4. Give the **Web block** a clear name and then click on the **Settings** tab.
-
-5. Click on the field next to **URL** and then on **Add dynamic content**.
-
-6. Paste or type the following code into the field:
-   `https://management.azure.com/subscriptions/@{pipeline().globalParameters.SubscriptionID}/resourceGroups/@{pipeline().globalParameters.Resourcegroup}/providers/Microsoft.DataFactory/factories/@{pipeline().globalParameters.DataFactory}/pipelines/@{pipeline().globalParameters.Pipeline}/createRun?api-version=2018-06-01`
-
-   > If you want to know more about the possibilities of the Data Factory REST API, you can read about it in the [Microsoft documentation](https://docs.microsoft.com/nl-nl/rest/api/datafactory/pipelines).
-
-7. Choose **POST** for **Method**.
-
-8. Fill in the field next to **body** with: **{}**
-
-9. Choose **System Assigned Managed Identity** for **Authentication** and fill in the following for **Resource**: `https://management.core.windows.net/`.
-
-10. Click on **New** next to **Headers** and fill in the following for **name**: **Content-Type** and for **value**: **application/json**.
-
-11. Choose the self-named **Azure IR** under **Advanced** for **Integration runtime**.
-
-12. Click on the **Blue button** with the text **Publish all** and then on the button **Publish**.
-
-## Assignment 3 - Linked ADF pipeline
-
-1. At the top right of the screen, you will see a row of icons. Click on the second from the left, the icon with **the 2 screens and arrows** (Switch Data Factory).
-
-2. A new screen will appear, and most of it will already be filled in. Choose the adf-Linked at **Data Factory Name** and then click on **OK**.
-
-3. Create a new pipeline named: `PL_Wait`.
-
-4. From the list of **Activities**, click on the **General** option. Click and drag **Wait** onto the canvas.
-
-5. Give the **Wait block** a clear name.
-
-6. Then click on the **Settings** tab and change the **Wait time in seconds** to 10.
-
-7. Click on the **Blue button** with the text **Publish all** and then on the button **Publish**.
-
-8. Switch back to the **non** linked adf in the same way as steps 1 and 2.
-
-9. Click on the pipeline you created in Assignment 2, then click on **Debug**.
-
-10. Once the pipeline is completed, switch back to the adf-linked via steps 1 and 2.
-
-11. Click on **Monitor** on the left side. You will now immediately land on **Pipeline runs** and `PL_wait` should be among the list of executed pipelines.
-
-12. Finally, you could take a look at the run time of the two pipelines (in the linked and the non-linked factory). What do you notice? How would you explain this?
-
-## Table of Contents
-
-1. [Preparing the Azure environment](../Lab1/LabInstructions1.md)
-2. [Integration Runtimes](../Lab2/LabInstructions2.md)
-3. [Linked Services](../Lab3/LabInstructions3.md)
-4. [Datasets](../Lab4/LabInstructions4.md)
-5. [Pipelines](../Lab5/LabInstructions5.md)
-6. [Triggers](../Lab6/LabInstructions6.md)
-7. [Global Parameters](../Lab7/LabInstructions7.md)
-8. [Activities](../Lab8/LabInstructions8.md)
-9. [Batching and DIUs](../Lab9/LabInstructions9.md)
-10. [First Data Flows](../Lab10/LabInstructions10.md)
-11. [Data integration flows](../Lab11/LabInstructions11.md)
+0. [De Azure omgeving prepareren](../0Prep/LabVoorbereiding0.md)
+1. [Integration Runtimes](../Lab1/LabInstructions1.md)
+2. [Linked Services](../Lab2/LabInstructions2.md)
+3. [Datasets](../Lab3/LabInstructions3.md)
+4. [Pipelines](../Lab4/LabInstructions4.md)
+5. [Triggers](../Lab5/LabInstructions5.md)
+6. [Activities](../Lab6/LabInstructions6.md)
+7. [Batching en DIUs](../Lab7/LabInstructions7.md)
+8. [Eerste Data Flows](../Lab8/LabInstructions8.md)
+9. [Data integratie flows](../Lab9/LabInstructions9.md)
