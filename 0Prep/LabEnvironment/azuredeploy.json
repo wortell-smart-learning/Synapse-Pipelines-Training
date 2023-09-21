@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.21.1.54444",
-      "templateHash": "15375861049399171527"
+      "templateHash": "1383120854623730796"
     }
   },
   "parameters": {
@@ -99,6 +99,18 @@
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts/blobServices/containers', format('stor{0}', variables('prefix')), 'default', 'data')]",
         "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Synapse/workspaces/firewallRules",
+      "apiVersion": "2021-06-01",
+      "name": "[format('{0}/{1}', format('syn-{0}', variables('prefix')), 'allowAll')]",
+      "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "255.255.255.255"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]"
       ]
     },
     {
