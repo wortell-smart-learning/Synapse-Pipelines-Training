@@ -3,9 +3,11 @@ param location string = resourceGroup().location
 
 var administratorLogin = 'sqladmin'
 var administratorLoginPassword = 'WortellSmartLearning.nl'
+var random = substring(uniqueString(resourceGroup().id, subscription().id, initials), 0, 3)
+var prefix = '${initials}${random}'
 
 resource sqlServer 'Microsoft.Sql/servers@2020-02-02-preview' = {
-  name: 'sql-${initials}'
+  name: 'sql-${prefix}'
   location: location
   properties: {
     administratorLogin: administratorLogin
@@ -47,21 +49,27 @@ resource targetDb 'Microsoft.Sql/servers/databases@2020-02-02-preview' = {
 }
 
 resource synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01-preview' = {
-  name: 'syn-${initials}'
+  name: 'syn-${prefix}'
   location: location
   identity: {
     type: 'SystemAssigned'
   }
   properties: {
-    managedResourceGroupName: 'rg-syn-${initials}'
+    managedResourceGroupName: 'rg-syn-${prefix}'
     sqlAdministratorLogin: administratorLogin
     sqlAdministratorLoginPassword: administratorLoginPassword
-    defaultDataLakeStorage: storageAccount
+    defaultDataLakeStorage: {
+      accountUrl: storageAccount.properties.primaryEndpoints.dfs
+      createManagedPrivateEndpoint: false
+      filesystem: blobContainer.name
+      resourceId: storageAccount.id
+    }
+    publicNetworkAccess: 'Enabled'
   }
 }
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: 'stor${initials}'
+  name: 'stor${prefix}'
   location: location
   sku: {
     name: 'Standard_LRS'
@@ -69,6 +77,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   kind: 'StorageV2'
   properties: {
     accessTier: 'Hot'
+    isHnsEnabled: true
   }
 }
 
@@ -82,6 +91,7 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
   name: 'data'
 }
 
+
 resource storageAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
   name: guid(subscription().id, 'SynapseStorageBlobDataContributor')
   scope: storageAccount
@@ -92,7 +102,7 @@ resource storageAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2
 }
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {
-  name: 'kv-${initials}'
+  name: 'kv-${prefix}'
   location: location
   properties: {
     sku: {

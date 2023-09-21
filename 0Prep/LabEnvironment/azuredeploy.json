@@ -1,157 +1,192 @@
 {
-   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-   "contentVersion": "1.0.0.0",
-   "parameters": {
-      "initials": {
-         "type": "string",
-         "defaultValue": "",
-         "metadata": {
-            "description": "Your initials (so for Koos van Strien that would be KvS)"
-         }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.21.1.54444",
+      "templateHash": "6072074164164849026"
+    }
+  },
+  "parameters": {
+    "initials": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {
+    "administratorLogin": "sqladmin",
+    "administratorLoginPassword": "WortellSmartLearning.nl",
+    "random": "[substring(uniqueString(resourceGroup().id, subscription().id, parameters('initials')), 0, 3)]",
+    "prefix": "[format('{0}{1}', parameters('initials'), variables('random'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2020-02-02-preview",
+      "name": "[format('sql-{0}', variables('prefix'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "administratorLogin": "[variables('administratorLogin')]",
+        "administratorLoginPassword": "[variables('administratorLoginPassword')]",
+        "version": "12.0"
       }
-   },
-   "variables": {
-      "uniqueString": "[concat(substring(uniqueString(resourceGroup().id), 0, 3), toLower(parameters('initials')))]",
-      "serverName": "[concat('sql-',variables('uniqueString'))]",
-      "sourceDBName": "sqldb-source",
-      "targetDBName": "sqldb-target",
-      "location": "[resourceGroup().location]",
-      "administratorLogin": "sqladmin",
-      "administratorLoginPassword": "WortellSmartLearning.nl",
-      "storageAccountName": "[concat('st',variables('uniqueString'))]",
-      "containerName": "data",
-      "dataFactoryName": "[concat('adf-',variables('uniqueString'))]",
-      "keyVaultName": "[concat('kv-',variables('uniqueString'))]"
-   },
-   "resources": [
-      {
-         "type": "Microsoft.Sql/servers",
-         "apiVersion": "2020-02-02-preview",
-         "name": "[variables('serverName')]",
-         "location": "[variables('location')]",
-         "properties": {
-            "administratorLogin": "[variables('administratorLogin')]",
-            "administratorLoginPassword": "[variables('administratorLoginPassword')]"
-         },
-         "resources": [
-            {
-               "type": "databases",
-               "apiVersion": "2020-08-01-preview",
-               "name": "[variables('sourceDBName')]",
-               "location": "[variables('location')]",
-               "properties": {
-                  "sampleName": "AdventureWorksLT"
-               },
-               "sku": {
-                  "name": "Basic",
-                  "tier": "Basic"
-               },
-               "dependsOn": [
-                  "[resourceId('Microsoft.Sql/servers', concat(variables('serverName')))]"
-               ]
-            },
-            {
-               "type": "databases",
-               "apiVersion": "2020-08-01-preview",
-               "name": "[variables('targetDBName')]",
-               "location": "[variables('location')]",
-               "properties": {},
-               "sku": {
-                  "name": "Basic",
-                  "tier": "Basic"
-               },
-               "dependsOn": [
-                  "[resourceId('Microsoft.Sql/servers', concat(variables('serverName')))]"
-               ]
-            }
-         ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "apiVersion": "2020-02-02-preview",
+      "name": "[format('{0}/{1}', format('sql-{0}', variables('prefix')), 'allowAll')]",
+      "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "255.255.255.255"
       },
-      {
-         "type": "Microsoft.Sql/servers/firewallRules",
-         "apiVersion": "2021-02-01-preview",
-         "name": "[concat(variables('serverName'), '/AllowAllIps')]",
-         "dependsOn": [
-            "[resourceId('Microsoft.Sql/servers', variables('serverName'))]"
-         ],
-         "properties": {
-            "startIpAddress": "0.0.0.0",
-            "endIpAddress": "255.255.255.255"
-         }
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sql-{0}', variables('prefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2020-02-02-preview",
+      "name": "[format('{0}/{1}', format('sql-{0}', variables('prefix')), 'sqldb-source')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sampleName": "AdventureWorksLT"
       },
-      {
-         "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2021-04-01",
-         "name": "[variables('storageAccountName')]",
-         "location": "[variables('location')]",
-         "sku": {
-            "name": "Standard_LRS"
-         },
-         "kind": "StorageV2",
-         "properties": {
-            "accessTier": "Hot"
-         }
+      "sku": {
+        "name": "Basic",
+        "tier": "Basic"
       },
-      {
-         "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-         "apiVersion": "2021-04-01",
-         "name": "[format('{0}/default/{1}', variables('storageAccountName'), variables('containerName'))]",
-         "dependsOn": [
-            "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
-         ]
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sql-{0}', variables('prefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2020-02-02-preview",
+      "name": "[format('{0}/{1}', format('sql-{0}', variables('prefix')), 'sqldb-target')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Basic",
+        "tier": "Basic"
       },
-      {
-         "type": "Microsoft.DataFactory/factories",
-         "apiVersion": "2018-06-01",
-         "name": "[variables('dataFactoryName')]",
-         "location": "[variables('location')]",
-         "properties": {},
-         "identity": {
-            "type": "SystemAssigned"
-         }
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', format('sql-{0}', variables('prefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Synapse/workspaces",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[format('syn-{0}', variables('prefix'))]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
       },
-      {
-         "type": "Microsoft.KeyVault/vaults",
-         "apiVersion": "2021-04-01-preview",
-         "name": "[variables('keyVaultName')]",
-         "location": "[variables('location')]",
-         "dependsOn": [
-            "[resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName'))]"
-         ],
-         "properties": {
+      "properties": {
+        "managedResourceGroupName": "[format('rg-syn-{0}', variables('prefix'))]",
+        "sqlAdministratorLogin": "[variables('administratorLogin')]",
+        "sqlAdministratorLoginPassword": "[variables('administratorLoginPassword')]",
+        "defaultDataLakeStorage": {
+          "accountUrl": "[reference(resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix'))), '2021-04-01').primaryEndpoints.dfs]",
+          "createManagedPrivateEndpoint": false,
+          "filesystem": "data",
+          "resourceId": "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]"
+        },
+        "publicNetworkAccess": "Enabled"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices/containers', format('stor{0}', variables('prefix')), 'default', 'data')]",
+        "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-04-01",
+      "name": "[format('stor{0}', variables('prefix'))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "accessTier": "Hot",
+        "isHnsEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2021-04-01",
+      "name": "[format('{0}/{1}', format('stor{0}', variables('prefix')), 'default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2021-04-01",
+      "name": "[format('{0}/{1}/{2}', format('stor{0}', variables('prefix')), 'default', 'data')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', format('stor{0}', variables('prefix')), 'default')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2020-04-01-preview",
+      "scope": "[format('Microsoft.Storage/storageAccounts/{0}', format('stor{0}', variables('prefix')))]",
+      "name": "[guid(subscription().id, 'SynapseStorageBlobDataContributor')]",
+      "properties": {
+        "principalId": "[reference(resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix'))), '2021-06-01-preview', 'full').identity.principalId]",
+        "roleDefinitionId": "7f1dbf46-3dcd-4e01-ae0f-b6b8af8e75b9"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
+        "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[format('kv-{0}', variables('prefix'))]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "family": "A",
+          "name": "standard"
+        },
+        "tenantId": "[subscription().tenantId]",
+        "accessPolicies": [
+          {
             "tenantId": "[subscription().tenantId]",
-            "enableSoftDelete": false,
-            "accessPolicies": [
-               {
-                  "objectId": "[reference(resourceId('Microsoft.DataFactory/factories', variables('dataFactoryName')),'2018-06-01', 'full').identity.principalId]",
-                  "tenantId": "[subscription().tenantId]",
-                  "permissions": {
-                     "secrets": [
-                        "list",
-                        "get"
-                     ]
-                  }
-               }
-            ],
-            "sku": {
-               "name": "standard",
-               "family": "A"
-            },
-            "networkAcls": {
-               "defaultAction": "Allow",
-               "bypass": "AzureServices"
+            "objectId": "[reference(resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix'))), '2021-06-01-preview', 'full').identity.principalId]",
+            "permissions": {
+              "secrets": [
+                "get",
+                "list"
+              ]
             }
-         }
+          }
+        ],
+        "networkAcls": {
+          "bypass": "AzureServices",
+          "defaultAction": "Allow"
+        }
       },
-      {
-         "type": "Microsoft.KeyVault/vaults/secrets",
-         "apiVersion": "2021-04-01-preview",
-         "name": "[format('{0}/{1}', variables('keyVaultName'), variables('administratorLogin'))]",
-         "properties": {
-            "value": "[variables('administratorLoginPassword')]"
-         },
-         "dependsOn": [
-            "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]"
-         ]
-      }
-   ]
+      "dependsOn": [
+        "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]"
+      ]
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults/secrets",
+      "apiVersion": "2021-06-01-preview",
+      "name": "[format('{0}/{1}', format('kv-{0}', variables('prefix')), variables('administratorLogin'))]",
+      "properties": {
+        "value": "[variables('administratorLoginPassword')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.KeyVault/vaults', format('kv-{0}', variables('prefix')))]"
+      ]
+    }
+  ]
 }
