@@ -100,6 +100,24 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
   name: 'data'
 }
 
+resource waitBeforeRoleAssignment 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
+  name: 'waitBeforeRoleAssignment'
+  location: location
+  kind: 'AzureCLI'
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    azCliVersion: '2.0.80'
+    scriptContent: 'sleep 30'
+    retentionInterval: 'P1D'
+    cleanupPreference: 'Always'
+  }
+  dependsOn: [
+    synapseWorkspace
+  ]
+}
+
 
 resource storageAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
   name: guid(subscription().id, 'SynapseStorageBlobDataContributor')
@@ -108,6 +126,9 @@ resource storageAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2
     principalId: synapseWorkspace.identity.principalId
     roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe') // storageBlobDataContributor role definition ID
   }
+  dependsOn: [
+    waitBeforeRoleAssignment
+  ]
 }
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {

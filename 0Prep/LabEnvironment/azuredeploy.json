@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.21.1.54444",
-      "templateHash": "498730103589232708"
+      "templateHash": "16845608522015257829"
     }
   },
   "parameters": {
@@ -144,6 +144,25 @@
       ]
     },
     {
+      "type": "Microsoft.Resources/deploymentScripts",
+      "apiVersion": "2020-10-01",
+      "name": "waitBeforeRoleAssignment",
+      "location": "[parameters('location')]",
+      "kind": "AzureCLI",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "azCliVersion": "2.0.80",
+        "scriptContent": "sleep 30",
+        "retentionInterval": "P1D",
+        "cleanupPreference": "Always"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]"
+      ]
+    },
+    {
       "type": "Microsoft.Authorization/roleAssignments",
       "apiVersion": "2020-04-01-preview",
       "scope": "[format('Microsoft.Storage/storageAccounts/{0}', format('stor{0}', variables('prefix')))]",
@@ -154,7 +173,8 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
-        "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]"
+        "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]",
+        "[resourceId('Microsoft.Resources/deploymentScripts', 'waitBeforeRoleAssignment')]"
       ]
     },
     {
