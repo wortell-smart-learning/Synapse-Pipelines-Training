@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.21.1.54444",
-      "templateHash": "10887387458065266063"
+      "templateHash": "16030281136752289229"
     }
   },
   "parameters": {
@@ -151,11 +151,12 @@
       "kind": "AzureCLI",
       "properties": {
         "azCliVersion": "2.0.80",
-        "scriptContent": "sleep 30",
+        "scriptContent": "sleep 60",
         "retentionInterval": "P1D",
         "cleanupPreference": "Always"
       },
       "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
         "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]"
       ]
     },

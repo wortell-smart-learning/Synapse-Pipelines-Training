@@ -106,12 +106,13 @@ resource waitBeforeRoleAssignment 'Microsoft.Resources/deploymentScripts@2020-10
   kind: 'AzureCLI'
   properties: {
     azCliVersion: '2.0.80'
-    scriptContent: 'sleep 30'
+    scriptContent: 'sleep 60'
     retentionInterval: 'P1D'
     cleanupPreference: 'Always'
   }
   dependsOn: [
     synapseWorkspace
+    storageAccount
   ]
 }
 
