@@ -68,6 +68,15 @@ resource synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01-preview' = {
   }
 }
 
+resource synapseFirewall 'Microsoft.Synapse/workspaces/firewallRules@2021-06-01' = {
+  name: 'allowAll'
+  parent: synapseWorkspace
+  properties: {
+    startIpAddress: '0.0.0.0'
+    endIpAddress: '255.255.255.255'
+  }
+}
+
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: 'stor${prefix}'
   location: location
