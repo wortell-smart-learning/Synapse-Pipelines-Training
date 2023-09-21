@@ -4,7 +4,7 @@ param location string = resourceGroup().location
 var administratorLogin = 'sqladmin'
 var administratorLoginPassword = 'WortellSmartLearning.nl'
 var random = substring(uniqueString(resourceGroup().id, subscription().id, initials), 0, 3)
-var prefix = '${initials}${random}'
+var prefix = toLower('${initials}${random}')
 
 resource sqlServer 'Microsoft.Sql/servers@2020-02-02-preview' = {
   name: 'sql-${prefix}'
