@@ -104,9 +104,6 @@ resource waitBeforeRoleAssignment 'Microsoft.Resources/deploymentScripts@2020-10
   name: 'waitBeforeRoleAssignment'
   location: location
   kind: 'AzureCLI'
-  identity: {
-    type: 'SystemAssigned'
-  }
   properties: {
     azCliVersion: '2.0.80'
     scriptContent: 'sleep 30'

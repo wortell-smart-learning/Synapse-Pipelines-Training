@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.21.1.54444",
-      "templateHash": "16845608522015257829"
+      "templateHash": "10887387458065266063"
     }
   },
   "parameters": {
@@ -149,9 +149,6 @@
       "name": "waitBeforeRoleAssignment",
       "location": "[parameters('location')]",
       "kind": "AzureCLI",
-      "identity": {
-        "type": "SystemAssigned"
-      },
       "properties": {
         "azCliVersion": "2.0.80",
         "scriptContent": "sleep 30",
