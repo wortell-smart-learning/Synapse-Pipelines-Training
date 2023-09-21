@@ -10,9 +10,9 @@ We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. E
 
 ## Opdracht 1 - Stored Procedure uitvoeren
 
-Stored Procedures zijn opgeslagen programma's op de database. Vaak worden acties op de database (zoals het leegmaken van een tabel, of het starten van een proces binnen de database) in een stored procedure "gevangen". Met ADF kun je deze nu orchestreren.
+Stored Procedures zijn opgeslagen programma's op de database. Vaak worden acties op de database (zoals het leegmaken van een tabel, of het starten van een proces binnen de database) in een stored procedure "gevangen". Met Synapse Pipelines kun je deze nu orchestreren.
 
-1. Zorg dat je weer terug bent in ADF. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
+1. Zorg dat je weer terug bent in Synapse Pipelines. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
 
 2. Noem de pipeline: `PL_Process_Dates_Training`.
 
@@ -39,7 +39,7 @@ Je kunt data uit de database ook gebruiken om je orchestratie mee uit te voeren,
 * Een proces dat alleen mag starten als er een bepaalde rij in je instellingen-tabel aanwezig is
 * Voor elke klant die er in de Customers-tabel aanwezig is een eigen pipeline starten
 
-Allereerst halen we hier data op uit een SQL-database, en doen een filtering op die data binnen de ADF pipeline.
+Allereerst halen we hier data op uit een SQL-database, en doen een filtering op die data binnen Synapse Pipelines pipeline.
 
 1. Klik bij Datasets op **Dataset Actions** en op **New Dataset**.
 
@@ -92,10 +92,10 @@ Allereerst halen we hier data op uit een SQL-database, en doen een filtering op 
 
 ## Opdracht 3 - Dynamische pipelines/ Datasets
 
-Tot nu toe hebben we alle tabellen stuk voor stuk ingeladen, met eigen datasets en pipelines. Dat is echter (gelukkig) niet nodig in ADF: je kunt je pipelines en datasets *dynamisch* maken. Dat houdt in:
+Tot nu toe hebben we alle tabellen stuk voor stuk ingeladen, met eigen datasets en pipelines. Dat is echter (gelukkig) niet nodig in Synapse Pipelines: je kunt je pipelines en datasets *dynamisch* maken. Dat houdt in:
 
 * Je voegt parameters toe aan je dataset (bijvoorbeeld voor de tabelnaam)
-* Je laat het *schema* leeg. ADF doet nu een *schema infer*, wat betekent dat het schema op het moment van uitvoeren bepaald wordt.
+* Je laat het *schema* leeg. Synapse Pipelines doet nu een *schema infer*, wat betekent dat het schema op het moment van uitvoeren bepaald wordt.
 * Bij het gebruiken van de dataset geef je de benodigde parameters mee.
 
 Zo kun je bijvoorbeeld een lijst op te halen tabellen uitlezen uit een CSV-bestand of SQL-configuratietabel, waarna je ze met een ForEach-loop één voor één uitleest.

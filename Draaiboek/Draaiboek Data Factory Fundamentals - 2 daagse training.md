@@ -1,4 +1,4 @@
-# **Draaiboek Azure Data Factory (ADF) Fundamentals Dag 1**
+# **Draaiboek Synapse Pipelines Fundamentals Dag 1**
 ___
 9:00 - Sheet 1 t/m 4
 
@@ -10,14 +10,14 @@ ___
 Na de training heeft de deelnemer inzicht in
 
 * Wat is data orchestratie.
-* Wat is ADF en wat kan ik ermee.
-* Welke basis onderdelen bestaat de ADF uit.
+* Wat is Synapse Pipelines en wat kan ik ermee.
+* Welke basis onderdelen bestaat Synapse Pipelines uit.
 * Hoe maak je een basis pipeline.
 
 Na de training kan de deelnemer
 
 * Aangeven wat data orchestratie is.
-* Uitleggen wat de ADF is en waarvoor je het inzet.
+* Uitleggen wat Synapse Pipelines is en waarvoor je het inzet.
 * Uitleggen wat de basis onderdelen zijn en hoe deze zich tot elkaar verhouden
 * Een eigen pipeline maken voor data verplaatsing.
 
@@ -27,7 +27,7 @@ Na de training kan de deelnemer
 * Kennismaking
 * Hoofdstuk 1: Data orchestratie
 * Korte pauze
-* Hoofdstuk 2: De Azure Data Factory
+* Hoofdstuk 2: Synapse Pipelines
 * 0Prep, Azure environment deployen
 * Hoofdstuk 3: Integration Runtimes
 * Lunch
@@ -60,7 +60,7 @@ Van elkaar weten wat je komt leren zodat je elkaar kunt helpen. Vragen bij de ke
 
 * Wat wil je in deze training leren.
 
-* Wat weet je al van ADF.
+* Wat weet je al van Synapse Pipelines.
 
 ___
 
@@ -99,29 +99,29 @@ ___
 
 ___
 
-10:30 - Sheet 10 t/m 14, adf.azure.com
+10:30 - Sheet 10 t/m 14, web.azuresynapse.net
 
-## Hoofdstuk 2: Azure Data Factory
+## Hoofdstuk 2: Synapse Pipelines
 
 *Doel:*
 
 Na deze les weet de deelnemer:
-* Wat de Azure Data Factory is.
+* Wat Synapse Pipelines is.
 * Wat je ermee kan doen.
 * Hoe het in de theorie werkt.
 * Uit welke componenten het bestaat.
 
 *Structuur:*
-* Wat is de Azure Data Factory?
+* Wat is Synapse Pipelines?
 * Waar gebruik je het voor?
 * Hoe werkt het? (Demo de kant en klare omgeving)
-* Welke belangerijke componenten bevat de ADF (Pipelines, Activities, Datasets, Linked services, Integration Runtimes)
+* Welke belangerijke componenten bevat Synapse Pipelines (Pipelines, Activities, Datasets, Linked services, Integration Runtimes)
 
 *Theorie:*
-* Wat is de Azure Data Factory (ADF).
-* Welke rol speelt de ADF binnen Azure/ Dataplatform.
-* Vraag: Waar zou jij de ADF voor willen gebruiken?
-* Hoe gaat de ADF te werk.
+* Wat is Synapse Pipelines.
+* Welke rol speelt Synapse Pipelines binnen Azure/ Dataplatform.
+* Vraag: Waar zou jij Synapse Pipelines voor willen gebruiken?
+* Hoe gaat Synapse Pipelines te werk.
 * Welke componenten zijn nodig voor een complete orchestratie.
 * Vraag: Wie kan aangeven welke componenten er allemaal zijn? 
 * Vraag: In welke volgorde denk jij dat de componenten horen?
@@ -152,7 +152,7 @@ Met deze omgeving kun je verder in de training aan de slag met de bijhorende lab
 
 ___
 
-11:45 - Sheet 16 t/m 18, adf.azure.com
+11:45 - Sheet 16 t/m 18, web.azuresynapse.net
 
 ## Hoofdstuk 3: Integration Runtimes
 
@@ -170,7 +170,7 @@ Na deze les weet de deelnemer welke verschillende soorten Integration Runtimes e
 * Waar gebruik je het voor.
 * Vraag: Waar moet je op letten bij een IR?
 * Welke soorten IR’s zijn er.
-* Vraag: Stel, ik werk in een ander team, Dit team heeft een eigen ADF voor zijn/ haar data doeleinde. Het team heeft een bron nodig van on-premise die al **eerder** is ontsloten, welke soort IR heb ik nodig?
+* Vraag: Stel, ik werk in een ander team, Dit team heeft een eigen Synapse Pipelines voor zijn/ haar data doeleinde. Het team heeft een bron nodig van on-premise die al **eerder** is ontsloten, welke soort IR heb ik nodig?
 
 ___
 
@@ -191,8 +191,8 @@ ___
 * Vraag: Wat is data orchestratie?
 * Vraag: Welke 4 onderdelen waren er?
 * Vraag: Noem minstens 2 uitdagingen waar je tegen aan kan lopen?
-* Vraag: Wat is de ADF?
-* Vraag: Noem minstens 2 componenten van de ADF?
+* Vraag: Wat is Synapse Pipelines?
+* Vraag: Noem minstens 2 componenten van Synapse Pipelines?
 * Vraag: Welk component hebben we als laatste voor de lunch behandelt?
 * Vraag: Welke soorten IR’s waren er?
 
@@ -202,13 +202,13 @@ ___
 
 ___
 
-13:30 - Sheet 20, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+13:30 - Sheet 20, web.azuresynapse.net, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab1, Integration Runtimes**
 
 *Doel:*
 
-Na deze oefening weet de deelnemer hoe hij/zij een Integration Runtime (IR) moet aanmaken, configuren en installeren binnen ADF en Azure.
+Na deze oefening weet de deelnemer hoe hij/zij een Integration Runtime (IR) moet aanmaken, configuren en installeren binnen Synapse Pipelines en Azure.
 
 *Instructie:*
 
@@ -221,7 +221,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab1 volgen. Deze s
 
 ___
 
-14:00 - Sheet 21 t/m 23, adf.azure.com 
+14:00 - Sheet 21 t/m 23, web.azuresynapse.net 
 
 ## **Hoofdstuk 4: Linked Services**
 
@@ -243,13 +243,13 @@ Na deze les weet de deelnemer wat een Linked Service is en waarvoor het wordt ge
 
 ___
 
-14:15 - Sheets 24, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+14:15 - Sheets 24, web.azuresynapse.net, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab2, Linked Services*
 
 *Doel:*
 
-Na deze oefening weet de deelnemer hoe hij/zij een Linked Service moet aanmaken binnen ADF.
+Na deze oefening weet de deelnemer hoe hij/zij een Linked Service moet aanmaken binnen Synapse Pipelines.
 
 *Instructie:*
 
@@ -261,7 +261,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab2 volgen. Deze s
 
 ___
 
-14:30 - Sheets 25 t/m 27, adf.azure.com
+14:30 - Sheets 25 t/m 27, web.azuresynapse.net
 
 ## **Hoofdstuk 5: Datasets**
 
@@ -280,13 +280,13 @@ Na deze les weet de deelnemer wat een Dataset is en waarvoor het wordt gebruikt.
 
 ___
 
-14:45 - Sheets 28, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+14:45 - Sheets 28, web.azuresynapse.net, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab3, Datasets**
 
 *Doel:*
 
-Na deze oefening weet de deelnemer hoe hij/zij een Dataset moet aanmaken binnen ADF.
+Na deze oefening weet de deelnemer hoe hij/zij een Dataset moet aanmaken binnen Synapse Pipelines.
 
 *Instructie:*
 
@@ -304,7 +304,7 @@ ___
 
 ___
 
-15:15 - Sheet 29 t/m 31, adf.azure.com 
+15:15 - Sheet 29 t/m 31, web.azuresynapse.net 
 
 ## **Hoofdstuk 6: Pipelines**
 
@@ -324,13 +324,13 @@ Na deze les weet de deelnemer wat een Pipeline is en waarvoor het wordt gebruikt
 
 ___
 
-15:30 - Sheet 32, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+15:30 - Sheet 32, web.azuresynapse.net, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab4, Pipelines**
 
 *Doel:*
 
-Na deze oefening weet de deelnemer hoe hij/zij een Pipeline moet aanmaken binnen ADF.
+Na deze oefening weet de deelnemer hoe hij/zij een Pipeline moet aanmaken binnen Synapse Pipelines.
 
 *Instructie:*
 
@@ -342,7 +342,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab4 volgen. Deze s
 
 ___
 
-15:45 - Sheet 33 t/m 35, adf.azure.com
+15:45 - Sheet 33 t/m 35, web.azuresynapse.net
 
 ## **Hoofdstuk 7: Triggers**
 
@@ -364,13 +364,13 @@ Na deze les weet de deelnemer wat een Triggers is en waarvoor het wordt gebruikt
 
 ___
 
-16:00 - Sheet 36, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+16:00 - Sheet 36, web.azuresynapse.net, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab5, Triggers**
 
 *Doel:*
 
-Na deze oefening weet de deelnemer hoe hij/zij een Trigger moet aanmaken binnen ADF.
+Na deze oefening weet de deelnemer hoe hij/zij een Trigger moet aanmaken binnen Synapse Pipelines.
 
 *Instructie:*
 
@@ -406,7 +406,7 @@ ___
 
 ___
 
-# **Draaiboek Azure Data Factory (ADF) Fundamentals Dag 2**
+# **Draaiboek Synapse Pipelines Fundamentals Dag 2**
 **2 daagse / 22 & 23 november en 24 & 25 november 2021 / max 11 deelnemers.**
 
 9:00 - Sheet 1 t/m 4
@@ -417,14 +417,14 @@ ___
 **De leerdoelen** voor deze training zijn:
 Na de training heeft de deelnemer inzicht in:
 * Hoe maak je geavanceerde pipelines.
-* Hoe je dynamische content toepast binnen de ADF.
+* Hoe je dynamische content toepast binnen Synapse Pipelines.
 * Hoe versiebeheer werkt via GIT.
-* Hoe je via DevOps (CI/CD) de ADF kan deployen.
+* Hoe je via DevOps (CI/CD) Synapse Pipelines kan deployen.
 
 Na de training kan de deelnemer:
 * Eigen pipelines maken via de Best Practises.
 * Dynamische parameters toepassen.
-* Uitleggen hoe GIT werkt i.c.m. ADF.
+* Uitleggen hoe GIT werkt i.c.m. Synapse Pipelines.
 * Uitleggen hoe DevOps (CI/CD) toegepast kan worden.
 
 **De Agenda** voor deze training is:
@@ -458,7 +458,7 @@ ___
 *Structuur:*
 * Wat hebben wij gisteren allemaal behandeld?
 * Wat is data orchestratie?
-* Wat is de ADF?
+* Wat is Synapse Pipelines?
 * Wat was een IR?
 * Wat was een Linked Service?
 * Wat was een Dataset?
@@ -470,9 +470,9 @@ ___
 * Vraag: Wat is data orchestratie?
 * Vraag: Welke 4 onderdelen waren er?
 * Slides data orchestratie doorlopen.
-* Vraag: Wat is de ADF?
-* Vraag: Noem de componenten uit de ADF?
-* Sildes ADF doorlopen.
+* Vraag: Wat is Synapse Pipelines?
+* Vraag: Noem de componenten uit Synapse Pipelines?
+* Sildes Synapse Pipelines doorlopen.
 * Vraag: Wat is een IR?
 * Vraag: Welke soort IR’s zijn er?
 * Slides IR doorlopen.
@@ -497,7 +497,7 @@ ___
 
 ___
 
-10:15 - Sheet 6 t/m 8, adf.azure.com
+10:15 - Sheet 6 t/m 8, web.azuresynapse.net
 
 ## **Hoofdstuk 8: Global Parameters**
 
@@ -516,7 +516,7 @@ Na deze les weet de deelnemer wat een global parameters zijn en waarvoor het wor
 
 ___
 
-10:30 - Sheet 9, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+10:30 - Sheet 9, web.azuresynapse.net, GitHub voor virtueel. Handout voor klassikaal.
 
 11:00 - Sheet 10 t/m 14
 
@@ -574,7 +574,7 @@ ___
 
 ___
 
-13:30 - Sheet 16, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+13:30 - Sheet 16, web.azuresynapse.net, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab6, Activities**
 
@@ -592,7 +592,7 @@ Jullie kunnen aan de hand van Github/ handout de uitleg voor Lab6 volgen. Deze s
 
 ___
 
-14:30 - Sheet 17 t/m 19, adf.azure.com
+14:30 - Sheet 17 t/m 19, web.azuresynapse.net
 
 ## **Hoofdstuk 10: Batches en DIUs**
 
@@ -601,7 +601,7 @@ ___
 Na deze les weet de deelnemer hoe hij/zij data overdacht kan versnellen door data intergration units en data kan partitioneren in batches.
 
 *Structuur:*
-* Welke versnellende stappen kan ik maken in de ADF?
+* Welke versnellende stappen kan ik maken in Synapse Pipelines?
 * Wat is een DIU?
 * Wat kan ik met DIUs?
 * Wat is Batching?
@@ -619,13 +619,13 @@ Na deze les weet de deelnemer hoe hij/zij data overdacht kan versnellen door dat
 
 ___
 
-14:45 - Sheet 20, adf.azure.com, GitHub voor virtueel. Handout voor klassikaal.
+14:45 - Sheet 20, web.azuresynapse.net, GitHub voor virtueel. Handout voor klassikaal.
 
 ## **Lab7, Batches en DIUs**
 
 *Doel:*
 
-Na deze oefening weet de deelnemer hoe hij/zij Batching en DIUs moet toepassen op pipelines binnen de ADF.
+Na deze oefening weet de deelnemer hoe hij/zij Batching en DIUs moet toepassen op pipelines binnen Synapse Pipelines.
 
 *Instructie:*
 
@@ -641,47 +641,47 @@ ___
 
 ## **Koffiepauze**
 
-15:15 - Sheet 21 t/m 23, adf.azure.com, dev.azure.com
+15:15 - Sheet 21 t/m 23, web.azuresynapse.net, dev.azure.com
 
 ## **Hoofdstuk 11: GIT**
 
 *Doel:*
-Na deze les weet de deelnemer hoe hij/zij GIT moet toepassen op de ADF.
+Na deze les weet de deelnemer hoe hij/zij GIT moet toepassen op Synapse Pipelines.
 
 *Structuur:*
 * Wat is GIT?
 * Hoe verhoud GIT zich ten opzichten van TFS?
-* Hoe pas je GIT toe in ADF? (DEMO)
+* Hoe pas je GIT toe in Synapse Pipelines? (DEMO)
 
 *Theorie:*
 * Wat is GIT.
 * GIT vs TFS als versiebeheer.
 * Vraag: Wie heeft er wel eens met GIT gewerkt?
 * Vraag: Hoe heb je dat ervaren?
-* Welke soorten GIT zijn er voor ADF.
-* Hoe pas je GIT toe in ADF.
+* Welke soorten GIT zijn er voor Synapse Pipelines.
+* Hoe pas je GIT toe in Synapse Pipelines.
 
 ___
 
-15:45 - Sheets 24 t/m 27, adf.azure.com, dev.azure.com
+15:45 - Sheets 24 t/m 27, web.azuresynapse.net, dev.azure.com
 
 ## **Hoofstuk 12: DevOps** 
 
 *Doel:*
 
-Na deze les weet de deelnemer hoe hij/zij DevOps kan toepassen op het CI/CD deployen van de ADF.
+Na deze les weet de deelnemer hoe hij/zij DevOps kan toepassen op het CI/CD deployen van Synapse Pipelines.
 
 *Structuur:*
 * Wat is DevOps?
 * Wat is CI/CD?
-* Hoe werkt ADF met CI/CD? (DEMO)
+* Hoe werkt Synapse Pipelines met CI/CD? (DEMO)
 
 *Theorie:*
 * Wat is DevOps.
 * Vraag: Wie heeft er wel eens eerder DevOps gewerkt?
 * Wat is CI/CD.
 * Vraag: Wie heeft er wel via CI/CD iets gedeployed?
-* Hoe werkt ADF met CI/CD.
+* Hoe werkt Synapse Pipelines met CI/CD.
 
 ___
 

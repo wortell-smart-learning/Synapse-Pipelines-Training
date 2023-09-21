@@ -2,11 +2,11 @@
 
 *Vereisten*
 
-Om aan deze training te beginnen is het belangrijk dat je een eigen Azure-omgeving hebt met voldoende rechten om Azure Data Factory en bijbehorende resources te kunnen inrichten.
+Om aan deze training te beginnen is het belangrijk dat je een eigen Azure-omgeving hebt met voldoende rechten om Synapse Pipelines en bijbehorende resources te kunnen inrichten.
 
 *Doel*
 
-Gedurende de training heb je een werkende omgeving nodig om **hands-on** aan de slag te kunnen gaan met de Azure Data Factory.
+Gedurende de training heb je een werkende omgeving nodig om **hands-on** aan de slag te kunnen gaan met Synapse Pipelines.
 
 In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en richt je de database in. Volg de opdrachten stap voor stap.
 
@@ -14,14 +14,14 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 
 1. Klink op de onderstaande **deploy to azure** knop. Mocht je de handout fysiek hebben ontvangen, ga naar de Github repo aangegeven door de trainer.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fwortell-smart-learning%2FADF-Training-light%2Fmain%2F0Prep%2FLabEnvironment%2Fazuredeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fwortell-smart-learning%2FSynapse-Pipelines-Training%2Fmain%2F0Prep%2FLabEnvironment%2Fazuredeploy.json)
 
 2. In het deployscherm zijn alle vereisten velden al voorzien van waardes. Je dient alleen zelf een resourcegroup aan te maken door op de **create new** te klikken. Vul hier een naam in en klik vervolgens op OK. 
 
 > Een *best practice* is om de naam van een resourcegroup te laten beginnen met `rg-` gevolgd door een omschrijvende naam en eindigend met een `-omgeving`. 
 >
 > * Praktijkvoorbeeld:* `rg-dataplatform-dev`
-> * Trainingsvoorbeeld:* `rg-adf-training`
+> * Trainingsvoorbeeld:* `rg-synapse-pipelines-training`
 >
 
 3. Klik op de knop **Review + Create**. De code wordt vervolgens gevalideerd. Als de validatie geslaagd is wordt dit aangegeven door een groene balk en wordt de knop **Create**  beschikbaar. Klik op de knop en de uitrol van de omgeving zal starten. Mocht er iets fout gaan gedurende de uitrol, laat dit weten aan de trainer.

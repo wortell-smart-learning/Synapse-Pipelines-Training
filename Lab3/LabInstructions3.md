@@ -6,7 +6,7 @@ To start the lab, it's essential that Lab2 has been completed.
 
 *Objective*
 
-Nu de Linked Services aangemaakt zijn kan ADF bij specifieke data zoals een tabel in een database, een .csv bestand op een storage account en meer. Om te specificeren wat je wilt hebben dien je een Dataset aan te maken. Dit gaan we in onderstaande opdrachten doen.
+Nu de Linked Services aangemaakt zijn kan Synapse Pipelines bij specifieke data zoals een tabel in een database, een .csv bestand op een storage account en meer. Om te specificeren wat je wilt hebben dien je een Dataset aan te maken. Dit gaan we in onderstaande opdrachten doen.
 
 ## Opdracht 1 - Source Database
 

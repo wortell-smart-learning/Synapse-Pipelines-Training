@@ -2,7 +2,7 @@
 
 *Goal*
 
-We want to shape data integration using Data Flows. By now we have seen quite a bit of Azure Data Factory / Synapse Pipelines - the assignments are therefore more high-level!
+We want to shape data integration using Data Flows. By now we have seen quite a bit of Synapse Pipelines / Synapse Pipelines - the assignments are therefore more high-level!
 
 For this assignment, it is expected that you have exported the AdventureWorkLT database to parquet files. You can of course do this yourself, or you can manually upload the files - they are available for download here:
 
@@ -28,7 +28,7 @@ For this assignment, it is expected that you have exported the AdventureWorkLT d
 
 ## First step: A Simple Data Flow
 
-In this lab, we will experience the Data Flow functionality of Azure Data Factory ourselves. The main goal is to get a good understanding of all the components surrounding the Data Flow.
+In this lab, we will experience the Data Flow functionality of Synapse Pipelines ourselves. The main goal is to get a good understanding of all the components surrounding the Data Flow.
 
 * Create a first new Data Flow:
   * Source: the `Product.parquet` file on your Data Lake

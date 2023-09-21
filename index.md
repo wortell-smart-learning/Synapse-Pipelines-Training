@@ -1,12 +1,12 @@
-# Azure Data Factory
+# Synapse Pipelines
 
-Welkom bij de [Wortell Smart Learning](https://www.wortell.nl/nl/smart-learning) training "Azure Data Factory Fundamentals"!
+Welkom bij de [Wortell Smart Learning](https://www.wortell.nl/nl/smart-learning) training "Synapse Pipelines Fundamentals"!
 
 Deze training is opgebouwd uit drie dagen, die als training ook los te volgen zijn:
 
-1. Azure Data Factory (ADF): Inrichting en Beheer
-2. Azure Data Factory (ADF): Orchestratie en Development
-3. Azure Data Factory (ADF): Data Flows
+1. Synapse Pipelines: Inrichting en Beheer
+2. Synapse Pipelines: Orchestratie en Development
+3. Synapse Pipelines: Data Flows
 
 ## Table of Contents
 
@@ -23,7 +23,6 @@ Deze training is opgebouwd uit drie dagen, die als training ook los te volgen zi
 
 ## Meer informatie
 
-Meer informatie over deze trainingen kun je vinden op:
+Meer informatie over deze training kun je vinden op:
 
-* [https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf-inrichting-en-beheer](https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf-inrichting-en-beheer)
-* [https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf-orchestratie-en-development](https://www.wortell.nl/nl/smart-learning/azure-data-factory-adf-orchestratie-en-development)
+* [https://www.wortell.nl/nl/smart-learning/synapse-pipelines-orchestratie-en-development](https://www.wortell.nl/nl/smart-learning/synapse-pipelines-orchestratie-en-development)

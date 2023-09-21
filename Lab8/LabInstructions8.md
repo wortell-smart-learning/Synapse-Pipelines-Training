@@ -6,7 +6,7 @@ Om het lab te kunnen starten is het van belang dat Lab6 is afgerond.
 
 *Objective*
 
-We willen ook de data integratie vormgeven met behulp van Data Flows. Inmiddels hebben we redelijk wat van Azure Data Factory / Synapse Pipelines gezien - de opdrachten zijn daarom nu meer hoogover!
+We willen ook de data integratie vormgeven met behulp van Data Flows. Inmiddels hebben we redelijk wat van Synapse Pipelines gezien - de opdrachten zijn daarom nu meer hoogover!
 
 Bij deze opdracht wordt verwacht dat je de AdventureWorkLT-database hebt geëxporteerd naar parquet-bestanden. Dat kun je uiteraard zelf doen (met de ervaring van lab 6), of je kunt de bestanden handmatig uploaden - ze staan hier:
 
@@ -23,7 +23,7 @@ Bij deze opdracht wordt verwacht dat je de AdventureWorkLT-database hebt geëxpo
 
 # Opdracht: Eenvoudige dataflow
 
-In dit lab gaan we de Data Flow functionaliteit van Azure Data Factory zelf ervaren. Het doel is met name om alle componenten om de Data Flow heen een keer goed op het netvlies te hebben.
+In dit lab gaan we de Data Flow functionaliteit van Synapse Pipelines zelf ervaren. Het doel is met name om alle componenten om de Data Flow heen een keer goed op het netvlies te hebben.
 
 Zorg er daarom voor dat de volgende zaken ingericht worden:
 

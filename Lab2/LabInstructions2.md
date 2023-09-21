@@ -16,11 +16,11 @@ Sommige van deze bronnen kun je benaderen met behulp van *managed identity*: in 
 
 ## Opdracht 1 - Azure Key Vault
 
-Azure Data Factory is eenvoudig te koppelen met Azure Key Vault, waarin we wachtwoorden en connection strings opslaan. We kunnen een verbinding naar een bron dan laten vullen door een *secret* uit de *Key Vault*. Op het moment dat ADF verbinding maakt met die bron, zal ADF eerst de *secret* ophalen uit de Key Vault.
+Synapse Pipelines is eenvoudig te koppelen met Azure Key Vault, waarin we wachtwoorden en connection strings opslaan. We kunnen een verbinding naar een bron dan laten vullen door een *secret* uit de *Key Vault*. Op het moment dat Synapse Pipelines verbinding maakt met die bron, zal Synapse Pipelines eerst de *secret* ophalen uit de Key Vault.
 
 Voordat we echter *secrets* uit de Key Vault kunnen benaderen, zullen we de Key Vault eerst moeten aankoppelen als *Linked Service*.
 
-1. Ga de ADF. Klik vervolgens weer op Manage. Ga naar **Linked Services**.
+1. Ga Synapse Pipelines. Klik vervolgens weer op Manage. Ga naar **Linked Services**.
 2. klik op **New**, en zoek naar **Key vault**. Klik de **Azure Key vault** aan.
 3. Geef de Linked services een duidelijke naam. Het aangeraden format is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
    * Praktijkvoorbeeld: `LS_KV_Dataplatform_PRD`
@@ -49,7 +49,7 @@ Met de Key Vault aangesloten is het mogelijk om wachtwoorden op te halen om een 
 11. Als test klaar is en een **Groen bolletje** geeft, kan de Linked Service aangemaakt worden door op **Create** te klikken.
 12. Doe Opdracht 2 nogmaals, maar nu voor de **sqldb-target** Database.
 
-Je hebt nu twee Linked Services aangemaakt. Dit maakt het voor ADF mogelijk om verbinding te maken met de twee databases.
+Je hebt nu twee Linked Services aangemaakt. Dit maakt het voor Synapse Pipelines mogelijk om verbinding te maken met de twee databases.
 
 ## Opdracht 3 - Storage Account
 
