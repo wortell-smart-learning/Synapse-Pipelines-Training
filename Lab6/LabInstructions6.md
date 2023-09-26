@@ -6,19 +6,19 @@ Om het lab te kunnen starten is het van belang dat Lab4 is afgerond.
 
 *Objective*
 
-We hebben al enkele activities gebruikt zoals Copy, Web, Wait en Set variable. Er zijn er nog veel meer en sommige zijn heel handig als je deze met elkaar laten samenwerken om zodoende geavanceerde pipelines te creeeren. Volg de opdrachten stap voor stap.
+We hebben al enkele activities gebruikt zoals Copy en Set variable. Er zijn er nog veel meer en sommige zijn heel handig als je deze met elkaar laten samenwerken om zodoende geavanceerde pipelines te creeeren. Volg de opdrachten stap voor stap.
 
 ## Opdracht 1 - Stored Procedure uitvoeren
 
 Stored Procedures zijn opgeslagen programma's op de database. Vaak worden acties op de database (zoals het leegmaken van een tabel, of het starten van een proces binnen de database) in een stored procedure "gevangen". Met Synapse Pipelines kun je deze nu orchestreren.
 
-1. Zorg dat je weer terug bent in Synapse Pipelines. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
+1. Zorg dat je weer terug bent in Synapse Integrate. Klik op **Add new resource** (plusje) en op **Pipeline**.
 
 2. Noem de pipeline: `PL_Process_Dates_Training`.
 
 3. Uit de lijst met **Activities**, klik op de optie **General**. Klik en sleep **Stored Procedure** op het canvas.
 
-4. Noem de **Stored Procedure** als volgt: **USP_DL_Dates**. Klik vervolgens op de tab **Settings**.
+4. Noem de **Stored Procedure** activity als volgt: **USP_DL_Dates**. Klik vervolgens op de tab **Settings**.
 
 5. Kies bij **Linked service** voor de `LS_sqldb_target` en bij **Stored Procedure name** de **[Stg].[USP_DL_Dates]**.
 
@@ -39,9 +39,9 @@ Je kunt data uit de database ook gebruiken om je orchestratie mee uit te voeren,
 * Een proces dat alleen mag starten als er een bepaalde rij in je instellingen-tabel aanwezig is
 * Voor elke klant die er in de Customers-tabel aanwezig is een eigen pipeline starten
 
-Allereerst halen we hier data op uit een SQL-database, en doen een filtering op die data binnen Synapse Pipelines pipeline.
+Allereerst halen we hier data op uit een SQL-database, en doen een filtering op die data binnen een Synapse Pipelines pipeline.
 
-1. Klik bij Datasets op **Dataset Actions** en op **New Dataset**.
+1. Ga naar **Data** en klik op **Add new resource** (plusje) en op **Integration Dataset**.
 
 2. Zoek op **SQL** en kies **Azure SQL Database**. Klik vervolgens op **Continue**.
 
@@ -49,7 +49,7 @@ Allereerst halen we hier data op uit een SQL-database, en doen een filtering op 
 
 4. Kies bij **Table** voor **SalesLT.Customer** en klik op **OK**.
 
-5. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
+5. Ga terug naar **Integrate**. Klik op **Add new resource** (plusje) en op **Pipeline**.
 
 6. Noem de pipeline: `PL_Filter_SalesPersonal_Training`.
 
@@ -100,7 +100,7 @@ Tot nu toe hebben we alle tabellen stuk voor stuk ingeladen, met eigen datasets 
 
 Zo kun je bijvoorbeeld een lijst op te halen tabellen uitlezen uit een CSV-bestand of SQL-configuratietabel, waarna je ze met een ForEach-loop één voor één uitleest.
 
-1. Klik bij Datasets op **Dataset Actions** en op **New Dataset**.
+1. Ga naar **Data** en klik op **Add new resource** (plusje) en op **Integration Dataset**.
 
 2. Zoek op **SQL** en kies **Azure SQL Database**. Klik vervolgens op **Continue**.
 
@@ -118,7 +118,7 @@ Zo kun je bijvoorbeeld een lijst op te halen tabellen uitlezen uit een CSV-besta
 
 9. Kies uit de lijst de parameter genaamd: **TargetTableName** en klik vervolgens op **OK**.
 
-10. Klik bij Pipelines op **Pipeline Actions** en op **New Pipeline**.
+10. Ga terug naar **Integrate**. Klik op **Add new resource** (plusje) en op **Pipeline**.
 
 11. Noem de Pipeline als volgt: `PL_copy_deltaload_Training`.
 
