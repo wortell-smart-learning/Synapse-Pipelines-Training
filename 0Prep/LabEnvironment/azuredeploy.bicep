@@ -69,60 +69,6 @@ resource synapseWorkspace 'Microsoft.Synapse/workspaces@2021-06-01-preview' = {
   }
 }
 
-
-// Assign the Synapse RBAC role "Synapse Administrator" to a given principalId
-resource synapseRoleAssignRBAC 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
-  name: 'synapseRoleAssignAZ-${uniqueString(synapseWorkspace.name, userprincipalid)}'
-  kind: 'AzureCLI'
-  location: location
-  identity: {
-    type: 'UserAssigned'
-    userAssignedIdentities: {
-      '${userprincipalid}': {}
-    }
-  }
-  properties: {
-    forceUpdateTag: '1'
-    azCliVersion: '2.42.0'
-    retentionInterval: 'P1D'
-    environmentVariables: [
-      {
-        name: 'subscription'
-        value: subscription().subscriptionId
-      }
-      {
-        name: 'workspace'
-        value: synapseWorkspace.name
-      }
-      {
-        name: 'role'
-        value: '6e4bf58a-b8e1-4cc3-bbf9-d73143322b78'
-      }
-      {
-        name: 'assignee'
-        value: userprincipalid
-      }
-    ]
-    scriptContent: '''
-      # az synapse role assignment is not idempotent and the output must therefore be verified
-      RESULT=$(az synapse role assignment create --workspace-name "$workspace" --role "$role" --assignee "$assignee" 2>&1)
-      EXIT_CODE=$?
-
-      if  [ "$EXIT_CODE" != 0 ]; then
-          # If the error is of type "RoleAssignmentAlreadyExists", then it's fine
-          if [[ "$RESULT" == *"RoleAssignmentAlreadyExists"* ]]; then
-              echo "The Synapse role assignment already existed"
-          else
-              # If this was a different error, then print it to stderr and exit with the same error code
-              echo $RESULT 1>&2
-              exit $EXIT_CODE
-          fi
-      fi
-      echo $RESULT
-    '''
-  }
-}
-
 resource synapseFirewall 'Microsoft.Synapse/workspaces/firewallRules@2021-06-01' = {
   name: 'allowAll'
   parent: synapseWorkspace
@@ -178,6 +124,18 @@ resource storageAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2
   properties: {
     principalId: synapseWorkspace.identity.principalId
     roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe') // storageBlobDataContributor role definition ID
+  }
+  dependsOn: [
+    waitBeforeRoleAssignment
+  ]
+}
+
+resource synapseAdminAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
+  name: guid(subscription().id, 'SynapseAdministrator')
+  scope: storageAccount
+  properties: {
+    principalId: userprincipalid
+    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', '6e4bf58a-b8e1-4cc3-bbf9-d73143322b78') // storageBlobDataContributor role definition ID
   }
   dependsOn: [
     waitBeforeRoleAssignment
