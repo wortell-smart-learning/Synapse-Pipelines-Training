@@ -10,9 +10,9 @@ In order to start the lab, it is important that Lab3 has been completed.
 
 ## Opdracht 1 - Database pipelines
 
-1. Naast **Pipeline** zie je op dit moment een 0 staan. Wanneer je met je muis op het vak van **Pipeline** gaat staan zie je een optie met **3 bolletjes** (Pipeline Actions) verschijnen aan de rechterkant. Klik de **Pipeline Actions** aan en klik vervolgens op **New Pipeline**.
+1. Ga naar het onderdeel **Integrate** (de pijplijn). Je ziet hier nu nog geen items in de lijst. Klik **Add New Resource** aan (het plus-knopje) en klik vervolgens op **Pipeline**.
 
-2. Geef de Pipeline een duidelijke naam. Het aangeraden format is om te beginnen met `PL_`, het soort activiteit, (schema), de tabel/bestands naam, bron (source), doel (sink) en eindigend met `_omgeving`. Heb je een pipeline die meerdere pipelines orchistreerd kan je het format globaler houden.
+2. Geef de Pipeline een duidelijke naam. Het aangeraden format is om te beginnen met `PL_`, het soort activiteit, (schema), de tabel/bestands naam, bron (source), doel (sink) en eindigend met `_omgeving`. Heb je een pipeline die meerdere pipelines orchestreert kan je het format globaler houden.
    * Praktijkvoorbeeld: `PL_copy_visits_clubmanager_to_datalake_prd`
    * Trainingsvoorbeeld: `PL_copy_address_training`
 
@@ -65,9 +65,9 @@ In order to start the lab, it is important that Lab3 has been completed.
 
 17. Wacht tot je de melding rechtsboven in beeld krijgt met dat de pipeline succesvol heeft gedraait. Draai de pipeline hierna nog eens via de **Debug knop**. Je zult zien dat de informatie over het draaien van de pipeline onder in beeld verschijnt.
 
-## Opdracht 2 - Monitoring
+## Opdracht 2 - Monitor
 
-In het onderdeel "monitoring" kun je niet alleen bekijken hoe eerdere pipelines gedraaid hebben, maar je kunt ook notificaties uitsturen wanneer er aan bepaalde voorwaarden voldaan wordt.
+In het onderdeel "monitor" kun je niet alleen bekijken hoe eerdere pipelines gedraaid hebben, maar je kunt ook notificaties uitsturen wanneer er aan bepaalde voorwaarden voldaan wordt.
 
 1. Klik aan de linkerkant op het metertje (**Monitor**). Je komt nu meteen bij **Pipeline runs** uit, en zal in de horizontale navigatie balk 2 opties zien in de vorm van **Triggered** en **Debug**. In beide tabs zou zowel de `PL_copy_Master` pipeline moeten staan als de bijhorende onderliggende pipelines.
 
@@ -79,45 +79,6 @@ In het onderdeel "monitoring" kun je niet alleen bekijken hoe eerdere pipelines 
 
 5. Klik op **Details**, je ziet een visuele weergaven van de **Output**.
 Sluit de **Details** af door op het **Kruisje** te klikken.
-
-6. Aan de linkerkant zien we **Notifications** met de optie **Alerts & metrics**. Klik deze aan.
-
-7. In de horizontale navigatiebalk zien we de optie **New alert rule**. Klik deze aan.
-
-8. We gaan een Alert Rule maken die een notificatie stuurt wanneer de pipeline een fout heeft. Geef de **Alert rule name** een duidelijke naam die de lading dekt (bijv. `Alert on error`).
-
-9. Bij **Severity** zijn er meerdere opties mogelijk, namelijk:
-
-    Sev 0 = Critical
-
-    Sev 1 = Error
-
-    Sev 2 = Warning
-
-    Sev 3 = Informational
-
-    Sev 4 = Verbose
-
-    Voor ons doeleinde kiezen we **Sev0**.
-
-10. Klik bij **Targer criteria** op het **Add criteria**. Een lange lijst met opties zal verschijnen voor verschillende soorten metrics waarover gerapporteerd kunnen worden. Kies voor de **Succeeded pipeline runs metrics** en klik op **Continue**.  
-
-11. Klik bij **Values** de optie bij **Name** aan en kies de `PL_copy_Master` pipeline.
-
-12. De andere settings kunnen blijven zoals ze zijn. Klik vervolgens op **Add criteria**.
-
-13. Klik bij **Configure Email/SMS/Push/Voice notification** op **Configure notification**.
-
-14. Een nieuwe **Action group** zal aangemaakt moeten worden. Dit is een groep waarin mensen geplaatst kunnen worden om genotificeerd te worden over de door jouw aangemaakte regel. Vul bij **Action group name** een duidelijke naam in en geeft bij **Short name** een herkenbare afkorting van de groepsnaam.
-
-15. Klik bij **Notifications** op **Add notification** en geeft de **Action name** een duidelijke naam. Kies vervolgens bij **Select which notifications you'd like to receive** de optie **Email** en vul hier een e-mailadres is waar je nu toegang tot hebt. Andere opties mogen ook zodat je deze kan uitproberen. Wanneer je alles hebt toegevoegd dat je wilt, klik je op **Add notification**.
-
-16. Klik vervolgens op **Add action group**. Gaat dit fout, laat het weten aan de trainer.
-
-17. Klik op **Create alert rule**
-
-18. Ga terug naar **Pipeline runs** en de tab **Triggered**, houd je muis op de naam van de `PL_copy_Master`. Er verschijnt een `Play knop met pijltjes` (rerun) klik deze aan. Wacht tot pipeline weer klaar is, na iets meer dan een minuut zou je een mail en/of andere notificaties dienen te ontvangen.
-
 
 ## Opdracht 3 - Parameters en Variablen
 
