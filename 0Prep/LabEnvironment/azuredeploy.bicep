@@ -135,7 +135,7 @@ resource grantSynapseRole 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   location: location
   kind: 'AzureCLI'
   properties: {
-    azCliVersion: '2.54.0'
+    azCliVersion: '2.53.0'
     scriptContent: 'az extension add --name synapse; az synapse role assignment create --workspace-name "${synapseWorkspace.name}"  --role "Synapse Administrator" --assignee ${userprincipalid}'
     retentionInterval: 'P1D'
     cleanupPreference: 'Always'

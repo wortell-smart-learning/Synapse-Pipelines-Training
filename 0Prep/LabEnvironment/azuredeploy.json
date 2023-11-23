@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.23.1.45101",
-      "templateHash": "15520269823451372214"
+      "templateHash": "11108613186865230123"
     }
   },
   "parameters": {
@@ -185,7 +185,7 @@
       "location": "[parameters('location')]",
       "kind": "AzureCLI",
       "properties": {
-        "azCliVersion": "2.54.0",
+        "azCliVersion": "2.53.0",
         "scriptContent": "[format('az extension add --name synapse; az synapse role assignment create --workspace-name \"{0}\"  --role \"Synapse Administrator\" --assignee {1}', format('syn-{0}', variables('prefix')), parameters('userprincipalid'))]",
         "retentionInterval": "P1D",
         "cleanupPreference": "Always"
