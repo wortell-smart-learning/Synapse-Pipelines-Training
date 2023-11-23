@@ -130,18 +130,6 @@ resource storageAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2
   ]
 }
 
-resource synapseAdminAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
-  name: guid(subscription().id, 'SynapseAdministrator')
-  scope: storageAccount
-  properties: {
-    principalId: userprincipalid
-    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', '6e4bf58a-b8e1-4cc3-bbf9-d73143322b78') // SynapseAdministrator role definition ID
-  }
-  dependsOn: [
-    waitBeforeRoleAssignment
-  ]
-}
-
 resource grantSynapseRole 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
   name: 'executeCliScript'
   location: location

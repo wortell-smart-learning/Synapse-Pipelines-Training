@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.23.1.45101",
-      "templateHash": "7322843923519228532"
+      "templateHash": "13105664944406148478"
     }
   },
   "parameters": {
@@ -175,20 +175,6 @@
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
         "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]",
-        "[resourceId('Microsoft.Resources/deploymentScripts', 'waitBeforeRoleAssignment')]"
-      ]
-    },
-    {
-      "type": "Microsoft.Authorization/roleAssignments",
-      "apiVersion": "2020-04-01-preview",
-      "scope": "[format('Microsoft.Storage/storageAccounts/{0}', format('stor{0}', variables('prefix')))]",
-      "name": "[guid(subscription().id, 'SynapseAdministrator')]",
-      "properties": {
-        "principalId": "[parameters('userprincipalid')]",
-        "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', '6e4bf58a-b8e1-4cc3-bbf9-d73143322b78')]"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
         "[resourceId('Microsoft.Resources/deploymentScripts', 'waitBeforeRoleAssignment')]"
       ]
     },
