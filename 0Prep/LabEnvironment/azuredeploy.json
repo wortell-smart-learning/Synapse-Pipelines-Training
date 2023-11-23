@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.23.1.45101",
-      "templateHash": "7281078099797473182"
+      "templateHash": "8536687557730275706"
     }
   },
   "parameters": {
@@ -105,46 +105,6 @@
       ]
     },
     {
-      "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2020-10-01",
-      "name": "[format('synapseRoleAssignAZ-{0}', uniqueString(format('syn-{0}', variables('prefix')), parameters('userprincipalid')))]",
-      "kind": "AzureCLI",
-      "location": "[parameters('location')]",
-      "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-          "[format('{0}', parameters('userprincipalid'))]": {}
-        }
-      },
-      "properties": {
-        "forceUpdateTag": "1",
-        "azCliVersion": "2.42.0",
-        "retentionInterval": "P1D",
-        "environmentVariables": [
-          {
-            "name": "subscription",
-            "value": "[subscription().subscriptionId]"
-          },
-          {
-            "name": "workspace",
-            "value": "[format('syn-{0}', variables('prefix'))]"
-          },
-          {
-            "name": "role",
-            "value": "6e4bf58a-b8e1-4cc3-bbf9-d73143322b78"
-          },
-          {
-            "name": "assignee",
-            "value": "[parameters('userprincipalid')]"
-          }
-        ],
-        "scriptContent": "      # az synapse role assignment is not idempotent and the output must therefore be verified\n      RESULT=$(az synapse role assignment create --workspace-name \"$workspace\" --role \"$role\" --assignee \"$assignee\" 2>&1)\n      EXIT_CODE=$?\n\n      if  [ \"$EXIT_CODE\" != 0 ]; then\n          # If the error is of type \"RoleAssignmentAlreadyExists\", then it's fine\n          if [[ \"$RESULT\" == *\"RoleAssignmentAlreadyExists\"* ]]; then\n              echo \"The Synapse role assignment already existed\"\n          else\n              # If this was a different error, then print it to stderr and exit with the same error code\n              echo $RESULT 1>&2\n              exit $EXIT_CODE\n          fi\n      fi\n      echo $RESULT\n    "
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]"
-      ]
-    },
-    {
       "type": "Microsoft.Synapse/workspaces/firewallRules",
       "apiVersion": "2021-06-01",
       "name": "[format('{0}/{1}', format('syn-{0}', variables('prefix')), 'allowAll')]",
@@ -215,6 +175,20 @@
       "dependsOn": [
         "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
         "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]",
+        "[resourceId('Microsoft.Resources/deploymentScripts', 'waitBeforeRoleAssignment')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2020-04-01-preview",
+      "scope": "[format('Microsoft.Storage/storageAccounts/{0}', format('stor{0}', variables('prefix')))]",
+      "name": "[guid(subscription().id, 'SynapseAdministrator')]",
+      "properties": {
+        "principalId": "[parameters('userprincipalid')]",
+        "roleDefinitionId": "[resourceId('Microsoft.Authorization/roleDefinitions', '6e4bf58a-b8e1-4cc3-bbf9-d73143322b78')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
         "[resourceId('Microsoft.Resources/deploymentScripts', 'waitBeforeRoleAssignment')]"
       ]
     },

@@ -135,7 +135,7 @@ resource synapseAdminAccountRoleAssignment 'Microsoft.Authorization/roleAssignme
   scope: storageAccount
   properties: {
     principalId: userprincipalid
-    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', '6e4bf58a-b8e1-4cc3-bbf9-d73143322b78') // storageBlobDataContributor role definition ID
+    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', '6e4bf58a-b8e1-4cc3-bbf9-d73143322b78') // SynapseAdministrator role definition ID
   }
   dependsOn: [
     waitBeforeRoleAssignment
