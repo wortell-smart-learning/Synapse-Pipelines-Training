@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.23.1.45101",
-      "templateHash": "10299099984417219650"
+      "templateHash": "15852743908360913455"
     }
   },
   "parameters": {
@@ -176,23 +176,6 @@
         "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
         "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]",
         "[resourceId('Microsoft.Resources/deploymentScripts', 'waitBeforeRoleAssignment')]"
-      ]
-    },
-    {
-      "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2020-10-01",
-      "name": "grantSynapseAdminRole",
-      "location": "[parameters('location')]",
-      "kind": "AzureCLI",
-      "properties": {
-        "azCliVersion": "2.53.0",
-        "scriptContent": "[format('az synapse role assignment create --workspace-name \"{0}\"  --role \"Synapse Administrator\" --assignee {1}', format('syn-{0}', variables('prefix')), parameters('userprincipalid'))]",
-        "retentionInterval": "P1D",
-        "cleanupPreference": "Always"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', format('stor{0}', variables('prefix')))]",
-        "[resourceId('Microsoft.Synapse/workspaces', format('syn-{0}', variables('prefix')))]"
       ]
     },
     {

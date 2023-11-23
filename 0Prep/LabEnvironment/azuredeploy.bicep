@@ -130,21 +130,6 @@ resource storageAccountRoleAssignment 'Microsoft.Authorization/roleAssignments@2
   ]
 }
 
-resource grantSynapseRole 'Microsoft.Resources/deploymentScripts@2020-10-01' = {
-  name: 'grantSynapseAdminRole'
-  location: location
-  kind: 'AzureCLI'
-  properties: {
-    azCliVersion: '2.53.0'
-    scriptContent: 'az synapse role assignment create --workspace-name "${synapseWorkspace.name}"  --role "Synapse Administrator" --assignee ${userprincipalid}'
-    retentionInterval: 'P1D'
-    cleanupPreference: 'Always'
-  }
-  dependsOn: [
-    storageAccount
-  ]
-}
-
 resource keyVault 'Microsoft.KeyVault/vaults@2021-06-01-preview' = {
   name: 'kv-${prefix}'
   location: location
