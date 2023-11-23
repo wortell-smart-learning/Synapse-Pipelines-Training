@@ -12,7 +12,7 @@ Om data over de zojuist aangemaakte IRs te laten verlopen moeten er connecties m
 * een Storage account (bijv. zoals een Data Lake)
 * een File system (bijv. een share)
 
-Sommige van deze bronnen kun je benaderen met behulp van *managed identity*: in dat geval worden binnen AAD rechten uitgedeeld aan de Data Factory. Andere bronnen zul je moeten benaderen met een *secret*, bijvoorbeeld een certificaat of een gebruikersnaam/wachtwoord. Deze *secrets* sla je in Azure centraal op in de Key Vault. Vanuit daar kun je dan eenvoudig bepalen welke diensten welke *secrets* mogen bekijken.
+Sommige van deze bronnen kun je benaderen met behulp van *managed identity*: in dat geval worden binnen Entra ID rechten uitgedeeld aan Synapse Pipelines. Andere bronnen zul je moeten benaderen met een *secret*, bijvoorbeeld een certificaat of een gebruikersnaam/wachtwoord. Deze *secrets* sla je in Azure centraal op in de Key Vault. Vanuit daar kun je dan eenvoudig bepalen welke diensten welke *secrets* mogen bekijken.
 
 ## Opdracht 1 - Azure Key Vault
 
@@ -20,11 +20,11 @@ Synapse Pipelines is eenvoudig te koppelen met Azure Key Vault, waarin we wachtw
 
 Voordat we echter *secrets* uit de Key Vault kunnen benaderen, zullen we de Key Vault eerst moeten aankoppelen als *Linked Service*.
 
-1. Ga Synapse Pipelines. Klik vervolgens weer op Manage. Ga naar **Linked Services**.
+1. Ga naar Synapse Pipelines. Klik vervolgens weer op Manage. Ga naar **Linked Services**.
 2. klik op **New**, en zoek naar **Key vault**. Klik de **Azure Key vault** aan.
-3. Geef de Linked services een duidelijke naam. Het aangeraden format is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
+3. Geef de Linked service een duidelijke naam. Het aangeraden format is om te beginnen met LS_, de naam van de dienst in je resourcegroup en eindigend met _omgeving.
    * Praktijkvoorbeeld: `LS_KV_Dataplatform_PRD`
-   * Trainingsvoorbeeld: `LS_KV_rcc4bh5724jim_Training`
+   * Trainingsvoorbeeld: `LS_kv_oalm7_Training`  
      In de naamgeving is een minteken (`-`) niet toegestaan. Een *underscore* (`_`) is wel mogelijk.
 4. Kies de **Azure Subscription** die je in de training gebruikt
 5. Kies bij **Azure Key vault Name** de key vault uit jouw Key Vault (deze start met `kv_`).
