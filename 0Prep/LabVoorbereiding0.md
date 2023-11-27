@@ -28,7 +28,7 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 
 1. Als de uitrol voltooid is krijg je daar een melding van en hoera! Jouw omgeving is klaar voor gebruik! 
 
-    ## Opdracht 2 - Data klaar zetten
+## Opdracht 2 - Data klaar zetten
 
 1. Ga terug naar de Azure portal (portal.azure.com) en zoek binnen je resourcegroup naar het **Storage Account** en klik deze aan.
 1. In de Blade (Navigatiebalk aan de linkerkant) vind je onder het kopje **Data storage** de optie **Containers**, klik deze aan.
@@ -40,7 +40,7 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 1. Klik op **Upload**, klik op **browse for files** en selecteer het bestaand genaamd **ProductCategoryDiscount.csv** of sleep het bestand vanuit explorer naar het drag 'n drop gebied in de portal en klik vervolgens op de **Upload** knop.
 1. Het bestand wordt geupload en zou binnen enkele seconden in de container verschijnen.
 
-    ## Opdracht 3 - Database inrichten
+## Opdracht 3 - Database inrichten
 
 1. Ga terug naar je resourcegroup. In de lijst zie je 2 databases (sqldb-source en sqldb-target) en 1 server. De sqldb-source is al ingericht en voorzien van data (AdventureWorksLT).
 1. Klik de **sqldb-target** database aan en vervolgens in de Blade op **Query editor (preview)**.
