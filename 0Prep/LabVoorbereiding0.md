@@ -44,7 +44,7 @@ In deze reeks opdrachten wordt de omgeving ingericht, zet je de data klaar en ri
 
 1. Ga terug naar je resourcegroup. In de lijst zie je 2 databases (sqldb-source en sqldb-target) en 1 server. De sqldb-source is al ingericht en voorzien van data (AdventureWorksLT).
 1. Klik de **sqldb-target** database aan en vervolgens in de Blade op **Query editor (preview)**.
-    * De loginnaam van het sqladmin-account zou al ingevuld staan, voer vervolgens het wachtwoord in. Dit is hetzelfde wachtwoord als in Opdracht 2.
+    * De loginnaam van het sqladmin-account zou al ingevuld staan, voer vervolgens het wachtwoord in. Dit is `WortellSmartLearning.nl`.
 1. Wanneer je ingelogd bent, zie je een query-interface voor je en de tabbellen, views en stored procedure mappen aan de linkerkant.
 1. Ga terug naar de Github map van 0Prep en in de map **LabEnvironment**. Klik vervoglens op het .sql bestand genaamd **Target-Database.sql**. De code zou nu zichtbaar worden, selecteer alle code en plak deze in de Query editor en klik vervolgens op de knop **Run**.
 1. Wanneer de query is uitgevoerd, is jouw database klaar voor gebruik!
